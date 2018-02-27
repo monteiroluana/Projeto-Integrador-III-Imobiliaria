@@ -5,8 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 /**
  *
@@ -15,47 +17,36 @@ import java.util.GregorianCalendar;
 public class Agenda {
 
     private Connection obterConexao() throws ClassNotFoundException, SQLException {
+        // 1.1) Declarar o driver jdbc de acordo com o banco de dados usado
         Class.forName("com.mysql.jdbc.Driver");
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/agendadb", "root", "");
         return conn;
     }
 
-    public void listar() throws ClassNotFoundException, SQLException {
-//        Connection conn = null;
-//        PreparedStatement stmt = null;
-//        ResultSet resultados = null;
+    public List<Pessoa> listar() throws ClassNotFoundException, SQLException {
+        List<Pessoa> lista = new ArrayList<Pessoa>();
 
         // 1)Abrindo conexão com o banco de dados
-        // 1.1) Declarar o driver jdbc de acordo com o banco de dados usado
-//        Class.forName("com.mysql.jdbc.Driver");
         try (Connection conn = obterConexao();
+                // 2) executar as ações do db
                 PreparedStatement stmt = conn.prepareStatement("SELECT id,nome,dtnasc FROM agendadb.PESSOA");
                 ResultSet resultados = stmt.executeQuery();) {
-//            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/agendadb", "root", "");
 
-            // 2) executar as ações do db
-//            stmt = conn.prepareStatement("SELECT id,nome,dtnasc FROM agendadb.PESSOA");
-//            resultados = stmt.executeQuery();
             while (resultados.next()) {
                 long id = resultados.getLong("id");
                 String nome = resultados.getString("nome");
                 Date dtnasc = resultados.getDate("dtnasc");
 
-                System.out.println(id + ", " + nome + ", " + dtnasc);
+                Pessoa p = new Pessoa();
+                p.setId(id);
+                p.setNome(nome);
+                p.setDtNasc(dtnasc);
+                lista.add(p);
+//                System.out.println(id + ", " + nome + ", " + dtnasc);
             }
 
-//        } finally {
-//            // 3) fechar conexão
-//            if (resultados != null) {
-//                resultados.close();
-//            }
-//            if (stmt != null) {
-//                stmt.close();
-//            }
-//            if (conn != null) {
-//                conn.close();
-//            }
         }
+        return lista;
     }
 
     public void incluir() throws ClassNotFoundException, SQLException {
@@ -75,7 +66,11 @@ public class Agenda {
     public static void main(String[] args) {
         Agenda agenda = new Agenda();
         try {
-            agenda.listar();
+            List<Pessoa> lista = agenda.listar();
+            for(Pessoa p: lista){
+                System.out.println(p.getId() + ", " + p.getNome() + ", " + p.getDtNasc());
+            }
+            
             agenda.incluir();
 
         } catch (ClassNotFoundException ex) {
