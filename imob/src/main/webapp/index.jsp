@@ -12,6 +12,7 @@
             <p> <input type="text" name="nome" placeholder=" nome*"> </p>
             <p> <input type="text" name="login" placeholder=" login*"></p>
             <p> <input type="text" name="senha" placeholder=" senha*"></p>
+            <p> <input type="text" name="email" placeholder=" email*"></p>
             <p> <input type="text" name="grupoFilial" placeholder=" grupo/filial*"> </p>
             <p> <input type="text" name="departamento" placeholder=" departamento*"></p>
             <p> <input type="text" name="cargo" placeholder=" cargo*"></p>

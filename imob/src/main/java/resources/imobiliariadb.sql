@@ -35,10 +35,10 @@ CREATE TABLE imobiliariadb.CLIENTE(
 );
 
 
-INSERT INTO imobiliariadb.USUARIO (nome,login,senha,grupoFilial,departamento,cargo) VALUES
-("Jonas Araujo","jonas.araujo","jonas","SãoPaulo","",""),
-("Bruna Sayuri","bruna.sayuri","bruna","RioDeJaneiro","","" ),
-("Rodrigo Normando","rodrigo.normando","rodrigo","SãoPaulo","","");
+INSERT INTO imobiliariadb.USUARIO (nome,login,senha,email,grupoFilial,departamento,cargo) VALUES
+("Jonas Araujo","jonas.araujo","jonas","jonas@jonas.com","SãoPaulo","",""),
+("Bruna Sayuri","bruna.sayuri","bruna","bruna@bruna.com","RioDeJaneiro","","" ),
+("Rodrigo Normando","rodrigo.normando","rodrigo","rodrigo@rodrigo.com","SãoPaulo","","");
 
 INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,endereco,bairro,cidade,uf,num,complemento) VALUES
 ("111111111122","kunieda aoi","1996-07-17","fem","1155554444","11944445555","aoi@aoi.com","04444000","","","","","","");

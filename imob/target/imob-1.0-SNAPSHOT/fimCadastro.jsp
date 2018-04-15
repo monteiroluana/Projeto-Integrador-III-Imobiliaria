@@ -13,6 +13,7 @@
     usuario.setNome(request.getParameter("nome"));
     usuario.setLogin(request.getParameter("login"));
     usuario.setSenha(request.getParameter("senha"));
+    usuario.setEmail(request.getParameter("email"));
     usuario.setGrupoFilial(request.getParameter("grupoFilial"));
     usuario.setDepartamento(request.getParameter("departamento"));
     usuario.setCargo(request.getParameter("cargo"));
@@ -36,12 +37,13 @@
         <h1 style="text-align: center">FIM - Cadastro de usuário</h1>
         <hr>
 
-        <table>
+        <table border="1">
 
             <tr>
                 <th>NOME</th>
                 <th>LOGIN</th>
                 <th>SENHA</th>
+                <th>EMAIL</th>
                 <th>GRUPO/FILIAL</th>
                 <th>DEPARTAMENTO</th>
                 <th>CARGO</th>
@@ -54,6 +56,7 @@
                 <td><%=u.getNome()%></td>
                 <td><%=u.getLogin()%></td>
                 <td><%=u.getSenha()%></td>
+                <td><%=u.getEmail()%></td>
                 <td><%=u.getGrupoFilial()%></td>
                 <td><%=u.getDepartamento()%></td>
                 <td><%=u.getCargo()%></td>
