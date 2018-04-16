@@ -20,7 +20,7 @@
 
 // INSERINDO NO BANCO
     DaoUsuario daoUsuario = new DaoUsuario();
-    daoUsuario.iserir(usuario);
+    daoUsuario.inserir(usuario);
 
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

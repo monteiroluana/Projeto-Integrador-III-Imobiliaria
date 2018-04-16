@@ -42,6 +42,7 @@
         </div>
 
         <form action="EditarConfirm.jsp" method="POST">
+            <p>Id <input type="text" name="idUsuario" value="<%=usuario.getIdUsuario()%>"></p>
             <p> Nome<input type="text" name="nome" value="<%=usuario.getNome()%>"> </p>
             <p> Login<input type="text" name="login" value="<%=usuario.getLogin()%>"></p>
             <p> Senha<input type="text" name="senha" value="<%=usuario.getSenha()%>"></p>

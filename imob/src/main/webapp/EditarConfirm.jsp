@@ -9,6 +9,7 @@
 <%
     Usuario usuario = new Usuario();
     //peguei as informações do formulário 
+    usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
     usuario.setNome(request.getParameter("nome"));
     usuario.setLogin(request.getParameter("login"));
     usuario.setSenha(request.getParameter("senha"));

@@ -44,7 +44,7 @@ public class DaoUsuario {
         return lista;
     }
 
-    public void iserir(Usuario usuario) throws SQLException {
+    public void inserir(Usuario usuario) throws SQLException {
 
         String sql = "INSERT INTO imobiliariadb.USUARIO (nome,login,senha,email,grupoFilial,departamento,cargo) "
                 + "VALUES (?,?,?,?,?,?,?)";
