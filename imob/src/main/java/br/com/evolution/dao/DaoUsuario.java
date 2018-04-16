@@ -71,4 +71,83 @@ public class DaoUsuario {
 
     }
 
+    public void atualizar(Usuario usuario) throws SQLException {
+
+        String sql = "UPDATE imobiliariadb.USUARIO SET "
+                + "nome=?,login=?,senha=?,email=?,grupoFilial=?,departamento=?,cargo=? WHERE idUsuario=? ";
+        Connection conn = null;
+        try {
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, usuario.getNome());
+            stmt.setString(2, usuario.getLogin());
+            stmt.setString(3, usuario.getSenha());
+            stmt.setString(4, usuario.getEmail());
+            stmt.setString(5, usuario.getGrupoFilial());
+            stmt.setString(6, usuario.getDepartamento());
+            stmt.setString(7, usuario.getCargo());
+            stmt.setInt(8, usuario.getIdUsuario());
+            stmt.execute();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.err.println(ex.getMessage());
+
+        } finally {
+            conn.close();
+        }
+    }
+
+    public void excluir(int idUsuario) throws SQLException {
+
+        String sql = "DELETE FROM USUARIO WHERE idUsuario=? ";
+        Connection conn = null;
+        try {
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, idUsuario);
+            stmt.execute();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.err.println(ex.getMessage());
+
+        } finally {
+            conn.close();
+        }
+    }
+
+    public Usuario buscar(Usuario usuario) throws ClassNotFoundException, SQLException {
+
+        String sql = "SELECT * FROM imobiliariadb.USUARIO WHERE idUsuario=? ";
+
+        Usuario user=null;
+        Connection conn;
+        try {
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, usuario.getIdUsuario());
+            ResultSet res = stmt.executeQuery();
+
+            if (res.next()) {
+                user = new Usuario();
+
+                user.setIdUsuario(res.getInt("idUsuario"));
+                user.setNome(res.getString("nome"));
+                user.setEmail(res.getString("email"));
+                user.setLogin(res.getString("login"));
+                user.setSenha(res.getString("senha"));
+                user.setGrupoFilial(res.getString("grupoFilial"));
+                user.setDepartamento(res.getString("departamento"));
+                user.setCargo(res.getString("cargo"));
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.err.println(ex.getMessage());
+
+        }
+        return user;
+    }
+
 }

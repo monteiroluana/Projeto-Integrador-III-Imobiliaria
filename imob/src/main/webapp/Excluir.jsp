@@ -1,30 +1,26 @@
 <%-- 
-    Document   : fimCadastro
-    Created on : 15/04/2018, 16:20:09
+    Document   : Excluir
+    Created on : 15/04/2018, 19:03:23
     Author     : Luana
 --%>
-<%@page import="br.com.evolution.dao.DaoUsuario"%>
-<%@page import="br.com.evolution.model.Usuario"%>
+
 <%@page import="java.util.List"%>
-
+<%@page import="br.com.evolution.model.Usuario"%>
+<%@page import="br.com.evolution.dao.DaoUsuario"%>
 <%
-    Usuario usuario = new Usuario();
-    //peguei as informações do formulário 
-    usuario.setNome(request.getParameter("nome"));
-    usuario.setLogin(request.getParameter("login"));
-    usuario.setSenha(request.getParameter("senha"));
-    usuario.setEmail(request.getParameter("email"));
-    usuario.setGrupoFilial(request.getParameter("grupoFilial"));
-    usuario.setDepartamento(request.getParameter("departamento"));
-    usuario.setCargo(request.getParameter("cargo"));
-
-// INSERINDO NO BANCO
+    String msg = "";
     DaoUsuario daoUsuario = new DaoUsuario();
-    daoUsuario.iserir(usuario);
+    int id = 0;
+    if (request.getParameter("idUsuario") == null) {
+        msg = "ITEM NÃO ENVIADO";
 
-// LISTANDO 
+    } else {
+        id = Integer.parseInt(request.getParameter("idUsuario"));
+        daoUsuario.excluir(id);
+        msg = "Executou";
+    }
+
     List<Usuario> lista = daoUsuario.listar();
-
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -34,11 +30,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1 style="text-align: center">FIM - Cadastro de usuário</h1>
+        <h1 style="text-align: center"><%=msg%></h1>
+        <h1 style="text-align: center"><%=id%></h1>
         <hr>
-
         <table border="1">
-
             <tr>
                 <th>ID.USUARIO</th>
                 <th>NOME</th>
@@ -65,13 +60,10 @@
                 <td> <a href="Editar.jsp?idUsuario=<%=u.getIdUsuario()%>">Editar</a> 
                     <a href="Excluir.jsp?idUsuario=<%=u.getIdUsuario()%>">Excluir</a>
                 </td>
-
-            </tr>
-
             <%
-                };
+                }
+                ;
             %>
         </table>
-
     </body>
 </html>

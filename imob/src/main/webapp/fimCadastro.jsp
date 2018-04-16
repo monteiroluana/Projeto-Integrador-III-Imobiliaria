@@ -21,7 +21,7 @@
 // INSERINDO NO BANCO
     DaoUsuario daoUsuario = new DaoUsuario();
     daoUsuario.iserir(usuario);
-    
+
 // LISTANDO 
     List<Usuario> lista = daoUsuario.listar();
 
@@ -40,6 +40,7 @@
         <table border="1">
 
             <tr>
+                <th>ID.USUARIO</th>
                 <th>NOME</th>
                 <th>LOGIN</th>
                 <th>SENHA</th>
@@ -47,12 +48,13 @@
                 <th>GRUPO/FILIAL</th>
                 <th>DEPARTAMENTO</th>
                 <th>CARGO</th>
+                <th>--AÇÃO--</th>
             </tr>
-            <%
-            for(Usuario u: lista){
+            <%                for (Usuario u : lista) {
             %>
 
             <tr>
+                <td><%=u.getIdUsuario()%></td>
                 <td><%=u.getNome()%></td>
                 <td><%=u.getLogin()%></td>
                 <td><%=u.getSenha()%></td>
@@ -60,12 +62,16 @@
                 <td><%=u.getGrupoFilial()%></td>
                 <td><%=u.getDepartamento()%></td>
                 <td><%=u.getCargo()%></td>
+                <td> <a href="Editar.jsp?idUsuario=<%=u.getIdUsuario()%>">Editar</a> 
+                    <a href="Excluir.jsp?idUsuario=<%=u.getIdUsuario()%>">Excluir</a>
+                </td>
 
             </tr>
 
             <%
-            };
+                };
             %>
+        </table>
 
     </body>
 </html>
