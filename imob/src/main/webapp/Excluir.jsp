@@ -28,12 +28,30 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+         <style>
+            ul{list-style:none;padding:0px}	
+            a{text-decoration:none;font-family:arial;}
+            #tabela a{color:black}
+            #tabela a:hover{color:blue;}
+            #menu ul li a:hover{text-decoration:none;color:red;font-family:arial}
+            #menu ul li a:visited{color:white;}
+            ul li{ width:290px;padding:5px;display: inline; padding: 2px 30px;}		
+            #menu{background-color: #262626;height: 60px;line-height: 60px;text-align: center;color:white;}
+        </style>
     </head>
     <body>
-        <h1 style="text-align: center"><%=msg%></h1>
-        <h1 style="text-align: center"><%=id%></h1>
+        <h1 style="text-align: center">LISTA DE USUÁRIOS</h1>
         <hr>
-        <table border="1">
+        <div id="menu">
+            <ul>
+                <li><a href="CadastroUsuario.jsp">CADASTRO</a></li>
+                <li><a href="ListarUsuarios.jsp">LISTAR USUÁRIOS</a></li>
+            </ul>
+        </div>
+        <h2 style="text-align: center"><%=msg%></h2>
+        <h2 style="text-align: center"><%=id%></h2>
+        <hr>
+        <table border="1" id="tabela">
             <tr>
                 <th>ID.USUARIO</th>
                 <th>NOME</th>

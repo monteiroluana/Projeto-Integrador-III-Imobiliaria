@@ -1,27 +1,13 @@
 <%-- 
-    Document   : fimCadastro
-    Created on : 15/04/2018, 16:20:09
+    Document   : ListarUsuarios
+    Created on : 16/04/2018, 00:43:30
     Author     : Luana
 --%>
-<%@page import="br.com.evolution.dao.DaoUsuario"%>
-<%@page import="br.com.evolution.model.Usuario"%>
 <%@page import="java.util.List"%>
-
+<%@page import="br.com.evolution.model.Usuario"%>
+<%@page import="br.com.evolution.dao.DaoUsuario"%>
 <%
-    Usuario usuario = new Usuario();
-    //peguei as informações do formulário 
-    usuario.setNome(request.getParameter("nome"));
-    usuario.setLogin(request.getParameter("login"));
-    usuario.setSenha(request.getParameter("senha"));
-    usuario.setEmail(request.getParameter("email"));
-    usuario.setGrupoFilial(request.getParameter("grupoFilial"));
-    usuario.setDepartamento(request.getParameter("departamento"));
-    usuario.setCargo(request.getParameter("cargo"));
-
-// INSERINDO NO BANCO
     DaoUsuario daoUsuario = new DaoUsuario();
-    daoUsuario.iserir(usuario);
-
 // LISTANDO 
     List<Usuario> lista = daoUsuario.listar();
 
@@ -32,12 +18,27 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style>
+            ul{list-style:none;padding:0px}	
+            a{text-decoration:none;font-family:arial;}
+            #tabela a{color:black}
+            #tabela a:hover{color:blue;}
+            #menu ul li a:hover{text-decoration:none;color:red;font-family:arial}
+            #menu ul li a:visited{color:white;}
+            ul li{ width:290px;padding:5px;display: inline; padding: 2px 30px;}		
+            #menu{background-color: #262626;height: 60px;line-height: 60px;text-align: center;color:white;}
+        </style>
     </head>
     <body>
-        <h1 style="text-align: center">FIM - Cadastro de usuário</h1>
+        <h1 style="text-align: center">LISTA DE USUÁRIOS</h1>
         <hr>
-
-        <table border="1">
+        <div id="menu">
+            <ul>
+                <li><a href="CadastroUsuario.jsp">CADASTRO</a></li>
+                <li><a href="ListarUsuarios.jsp">LISTAR USUÁRIOS</a></li>
+            </ul>
+        </div>
+        <table border="1" id="tabela">
 
             <tr>
                 <th>ID.USUARIO</th>
@@ -72,6 +73,5 @@
                 };
             %>
         </table>
-
     </body>
 </html>

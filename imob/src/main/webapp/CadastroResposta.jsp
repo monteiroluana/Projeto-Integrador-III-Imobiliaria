@@ -1,11 +1,12 @@
 <%-- 
-    Document   : EditarConfirm
-    Created on : 15/04/2018, 20:55:54
+    Document   : fimCadastro
+    Created on : 15/04/2018, 16:20:09
     Author     : Luana
 --%>
-
 <%@page import="br.com.evolution.dao.DaoUsuario"%>
 <%@page import="br.com.evolution.model.Usuario"%>
+<%@page import="java.util.List"%>
+
 <%
     Usuario usuario = new Usuario();
     //peguei as informações do formulário 
@@ -17,19 +18,18 @@
     usuario.setDepartamento(request.getParameter("departamento"));
     usuario.setCargo(request.getParameter("cargo"));
 
-//ATUALIZANDO NO BANCO
+// INSERINDO NO BANCO
     DaoUsuario daoUsuario = new DaoUsuario();
-    daoUsuario.atualizar(usuario);
+    daoUsuario.iserir(usuario);
 
 %>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-         <style>
+        <style>
             ul{list-style:none;padding:0px}	
             a{text-decoration:none;color:white;font-family:arial}
             #menu ul li a:hover{text-decoration:none;color:red;font-family:arial}
@@ -39,7 +39,7 @@
         </style>
     </head>
     <body>
-        <h1 style="text-align: center">LISTA DE USUÁRIOS</h1>
+        <h1 style="text-align: center">FIM - Cadastro de usuário</h1>
         <hr>
         <div id="menu">
             <ul>
@@ -47,12 +47,9 @@
                 <li><a href="ListarUsuarios.jsp">LISTAR USUÁRIOS</a></li>
             </ul>
         </div>
-        <h3>Usuário: <%=usuario.getNome()%></h3>
-        <h3>Login:<%=usuario.getLogin()%></h3>
-        <h3>Senha:<%=usuario.getSenha()%></h3>
-        <h3>Email:<%=usuario.getEmail()%></h3>
-        <h3>Grupo:<%=usuario.getGrupoFilial()%></h3>
-        <h3>Depar:<%=usuario.getDepartamento()%></h3>
-        <h3>Cargo:<%=usuario.getCargo()%></h3>
+
+        <h2 style="text-align: center"><%=usuario.getNome()%> cadastrado com Sucesso!</h2>
+
+
     </body>
 </html>

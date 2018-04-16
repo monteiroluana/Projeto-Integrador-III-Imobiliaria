@@ -1,14 +1,16 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
     </head>
     <body>
-       <h1 style="text-align: center">Cadastro de usu·rio</h1>
+       <h1 style="text-align: center;color:red;">Cadastro de usu√°rio</h1>
         <hr>
         
-        <form action="fimCadastro.jsp" method="POST">
+        <form action="${pageContext.request.contextPath}/inserirUsuario" method="POST">
             <p> <input type="text" name="nome" placeholder=" nome*"> </p>
             <p> <input type="text" name="login" placeholder=" login*"></p>
             <p> <input type="text" name="senha" placeholder=" senha*"></p>

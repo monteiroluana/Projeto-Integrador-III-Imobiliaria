@@ -21,11 +21,25 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style>
+            ul{list-style:none;padding:0px}	
+            a{text-decoration:none;color:white;font-family:arial}
+            a:hover{text-decoration:none;color:red;font-family:arial}
+            ul li{ width:290px;padding:5px;display: inline; padding: 2px 30px;}		
+            #menu{background-color: #262626;height: 60px;line-height: 60px;text-align: center;}
+        </style>
     </head>
     <body>
         <h1 style="text-align: center">Editar usuário</h1>
-        
         <hr>
+        <div id="menu">
+            <ul>
+                <li><a href="CadastroUsuario.jsp">Cadastro</a></li>
+                <li><a href="ListarUsuarios.jsp">Listar Usuários</a></li>
+                <li><a href="#">TRIÂNGULO</a></li>
+                
+            </ul>
+        </div>
 
         <form action="EditarConfirm.jsp" method="POST">
             <p> Nome<input type="text" name="nome" value="<%=usuario.getNome()%>"> </p>
