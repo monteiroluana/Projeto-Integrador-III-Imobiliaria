@@ -41,7 +41,7 @@
         <table border="1" id="tabela">
 
             <tr>
-                <th>ID.USUARIO</th>
+                <th style="display:none">ID.USUARIO</th>
                 <th>NOME</th>
                 <th>LOGIN</th>
                 <th>SENHA</th>
@@ -55,7 +55,7 @@
             %>
 
             <tr>
-                <td><%=u.getIdUsuario()%></td>
+                <td style="display:none"><%=u.getIdUsuario()%></td>
                 <td><%=u.getNome()%></td>
                 <td><%=u.getLogin()%></td>
                 <td><%=u.getSenha()%></td>

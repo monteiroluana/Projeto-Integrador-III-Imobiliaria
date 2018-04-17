@@ -49,7 +49,6 @@
             </ul>
         </div>
         <h2 style="text-align: center"><%=msg%></h2>
-        <h2 style="text-align: center"><%=id%></h2>
         <hr>
         <table border="1" id="tabela">
             <tr>
