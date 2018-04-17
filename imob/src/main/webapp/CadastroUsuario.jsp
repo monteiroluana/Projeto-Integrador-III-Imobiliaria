@@ -23,7 +23,7 @@
             </ul>
         </div>
 
-        <form action="CadastroResposta.jsp" method="POST">
+        <form action="inserirUsuario" method="POST">
             <p> <input type="text" name="nome" placeholder=" nome*"> </p>
             <p> <input type="text" name="login" placeholder=" login*"></p>
             <p> <input type="text" name="senha" placeholder=" senha*"></p>

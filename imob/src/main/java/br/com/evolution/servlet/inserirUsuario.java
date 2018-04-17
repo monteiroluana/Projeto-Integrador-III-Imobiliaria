@@ -39,13 +39,13 @@ public class inserirUsuario extends HttpServlet {
         usuario.setDepartamento(request.getParameter("departamento"));
         usuario.setCargo(request.getParameter("cargo"));
 
-//        // INSERINDO NO BANCO
-//        DaoUsuario daoUsuario = new DaoUsuario();
-//        try {
-//            daoUsuario.iserir(usuario);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(inserirUsuario.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        // INSERINDO NO BANCO
+        DaoUsuario daoUsuario = new DaoUsuario();
+        try {
+            daoUsuario.inserir(usuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(inserirUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         request.setAttribute("usuarioCadastrado", usuario);
 

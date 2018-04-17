@@ -8,7 +8,7 @@
 <%@page import="java.util.List"%>
 
 <%
-    Usuario usuario = new Usuario();
+  /*  Usuario usuario = new Usuario();
     //peguei as informações do formulário 
     usuario.setNome(request.getParameter("nome"));
     usuario.setLogin(request.getParameter("login"));
@@ -20,7 +20,7 @@
 
 // INSERINDO NO BANCO
     DaoUsuario daoUsuario = new DaoUsuario();
-    daoUsuario.inserir(usuario);
+    daoUsuario.inserir(usuario);*/
 
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
