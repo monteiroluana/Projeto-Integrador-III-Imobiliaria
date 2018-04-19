@@ -1,17 +1,8 @@
-<<<<<<< HEAD
-C:\Users\luana.mpereira5\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\dao\DaoUsuario.java
-C:\Users\luana.mpereira5\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\model\Cliente.java
-C:\Users\luana.mpereira5\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\model\Usuario.java
-C:\Users\luana.mpereira5\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\servlet\inserirUsuario.java
-C:\Users\luana.mpereira5\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\conexao\Conexao.java
-C:\Users\luana.mpereira5\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\conexao\testeConexao.java
-C:\Users\luana.mpereira5\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\dao\DaoCliente.java
-=======
-C:\Users\bruna.ssjodai\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\model\Cliente.java
-C:\Users\bruna.ssjodai\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\servlet\inserirUsuario.java
-C:\Users\bruna.ssjodai\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\conexao\testeConexao.java
-C:\Users\bruna.ssjodai\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\dao\DaoCliente.java
-C:\Users\bruna.ssjodai\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\model\Usuario.java
-C:\Users\bruna.ssjodai\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\dao\DaoUsuario.java
-C:\Users\bruna.ssjodai\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\conexao\Conexao.java
->>>>>>> baee3de95d350d9c7581519f6c228386079eec4d
+C:\Users\Luana\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\dao\DaoUsuario.java
+C:\Users\Luana\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\servlet\inserirUsuario.java
+C:\Users\Luana\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\dao\DaoCliente.java
+C:\Users\Luana\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\model\Usuario.java
+C:\Users\Luana\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\conexao\testeConexao.java
+C:\Users\Luana\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\servlet\usuario.java
+C:\Users\Luana\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\model\Cliente.java
+C:\Users\Luana\Documents\GitHub\PI_III\imob\src\main\java\br\com\evolution\conexao\Conexao.java

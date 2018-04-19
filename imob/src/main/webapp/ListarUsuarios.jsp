@@ -1,15 +1,12 @@
-<%-- 
-    Document   : ListarUsuarios
-    Created on : 16/04/2018, 00:43:30
-    Author     : Luana
---%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.evolution.model.Usuario"%>
 <%@page import="br.com.evolution.dao.DaoUsuario"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
-    DaoUsuario daoUsuario = new DaoUsuario();
+    //  DaoUsuario daoUsuario = new DaoUsuario();
 // LISTANDO 
-    List<Usuario> lista = daoUsuario.listar();
+    //List<Usuario> lista = daoUsuario.listar();
 
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -35,7 +32,7 @@
         <div id="menu">
             <ul>
                 <li><a href="CadastroUsuario.jsp">CADASTRO</a></li>
-                <li><a href="ListarUsuarios.jsp">LISTAR USUÁRIOS</a></li>
+                <li><a href="usuario?action=lista">LISTAR USUÁRIOS</a></li>
             </ul>
         </div>
         <table border="1" id="tabela">
@@ -51,27 +48,19 @@
                 <th>CARGO</th>
                 <th>--AÇÃO--</th>
             </tr>
-            <%                for (Usuario u : lista) {
-            %>
-
-            <tr>
-                <td style="display:none"><%=u.getIdUsuario()%></td>
-                <td><%=u.getNome()%></td>
-                <td><%=u.getLogin()%></td>
-                <td><%=u.getSenha()%></td>
-                <td><%=u.getEmail()%></td>
-                <td><%=u.getGrupoFilial()%></td>
-                <td><%=u.getDepartamento()%></td>
-                <td><%=u.getCargo()%></td>
-                <td> <a href="Editar.jsp?idUsuario=<%=u.getIdUsuario()%>">Editar</a> 
-                    <a href="Excluir.jsp?idUsuario=<%=u.getIdUsuario()%>">Excluir</a>
-                </td>
-
-            </tr>
-
-            <%
-                };
-            %>
+            <c:forEach items="${lista}" var="u">
+                <tr>
+                    <td><c:out value="${u.nome}" /></td>
+                    <td><c:out value="${u.login}" /></td>
+                    <td><c:out value="${u.senha}" /></td>
+                    <td><c:out value="${u.email}" /></td>
+                    <td><c:out value="${u.grupoFilial}" /></td>
+                    <td><c:out value="${u.departamento}" /></td>
+                    <td><c:out value="${u.cargo}" /></td>
+                    <td><a href="#">Editar</a>
+                        <a href="#">Excluir</a></td>
+                </tr>
+            </c:forEach>
         </table>
     </body>
 </html>

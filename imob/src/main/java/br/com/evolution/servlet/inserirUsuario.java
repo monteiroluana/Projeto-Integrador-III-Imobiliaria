@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.evolution.servlet;
 
 import br.com.evolution.dao.DaoUsuario;
 import br.com.evolution.model.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,10 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Luana
- */
 @WebServlet(name = "inserirUsuario", urlPatterns = {"/inserirUsuario"})
 public class inserirUsuario extends HttpServlet {
 
@@ -50,7 +40,7 @@ public class inserirUsuario extends HttpServlet {
         request.setAttribute("usuarioCadastrado", usuario);
 
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("WEB-INF/listarUsuarios.jsp");
+                = request.getRequestDispatcher("CadastroResposta.jsp");
         dispatcher.forward(request, response);
     }
 

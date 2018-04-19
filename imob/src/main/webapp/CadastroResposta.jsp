@@ -1,28 +1,9 @@
-<%-- 
-    Document   : fimCadastro
-    Created on : 15/04/2018, 16:20:09
-    Author     : Luana
---%>
 <%@page import="br.com.evolution.dao.DaoUsuario"%>
 <%@page import="br.com.evolution.model.Usuario"%>
 <%@page import="java.util.List"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
-<%
-  /*  Usuario usuario = new Usuario();
-    //peguei as informações do formulário 
-    usuario.setNome(request.getParameter("nome"));
-    usuario.setLogin(request.getParameter("login"));
-    usuario.setSenha(request.getParameter("senha"));
-    usuario.setEmail(request.getParameter("email"));
-    usuario.setGrupoFilial(request.getParameter("grupoFilial"));
-    usuario.setDepartamento(request.getParameter("departamento"));
-    usuario.setCargo(request.getParameter("cargo"));
 
-// INSERINDO NO BANCO
-    DaoUsuario daoUsuario = new DaoUsuario();
-    daoUsuario.inserir(usuario);*/
-
-%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -44,12 +25,11 @@
         <div id="menu">
             <ul>
                 <li><a href="CadastroUsuario.jsp">CADASTRO</a></li>
-                <li><a href="ListarUsuarios.jsp">LISTAR USUÁRIOS</a></li>
+                <li><a href="usuario?action=lista">LISTAR USUÁRIOS</a></li>
             </ul>
         </div>
 
-        <h2 style="text-align: center"><%=usuario.getNome()%> cadastrado com Sucesso!</h2>
-
+        <h1>Usuário <c:out value="${usuarioCadastrado.nome}" /> cadastrado com sucesso</h1>
 
     </body>
 </html>

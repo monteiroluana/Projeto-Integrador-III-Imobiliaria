@@ -35,7 +35,7 @@
         <div id="menu">
             <ul>
                 <li><a href="CadastroUsuario.jsp">Cadastro</a></li>
-                <li><a href="ListarUsuarios.jsp">Listar Usuários</a></li>
+                <li><a href="usuario?action=lista">Listar Usuários</a></li>
                 
             </ul>
         </div>

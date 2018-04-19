@@ -45,7 +45,7 @@
         <div id="menu">
             <ul>
                 <li><a href="CadastroUsuario.jsp">CADASTRO</a></li>
-                <li><a href="ListarUsuarios.jsp">LISTAR USUÁRIOS</a></li>
+                <li><a href="usuario?action=lista">LISTAR USUÁRIOS</a></li>
             </ul>
         </div>
         <h2 style="text-align: center"><%=msg%></h2>
