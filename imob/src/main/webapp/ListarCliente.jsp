@@ -1,15 +1,6 @@
-<%@page import="java.util.List"%>
-<%@page import="br.com.evolution.model.Usuario"%>
-<%@page import="br.com.evolution.dao.DaoUsuario"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%
-    //  DaoUsuario daoUsuario = new DaoUsuario();
-// LISTANDO 
-    //List<Usuario> lista = daoUsuario.listar();
-
-%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,7 +18,7 @@
         </style>
     </head>
     <body>
-        <h1 style="text-align: center">Lista de Usuários</h1>
+        <h1 style="text-align: center">Lista de Clientes</h1>
         <hr>
         <div id="menu">
             <ul>
@@ -41,24 +32,24 @@
 
             <tr>
                 <th style="display:none">ID.USUARIO</th>
+                <th>CPF</th>
                 <th>NOME</th>
-                <th>LOGIN</th>
-                <th>SENHA</th>
+                <th>NASCIMENTO</th>
+                <th>SEXO</th>
+                <th>TELEFONE</th>
+                <th>CELULAR</th>
                 <th>EMAIL</th>
-                <th>GRUPO/FILIAL</th>
-                <th>DEPARTAMENTO</th>
-                <th>CARGO</th>
                 <th>--AÇÃO--</th>
             </tr>
-            <c:forEach items="${lista}" var="u">
+            <c:forEach items="${lista}" var="c">
                 <tr>
-                    <td><c:out value="${u.nome}" /></td>
-                    <td><c:out value="${u.login}" /></td>
-                    <td><c:out value="${u.senha}" /></td>
-                    <td><c:out value="${u.email}" /></td>
-                    <td><c:out value="${u.grupoFilial}" /></td>
-                    <td><c:out value="${u.departamento}" /></td>
-                    <td><c:out value="${u.cargo}" /></td>
+                    <td><c:out value="${c.cpf}" /></td>
+                    <td><c:out value="${c.nome}" /></td>
+                    <td><c:out value="${c.dataNasc}" /></td>
+                    <td><c:out value="${c.sexo}" /></td>
+                    <td><c:out value="${c.telefone}" /></td>
+                    <td><c:out value="${c.celular}" /></td>
+                    <td><c:out value="${c.email}" /></td>
                     <td><a href="#">Editar</a>
                         <a href="#">Excluir</a></td>
                 </tr>

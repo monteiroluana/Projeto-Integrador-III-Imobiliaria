@@ -24,8 +24,10 @@
         <hr>
         <div id="menu">
             <ul>
-                <li><a href="CadastroUsuario.jsp">CADASTRO</a></li>
-                <li><a href="usuario?action=lista">LISTAR USUÁRIOS</a></li>
+                <li><a href="CadastroUsuario.jsp">cadastro usuário</a></li>
+                <li><a href="CadastroCliente.jsp">cadastro cliente</a></li>
+                <li><a href="usuario?action=lista">listar usuário</a></li>
+                <li><a href="cliente?action=lista">listar cliente</a></li>
             </ul>
         </div>
 

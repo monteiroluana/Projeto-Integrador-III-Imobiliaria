@@ -21,19 +21,18 @@ public class usuario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
         DaoUsuario daoUsuario = new DaoUsuario();
         List<Usuario> lista = null;
 
         try {
             lista = daoUsuario.listar();
-            request.setAttribute("lista", lista);
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        request.setAttribute("lista", lista);
         RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
         dispatcher.forward(request, response);
 
@@ -42,6 +41,30 @@ public class usuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        Usuario usuario = new Usuario();
+        //peguei as informações do formulário 
+        usuario.setNome(request.getParameter("nome"));
+        usuario.setLogin(request.getParameter("login"));
+        usuario.setSenha(request.getParameter("senha"));
+        usuario.setEmail(request.getParameter("email"));
+        usuario.setGrupoFilial(request.getParameter("grupoFilial"));
+        usuario.setDepartamento(request.getParameter("departamento"));
+        usuario.setCargo(request.getParameter("cargo"));
+
+        // INSERINDO NO BANCO
+        DaoUsuario daoUsuario = new DaoUsuario();
+        try {
+            daoUsuario.inserir(usuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        request.setAttribute("usuarioCadastrado", usuario);
+
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher("CadastroResposta.jsp");
+        dispatcher.forward(request, response);
 
     }
 }

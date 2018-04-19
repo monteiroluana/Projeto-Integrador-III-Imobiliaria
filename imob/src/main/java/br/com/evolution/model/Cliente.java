@@ -1,5 +1,8 @@
 package br.com.evolution.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Cliente {
@@ -48,8 +51,14 @@ public class Cliente {
         return dataNasc;
     }
 
-    public void setDataNasc(Date dataNasc) {
-        this.dataNasc = dataNasc;
+    public void setDataNasc(String dataNasc) {
+        DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            this.dataNasc = formatador.parse(dataNasc);
+        } catch (ParseException e) {
+
+        }
     }
 
     public String getSexo() {

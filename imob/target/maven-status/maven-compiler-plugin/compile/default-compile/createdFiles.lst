@@ -1,7 +1,8 @@
 br\com\evolution\dao\DaoUsuario.class
+br\com\evolution\servlet\cliente.class
 br\com\evolution\dao\DaoCliente.class
 br\com\evolution\model\Usuario.class
+br\com\evolution\servlet\usuario.class
 br\com\evolution\conexao\testeConexao.class
 br\com\evolution\model\Cliente.class
-br\com\evolution\servlet\inserirUsuario.class
 br\com\evolution\conexao\Conexao.class

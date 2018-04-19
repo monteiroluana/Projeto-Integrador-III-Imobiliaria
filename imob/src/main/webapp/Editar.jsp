@@ -11,7 +11,7 @@
     Usuario usuario = new Usuario();
 
     usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
-     
+
     usuario = daoUsuario.buscar(usuario);
 
 %>
@@ -34,9 +34,10 @@
         <hr>
         <div id="menu">
             <ul>
-                <li><a href="CadastroUsuario.jsp">Cadastro</a></li>
-                <li><a href="usuario?action=lista">Listar Usuários</a></li>
-                
+                <li><a href="CadastroUsuario.jsp">cadastro usuário</a></li>
+                <li><a href="CadastroCliente.jsp">cadastro cliente</a></li>
+                <li><a href="usuario?action=lista">listar usuário</a></li>
+                <li><a href="cliente?action=lista">listar cliente</a></li>
             </ul>
         </div>
 

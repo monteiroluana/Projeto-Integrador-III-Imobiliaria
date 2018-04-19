@@ -28,7 +28,7 @@ public class DaoCliente {
                 String nome = resultados.getString("nome");
                
                 Date d = new Date(resultados.getTimestamp("dataNasc").getTime());
-                
+                String dataNasc = resultados.getString("dataNasc");
                 String sexo = resultados.getString("sexo");
                 String telefone = resultados.getString("telefone");
                 String celular = resultados.getString("celular");
@@ -45,7 +45,7 @@ public class DaoCliente {
                 cli.setIdCliente(id);
                 cli.setCpf(cpf);
                 cli.setNome(nome);
-                cli.setDataNasc(d);
+                cli.setDataNasc(dataNasc);
                 cli.setSexo(sexo);
                 cli.setTelefone(telefone);
                 cli.setCelular(celular);

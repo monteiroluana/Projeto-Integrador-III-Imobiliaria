@@ -28,7 +28,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-         <style>
+        <style>
             ul{list-style:none;padding:0px}	
             a{text-decoration:none;font-family:arial;}
             #tabela a{color:black}
@@ -40,12 +40,14 @@
         </style>
     </head>
     <body>
-        <h1 style="text-align: center">LISTA DE USUÁRIOS</h1>
+        <h1 style="text-align: center">Excluir usuários</h1>
         <hr>
         <div id="menu">
             <ul>
-                <li><a href="CadastroUsuario.jsp">CADASTRO</a></li>
-                <li><a href="usuario?action=lista">LISTAR USUÁRIOS</a></li>
+                <li><a href="CadastroUsuario.jsp">cadastro usuário</a></li>
+                <li><a href="CadastroCliente.jsp">cadastro cliente</a></li>
+                <li><a href="usuario?action=lista">listar usuário</a></li>
+                <li><a href="cliente?action=lista">listar cliente</a></li>
             </ul>
         </div>
         <h2 style="text-align: center"><%=msg%></h2>
@@ -77,10 +79,10 @@
                 <td> <a href="Editar.jsp?idUsuario=<%=u.getIdUsuario()%>">Editar</a> 
                     <a href="Excluir.jsp?idUsuario=<%=u.getIdUsuario()%>">Excluir</a>
                 </td>
-            <%
-                }
-                ;
-            %>
+                <%
+                    }
+                    ;
+                %>
         </table>
     </body>
 </html>

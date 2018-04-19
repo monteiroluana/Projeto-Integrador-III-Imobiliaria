@@ -14,16 +14,18 @@
 
     </head>
     <body>
-        <h1 style="text-align: center">Cadastro de usuário</h1>
+        <h1 style="text-align: center">Cadastrar Usuário</h1>
         <hr>
         <div id="menu">
             <ul>
-                <li><a href="CadastroUsuario.jsp">CADASTRO</a></li>
-                <li><a href="usuario?action=lista">LISTAR USUÁRIOS</a></li>
+                <li><a href="CadastroUsuario.jsp">cadastro usuário</a></li>
+                <li><a href="CadastroCliente.jsp">cadastro cliente</a></li>
+                <li><a href="usuario?action=lista">listar usuário</a></li>
+                <li><a href="cliente?action=lista">listar cliente</a></li>
             </ul>
         </div>
 
-        <form action="inserirUsuario" method="POST">
+        <form action="usuario" method="POST">
             <p> <input type="text" name="nome" placeholder=" nome*"> </p>
             <p> <input type="text" name="login" placeholder=" login*"></p>
             <p> <input type="text" name="senha" placeholder=" senha*"></p>
