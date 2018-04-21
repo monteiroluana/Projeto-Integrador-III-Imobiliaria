@@ -60,10 +60,13 @@ public class usuario extends HttpServlet {
             Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        String msg="deu certo";
+        
+        request.setAttribute("msg",msg);
         request.setAttribute("usuarioCadastrado", usuario);
 
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("CadastroResposta.jsp");
+                = request.getRequestDispatcher("CadastroUsuario.jsp");
         dispatcher.forward(request, response);
 
     }

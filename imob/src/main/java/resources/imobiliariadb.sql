@@ -41,7 +41,7 @@ INSERT INTO imobiliariadb.USUARIO (nome,login,senha,email,grupoFilial,departamen
 ("Rodrigo Normando","rodrigo.normando","rodrigo","rodrigo@rodrigo.com","SãoPaulo","","");
 
 INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,endereco,bairro,cidade,uf,num,complemento) VALUES
-("111111111122","kunieda aoi","1996-07-17","fem","1155554444","11944445555","aoi@aoi.com","04444000","","","","","","");
+("99991111111","kunieda aoi","1996-07-17","fem","1155554444","11944445555","aoi@aoi.com","04444000","","","","","","");
 
 
 SELECT * FROM USUARIO;

@@ -7,59 +7,17 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/styles.css">
+        <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script>
         <title>Cadastro - Clientes</title>
        
     </head>
     <body>
-        <nav class="navbar navbar-inverse sidebar" role="navigation">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">LOGO</a>
-				</div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Clientes <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
-							<ul class="dropdown-menu forAnimate" role="menu">
-								<li><a href="CadastroCliente.jsp">Cadastrar</a></li>
-								<li><a href="cliente?action=lista">Consultar</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Imóveis <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
-							<ul class="dropdown-menu forAnimate">
-								<li><a href="cadastro-imoveis.html">Cadastrar</a></li>
-								<li><a href="consultar-imoveis.html">Consultar</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuários <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
-							<ul class="dropdown-menu forAnimate">
-								<li><a href="CadastroUsuario.jsp">Cadastrar</a></li>
-								<li><a href="href=cliente?action=lista"> Consultar</a></li>
-							</ul>
-						</li>
-							<li><a href="venda.html">Venda<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-usd"></span></a></li>
-							
-							<li><a href="locacao.html">Locação<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-piggy-bank"></span></a></li>
-									<li><a href="relatorios.html">Relatórios<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-comment"></span></a></li>
-									<li><a href="logout.html">Log out<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-lock"></span></a></li>
-						
-					</ul>	
-				</div>
-			</div>
-		</nav> <!--MENU-->
+        <div w3-include-html="menu.html"></div>
+          <script>
+          w3IncludeHTML();
+          </script>        
         
-                
-                
+        
         <div class="main">
 			<div class="container">
       			<div class="row centered-form">
