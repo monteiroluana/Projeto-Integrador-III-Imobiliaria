@@ -164,6 +164,9 @@
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="email" class="control-label">Email</label>
                                             <input type="text" name="email" id="email" class="form-control input-sm" placeholder="email">
+                                            <!-- input escondido que passa o comando para o servlet 
+                                            (Deve ter um forma mais simples de fazer isso)-->
+                                            <input type="hidden" name="comando" id="comando" value="cadastrar">
 
                                         </div>
                                     </div>

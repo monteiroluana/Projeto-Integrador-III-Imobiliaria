@@ -7,20 +7,20 @@
 <%@page import="br.com.evolution.dao.DaoUsuario"%>
 <%@page import="br.com.evolution.model.Usuario"%>
 <%
-    Usuario usuario = new Usuario();
+    //Usuario usuario = new Usuario();
     //peguei as informações do formulário 
-    usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
-    usuario.setNome(request.getParameter("nome"));
-    usuario.setLogin(request.getParameter("login"));
-    usuario.setSenha(request.getParameter("senha"));
-    usuario.setEmail(request.getParameter("email"));
-    usuario.setGrupoFilial(request.getParameter("grupoFilial"));
-    usuario.setDepartamento(request.getParameter("departamento"));
-    usuario.setCargo(request.getParameter("cargo"));
+    //usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
+    //usuario.setNome(request.getParameter("nome"));
+    //usuario.setLogin(request.getParameter("login"));
+    //usuario.setSenha(request.getParameter("senha"));
+    //usuario.setEmail(request.getParameter("email"));
+    //usuario.setGrupoFilial(request.getParameter("grupoFilial"));
+    //usuario.setDepartamento(request.getParameter("departamento"));
+    //usuario.setCargo(request.getParameter("cargo"));
 
 //ATUALIZANDO NO BANCO
-    DaoUsuario daoUsuario = new DaoUsuario();
-    daoUsuario.atualizar(usuario);
+    //DaoUsuario daoUsuario = new DaoUsuario();
+    //daoUsuario.atualizar(usuario);
 
 %>
 
@@ -50,12 +50,19 @@
                 <li><a href="cliente?action=lista">listar cliente</a></li>
             </ul>
         </div>
-        <h3>Usuário: <%=usuario.getNome()%></h3>
-        <h3>Login:<%=usuario.getLogin()%></h3>
-        <h3>Senha:<%=usuario.getSenha()%></h3>
-        <h3>Email:<%=usuario.getEmail()%></h3>
-        <h3>Grupo:<%=usuario.getGrupoFilial()%></h3>
-        <h3>Depar:<%=usuario.getDepartamento()%></h3>
-        <h3>Cargo:<%=usuario.getCargo()%></h3>
+        <!-- <h3>Usuário: <%//=usuario.getNome()%></h3>
+        <h3>Login:<%//=usuario.getLogin()%></h3>
+        <h3>Senha:<%//=usuario.getSenha()%></h3>
+        <h3>Email:<%//=usuario.getEmail()%></h3>
+        <h3>Grupo:<%//=usuario.getGrupoFilial()%></h3>
+        <h3>Depar:<%//=usuario.getDepartamento()%></h3>
+        <h3>Cargo:<%//=usuario.getCargo()%></h3> -->
+        <h3>Usuário: <%=request.getParameter("nome")%></h3>
+        <h3>Login:<%=request.getParameter("login")%></h3>
+        <h3>Senha:<%=request.getParameter("senha")%></h3>
+        <h3>Email:<%=request.getParameter("email")%></h3>
+        <h3>Grupo:<%=request.getParameter("grupoFilial")%></h3>
+        <h3>Depar:<%=request.getParameter("departamento")%></h3>
+        <h3>Cargo:<%=request.getParameter("cargo")%></h3>
     </body>
 </html>
