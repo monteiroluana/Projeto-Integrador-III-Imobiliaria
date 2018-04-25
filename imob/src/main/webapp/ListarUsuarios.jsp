@@ -20,6 +20,14 @@
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar - Usuários</title>
+        <script>
+            var nome = document.getElementById("test").value;
+            function salvar(){
+                
+                alert(nome.);
+            }
+            
+        </script>
     </head>
     <body>
          <div w3-include-html="menu.html"></div>
@@ -111,13 +119,13 @@
                                                 </thead>
                                                 <c:forEach items="${lista}" var="u">
                                                     <tr>
-                                                        <td><c:out value="${u.nome}" /></td>
+                                                        <td ><input type="text" id="test" name="test" value="<c:out value="${u.nome}" />"></td>
                                                         <td><c:out value="${u.departamento}" /></td>
                                                         <td><c:out value="${u.cargo}" /></td>
                                                         <td><c:out value="${u.grupoFilial}" /></td>
                                                         <td><c:out value="${u.email}" /></td>
                                                         <td class="text-center">
-                                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Editar</button>
+                                                            <button type="button" class="btn btn-info btn-sm"  onClick="salvar()">Editar</button>
                                                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button>
                                                         </td>
                                                     </tr>
