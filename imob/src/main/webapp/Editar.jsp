@@ -30,6 +30,10 @@
         </style>
     </head>
     <body>
+          <div w3-include-html="menu.html"></div>
+            <script>
+                w3IncludeHTML();
+          </script>
         <h1 style="text-align: center">Editar usuário</h1>
         <hr>
         <div id="menu">

@@ -1,36 +1,30 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%-- 
+    Document   : EditarUsuario
+    Created on : Apr 30, 2018, 11:05:29 AM
+    Author     : I864970
+--%>
 
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Cadastro - Usu·rios</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/styles.css">
-        <script>
-            function check(){
-                var x = ${msg};
-                if(x.localeCompare("deu certo")){
-                    
-                }else{
-                    
-                }
-            }
-        </script>
+        <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Editar Usu√°rios</title>
     </head>
-
     <body>
-         <div w3-include-html="menu.html"></div>
+       <div w3-include-html="menu.html"></div>
     <script>
         w3IncludeHTML();
     </script>
-
-        <div class="main">
-            <div class="container">
+    </div class="main">
+    <div class="container">
                 <div class="row centered-form">
                     <div >
                         <br>
@@ -38,13 +32,13 @@
                         <br>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Cadastro de Usu·rios</h3>
+                                <h3 class="panel-title">Edi√ß√£o de Usu√°rios</h3>
                             </div>
                             <div class="panel-body">
                                 <form role="form" action="usuario" method="POST">
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-4">
-                                            <h3 class="panel-title">Dados do Usu·rio</h3>
+                                            <h3 class="panel-title">Dados do Usu√°rio</h3>
                                             <hr>
                                         </div>
                                     </div>
@@ -60,7 +54,7 @@
                                                 </div>	
                                                 <select id="grupoFilial" name="grupoFilial" class="form-control">
                                                     <option>Selecione</option>
-                                                    <option>S„o Paulo</option>
+                                                    <option>S√£o Paulo</option>
                                                     <option>Porto Alegre</option>
                                                     <option>Recife</option>
                                                 </select>
@@ -83,7 +77,7 @@
                                         <div class="col-xs-auto col-sm-auto col-md-2">
                                             <div class="form-group">
                                                 <div class="col-25">
-                                                    <label class="control-label" forcCargo">Cargo*</label>
+                                                    <label class="control-label" for="Cargo">Cargo*</label>
                                                 </div>	
                                                 <select id="cargo" name="cargo" class="form-control">
                                                     <option>Selecione</option> 
@@ -91,7 +85,7 @@
                                                     <option>Gerente</option>
                                                     <option>BackOffice</option>
                                                     <option>Vendedor(a)</option>
-                                                    <option>Suporte TÈcnico</option>
+                                                    <option>Suporte T√©cnico</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -113,7 +107,7 @@
 
                                         <div class="col-xs-auto col-sm-auto col-md-2">
                                             <label for="senha" class="control-label">Senha*</label>
-                                            <input type="password" name="senha" id="senha" class="form-control input-sm" placeholder="Entre 8 e 25 dÌgitos">
+                                            <input type="password" name="senha" id="senha" class="form-control input-sm" placeholder="Entre 8 e 25 d√≠gitos">
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-2">
                                             <label for="confirmar" class="control-label">Confirmar Senha*</label>
@@ -132,8 +126,8 @@
                                     <div class="row">
                                         <br>
                                         <div class="col-xs-10 col-sm-10 col-md-10">
-                                            <button type="button submit" class="btn btn-info" >Salvar</button>
-                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Deu certo?</button>
+                                            <button type="button submit" class="btn btn-info btn-sm" >Salvar</button>
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="javascript:window.close()">Cancelar</button>
                                         </div>
                                     </div>
 
@@ -144,28 +138,6 @@
 
                 </div>	
             </div>
-            <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <p><c:out value="${msg}"/></p>
-                        </div>
-                        <div class="modal-body">
-
-                            
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-        </div><!--Conte˙do primcipal-->
-
+    </div>
     </body>
 </html>

@@ -23,7 +23,7 @@
 <script>
     var nome = document.getElementById("test").value;
         
-    function salvar() {
+    function salvar1() {
 
         alert();
          
@@ -129,7 +129,7 @@
                                                     <td><c:out value="${u.grupoFilial}" /></td>
                                                     <td><c:out value="${u.email}" /></td>
                                                     <td class="text-center">
-                                                        <button type="button" class="btn btn-info btn-sm"  onClick="salvar()" data-toggle="modal" data-target="#myModal">Editar</button>
+                                                        <a class="btn btn-info btn-sm"href="EditarUsuario.jsp"  target="_blank">Editar</a>
                                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button>
                                                     </td>
                                                 </tr>
