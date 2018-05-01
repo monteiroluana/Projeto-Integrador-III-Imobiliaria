@@ -21,13 +21,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Consultar - Usuários</title>
 <script>
-    var nome = document.getElementById("test").value;
-        
-    function salvar1() {
-
-        alert();
-         
-    }
+    
 
 </script>
 
@@ -119,20 +113,24 @@
                                                     <th class="text-center">Opções</th>
                                                 </tr>
                                             </thead>
-                                            <c:set var="i" value="5"/>
+                                            
                                             <c:forEach items="${lista}" var="u">
-                                                
+                                                <form action="usuario?nome=${u.nome}&dpto=${u.departamento}&cargo=${u.cargo}&gf=${u.grupoFilial}&email=${u.email}&idUsuario=${u.idUsuario}&comando=listaEditar" method="GET">
                                                 <tr>
-                                                    <td ><c:out value="${u.nome}"/></td>
+                                                     
+                                                    <td><c:out value="${u.nome}"/></td>
                                                     <td><c:out value="${u.departamento}" /></td>
                                                     <td><c:out value="${u.cargo}" /></td>
                                                     <td><c:out value="${u.grupoFilial}" /></td>
                                                     <td><c:out value="${u.email}" /></td>
+                                                     <input style="display: none" value="${u.idUsuario}"/>                                                     
+                                                                                                         
                                                     <td class="text-center">
-                                                        <a class="btn btn-info btn-sm"href="EditarUsuario.jsp"  target="_blank">Editar</a>
+                                                        <button type="button submit" class="btn btn-danger btn-sm"> Editar</a>
                                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button>
                                                     </td>
                                                 </tr>
+                                                </form>
                                             </c:forEach>                                           
                                         </table>
                                     </div>

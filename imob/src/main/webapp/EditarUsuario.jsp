@@ -45,7 +45,7 @@
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="nome" class="control-label">Nome*</label>
-                                            <input type="text" name="nome" id="nome" class="form-control input-sm" placeholder="Nome Completo">
+                                            <input type="text" name="nome" id="nome" class="form-control input-sm" placeholder="Nome Completo" value=<%=request.getParameter("nome")%>>
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-2">
                                             <div class="form-group">

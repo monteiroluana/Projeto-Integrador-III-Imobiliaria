@@ -21,21 +21,26 @@ public class usuario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        DaoUsuario daoUsuario = new DaoUsuario();
-        List<Usuario> lista = null;
+       
+            DaoUsuario daoUsuario = new DaoUsuario();
+            List<Usuario> lista = null;
 
-        try {
-            lista = daoUsuario.listar();
+            try {
+                lista = daoUsuario.listar();
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        request.setAttribute("lista", lista);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
-        dispatcher.forward(request, response);
-
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            request.setAttribute("lista", lista);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
+            dispatcher.forward(request, response);
+//        } else if (request.getParameter("comando").equals("listaEditar")) {
+//            
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("EditarUsuario.jsp");
+//            dispatcher.forward(request, response);
+//        }
     }
 
     @Override
@@ -81,7 +86,7 @@ public class usuario extends HttpServlet {
             usuario.setDepartamento(request.getParameter("departamento"));
             usuario.setCargo(request.getParameter("cargo"));
 
-        //ATUALIZANDO NO BANCO
+            //ATUALIZANDO NO BANCO
             DaoUsuario daoUsuario = new DaoUsuario();
             try {
                 daoUsuario.atualizar(usuario);
