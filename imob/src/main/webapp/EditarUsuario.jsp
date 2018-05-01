@@ -81,11 +81,11 @@
                                                 </div>	
                                                 <select id="cargo" name="cargo" class="form-control">
                                                     <option>Selecione</option> 
-                                                    <option>Diretor(a)</option>
-                                                    <option>Gerente</option>
-                                                    <option>BackOffice</option>
-                                                    <option>Vendedor(a)</option>
-                                                    <option>Suporte Técnico</option>
+                                                    <option value="Diretor(a)">Diretor(a)</option>
+                                                    <option value="Gerente">Gerente</option>
+                                                    <option value="Backoffice">BackOffice</option>
+                                                    <option value="Vendedor(a)">Vendedor(a)</option>
+                                                    <option value="Suporte Técnico">Suporte Técnico</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -102,7 +102,7 @@
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="login" class="control-label">Login*</label>
-                                            <input type="text" name="login" id="login" class="form-control input-sm" placeholder="Login">
+                                            <input type="text" name="login" id="login" class="form-control input-sm" placeholder="Login" value="<%=request.getParameter("login")%>">
                                         </div>
 
                                         <div class="col-xs-auto col-sm-auto col-md-2">
@@ -111,14 +111,14 @@
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-2">
                                             <label for="confirmar" class="control-label">Confirmar Senha*</label>
-                                            <input type="password" name="confirmar" id="confirmar" class="form-control input-sm">
+                                            <input type="password" name="confirmar" id="confirmar" class="form-control input-sm" >
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="email" class="control-label">Email</label>
-                                            <input type="text" name="email" id="email" class="form-control input-sm" placeholder="email">
+                                            <input type="text" name="email" id="email" class="form-control input-sm" placeholder="email" value="<%=request.getParameter("email")%>">
                                             <!-- input escondido que passa o comando para o servlet 
                                             (Deve ter um forma mais simples de fazer isso)-->
-                                            <input type="hidden" name="comando" id="comando" value="cadastrar">
+                                            <input type="hidden" name="comando" id="comando" value="editar">
 
                                         </div>
                                     </div>

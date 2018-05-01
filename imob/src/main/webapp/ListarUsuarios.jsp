@@ -43,7 +43,7 @@
                             <h3 class="panel-title">Consultar Usuários</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <!-- <form role="form"> -->
                                 <div class="row">
                                     <div class="col-xs-auto col-sm-auto col-md-4">
                                         <h3 class="panel-title">Filtrar busca</h3>
@@ -115,18 +115,19 @@
                                             </thead>
                                             
                                             <c:forEach items="${lista}" var="u">
-                                                <form action="usuario?nome=${u.nome}&dpto=${u.departamento}&cargo=${u.cargo}&gf=${u.grupoFilial}&email=${u.email}&idUsuario=${u.idUsuario}&comando=listaEditar" method="GET">
+                                                <!-- <form action="usuario?nome=${u.nome}&dpto=${u.departamento}&cargo=${u.cargo}&gf=${u.grupoFilial}&email=${u.email}&idUsuario=${u.idUsuario}&comando=listaEditar" method="GET"> -->
                                                 <tr>
                                                      
                                                     <td><c:out value="${u.nome}"/></td>
                                                     <td><c:out value="${u.departamento}" /></td>
                                                     <td><c:out value="${u.cargo}" /></td>
                                                     <td><c:out value="${u.grupoFilial}" /></td>
+                                                    <td><c:out value="${u.login}" /></td>
                                                     <td><c:out value="${u.email}" /></td>
                                                      <input style="display: none" value="${u.idUsuario}"/>                                                     
                                                                                                          
                                                     <td class="text-center">
-                                                        <button type="button submit" class="btn btn-danger btn-sm"> Editar</a>
+                                                        <a href="usuario?nome=${u.nome}&dpto=${u.departamento}&cargo=${u.cargo}&gf=${u.grupoFilial}&login=${u.login}&email=${u.email}&idUsuario=${u.idUsuario}&comando=listaEditar"class="btn btn-danger btn-sm"> Editar</a>
                                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button>
                                                     </td>
                                                 </tr>
@@ -135,7 +136,7 @@
                                         </table>
                                     </div>
                                 </div>
-                            </form>
+                            <!-- </form> -->
                         </div>
                     </div>
                 </div>

@@ -21,7 +21,7 @@ public class usuario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-       
+            if(request.getParameter("comando").equals("lista")){
             DaoUsuario daoUsuario = new DaoUsuario();
             List<Usuario> lista = null;
 
@@ -36,11 +36,12 @@ public class usuario extends HttpServlet {
             request.setAttribute("lista", lista);
             RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
             dispatcher.forward(request, response);
-//        } else if (request.getParameter("comando").equals("listaEditar")) {
-//            
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("EditarUsuario.jsp");
-//            dispatcher.forward(request, response);
-//        }
+            
+        } else if (request.getParameter("comando").equals("listaEditar")) {
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("EditarUsuario.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 
     @Override
