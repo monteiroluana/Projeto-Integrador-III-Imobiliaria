@@ -12,12 +12,26 @@ import java.util.List;
 public class DaoUsuario {
 
     public List<Usuario> listar() throws ClassNotFoundException, SQLException {
-
+        
+        String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE enable=?";
+        
         List<Usuario> lista = new ArrayList<Usuario>();
+        
+        Connection conn = null;
+        
+        //Armazenará os resultados do banco de dados
+        //ResultSet resultados = null;        
 
-        try (Connection con = Conexao.obterConexao();
-                PreparedStatement stmt = con.prepareStatement("SELECT * FROM imobiliariadb.USUARIO");
-                ResultSet resultados = stmt.executeQuery();) {
+        try 
+            //(Connection con = Conexao.obterConexao();
+            //   PreparedStatement stmt = con.prepareStatement("SELECT * FROM imobiliariadbTESTE.USUARIO");
+            //    ResultSet resultados = stmt.executeQuery();) 
+        {
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setBoolean(1, true);
+            //Armazenará os resultados do banco de dados
+            ResultSet resultados = stmt.executeQuery();          
 
             while (resultados.next()) {
                 Integer id = resultados.getInt("idUsuario");
@@ -40,14 +54,19 @@ public class DaoUsuario {
                 user.setCargo(cargo);
                 lista.add(user);
             }
+        }catch (ClassNotFoundException | SQLException ex) {
+            System.err.println(ex.getMessage());
+
+        } finally {
+            conn.close();
         }
         return lista;
     }
 
     public void inserir(Usuario usuario) throws SQLException {
 
-        String sql = "INSERT INTO imobiliariadb.USUARIO (nome,login,senha,email,grupoFilial,departamento,cargo) "
-                + "VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO imobiliariadbTESTE.USUARIO (nome,login,senha,email,grupoFilial,departamento,cargo,enable) "
+                + "VALUES (?,?,?,?,?,?,?,?)";
         Connection conn = null;
         try {
             conn = Conexao.obterConexao();
@@ -60,6 +79,7 @@ public class DaoUsuario {
             stmt.setString(5, usuario.getGrupoFilial());
             stmt.setString(6, usuario.getDepartamento());
             stmt.setString(7, usuario.getCargo());
+            stmt.setBoolean(8, true);
             stmt.execute();
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -73,7 +93,7 @@ public class DaoUsuario {
 
     public void atualizar(Usuario usuario) throws SQLException {
 
-        String sql = "UPDATE imobiliariadb.USUARIO SET "
+        String sql = "UPDATE imobiliariadbTESTE.USUARIO SET "
                 + "nome=?,login=?,senha=?,email=?,grupoFilial=?,departamento=?,cargo=? WHERE idUsuario=? ";
         Connection conn = null;
         try {
@@ -99,14 +119,16 @@ public class DaoUsuario {
     }
 
     public void excluir(int idUsuario) throws SQLException {
-
-        String sql = "DELETE FROM USUARIO WHERE idUsuario=? ";
+        //realiza a exclusão lógica
+        String sql = "UPDATE produto SET enabled=? WHERE idUsuario=?";
         Connection conn = null;
+        
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            stmt.setInt(1, idUsuario);
+            stmt.setBoolean(1, false);
+            stmt.setInt(2, idUsuario);
             stmt.execute();
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -119,15 +141,17 @@ public class DaoUsuario {
 
     public Usuario buscar(Usuario usuario) throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadb.USUARIO WHERE idUsuario=? ";
+        String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE idUsuario=? AND enable=?";
 
         Usuario user=null;
         Connection conn;
+        
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setInt(1, usuario.getIdUsuario());
+            stmt.setBoolean(2, true);
             ResultSet res = stmt.executeQuery();
 
             if (res.next()) {

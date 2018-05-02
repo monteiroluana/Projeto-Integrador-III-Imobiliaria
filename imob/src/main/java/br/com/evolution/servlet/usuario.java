@@ -76,6 +76,7 @@ public class usuario extends HttpServlet {
             RequestDispatcher dispatcher
                     = request.getRequestDispatcher("CadastroUsuario.jsp");
             dispatcher.forward(request, response);
+            
         } else if (request.getParameter("comando").equals("editar")) {
             Usuario usuario = new Usuario();
             //peguei as informações do formulário 
@@ -101,7 +102,19 @@ public class usuario extends HttpServlet {
             dispatcher.forward(request, response);
 
         } else if (request.getParameter("comando").equals("excluir")) {
+            //ATUALIZANDO NO BANCO
+            DaoUsuario daoUsuario = new DaoUsuario();
+            
+            try {
+                //teste p/ pegar direto do formulario somente o id, sem criar o usuario
+                daoUsuario.excluir(Integer.parseInt(request.getParameter("idUsuario")));
+            } catch (SQLException ex) {
+                Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
+            RequestDispatcher dispatcher
+                    = request.getRequestDispatcher("Excluir.jsp");
+            dispatcher.forward(request, response);
         }
     }
 }

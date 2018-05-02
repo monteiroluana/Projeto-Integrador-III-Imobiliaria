@@ -19,7 +19,7 @@ public class DaoCliente {
         List<Cliente> lista = new ArrayList<Cliente>();
 
         try (Connection con = Conexao.obterConexao();
-                PreparedStatement stmt = con.prepareStatement("SELECT * FROM imobiliariadb.CLIENTE");
+                PreparedStatement stmt = con.prepareStatement("SELECT * FROM imobiliariadbTESTE.CLIENTE");
                 ResultSet resultados = stmt.executeQuery();) {
 
             while (resultados.next()) {
@@ -34,7 +34,7 @@ public class DaoCliente {
                 String celular = resultados.getString("celular");
                 String email = resultados.getString("email");
                 String cep = resultados.getString("cep");
-                String endereco = resultados.getString("endereco");
+                String rua = resultados.getString("rua");
                 String bairro = resultados.getString("bairro");
                 String cidade = resultados.getString("cidade");
                 String uf = resultados.getString("uf");
@@ -51,7 +51,7 @@ public class DaoCliente {
                 cli.setCelular(celular);
                 cli.setEmail(email);
                 cli.setCep(cep);
-                cli.setEndereco(endereco);
+                cli.setRua(rua);
                 cli.setBairro(bairro);
                 cli.setCidade(cidade);
                 cli.setUf(uf);
@@ -65,8 +65,8 @@ public class DaoCliente {
 
     public void inserir(Cliente cliente) throws SQLException, ClassNotFoundException {
 
-        String sql = "INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,endereco,bairro,cidade,uf,num,complemento)"
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO imobiliariadbTESTE.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable)"
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
         try {
             conn = Conexao.obterConexao();
@@ -83,15 +83,14 @@ public class DaoCliente {
             stmt.setString(6, cliente.getCelular());
             stmt.setString(7, cliente.getEmail());
             stmt.setString(8, cliente.getCep());
-            stmt.setString(9, cliente.getEndereco());
+            stmt.setString(9, cliente.getRua());
             stmt.setString(10, cliente.getBairro());
             stmt.setString(11, cliente.getCidade());
             stmt.setString(12, cliente.getUf());
             stmt.setString(13, cliente.getNum());
             stmt.setString(14, cliente.getComplemento());
-            
-            
-            
+            stmt.setBoolean(15, true);
+                        
             stmt.execute();
 
         } catch (SQLException ex) {
@@ -102,6 +101,5 @@ public class DaoCliente {
         }
 
     }
-
   
 }

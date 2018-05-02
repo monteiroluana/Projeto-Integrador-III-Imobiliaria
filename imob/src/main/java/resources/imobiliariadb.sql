@@ -9,7 +9,8 @@ CREATE TABLE imobiliariadb.USUARIO(
         email varchar (30),
 	grupoFilial varchar(50),
 	departamento varchar(50),
-	cargo varchar(50),	
+	cargo varchar(50),
+        enable         BOOLEAN,		
         CONSTRAINT PK_USUARIO PRIMARY KEY (idUsuario)
 );
 
@@ -24,7 +25,7 @@ CREATE TABLE imobiliariadb.CLIENTE(
 	celular varchar(15),
 	email varchar(255),
 	cep varchar(8),
-	endereco varchar(255),
+	rua varchar(255),
 	bairro varchar(255),
 	cidade varchar(255),
 	uf varchar(20),
@@ -40,7 +41,7 @@ INSERT INTO imobiliariadb.USUARIO (nome,login,senha,email,grupoFilial,departamen
 ("Bruna Sayuri","bruna.sayuri","bruna","bruna@bruna.com","RioDeJaneiro","","" ),
 ("Rodrigo Normando","rodrigo.normando","rodrigo","rodrigo@rodrigo.com","SãoPaulo","","");
 
-INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,endereco,bairro,cidade,uf,num,complemento) VALUES
+INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento) VALUES
 ("99991111111","kunieda aoi","1996-07-17","fem","1155554444","11944445555","aoi@aoi.com","04444000","","","","","","");
 
 

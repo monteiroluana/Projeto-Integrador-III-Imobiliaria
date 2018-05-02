@@ -16,7 +16,7 @@ public class Cliente {
     private String celular;
     private String email;
     private String cep;
-    private String endereco;
+    private String rua;
     private String bairro;
     private String cidade;
     private String uf;
@@ -101,12 +101,12 @@ public class Cliente {
         this.cep = cep;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getRua() {
+        return rua;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setRua(String rua) {
+        this.rua = rua;
     }
 
     public String getBairro() {
