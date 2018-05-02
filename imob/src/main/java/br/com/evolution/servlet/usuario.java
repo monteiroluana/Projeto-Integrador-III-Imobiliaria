@@ -1,4 +1,4 @@
-package br.com.evolution.servlet;
+    package br.com.evolution.servlet;
 
 import br.com.evolution.dao.DaoUsuario;
 import br.com.evolution.model.Usuario;
@@ -38,7 +38,7 @@ public class usuario extends HttpServlet {
             dispatcher.forward(request, response);
             
         } else if (request.getParameter("comando").equals("listaEditar")) {
-            
+
             RequestDispatcher dispatcher = request.getRequestDispatcher("EditarUsuario.jsp");
             dispatcher.forward(request, response);
         }
@@ -51,6 +51,7 @@ public class usuario extends HttpServlet {
         if (request.getParameter("comando").equals("cadastrar")) {
             Usuario usuario = new Usuario();
             //peguei as informações do formulário 
+            
             usuario.setNome(request.getParameter("nome"));
             usuario.setLogin(request.getParameter("login"));
             usuario.setSenha(request.getParameter("senha"));
@@ -78,7 +79,7 @@ public class usuario extends HttpServlet {
         } else if (request.getParameter("comando").equals("editar")) {
             Usuario usuario = new Usuario();
             //peguei as informações do formulário 
-            usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
+            usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));            
             usuario.setNome(request.getParameter("nome"));
             usuario.setLogin(request.getParameter("login"));
             usuario.setSenha(request.getParameter("senha"));

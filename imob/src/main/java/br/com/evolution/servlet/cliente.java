@@ -47,9 +47,11 @@ public class cliente extends HttpServlet {
 
         //Pegando as informações que estão sendo passadas pelo formulario
         Cliente cliente = new Cliente();
+        
+        
         cliente.setCpf(request.getParameter("cpf"));
-        cliente.setNome(request.getParameter("nome"));
-        cliente.setDataNasc(request.getParameter("dataNasc"));
+        cliente.setNome(request.getParameter("nome"));   
+        cliente.setDataNasc(request.getParameter("data"));
         cliente.setSexo(request.getParameter("sexo"));
         cliente.setTelefone(request.getParameter("telefone"));
         cliente.setCelular(request.getParameter("celular"));
@@ -65,7 +67,7 @@ public class cliente extends HttpServlet {
         //Inserindo no banco
         DaoCliente daoCliente = new DaoCliente();
         try {
-            daoCliente.iserir(cliente);
+            daoCliente.inserir(cliente);
         } catch (SQLException ex) {
             Logger.getLogger(cliente.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

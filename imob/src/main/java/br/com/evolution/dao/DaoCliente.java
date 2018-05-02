@@ -63,7 +63,7 @@ public class DaoCliente {
         return lista;
     }
 
-    public void iserir(Cliente cliente) throws SQLException, ClassNotFoundException {
+    public void inserir(Cliente cliente) throws SQLException, ClassNotFoundException {
 
         String sql = "INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,endereco,bairro,cidade,uf,num,complemento)"
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";

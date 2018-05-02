@@ -30,7 +30,7 @@
 							<h3 class="panel-title">Cadastro de Clientes</h3>
 						</div>
                                                     <div class="panel-body">
-                                                            <form role="form" action="usuario" method="POST">
+                                                            <form role="form" action="cliente" method="POST">
                                                                     <div class="row">
                                                                             <div class="col-xs-auto col-sm-auto col-md-4">
                                                                                     <h3 class="panel-title">Dados Pessoais</h3>

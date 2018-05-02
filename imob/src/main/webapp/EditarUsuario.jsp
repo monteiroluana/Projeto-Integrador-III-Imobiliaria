@@ -119,6 +119,7 @@
                                             <!-- input escondido que passa o comando para o servlet 
                                             (Deve ter um forma mais simples de fazer isso)-->
                                             <input type="hidden" name="comando" id="comando" value="editar">
+                                            <input type="hidden" id="idUsuario" name="idUsuario" value="<%=request.getParameter("idUsuario")%>">
 
                                         </div>
                                     </div>
@@ -126,6 +127,7 @@
                                     <div class="row">
                                         <br>
                                         <div class="col-xs-10 col-sm-10 col-md-10">
+                                            
                                             <button type="button submit" class="btn btn-info btn-sm" >Salvar</button>
                                             <button type="button" class="btn btn-danger btn-sm" onclick="javascript:window.close()">Cancelar</button>
                                         </div>
