@@ -120,7 +120,7 @@ public class DaoUsuario {
 
     public void excluir(int idUsuario) throws SQLException {
         //realiza a exclusão lógica
-        String sql = "UPDATE usuario SET enable=? WHERE idUsuario=?";
+        String sql = "UPDATE imobiliariadbTESTE.USUARIO SET enable=? WHERE idUsuario=?";
         Connection conn = null;
         
         try {
