@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "cliente", urlPatterns = {"/cliente"})
-public class cliente extends HttpServlet {
+public class ServletCliente extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,9 +31,9 @@ public class cliente extends HttpServlet {
             lista = daoCliente.listar();
             
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         request.setAttribute("lista", lista);
         RequestDispatcher dispatcher = request.getRequestDispatcher("ListarCliente.jsp");
@@ -69,9 +69,9 @@ public class cliente extends HttpServlet {
         try {
             daoCliente.inserir(cliente);
         } catch (SQLException ex) {
-            Logger.getLogger(cliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(cliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         request.setAttribute("usuarioCadastrado", cliente);

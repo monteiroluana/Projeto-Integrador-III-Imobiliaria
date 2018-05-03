@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "usuario", urlPatterns = {"/usuario"})
-public class usuario extends HttpServlet {
+public class ServletUsuario extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -29,9 +29,9 @@ public class usuario extends HttpServlet {
                 lista = daoUsuario.listar();
 
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
-                Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
             request.setAttribute("lista", lista);
             RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
@@ -49,10 +49,10 @@ public class usuario extends HttpServlet {
             int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 
             try {
-                //teste p/ pegar direto do formulario somente o id, sem criar o usuario
+                //teste p/ pegar direto do formulario somente o id, sem criar o ServletUsuario
                 daoUsuario.excluir(idUsuario);
             } catch (SQLException ex) {
-                Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             RequestDispatcher dispatcher
@@ -82,7 +82,7 @@ public class usuario extends HttpServlet {
             try {
                 daoUsuario.inserir(usuario);
             } catch (SQLException ex) {
-                Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             String msg = "deu certo";
@@ -111,7 +111,7 @@ public class usuario extends HttpServlet {
             try {
                 daoUsuario.atualizar(usuario);
             } catch (SQLException ex) {
-                Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             RequestDispatcher dispatcher
