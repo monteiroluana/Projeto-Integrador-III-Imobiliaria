@@ -1,4 +1,4 @@
-    package br.com.evolution.servlet;
+package br.com.evolution.servlet;
 
 import br.com.evolution.dao.DaoUsuario;
 import br.com.evolution.model.Usuario;
@@ -21,7 +21,7 @@ public class usuario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-            if(request.getParameter("comando").equals("lista")){
+        if (request.getParameter("comando").equals("lista")) {
             DaoUsuario daoUsuario = new DaoUsuario();
             List<Usuario> lista = null;
 
@@ -36,10 +36,27 @@ public class usuario extends HttpServlet {
             request.setAttribute("lista", lista);
             RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
             dispatcher.forward(request, response);
-            
+
         } else if (request.getParameter("comando").equals("listaEditar")) {
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("EditarUsuario.jsp");
+            dispatcher.forward(request, response);
+
+        } else if (request.getParameter("comando").equalsIgnoreCase("excluir")) {
+            //ATUALIZANDO NO BANCO
+            DaoUsuario daoUsuario = new DaoUsuario();
+
+            int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+
+            try {
+                //teste p/ pegar direto do formulario somente o id, sem criar o usuario
+                daoUsuario.excluir(idUsuario);
+            } catch (SQLException ex) {
+                Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            RequestDispatcher dispatcher
+                    = request.getRequestDispatcher("CadastroResposta.jsp");
             dispatcher.forward(request, response);
         }
     }
@@ -48,10 +65,10 @@ public class usuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //ifs para definir qual ação o servlet vai tomar
-        if (request.getParameter("comando").equals("cadastrar")) {
+        if (request.getParameter("comando").equalsIgnoreCase("cadastrar")) {
             Usuario usuario = new Usuario();
             //peguei as informações do formulário 
-            
+
             usuario.setNome(request.getParameter("nome"));
             usuario.setLogin(request.getParameter("login"));
             usuario.setSenha(request.getParameter("senha"));
@@ -76,11 +93,11 @@ public class usuario extends HttpServlet {
             RequestDispatcher dispatcher
                     = request.getRequestDispatcher("CadastroUsuario.jsp");
             dispatcher.forward(request, response);
-            
-        } else if (request.getParameter("comando").equals("editar")) {
+
+        } else if (request.getParameter("comando").equalsIgnoreCase("editar")) {
             Usuario usuario = new Usuario();
             //peguei as informações do formulário 
-            usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));            
+            usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
             usuario.setNome(request.getParameter("nome"));
             usuario.setLogin(request.getParameter("login"));
             usuario.setSenha(request.getParameter("senha"));
@@ -101,20 +118,6 @@ public class usuario extends HttpServlet {
                     = request.getRequestDispatcher("EditarConfirm.jsp");
             dispatcher.forward(request, response);
 
-        } else if (request.getParameter("comando").equals("excluir")) {
-            //ATUALIZANDO NO BANCO
-            DaoUsuario daoUsuario = new DaoUsuario();
-            
-            try {
-                //teste p/ pegar direto do formulario somente o id, sem criar o usuario
-                daoUsuario.excluir(Integer.parseInt(request.getParameter("idUsuario")));
-            } catch (SQLException ex) {
-                Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("Excluir.jsp");
-            dispatcher.forward(request, response);
         }
     }
 }
