@@ -101,5 +101,26 @@ public class DaoCliente {
         }
 
     }
+    
+    public void excluir(int idCliente) throws SQLException {
+        //realiza a exclusão lógica
+        String sql = "UPDATE imobiliariadbTESTE.CLIENTE SET enable=? WHERE idCliente=?";
+        Connection conn = null;
+        
+        try {
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setBoolean(1, false);
+            stmt.setInt(2, idCliente);
+            stmt.execute();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.err.println(ex.getMessage());
+
+        } finally {
+            conn.close();
+        }
+    }
   
 }

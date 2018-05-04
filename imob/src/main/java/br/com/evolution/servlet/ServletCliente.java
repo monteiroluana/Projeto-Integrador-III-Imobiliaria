@@ -19,38 +19,60 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "cliente", urlPatterns = {"/cliente"})
 public class ServletCliente extends HttpServlet {
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        DaoCliente daoCliente = new DaoCliente();
-        List<Cliente> lista = null;
-        
-        try {
-            lista = daoCliente.listar();
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
+
+        if (request.getParameter("comando").equals("lista")) {
+            DaoCliente daoCliente = new DaoCliente();
+            List<Cliente> lista = null;
+
+            try {
+                lista = daoCliente.listar();
+
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            request.setAttribute("lista", lista);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarCliente.jsp");
+            dispatcher.forward(request, response);
+        } else if (request.getParameter("comando").equals("listaEditar")) {
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("EditarCliente.jsp");
+            dispatcher.forward(request, response);
+
+        } else if (request.getParameter("comando").equals("excluir")) {
+            //ATUALIZANDO NO BANCO
+            DaoCliente daoCliente = new DaoCliente();
+
+            int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+
+            try {
+                //teste p/ pegar direto do formulario somente o id, sem criar o ServletUsuario
+                daoCliente.excluir(idUsuario);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            RequestDispatcher dispatcher
+                    = request.getRequestDispatcher("CadastroResposta.jsp");
+            dispatcher.forward(request, response);
         }
-        request.setAttribute("lista", lista);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("ListarCliente.jsp");
-        dispatcher.forward(request, response);
-        
+
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         //Pegando as informações que estão sendo passadas pelo formulario
         Cliente cliente = new Cliente();
-        
-        
+
         cliente.setCpf(request.getParameter("cpf"));
-        cliente.setNome(request.getParameter("nome"));   
+        cliente.setNome(request.getParameter("nome"));
         cliente.setDataNasc(request.getParameter("data"));
         cliente.setSexo(request.getParameter("sexo"));
         cliente.setTelefone(request.getParameter("telefone"));
@@ -73,10 +95,10 @@ public class ServletCliente extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         request.setAttribute("usuarioCadastrado", cliente);
         RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroResposta.jsp");
         dispatcher.forward(request, response);
     }
-    
+
 }
