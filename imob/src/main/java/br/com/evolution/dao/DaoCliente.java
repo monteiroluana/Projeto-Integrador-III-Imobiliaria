@@ -195,8 +195,21 @@ public class DaoCliente {
                 cli = new Cliente();
 
                 cli.setIdCliente(res.getInt("idCliente"));
-                //terminar o restante
-
+                cli.setCpf(res.getString("cpf"));
+                cli.setNome(res.getString("nome"));
+                cli.setDataNasc(res.getString("dataNasc"));
+                cli.setSexo(res.getString("sexo"));
+                cli.setTelefone(res.getString("telefone"));
+                cli.setCelular(res.getString("celular"));
+                cli.setEmail(res.getString("email"));
+                
+                cli.setCep(res.getString("cep"));
+                cli.setRua(res.getString("rua"));
+                cli.setBairro(res.getString("bairro"));
+                cli.setCidade(res.getString("cidade"));
+                cli.setUf(res.getString("uf"));
+                cli.setNum(res.getString("num"));
+                cli.setComplemento(res.getString("complemento"));
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
