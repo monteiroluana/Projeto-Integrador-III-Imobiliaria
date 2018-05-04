@@ -1,3 +1,7 @@
+<%@page import="java.util.List"%>
+<%@page import="br.com.evolution.model.Cliente"%>
+<%@page import="br.com.evolution.dao.DaoCliente"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -90,13 +94,17 @@
                                                     <tr>
                                                         <td><c:out value="${c.nome}" /></td>
                                                         <td><c:out value="${c.cpf}" /></td>
-                                                        <td><c:out value="${c.endereco}" /></td>
+                                                        <td><c:out value="${c.rua}" /></td>
                                                         <td><c:out value="${c.cidade}" /></td>
-                                                        <td><c:out value="${c.UF}" /></td>
+                                                        <td><c:out value="${c.uf}" /></td>
                                                         <td><c:out value="${c.email}" /></td>
                                                         <td><c:out value="${c.telefone}" /></td>
-                                                        <td class="text-center"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Editar</button>
-                                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button>
+                                                                                                                
+                                                        <td class="text-center">                                                            
+                                                            <!-- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Editar</button> -->
+                                                            <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Excluir</button> -->
+                                                            <a href="cliente?idCliente=${c.idCliente}&comando=listarEditar"class="btn btn-danger btn-sm">Editar</a>
+                                                            <a href="cliente?idCliente=${c.idCliente}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>

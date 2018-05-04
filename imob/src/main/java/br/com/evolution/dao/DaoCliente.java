@@ -16,17 +16,28 @@ public class DaoCliente {
 
     public List<Cliente> listar() throws ClassNotFoundException, SQLException {
 
+        String sql = "SELECT * FROM imobiliariadbTESTE.CLIENTE WHERE enable=?";
+
         List<Cliente> lista = new ArrayList<Cliente>();
 
-        try (Connection con = Conexao.obterConexao();
-                PreparedStatement stmt = con.prepareStatement("SELECT * FROM imobiliariadbTESTE.CLIENTE");
-                ResultSet resultados = stmt.executeQuery();) {
+        Connection conn = null;
+
+        try 
+        //(Connection con = Conexao.obterConexao();
+        //PreparedStatement stmt = con.prepareStatement("SELECT * FROM imobiliariadbTESTE.CLIENTE WHERE enable=?");
+        //ResultSet resultados = stmt.executeQuery();) 
+        {
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setBoolean(1, true);
+            //Armazenará os resultados do banco de dados
+            ResultSet resultados = stmt.executeQuery();
 
             while (resultados.next()) {
                 Integer id = resultados.getInt("idCliente");
                 String cpf = resultados.getString("cpf");
                 String nome = resultados.getString("nome");
-               
+
                 Date d = new Date(resultados.getTimestamp("dataNasc").getTime());
                 String dataNasc = resultados.getString("dataNasc");
                 String sexo = resultados.getString("sexo");
@@ -59,7 +70,12 @@ public class DaoCliente {
                 cli.setComplemento(complemento);
                 lista.add(cli);
             }
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.err.println(ex.getMessage());
+        } finally {
+            conn.close();
         }
+        
         return lista;
     }
 
@@ -68,16 +84,17 @@ public class DaoCliente {
         String sql = "INSERT INTO imobiliariadbTESTE.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable)"
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
+        
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, cliente.getCpf());
             stmt.setString(2, cliente.getNome());
-            
+
             Timestamp tDataNasc = new Timestamp(cliente.getDataNasc().getTime());
             stmt.setTimestamp(3, tDataNasc);
-            
+
             stmt.setString(4, cliente.getSexo());
             stmt.setString(5, cliente.getTelefone());
             stmt.setString(6, cliente.getCelular());
@@ -90,7 +107,7 @@ public class DaoCliente {
             stmt.setString(13, cliente.getNum());
             stmt.setString(14, cliente.getComplemento());
             stmt.setBoolean(15, true);
-                        
+
             stmt.execute();
 
         } catch (SQLException ex) {
@@ -102,11 +119,51 @@ public class DaoCliente {
 
     }
     
+    public void editar(Cliente cliente) throws SQLException {
+
+        String sql = "UPDATE imobiliariadbTESTE.CLIENTE SET "
+                + "cpf=?,nome=?,dataNasc=?,sexo=?,telefone=?,celular=?,email=?,"
+                + "cep=?,rua=?,bairro=?,cidade=?,uf=?,num=?,complemento=? WHERE idCliente=?";
+        Connection conn = null;
+        
+        try {
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, cliente.getCpf());
+            stmt.setString(2, cliente.getNome());
+
+            Timestamp tDataNasc = new Timestamp(cliente.getDataNasc().getTime());
+            stmt.setTimestamp(3, tDataNasc);
+
+            stmt.setString(4, cliente.getSexo());
+            stmt.setString(5, cliente.getTelefone());
+            stmt.setString(6, cliente.getCelular());
+            stmt.setString(7, cliente.getEmail());
+            stmt.setString(8, cliente.getCep());
+            stmt.setString(9, cliente.getRua());
+            stmt.setString(10, cliente.getBairro());
+            stmt.setString(11, cliente.getCidade());
+            stmt.setString(12, cliente.getUf());
+            stmt.setString(13, cliente.getNum());
+            stmt.setString(14, cliente.getComplemento());
+            stmt.setBoolean(15, true);
+            
+            stmt.execute();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.err.println(ex.getMessage());
+
+        } finally {
+            conn.close();
+        }
+    }
+    
     public void excluir(int idCliente) throws SQLException {
         //realiza a exclusão lógica
         String sql = "UPDATE imobiliariadbTESTE.CLIENTE SET enable=? WHERE idCliente=?";
         Connection conn = null;
-        
+
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -122,5 +179,35 @@ public class DaoCliente {
             conn.close();
         }
     }
-  
+    
+    public Cliente buscar(Cliente cliente) throws ClassNotFoundException, SQLException {
+
+        String sql = "SELECT * FROM imobiliariadbTESTE.CLIENTE WHERE idCliente=? AND enable=?";
+
+        Cliente cli = null;
+        Connection conn;
+
+        try {
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, cliente.getIdCliente());
+            stmt.setBoolean(2, true);
+            ResultSet res = stmt.executeQuery();
+
+            if (res.next()) {
+                cli = new Cliente();
+
+                cli.setIdCliente(res.getInt("idCliente"));
+                //terminar o restante
+
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return cli;
+    }
+
 }

@@ -32,13 +32,15 @@ public class ServletCliente extends HttpServlet {
                 lista = daoCliente.listar();
 
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
-                Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
+
             request.setAttribute("lista", lista);
             RequestDispatcher dispatcher = request.getRequestDispatcher("ListarCliente.jsp");
             dispatcher.forward(request, response);
+
         } else if (request.getParameter("comando").equals("listaEditar")) {
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("EditarCliente.jsp");
@@ -48,57 +50,89 @@ public class ServletCliente extends HttpServlet {
             //ATUALIZANDO NO BANCO
             DaoCliente daoCliente = new DaoCliente();
 
-            int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+            int idCliente = Integer.parseInt(request.getParameter("idCliente"));
 
             try {
-                //teste p/ pegar direto do formulario somente o id, sem criar o ServletUsuario
-                daoCliente.excluir(idUsuario);
+                daoCliente.excluir(idCliente);
+
             } catch (SQLException ex) {
-                Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             RequestDispatcher dispatcher
                     = request.getRequestDispatcher("CadastroResposta.jsp");
             dispatcher.forward(request, response);
         }
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //Pegando as informações que estão sendo passadas pelo formulario
-        Cliente cliente = new Cliente();
+        //ifs para definir qual ação o servlet vai tomar
+        if (request.getParameter("comando").equals("cadastrar")) {
+            //Pegando as informações que estão sendo passadas pelo formulario
+            Cliente cliente = new Cliente();
 
-        cliente.setCpf(request.getParameter("cpf"));
-        cliente.setNome(request.getParameter("nome"));
-        cliente.setDataNasc(request.getParameter("data"));
-        cliente.setSexo(request.getParameter("sexo"));
-        cliente.setTelefone(request.getParameter("telefone"));
-        cliente.setCelular(request.getParameter("celular"));
-        cliente.setEmail(request.getParameter("email"));
-        cliente.setCep(request.getParameter("cep"));
-        cliente.setRua(request.getParameter("rua"));
-        cliente.setBairro(request.getParameter("bairro"));
-        cliente.setCidade(request.getParameter("cidade"));
-        cliente.setUf(request.getParameter("uf"));
-        cliente.setNum(request.getParameter("num"));
-        cliente.setComplemento(request.getParameter("complemento"));
+            cliente.setCpf(request.getParameter("cpf"));
+            cliente.setNome(request.getParameter("nome"));
+            cliente.setDataNasc(request.getParameter("data"));
+            cliente.setSexo(request.getParameter("sexo"));
+            cliente.setTelefone(request.getParameter("telefone"));
+            cliente.setCelular(request.getParameter("celular"));
+            cliente.setEmail(request.getParameter("email"));
+            cliente.setCep(request.getParameter("cep"));
+            cliente.setRua(request.getParameter("rua"));
+            cliente.setBairro(request.getParameter("bairro"));
+            cliente.setCidade(request.getParameter("cidade"));
+            cliente.setUf(request.getParameter("uf"));
+            cliente.setNum(request.getParameter("num"));
+            cliente.setComplemento(request.getParameter("complemento"));
 
-        //Inserindo no banco
-        DaoCliente daoCliente = new DaoCliente();
-        try {
-            daoCliente.inserir(cliente);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
+            DaoCliente daoCliente = new DaoCliente();
+            
+            try {
+                daoCliente.inserir(cliente);                
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            request.setAttribute("clienteCadastrado", cliente);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroResposta.jsp");
+            dispatcher.forward(request, response);
+            
+        } else if (request.getParameter("comando").equals("editar")){
+            //Pegando as informações que estão sendo passadas pelo formulario
+            Cliente cliente = new Cliente();
+
+            cliente.setCpf(request.getParameter("cpf"));
+            cliente.setNome(request.getParameter("nome"));
+            cliente.setDataNasc(request.getParameter("data"));
+            cliente.setSexo(request.getParameter("sexo"));
+            cliente.setTelefone(request.getParameter("telefone"));
+            cliente.setCelular(request.getParameter("celular"));
+            cliente.setEmail(request.getParameter("email"));
+            cliente.setCep(request.getParameter("cep"));
+            cliente.setRua(request.getParameter("rua"));
+            cliente.setBairro(request.getParameter("bairro"));
+            cliente.setCidade(request.getParameter("cidade"));
+            cliente.setUf(request.getParameter("uf"));
+            cliente.setNum(request.getParameter("num"));
+            cliente.setComplemento(request.getParameter("complemento"));
+
+            DaoCliente daoCliente = new DaoCliente();
+            
+            try {
+                daoCliente.editar(cliente);                
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            request.setAttribute("clienteCadastrado", cliente);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroResposta.jsp");
+            dispatcher.forward(request, response);
         }
-
-        request.setAttribute("usuarioCadastrado", cliente);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroResposta.jsp");
-        dispatcher.forward(request, response);
     }
-
 }

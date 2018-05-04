@@ -12,26 +12,24 @@ import java.util.List;
 public class DaoUsuario {
 
     public List<Usuario> listar() throws ClassNotFoundException, SQLException {
-        
+
         String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE enable=?";
-        
+
         List<Usuario> lista = new ArrayList<Usuario>();
-        
+
         Connection conn = null;
-        
+
         //Armazenará os resultados do banco de dados
         //ResultSet resultados = null;        
-
-        try 
-            //(Connection con = Conexao.obterConexao();
-            //   PreparedStatement stmt = con.prepareStatement("SELECT * FROM imobiliariadbTESTE.USUARIO");
-            //    ResultSet resultados = stmt.executeQuery();) 
+        try //(Connection con = Conexao.obterConexao();
+        //   PreparedStatement stmt = con.prepareStatement("SELECT * FROM imobiliariadbTESTE.USUARIO");
+        //    ResultSet resultados = stmt.executeQuery();) 
         {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setBoolean(1, true);
             //Armazenará os resultados do banco de dados
-            ResultSet resultados = stmt.executeQuery();          
+            ResultSet resultados = stmt.executeQuery();
 
             while (resultados.next()) {
                 Integer id = resultados.getInt("idUsuario");
@@ -54,12 +52,12 @@ public class DaoUsuario {
                 user.setCargo(cargo);
                 lista.add(user);
             }
-        }catch (ClassNotFoundException | SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             System.err.println(ex.getMessage());
-
         } finally {
             conn.close();
         }
+
         return lista;
     }
 
@@ -91,11 +89,12 @@ public class DaoUsuario {
 
     }
 
-    public void atualizar(Usuario usuario) throws SQLException {
+    public void editar(Usuario usuario) throws SQLException {
 
         String sql = "UPDATE imobiliariadbTESTE.USUARIO SET "
-                + "nome=?,login=?,senha=?,email=?,grupoFilial=?,departamento=?,cargo=? WHERE idUsuario=? ";
+                + "nome=?,login=?,senha=?,email=?,grupoFilial=?,departamento=?,cargo=? WHERE idUsuario=?";
         Connection conn = null;
+        
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -122,7 +121,7 @@ public class DaoUsuario {
         //realiza a exclusão lógica
         String sql = "UPDATE imobiliariadbTESTE.USUARIO SET enable=? WHERE idUsuario=?";
         Connection conn = null;
-        
+
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -143,9 +142,9 @@ public class DaoUsuario {
 
         String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE idUsuario=? AND enable=?";
 
-        Usuario user=null;
+        Usuario user = null;
         Connection conn;
-        
+
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);

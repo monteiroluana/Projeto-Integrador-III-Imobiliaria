@@ -30,9 +30,11 @@ public class ServletUsuario extends HttpServlet {
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
+
             } catch (SQLException ex) {
                 Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
+
             request.setAttribute("lista", lista);
             RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
             dispatcher.forward(request, response);
@@ -42,15 +44,15 @@ public class ServletUsuario extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("EditarUsuario.jsp");
             dispatcher.forward(request, response);
 
-        } else if (request.getParameter("comando").equalsIgnoreCase("excluir")) {
+        } else if (request.getParameter("comando").equals("excluir")) {
             //ATUALIZANDO NO BANCO
             DaoUsuario daoUsuario = new DaoUsuario();
 
             int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 
             try {
-                //teste p/ pegar direto do formulario somente o id, sem criar o ServletUsuario
                 daoUsuario.excluir(idUsuario);
+
             } catch (SQLException ex) {
                 Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -65,10 +67,10 @@ public class ServletUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //ifs para definir qual ação o servlet vai tomar
-        if (request.getParameter("comando").equalsIgnoreCase("cadastrar")) {
-            Usuario usuario = new Usuario();
-            //peguei as informações do formulário 
+        if (request.getParameter("comando").equals("cadastrar")) {
+            Usuario usuario = new Usuario();            
 
+            //pegando as informações do formulário 
             usuario.setNome(request.getParameter("nome"));
             usuario.setLogin(request.getParameter("login"));
             usuario.setSenha(request.getParameter("senha"));
@@ -94,9 +96,10 @@ public class ServletUsuario extends HttpServlet {
                     = request.getRequestDispatcher("CadastroUsuario.jsp");
             dispatcher.forward(request, response);
 
-        } else if (request.getParameter("comando").equalsIgnoreCase("editar")) {
+        } else if (request.getParameter("comando").equals("editar")) {
             Usuario usuario = new Usuario();
-            //peguei as informações do formulário 
+            
+            //pegando as informações do formulário 
             usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
             usuario.setNome(request.getParameter("nome"));
             usuario.setLogin(request.getParameter("login"));
@@ -108,8 +111,9 @@ public class ServletUsuario extends HttpServlet {
 
             //ATUALIZANDO NO BANCO
             DaoUsuario daoUsuario = new DaoUsuario();
+            
             try {
-                daoUsuario.atualizar(usuario);
+                daoUsuario.editar(usuario);
             } catch (SQLException ex) {
                 Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
