@@ -22,11 +22,7 @@ public class DaoCliente {
 
         Connection conn = null;
 
-        try 
-        //(Connection con = Conexao.obterConexao();
-        //PreparedStatement stmt = con.prepareStatement("SELECT * FROM imobiliariadbTESTE.CLIENTE WHERE enable=?");
-        //ResultSet resultados = stmt.executeQuery();) 
-        {
+        try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setBoolean(1, true);
@@ -75,7 +71,7 @@ public class DaoCliente {
         } finally {
             conn.close();
         }
-        
+
         return lista;
     }
 
@@ -84,7 +80,7 @@ public class DaoCliente {
         String sql = "INSERT INTO imobiliariadbTESTE.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable)"
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
-        
+
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -118,14 +114,14 @@ public class DaoCliente {
         }
 
     }
-    
+
     public void editar(Cliente cliente) throws SQLException {
 
         String sql = "UPDATE imobiliariadbTESTE.CLIENTE SET "
                 + "cpf=?,nome=?,dataNasc=?,sexo=?,telefone=?,celular=?,email=?,"
                 + "cep=?,rua=?,bairro=?,cidade=?,uf=?,num=?,complemento=? WHERE idCliente=?";
         Connection conn = null;
-        
+
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -148,7 +144,7 @@ public class DaoCliente {
             stmt.setString(13, cliente.getNum());
             stmt.setString(14, cliente.getComplemento());
             stmt.setBoolean(15, true);
-            
+
             stmt.execute();
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -158,7 +154,7 @@ public class DaoCliente {
             conn.close();
         }
     }
-    
+
     public void excluir(int idCliente) throws SQLException {
         //realiza a exclusão lógica
         String sql = "UPDATE imobiliariadbTESTE.CLIENTE SET enable=? WHERE idCliente=?";
@@ -179,7 +175,7 @@ public class DaoCliente {
             conn.close();
         }
     }
-    
+
     public Cliente buscar(Cliente cliente) throws ClassNotFoundException, SQLException {
 
         String sql = "SELECT * FROM imobiliariadbTESTE.CLIENTE WHERE idCliente=? AND enable=?";
@@ -206,7 +202,7 @@ public class DaoCliente {
         } catch (ClassNotFoundException | SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        
+
         return cli;
     }
 

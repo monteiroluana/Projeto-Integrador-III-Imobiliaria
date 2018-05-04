@@ -19,12 +19,7 @@ public class DaoUsuario {
 
         Connection conn = null;
 
-        //Armazenará os resultados do banco de dados
-        //ResultSet resultados = null;        
-        try //(Connection con = Conexao.obterConexao();
-        //   PreparedStatement stmt = con.prepareStatement("SELECT * FROM imobiliariadbTESTE.USUARIO");
-        //    ResultSet resultados = stmt.executeQuery();) 
-        {
+        try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setBoolean(1, true);
@@ -94,7 +89,7 @@ public class DaoUsuario {
         String sql = "UPDATE imobiliariadbTESTE.USUARIO SET "
                 + "nome=?,login=?,senha=?,email=?,grupoFilial=?,departamento=?,cargo=? WHERE idUsuario=?";
         Connection conn = null;
-        
+
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
