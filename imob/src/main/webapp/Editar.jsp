@@ -20,7 +20,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Editar Usuário</title>
         <style>
             ul{list-style:none;padding:0px}	
             a{text-decoration:none;color:white;font-family:arial}

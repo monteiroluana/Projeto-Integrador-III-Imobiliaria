@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400);
+
+.form-login {
+    background-color: #EDEDED;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
+}.form-control {
+    border-radius: 10px;
+}.wrapper {
+    text-align: center;
+}#footer{
+    background-color: #EDEDED;
+    opacity: 0.9;
+}.form-login{
+    vertical-align: middle;
+    top: 50%;
+    left: 50%;
+
+}#loginn{
+    margin-top: 1%;
+    margin-left: 74%;
+    opacity: 0.9;
+    border-radius: 25px;
+}#loginn:hover{
+    opacity: 1;
+}
+body{
+    background-image: url(img/background_login.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}	

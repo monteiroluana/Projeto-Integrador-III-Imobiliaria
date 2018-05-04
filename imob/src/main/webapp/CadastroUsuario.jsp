@@ -7,9 +7,10 @@
     <head>
         <title>Cadastro - Usuários</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script>
         <link rel="stylesheet" href="css/styles.css">
         <script>
             function check(){
@@ -24,10 +25,11 @@
     </head>
 
     <body>
-         <div w3-include-html="menu.html"></div>
-    <script>
-        w3IncludeHTML();
-    </script>
+         
+    <div w3-include-html="menu.html"></div>
+            <script>
+                w3IncludeHTML();
+          </script>
 
         <div class="main">
             <div class="container">
@@ -83,7 +85,7 @@
                                         <div class="col-xs-auto col-sm-auto col-md-2">
                                             <div class="form-group">
                                                 <div class="col-25">
-                                                    <label class="control-label" forcCargo">Cargo*</label>
+                                                    <label class="control-label" for="Cargo">Cargo*</label>
                                                 </div>	
                                                 <select id="cargo" name="cargo" class="form-control">
                                                     <option>Selecione</option> 
