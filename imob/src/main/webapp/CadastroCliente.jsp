@@ -45,7 +45,7 @@
                                                                             <div class="col-xs-auto col-sm-auto col-md-4">
 
                                                                                     <label for="data" class="control-label">Data de nascimento*</label>
-                                                                                    <input type="text" name="data" id="data" class="form-control input-sm" placeholder="DD/MM/AA">
+                                                                                    <input type="text" name="data" id="data" class="form-control input-sm" placeholder="DD/MM/AAAA">
                                                                             </div>
                                                                             <div class="col-xs-auto col-sm-auto col-md-4">
                                                                                     <label for="cpf" class="control-label">CPF*</label>
@@ -118,6 +118,7 @@
                                                                             </div>
                                                                     </div>
                                                                     <div class="row">
+                                                                        <input type="hidden" name="comando" id="comando" value="cadastrar">
                                                                             <br>
                                                                             <div class="col-xs-10 col-sm-10 col-md-10">
                                                                                     <button type="button submit" class="btn btn-info" >Salvar</button>

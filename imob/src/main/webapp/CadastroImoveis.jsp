@@ -51,16 +51,14 @@
                                                 </div>
 
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
-                                                    <div class="form-group">
-                                                        <div class="radio">
-                                                            <div class="col-25">
-                                                                <label class="control-label"><input type="radio" name="optradio" id="opt1">Venda</label>
-                                                            </div>	
-                                                        </div>
-                                                        <div class="radio">
-                                                            <label class="control-label"><input type="radio" name="optradio" id="opt2">Locação</label>
-                                                        </div>
-                                                    </div>	
+
+                                                    <label class="control-label" for="servico">Servico</label>
+                                                    <select id="Servico" name="Servico" class="form-control">
+                                                        <option>Selecione</option>
+                                                        <option>Venda</option>
+                                                        <option>Locação</option>                                                    
+                                                    </select>
+
                                                 </div>
 
                                             </div>
@@ -248,9 +246,9 @@
                                             <div class="col-xs-auto col-sm-auto col-md-6">
                                                 <div class="form-group">
                                                     <div class="col-25">
-                                                        <label class="control-label" for="Endereço">Endereço</label>
+                                                        <label class="control-label" for="Rua">Rua</label>
                                                     </div>	
-                                                    <input type="text" name="Endereço" id="Endereço" class="form-control input-sm" placeholder="Endereço">
+                                                    <input type="text" name="Rua" id="Rua" class="form-control input-sm" placeholder="Rua">
                                                 </div>
                                             </div>
 
@@ -270,7 +268,7 @@
                                                     <div class="col-25">
                                                         <label class="control-label" for="Número">Número</label>
                                                     </div>	
-                                                    <input type="text" name="Número" id="Número" class="form-control input-sm" placeholder="Número">
+                                                    <input type="text" name="Numero" id="Numero" class="form-control input-sm" placeholder="Número">
                                                 </div>
                                             </div>
                                             <div class="col-xs-auto col-sm-auto col-md-6">
@@ -327,7 +325,7 @@
                                                     <div class="col-25">
                                                         <label class="control-label" for="Condomínio">Condomínio</label>
                                                     </div>	
-                                                    <input type="text" name="Condomínio" id="Condomínio" class="form-control input-sm" placeholder="Condomínio">
+                                                    <input type="text" name="Condominio" id="Condominio" class="form-control input-sm" placeholder="Condomínio">
                                                 </div>
                                             </div>
                                             <div class="col-xs-4 col-sm-4 col-md-4">

@@ -73,7 +73,8 @@ public class ServletCliente extends HttpServlet {
         if (request.getParameter("comando").equals("cadastrar")) {
             //Pegando as informações que estão sendo passadas pelo formulario
             Cliente cliente = new Cliente();
-
+            
+            System.out.println(request.getParameter("data") + request.getParameter("nome"));
             cliente.setCpf(request.getParameter("cpf"));
             cliente.setNome(request.getParameter("nome"));
             cliente.setDataNasc(request.getParameter("data"));
