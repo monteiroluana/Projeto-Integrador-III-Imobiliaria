@@ -7,6 +7,7 @@ package br.com.evolution.dao;
 
 import br.com.evolution.conexao.Conexao;
 import br.com.evolution.model.Imovel;
+import br.com.evolution.model.ImovelVenda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +23,7 @@ public class DaoImovel {
     
     public List<Imovel> listar() throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE enable=?";
+        String sql = "SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE enable=?";
 
         List<Imovel> lista = new ArrayList<Imovel>();
 
@@ -45,7 +46,7 @@ public class DaoImovel {
                 String departamento = resultados.getString("departamento");
                 String cargo = resultados.getString("cargo");
 
-                Imovel imov = new Imovel();
+                ImovelVenda imov = new ImovelVenda();
 //                imov.setIdImovel(id);
 //                imov.setNome(nome);
 //                imov.setEmail(email);

@@ -60,6 +60,7 @@ CREATE TABLE imobiliariadbTESTE.IMOVEL (
 	cidade         VARCHAR(255),
 	uf             VARCHAR(2),
 	valor          DOUBLE,
+        valorAluguel   DOUBLE,
 	condominio     DOUBLE,
 	iptu           DOUBLE,
 	status         VARCHAR(255),

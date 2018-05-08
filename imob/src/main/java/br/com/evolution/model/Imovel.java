@@ -5,13 +5,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Imovel {
+    public abstract class Imovel {
+    
     
     private int idImovel;
     private String codImovel;
     
     private Date dataCad;
     
+    //private String servico; - ImovelVenda & ImovelLocacao
     private String servico;
     private String categoria;
     private String tipo;
@@ -32,9 +34,8 @@ public class Imovel {
     private String cidade;
     private String uf;
     private String num;
-    private String complemento;
+    private String complemento;    
     
-    private double valor;
     private double iptu;
     private double condominio;
     private String status;
@@ -203,15 +204,7 @@ public class Imovel {
 
     public void setComplemento(String complemento) {
         this.complemento = complemento;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
+    }  
 
     public double getIptu() {
         return iptu;
@@ -238,3 +231,4 @@ public class Imovel {
     }
     
 }
+

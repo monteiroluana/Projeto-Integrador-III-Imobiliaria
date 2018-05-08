@@ -7,6 +7,8 @@ package br.com.evolution.servlet;
 
 import br.com.evolution.dao.DaoImovel;
 import br.com.evolution.model.Imovel;
+import br.com.evolution.model.ImovelLocacao;
+import br.com.evolution.model.ImovelVenda;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -19,6 +21,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+    
 
 /**
  *
@@ -53,12 +57,11 @@ public class ServletImovel extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("comando").equals("cadastrar")) {
+        if (request.getParameter("comando").equals("cadastrar") && request.getParameter("Servico").equals("Venda")) {
             //Pegando as informações que estão sendo passadas pelo formulario
-            Imovel imovel = new Imovel();
+            ImovelVenda imovel = new ImovelVenda();
 
-            imovel.setDataCad(request.getParameter("data"));            
-            imovel.setServico(request.getParameter("servico"));
+            imovel.setDataCad(request.getParameter("data"));                        
             imovel.setCategoria(request.getParameter("categoria"));
             imovel.setTipo(request.getParameter("tipo_imovel"));
             imovel.setQuartos(Integer.parseInt(request.getParameter("telefone")));
@@ -75,10 +78,38 @@ public class ServletImovel extends HttpServlet {
             imovel.setUf(request.getParameter("UF"));
             imovel.setNum(request.getParameter("Numero"));
             imovel.setComplemento(request.getParameter("Complemento"));
-            imovel.setValor(Double.parseDouble(request.getParameter("Valor")));
+            imovel.setValorCompra(Double.parseDouble(request.getParameter("Valor")));
             imovel.setIptu(Double.parseDouble(request.getParameter("IPTU")));
             imovel.setCondominio(Double.parseDouble(request.getParameter("Condominio")));
             imovel.setStatus(request.getParameter("Status"));
+        }
+        
+        else if(request.getParameter("comando").equals("cadastrar") && request.getParameter("Servico").equals("Locação")){
+        
+             ImovelLocacao imovel = new ImovelLocacao();
+            
+            imovel.setDataCad(request.getParameter("data"));                        
+            imovel.setCategoria(request.getParameter("categoria"));
+            imovel.setTipo(request.getParameter("tipo_imovel"));
+            imovel.setQuartos(Integer.parseInt(request.getParameter("telefone")));
+            imovel.setBanheiros(Integer.parseInt(request.getParameter("Banheiros")));
+            imovel.setSuites(Integer.parseInt(request.getParameter("Suite")));
+            imovel.setVagasGaragem(Integer.parseInt(request.getParameter("Vagas")));
+            imovel.setAreaUtil(Double.parseDouble(request.getParameter("Area_util")));
+            imovel.setAreaTotal(Double.parseDouble(request.getParameter("Area_total")));
+            imovel.setInformacao(request.getParameter("info"));
+            imovel.setCep(request.getParameter("CEP"));
+            imovel.setRua(request.getParameter("Rua"));
+            imovel.setBairro(request.getParameter("Bairro"));
+            imovel.setCidade(request.getParameter("Cidade"));
+            imovel.setUf(request.getParameter("UF"));
+            imovel.setNum(request.getParameter("Numero"));
+            imovel.setComplemento(request.getParameter("Complemento"));
+            imovel.setValorLocacao(Double.parseDouble(request.getParameter("Valor")));
+            imovel.setIptu(Double.parseDouble(request.getParameter("IPTU")));
+            imovel.setCondominio(Double.parseDouble(request.getParameter("Condominio")));
+            imovel.setStatus(request.getParameter("Status"));
+        
         }
 
     }
