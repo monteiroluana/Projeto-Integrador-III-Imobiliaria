@@ -7,12 +7,12 @@ package br.com.evolution.dao;
 
 import br.com.evolution.conexao.Conexao;
 import br.com.evolution.model.Imovel;
-import br.com.evolution.model.ImovelVenda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,25 +37,44 @@ public class DaoImovel {
             ResultSet resultados = stmt.executeQuery();
 
             while (resultados.next()) {
-                Integer id = resultados.getInt("idUsuario");
-                String nome = resultados.getString("nome");
-                String email = resultados.getString("email");
-                String login = resultados.getString("login");
-                String senha = resultados.getString("senha");
-                String grupoFilial = resultados.getString("grupoFilial");
-                String departamento = resultados.getString("departamento");
-                String cargo = resultados.getString("cargo");
+                Integer id = resultados.getInt("idImovel");
+                Integer idCliente = resultados.getInt("idCliente");
+                String codImovel = resultados.getString("codImovel");
+                Date d = new Date(resultados.getTimestamp("dataCad").getTime());
+                String categoria = resultados.getString("categoria");
+                String tipo = resultados.getString("tipo");
+                
+                Integer quartos = resultados.getInt("quartos");
+                Integer banheiros = resultados.getInt("banheiros");
+                Integer suites = resultados.getInt("suites");
+                Integer vagasGaragem = resultados.getInt("vagasGaragem");
+                
+                Double areaUtil = resultados.getDouble("areaUtil");
+                Double areaTotal = resultados.getDouble("areaTotal");
+                String informacao = resultados.getString("informacao");
+                
+                String cep = resultados.getString("cep");
+                String rua = resultados.getString("rua");
+                String bairro = resultados.getString("bairro");
+                String cidade = resultados.getString("cidade");
+                String uf = resultados.getString("uf");
+                String num = resultados.getString("num");
+                String complemento = resultados.getString("complemento");
+                
+                Double valorVenda = resultados.getDouble("valorVenda");
+                Double valorAluguel = resultados.getDouble("valorAluguel");
+                Double condominio = resultados.getDouble("condominio");
+                Double iptu = resultados.getDouble("iptu");
+                
+                String situacao = resultados.getString("situacao");
 
-                ImovelVenda imov = new ImovelVenda();
-//                imov.setIdImovel(id);
-//                imov.setNome(nome);
-//                imov.setEmail(email);
-//                imov.setLogin(login);
-//                imov.setSenha(senha);
-//                imov.setGrupoFilial(grupoFilial);
-//                imov.setDepartamento(departamento);
-//                imov.setCargo(cargo);
-//                lista.add(imov);
+                Imovel imov = new Imovel();
+                imov.setIdImovel(id);
+                imov.setIdCliente(idCliente);
+                imov.setCodImovel(codImovel);
+               //imov.setDataCad(dataCad);
+
+                lista.add(imov);
             }
         } catch (ClassNotFoundException | SQLException ex) {
             System.err.println(ex.getMessage());

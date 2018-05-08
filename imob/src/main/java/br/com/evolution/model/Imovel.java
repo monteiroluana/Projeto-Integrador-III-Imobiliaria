@@ -5,40 +5,42 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-    public abstract class Imovel {
-    
-    
+public class Imovel {
+
     private int idImovel;
     private String codImovel;
-    
+
+    private int idCliente;
+
     private Date dataCad;
-    
-    //private String servico; - ImovelVenda & ImovelLocacao
-    private String servico;
+
     private String categoria;
     private String tipo;
-    
+
     private int quartos;
     private int banheiros;
     private int suites;
     private int vagasGaragem;
-    
+
     private double areaUtil;
     private double areaTotal;
-    
+
     private String informacao;
-    
+
     private String cep;
     private String rua;
     private String bairro;
     private String cidade;
     private String uf;
     private String num;
-    private String complemento;    
-    
-    private double iptu;
+    private String complemento;
+
+    private double valorVenda;
+    private double valorAluguel;
+
     private double condominio;
-    private String status;
+    private double iptu;
+    private String situacao;
 
     public int getIdImovel() {
         return idImovel;
@@ -56,26 +58,26 @@ import java.util.Date;
         this.codImovel = codImovel;
     }
 
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
     public Date getDataCad() {
         return dataCad;
     }
 
     public void setDataCad(String dataCad) {
-           DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
             this.dataCad = formatador.parse(dataCad);
         } catch (ParseException e) {
 
         }
-    }
-
-    public String getServico() {
-        return servico;
-    }
-
-    public void setServico(String servico) {
-        this.servico = servico;
     }
 
     public String getCategoria() {
@@ -204,14 +206,22 @@ import java.util.Date;
 
     public void setComplemento(String complemento) {
         this.complemento = complemento;
-    }  
-
-    public double getIptu() {
-        return iptu;
     }
 
-    public void setIptu(double iptu) {
-        this.iptu = iptu;
+    public double getValorVenda() {
+        return valorVenda;
+    }
+
+    public void setValorVenda(double valorVenda) {
+        this.valorVenda = valorVenda;
+    }
+
+    public double getValorAluguel() {
+        return valorAluguel;
+    }
+
+    public void setValorAluguel(double valorAluguel) {
+        this.valorAluguel = valorAluguel;
     }
 
     public double getCondominio() {
@@ -222,13 +232,20 @@ import java.util.Date;
         this.condominio = condominio;
     }
 
-    public String getStatus() {
-        return status;
+    public double getIptu() {
+        return iptu;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setIptu(double iptu) {
+        this.iptu = iptu;
     }
-    
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
 }
-
