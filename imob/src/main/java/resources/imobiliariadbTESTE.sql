@@ -42,7 +42,6 @@ CREATE TABLE imobiliariadbTESTE.IMOVEL (
 	idCliente      INTEGER NOT NULL,
 	codImovel      VARCHAR(255) NOT NULL,
 	dataCad        DATE NOT NULL,
-	servico        VARCHAR(255),
 	categoria      VARCHAR(255),
 	tipo           VARCHAR(255),
 	quartos        INTEGER,
@@ -59,11 +58,11 @@ CREATE TABLE imobiliariadbTESTE.IMOVEL (
 	bairro         VARCHAR(255),
 	cidade         VARCHAR(255),
 	uf             VARCHAR(2),
-	valor          DOUBLE,
+	valorVenda     DOUBLE,
         valorAluguel   DOUBLE,
 	condominio     DOUBLE,
 	iptu           DOUBLE,
-	status         VARCHAR(255),
+	situacao       VARCHAR(255),
 	enable         BOOLEAN,
 	CONSTRAINT PK_IMOVEL PRIMARY KEY (idImovel),
 	FOREIGN KEY(idCliente) REFERENCES cliente(idCliente)
@@ -95,4 +94,8 @@ INSERT INTO imobiliariadbTESTE.USUARIO (nome,login,senha,email,grupoFilial,depar
 INSERT INTO imobiliariadbTESTE.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable) VALUES
 ("99991111111","kunieda aoi","1996-07-17","fem","1155554444","11944445555","aoi@aoi.com","04444000","","","","","","",true);
 
-
+INSERT INTO imobiliariadbTESTE.IMOVEL(idCliente,codImovel,dataCad,categoria,tipo,
+quartos,banheiros,suites,vagasGaragem,areaUtil,areaTotal,informacao,
+cep,rua,num,bairro,cidade,uf,valorVenda,valorAluguel,iptu,situacao,enable)
+VALUES (1,"codTeste","2018-05-08","residencial","casa",3,2,1,2,100,200,"aloaloaloalo",
+"04444000","rua teste","20","bairrozin","sao paulo","sp",250000,2500,200,"livre",true);
