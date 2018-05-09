@@ -127,7 +127,7 @@
                                                      <input style="display: none" value="${u.idUsuario}"/>                                                     
                                                                                                          
                                                     <td class="text-center">
-                                                        <a href="usuario?nome=${u.nome}&dpto=${u.departamento}&cargo=${u.cargo}&gf=${u.grupoFilial}&login=${u.login}&email=${u.email}&idUsuario=${u.idUsuario}&comando=listaEditar"class="btn btn-danger btn-sm">Editar</a>
+                                                        <a href="usuario?nome=${u.nome}&dpto=${u.departamento}&cargo=${u.cargo}&gf=${u.grupoFilial}&login=${u.login}&email=${u.email}&idUsuario=${u.idUsuario}&comando=listaEditar"class="btn btn-danger btn-sm" target="_blank">Editar</a>
                                                         <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button> -->
                                                         <a href="usuario?idUsuario=${u.idUsuario}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
                                                     </td>

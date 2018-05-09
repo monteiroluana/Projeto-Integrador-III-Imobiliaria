@@ -38,7 +38,7 @@ public class ServletCliente extends HttpServlet {
             }
 
             request.setAttribute("lista", lista);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarCliente.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarClientes.jsp");
             dispatcher.forward(request, response);
 
         } else if (request.getParameter("comando").equals("listaEditar")) {

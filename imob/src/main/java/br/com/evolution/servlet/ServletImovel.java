@@ -40,7 +40,7 @@ public class ServletImovel extends HttpServlet {
             }
 
             request.setAttribute("lista", lista);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarCliente.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
             dispatcher.forward(request, response);
 
         }
