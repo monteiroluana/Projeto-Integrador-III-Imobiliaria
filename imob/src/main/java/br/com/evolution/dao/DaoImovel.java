@@ -33,6 +33,7 @@ public class DaoImovel {
                 Integer idCliente = resultados.getInt("idCliente");
                 String codImovel = resultados.getString("codImovel");
                 Date d = new Date(resultados.getTimestamp("dataCad").getTime());
+                String dataCad = resultados.getString("dataCad");
                 String categoria = resultados.getString("categoria");
                 String tipo = resultados.getString("tipo");
 
@@ -64,7 +65,8 @@ public class DaoImovel {
                 imov.setIdImovel(id);
                 imov.setIdCliente(idCliente);
                 imov.setCodImovel(codImovel);
-                //imov.setDataCad(dataCad);
+                                
+                imov.setDataCad(dataCad);
                 imov.setCategoria(categoria);
                 imov.setTipo(tipo);
 
@@ -109,14 +111,14 @@ public class DaoImovel {
                 + "informacao,cep,rua,num,complemento,bairro,cidade,uf,valorVenda,valorAluguel,condominio,iptu,situacao,enable) "
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
-        
+
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             Timestamp tDataCad = new Timestamp(imovel.getDataCad().getTime());
             stmt.setTimestamp(1, tDataCad);
-            
+
             stmt.setString(2, imovel.getCategoria());
             stmt.setString(3, imovel.getTipo());
             stmt.setInt(4, imovel.getQuartos());
@@ -137,10 +139,10 @@ public class DaoImovel {
             stmt.setDouble(19, imovel.getValorAluguel());
             stmt.setDouble(20, imovel.getCondominio());
             stmt.setDouble(21, imovel.getIptu());
-            stmt.setString(22, imovel.getSituacao());            
+            stmt.setString(22, imovel.getSituacao());
             stmt.setBoolean(23, true);
             stmt.execute();
-            
+
         } catch (ClassNotFoundException | SQLException ex) {
             System.err.println(ex.getMessage());
 
@@ -153,28 +155,122 @@ public class DaoImovel {
     public void editar(Imovel imovel) throws SQLException {
 
         String sql = "UPDATE imobiliariadbTESTE.IMOVEL SET "
-                + "nome=?,login=?,senha=?,email=?,grupoFilial=?,departamento=?,cargo=? WHERE idUsuario=?";
+                + "categoria=?,tipo=?,quartos=?,banheiros=?,suites=?,vagasGaragem=?,areaUtil=?,areaTotal=?,"
+                + "informacao=?,cep=?,rua=?,num=?,complemento=?,bairro=?,cidade=?,uf=?,"
+                + "valorVenda=?,valorAluguel=?,condominio=?,iptu=?,situacao=?"
+                + " WHERE idImovel=?";
         Connection conn = null;
 
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-//            stmt.setString(1, imovel.getNome());
-//            stmt.setString(2, imovel.getLogin());
-//            stmt.setString(3, imovel.getSenha());
-//            stmt.setString(4, imovel.getEmail());
-//            stmt.setString(5, imovel.getGrupoFilial());
-//            stmt.setString(6, imovel.getDepartamento());
-//            stmt.setString(7, imovel.getCargo());
-//            stmt.setInt(8, imovel.getIdUsuario());
-//            stmt.execute();
+            stmt.setString(1, imovel.getCategoria());
+            stmt.setString(2, imovel.getTipo());
+            stmt.setInt(3, imovel.getQuartos());
+            stmt.setInt(4, imovel.getBanheiros());
+            stmt.setInt(5, imovel.getSuites());
+            stmt.setInt(6, imovel.getVagasGaragem());
+            stmt.setDouble(7, imovel.getAreaUtil());
+            stmt.setDouble(8, imovel.getAreaTotal());
+            stmt.setString(9, imovel.getInformacao());
+            stmt.setString(10, imovel.getCep());
+            stmt.setString(11, imovel.getRua());
+            stmt.setString(12, imovel.getNum());
+            stmt.setString(13, imovel.getComplemento());
+            stmt.setString(14, imovel.getBairro());
+            stmt.setString(15, imovel.getCidade());
+            stmt.setString(16, imovel.getUf());
+            stmt.setDouble(17, imovel.getValorVenda());
+            stmt.setDouble(18, imovel.getValorAluguel());
+            stmt.setDouble(19, imovel.getCondominio());
+            stmt.setDouble(20, imovel.getIptu());
+            stmt.setString(21, imovel.getSituacao());
+            stmt.setInt(22, imovel.getIdImovel());
+            stmt.execute();
+
         } catch (ClassNotFoundException | SQLException ex) {
             System.err.println(ex.getMessage());
 
         } finally {
             conn.close();
         }
+    }
+    
+    public void excluir(int idImovel) throws SQLException {
+        //realiza a exclusão lógica
+        String sql = "UPDATE imobiliariadbTESTE.IMOVEL SET enable=? WHERE idImovel=?";
+        Connection conn = null;
+
+        try {
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setBoolean(1, false);
+            stmt.setInt(2, idImovel);
+            stmt.execute();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.err.println(ex.getMessage());
+
+        } finally {
+            conn.close();
+        }
+    }
+    
+    public Imovel buscar(Imovel imovel) throws ClassNotFoundException, SQLException {
+
+        String sql = "SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE idImovel=? AND enable=?";
+
+        Imovel imov = null;
+        Connection conn;
+
+        try {
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, imovel.getIdImovel());
+            stmt.setBoolean(2, true);
+            ResultSet res = stmt.executeQuery();
+
+            if (res.next()) {
+                imov = new Imovel();
+
+                imov.setIdImovel(res.getInt("idImovel"));
+                imov.setIdCliente(res.getInt("idCliente"));
+                imov.setCodImovel(res.getString("codImovel"));
+                imov.setDataCad(res.getString("dataCad"));
+                
+                imov.setCategoria(res.getString("categoria"));                
+                imov.setTipo(res.getString("tipo"));
+                imov.setQuartos(res.getInt("quartos"));
+                imov.setBanheiros(res.getInt("banheiros"));
+                imov.setSuites(res.getInt("suites"));
+                imov.setVagasGaragem(res.getInt("vagasGaragem"));
+                imov.setAreaUtil(res.getDouble("areaUtil"));
+                imov.setAreaTotal(res.getDouble("areaTotal"));
+                imov.setInformacao(res.getString("informacao"));
+                
+                imov.setCep(res.getString("cep"));
+                imov.setRua(res.getString("rua"));
+                imov.setBairro(res.getString("bairro"));
+                imov.setCidade(res.getString("cidade"));
+                imov.setUf(res.getString("uf"));
+                imov.setNum(res.getString("num"));
+                imov.setComplemento(res.getString("complemento"));
+                
+                imov.setValorVenda(res.getDouble("valorVenda"));
+                imov.setValorAluguel(res.getDouble("valorAluguel"));
+                imov.setCondominio(res.getDouble("condominio"));
+                imov.setIptu(res.getDouble("iptu"));
+                imov.setSituacao(res.getString("situacao"));                
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return imov;
     }
 
 }

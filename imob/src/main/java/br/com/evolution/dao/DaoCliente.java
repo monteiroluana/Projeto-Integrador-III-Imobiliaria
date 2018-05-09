@@ -143,7 +143,7 @@ public class DaoCliente {
             stmt.setString(12, cliente.getUf());
             stmt.setString(13, cliente.getNum());
             stmt.setString(14, cliente.getComplemento());
-            stmt.setBoolean(15, true);
+            stmt.setInt(15, cliente.getIdCliente());
 
             stmt.execute();
 
