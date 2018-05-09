@@ -60,9 +60,7 @@ public class ServletImovel extends HttpServlet {
             RequestDispatcher dispatcher
                     = request.getRequestDispatcher("CadastroResposta.jsp");
             dispatcher.forward(request, response);
-        
-        
-        
+               
         }
     }
 

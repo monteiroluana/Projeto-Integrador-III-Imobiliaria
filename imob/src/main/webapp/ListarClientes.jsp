@@ -61,11 +61,18 @@
 
                                             <div id="custom-search-input">
                                                 <div class="input-group col-md-12">
-                                                    <input type="text" class="form-control input-sm" placeholder="insira nome ou CPF" />
+                                                    <input type="text" class="form-control input-sm" placeholder="insira nome ou CPF" id="pesquisa" name="pesquisa"/>
                                                     <span class="input-group-btn">
-                                                        <button class="btn btn-info btn-sm" type="button" id="PesquisaNome">
+                                                        
+                                                        <!--<button class="btn btn-info btn-sm" type="button" id="PesquisaNome">
                                                             <i class="glyphicon glyphicon-search"></i>
-                                                        </button>
+                                                            
+                                                        </button>-->
+                                                        
+                                                        <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=lista&pesquisa=' + document.getElementById('pesquisa').value">
+                                                            <i class="glyphicon glyphicon-search"></i>
+                                                        </a>
+                                                        
                                                     </span>
                                                 </div>
                                             </div>

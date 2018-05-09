@@ -24,9 +24,10 @@ public class ServletCliente extends HttpServlet {
         if (request.getParameter("comando").equals("lista")) {
             DaoCliente daoCliente = new DaoCliente();
             List<Cliente> lista = null;
-
+            String valor = request.getParameter("pesquisa");
+            
             try {
-                lista = daoCliente.listar();
+                lista = daoCliente.procurarCliente(valor);
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
