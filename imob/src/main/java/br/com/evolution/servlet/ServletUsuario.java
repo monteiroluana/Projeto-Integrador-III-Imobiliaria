@@ -24,9 +24,14 @@ public class ServletUsuario extends HttpServlet {
         if (request.getParameter("comando").equals("lista")) {
             DaoUsuario daoUsuario = new DaoUsuario();
             List<Usuario> lista = null;
+            String depart = request.getParameter("departamento");
+            String categ = request.getParameter("categoria");
+            String nome = request.getParameter("pesquisa");
 
+            String msg = nome + " " + depart + " " + categ;
+            System.out.println(msg);
             try {
-                lista = daoUsuario.listar();
+                lista = daoUsuario.listar(depart, categ, nome);
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,7 +73,7 @@ public class ServletUsuario extends HttpServlet {
             throws ServletException, IOException {
         //ifs para definir qual ação o servlet vai tomar
         if (request.getParameter("comando").equals("cadastrar")) {
-            Usuario usuario = new Usuario();            
+            Usuario usuario = new Usuario();
 
             //pegando as informações do formulário 
             usuario.setNome(request.getParameter("nome"));
@@ -98,7 +103,7 @@ public class ServletUsuario extends HttpServlet {
 
         } else if (request.getParameter("comando").equals("editar")) {
             Usuario usuario = new Usuario();
-            
+
             //pegando as informações do formulário 
             usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
             usuario.setNome(request.getParameter("nome"));
@@ -111,7 +116,7 @@ public class ServletUsuario extends HttpServlet {
 
             //ATUALIZANDO NO BANCO
             DaoUsuario daoUsuario = new DaoUsuario();
-            
+
             try {
                 daoUsuario.editar(usuario);
             } catch (SQLException ex) {

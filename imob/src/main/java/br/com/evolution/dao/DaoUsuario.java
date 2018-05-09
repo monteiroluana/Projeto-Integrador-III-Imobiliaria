@@ -11,9 +11,9 @@ import java.util.List;
 
 public class DaoUsuario {
 
-    public List<Usuario> listar() throws ClassNotFoundException, SQLException {
+    public List<Usuario> listar(String depart, String categ, String name) throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE enable=?";
+        String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE ((UPPER(departamento) LIKE UPPER(?) OR UPPER(cargo) LIKE UPPER(?) OR UPPER(nome) LIKE UPPER(?)) AND enable=?)";
 
         List<Usuario> lista = new ArrayList<Usuario>();
 
@@ -22,7 +22,10 @@ public class DaoUsuario {
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setBoolean(1, true);
+            stmt.setString(1, "%" + depart + "%");
+            stmt.setString(2, "%" + categ + "%");
+            stmt.setString(3, "%" + name + "%");
+            stmt.setBoolean(4, true);
             //Armazenará os resultados do banco de dados
             ResultSet resultados = stmt.executeQuery();
 
@@ -167,5 +170,50 @@ public class DaoUsuario {
         }
         return user;
     }
+    
+    /*public List<Usuario> listar() throws ClassNotFoundException, SQLException {
+
+        String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE enable=?";
+
+        List<Usuario> lista = new ArrayList<Usuario>();
+
+        Connection conn = null;
+
+        try {
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setBoolean(1, true);
+            //Armazenará os resultados do banco de dados
+            ResultSet resultados = stmt.executeQuery();
+
+            while (resultados.next()) {
+                Integer id = resultados.getInt("idUsuario");
+                String nome = resultados.getString("nome");
+                String email = resultados.getString("email");
+                String login = resultados.getString("login");
+                String senha = resultados.getString("senha");
+                String grupoFilial = resultados.getString("grupoFilial");
+                String departamento = resultados.getString("departamento");
+                String cargo = resultados.getString("cargo");
+
+                Usuario user = new Usuario();
+                user.setIdUsuario(id);
+                user.setNome(nome);
+                user.setEmail(email);
+                user.setLogin(login);
+                user.setSenha(senha);
+                user.setGrupoFilial(grupoFilial);
+                user.setDepartamento(departamento);
+                user.setCargo(cargo);
+                lista.add(user);
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.err.println(ex.getMessage());
+        } finally {
+            conn.close();
+        }
+
+        return lista;
+    }*/
 
 }

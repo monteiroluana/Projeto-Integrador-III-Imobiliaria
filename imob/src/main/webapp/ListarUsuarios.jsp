@@ -48,12 +48,12 @@
                                         <div class="col-25">
                                             <label class="control-label" for="Departamento">Departamento*</label>
                                         </div>	
-                                        <select id="Departamento" name="Departamento" class="form-control">
-                                            <option value="1">Selecione</option>
-                                            <option value="2">Diretoria</option>
-                                            <option value="3">Administrativo</option>
-                                            <option value="4">Vendas</option>
-                                            <option value="5">TI</option>
+                                        <select id="departamento" name="departamento" class="form-control">
+                                            <option>Selecione</option>
+                                            <option value="Diretoria">Diretoria</option>
+                                            <option value="Administrativo">Administrativo</option>
+                                            <option value="Vendas">Vendas</option>
+                                            <option value="TI">TI</option>
                                         </select>
                                     </div>
                                 </div>
@@ -63,10 +63,10 @@
                                             <label class="control-label" for="categoria">Grupo/Filial*</label>
                                         </div>	
                                         <select id="categoria" name="categoria" class="form-control">
-                                            <option value="1">Selecione</option>
-                                            <option value="2">São Paulo</option>
-                                            <option value="3">Porto Alegre</option>
-                                            <option value="4">Recife</option>
+                                            <option>Selecione</option>
+                                            <option value="SãoPaulo">São Paulo</option>
+                                            <option value="PortoAlegre">Porto Alegre</option>
+                                            <option value="Recife">Recife</option>
                                         </select>
                                     </div>
                                 </div>
@@ -78,11 +78,15 @@
                                     </div>	
                                     <div id="custom-search-input">
                                         <div class="input-group col-md-12">
-                                            <input type="text" class="form-control input-sm" placeholder="buscar" />
+                                            <input type="text" class="form-control input-sm" placeholder="buscar" id="pesquisa" name="pesquisa" />
                                             <span class="input-group-btn">
-                                                <button class="btn btn-info btn-sm" type="button" id="PesquisaNome">
+                                                <!--<button class="btn btn-info btn-sm" type="button" id="PesquisaNome">
                                                     <i class="glyphicon glyphicon-search"></i>
-                                                </button>
+                                                </button>-->
+
+                                                <a href="#" class="btn btn-info" onclick="this.href = 'usuario?comando=lista&pesquisa=' + document.getElementById('pesquisa').value + '&departamento=' + document.getElementById('departamento').value + '&categoria=' + document.getElementById('categoria').value">
+                                                    <i class="glyphicon glyphicon-search"></i>
+                                                </a>
                                             </span>
                                         </div>
                                     </div>
