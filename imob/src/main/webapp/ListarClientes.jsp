@@ -103,7 +103,7 @@
                                                         <td class="text-center">                                                            
                                                             <!-- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Editar</button> -->
                                                             <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Excluir</button> -->
-                                                            <a href="cliente?idCliente=${c.idCliente}&comando=listaEditar"class="btn btn-danger btn-sm" target="_blank">Editar</a>
+                                                            <a href="cliente?idCliente=${c.idCliente}&comando=listaEditar"class="btn btn-info btn-sm" target="_blank">Editar</a>
                                                             <a href="cliente?idCliente=${c.idCliente}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
                                                         </td>
                                                     </tr>

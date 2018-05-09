@@ -10,17 +10,21 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar Imóveis</title>
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script><!--includeHTML-->
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script>
+
+
     </head>
     <body>
-         <div w3-include-html="menu.html"></div>
-            <script>
-                w3IncludeHTML();
-          </script>
-        
+        <div w3-include-html="menu.html"></div>
+        <script>
+            w3IncludeHTML();
+        </script>
+
         <div class="main">
             <div class="container">
                 <div class="row centered-form">
@@ -105,54 +109,36 @@
                                             <table class="table table-striped custab">
                                                 <thead>
                                                     <tr>
-                                                        <th>Nome</th>
-                                                        <th>CPF</th>
-                                                        <th>Endereço</th>
+                                                        <th>Cód. Ref</th>
+                                                        <th>Tipo do imóvel</th>
+                                                        <th>Bairro</th>
                                                         <th>Cidade</th>
-                                                        <th>UF</th>
-                                                        <th>Email</th>
-                                                        <th>Telefone</th>
+                                                        <th>Estado</th>
+                                                        <th>Valor</th>
+                                                        <th>Situação</th>
                                                         <th class="text-center">Opções</th>
                                                     </tr>
                                                 </thead>
-                                                <tr>
-                                                    <td>João</td>
-                                                    <td>000.000.000-00</td>
-                                                    <td>Rua das Virtudes, bloco B</td>
-                                                    <td>Porto Alegre</td>
-                                                    <td>RS</td>
-                                                    <td>j.oliveira@gmail.com</td>
-                                                    <td>11 99999-9999</td>
-                                                    <td class="text-center"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Editar</button>
-                                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Kátia</td>
-                                                    <td>000.000.000-00</td>
-                                                    <td>Avenida Gusmão, n 110</td>
-                                                    <td>São Paulo</td>
-                                                    <td>São Paulo</td>
-                                                    <td>k.macedo@hotmail.com</td>
-                                                    <td>11 99999-9999</td>
-                                                    <td class="text-center"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Editar</button>
-                                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button>
-                                                    </td>	
-                                                </tr>
-                                                <tr>
-                                                    <td>Carla</td>
-                                                    <td>000.000.000-00</td>
-                                                    <td>Conjunto Nacional das Flores, 128-B</td>
-                                                    <td>Recife</td>
-                                                    <td>PE</td>
-                                                    <td>car.la@msn.com</td>
-                                                    <td>11 99999-9999</td>
-                                                    <td class="text-center">
 
-                                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Editar</button>
-                                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button>
-                                                    </td>
-                                                </tr>
+                                                <c:forEach items="${lista}" var="i">
+                                                    <tr>
+                                                        <td><c:out value="${i.codImovel}"/></td>
+                                                        <td><c:out value="${i.tipo}" /></td>
+                                                        <td><c:out value="${i.bairro}" /></td>
+                                                        <td><c:out value="${i.cidade}" /></td>
+                                                        <td><c:out value="${i.estado}" /></td>
+                                                        <td><c:out value="${i.valor}" /></td>
+                                                        <td><c:out value="${i.situacao}" /></td>
+                                                        <input style="display: none" value="${i.idImovel}"/>                                                     
+
+                                                        <td class="text-center">
+                                                            <a href="imovel?idImovel=${i.idImovel}&comando=listaEditar"class="btn btn-info btn-sm" target="_blank">Editar</a>
+                                                            <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button> -->
+                                                            <a href="imovel?idImovel=${i.idImovel}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+
                                             </table>
 
                                         </div>
