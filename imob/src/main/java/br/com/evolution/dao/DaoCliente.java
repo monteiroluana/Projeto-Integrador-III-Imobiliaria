@@ -218,5 +218,48 @@ public class DaoCliente {
 
         return cli;
     }
+    
+    public Cliente buscarPorCpf(String cpf) throws ClassNotFoundException, SQLException {
+
+        String sql = "SELECT * FROM imobiliariadbTESTE.CLIENTE WHERE cpf=? AND enable=?";
+
+        Cliente cli = null;
+        Connection conn;
+
+        try {
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, cpf);
+            stmt.setBoolean(2, true);
+            ResultSet res = stmt.executeQuery();
+
+            if (res.next()) {
+                cli = new Cliente();
+
+                cli.setIdCliente(res.getInt("idCliente"));
+                cli.setCpf(res.getString("cpf"));
+                cli.setNome(res.getString("nome"));
+                cli.setDataNasc(res.getString("dataNasc"));
+                cli.setSexo(res.getString("sexo"));
+                cli.setTelefone(res.getString("telefone"));
+                cli.setCelular(res.getString("celular"));
+                cli.setEmail(res.getString("email"));
+                
+                cli.setCep(res.getString("cep"));
+                cli.setRua(res.getString("rua"));
+                cli.setBairro(res.getString("bairro"));
+                cli.setCidade(res.getString("cidade"));
+                cli.setUf(res.getString("uf"));
+                cli.setNum(res.getString("num"));
+                cli.setComplemento(res.getString("complemento"));
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return cli;
+    }
 
 }

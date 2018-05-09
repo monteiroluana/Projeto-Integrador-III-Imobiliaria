@@ -59,7 +59,25 @@ public class ServletCliente extends HttpServlet {
             RequestDispatcher dispatcher
                     = request.getRequestDispatcher("CadastroResposta.jsp");
             dispatcher.forward(request, response);
+        } else if (request.getParameter("comando").equals("buscaCliente")) {
+            DaoCliente daoCliente = new DaoCliente();
+            String cpf = request.getParameter("cpfCliente");
+            Cliente cliente = null;
+
+            try {
+                cliente = daoCliente.buscarPorCpf(cpf);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            request.setAttribute("clienteP", cliente);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroImoveis.jsp");
+            dispatcher.forward(request, response);
+
         }
+
     }
 
     @Override
@@ -70,7 +88,7 @@ public class ServletCliente extends HttpServlet {
         if (request.getParameter("comando").equals("cadastrar")) {
             //Pegando as informações que estão sendo passadas pelo formulario
             Cliente cliente = new Cliente();
-            
+
             System.out.println(request.getParameter("data") + request.getParameter("nome"));
             cliente.setCpf(request.getParameter("cpf"));
             cliente.setNome(request.getParameter("nome"));
@@ -88,9 +106,9 @@ public class ServletCliente extends HttpServlet {
             cliente.setComplemento(request.getParameter("complemento"));
 
             DaoCliente daoCliente = new DaoCliente();
-            
+
             try {
-                daoCliente.inserir(cliente);                
+                daoCliente.inserir(cliente);
             } catch (SQLException ex) {
                 Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -100,8 +118,8 @@ public class ServletCliente extends HttpServlet {
             request.setAttribute("clienteCadastrado", cliente);
             RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroResposta.jsp");
             dispatcher.forward(request, response);
-            
-        } else if (request.getParameter("comando").equals("editar")){
+
+        } else if (request.getParameter("comando").equals("editar")) {
             //Pegando as informações que estão sendo passadas pelo formulario
             Cliente cliente = new Cliente();
 
@@ -121,13 +139,13 @@ public class ServletCliente extends HttpServlet {
             cliente.setComplemento(request.getParameter("complemento"));
 
             DaoCliente daoCliente = new DaoCliente();
-            
+
             try {
-                daoCliente.editar(cliente);                
+                daoCliente.editar(cliente);
             } catch (SQLException ex) {
                 Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             request.setAttribute("clienteCadastrado", cliente);
             RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroResposta.jsp");
             dispatcher.forward(request, response);

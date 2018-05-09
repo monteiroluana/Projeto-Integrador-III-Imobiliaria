@@ -1,6 +1,8 @@
 package br.com.evolution.servlet;
 
+import br.com.evolution.dao.DaoCliente;
 import br.com.evolution.dao.DaoImovel;
+import br.com.evolution.model.Cliente;
 import br.com.evolution.model.Imovel;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -58,6 +60,9 @@ public class ServletImovel extends HttpServlet {
             RequestDispatcher dispatcher
                     = request.getRequestDispatcher("CadastroResposta.jsp");
             dispatcher.forward(request, response);
+        
+        
+        
         }
     }
 

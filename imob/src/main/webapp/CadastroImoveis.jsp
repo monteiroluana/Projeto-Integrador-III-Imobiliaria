@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -97,7 +99,7 @@
                                                     </div>	
                                                     <input type="text" name="CPF" id="CPF" class="form-control" placeholder="CPF">
                                                     <br>
-                                                    <button type="button" class="btn btn-info">Buscar</button>										
+                                                    <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=buscaCliente&cpfCliente=' + document.getElementById('CPF').value">Buscar</a>							
                                                 </div>
 
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
@@ -105,7 +107,9 @@
                                                         <div class="col-25">
                                                             <label class="control-label" for="proprietario">Proprietário</label>
                                                         </div>	
-                                                        <input type="text" name="proprietário" id="proprietario" class="form-control input-sm" placeholder="Proprietário">
+                                                        <input type="text" name="proprietário" id="proprietario" class="form-control input-sm" value="${clienteP.nome}">
+                                                        <input type="hidden" id="idCliente" name="idCliente" value="${clienteP.idCliente}">
+
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-25">
