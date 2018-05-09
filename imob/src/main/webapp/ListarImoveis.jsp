@@ -3,7 +3,8 @@
     Created on : May 4, 2018, 3:58:12 PM
     Author     : I864970
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -126,17 +127,18 @@
                                                         <td><c:out value="${i.tipo}" /></td>
                                                         <td><c:out value="${i.bairro}" /></td>
                                                         <td><c:out value="${i.cidade}" /></td>
-                                                        <td><c:out value="${i.estado}" /></td>
-                                                        <td><c:out value="${i.valor}" /></td>
+                                                        <td><c:out value="${i.uf}" /></td>
+                                                        <td><c:out value="${i.valorVenda}" /></td>
                                                         <td><c:out value="${i.situacao}" /></td>
-                                                        <input style="display: none" value="${i.idImovel}"/>                                                     
+                                                    <input style="display: none" value="${i.idImovel}"/>                                                     
 
-                                                        <td class="text-center">
-                                                            <a href="imovel?idImovel=${i.idImovel}&comando=listaEditar"class="btn btn-info btn-sm" target="_blank">Editar</a>
-                                                            <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button> -->
-                                                            <a href="imovel?idImovel=${i.idImovel}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
-                                                        </td>
+                                                    <td class="text-center">
+                                                        <a href="imovel?idImovel=${i.idImovel}&comando=listaEditar"class="btn btn-info btn-sm" target="_blank">Editar</a>
+                                                        <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button> -->
+                                                        <a href="imovel?idImovel=${i.idImovel}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
+                                                    </td>
                                                     </tr>
+
                                                 </c:forEach>
 
                                             </table>
@@ -270,7 +272,7 @@
                             <h4 class="modal-title">Confirmar exclusão</h4>
                         </div>
                         <div class="modal-body">
-                            <p>Deseja realmente excluir o cliente e todas as suas informações?</p>
+                            <p>Deseja realmente excluir o imóvel e todas as suas informações?</p>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Excluir</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                         </div>

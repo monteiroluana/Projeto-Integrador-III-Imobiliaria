@@ -65,7 +65,7 @@ public class DaoImovel {
                 imov.setIdImovel(id);
                 imov.setIdCliente(idCliente);
                 imov.setCodImovel(codImovel);
-                                
+
                 imov.setDataCad(dataCad);
                 imov.setCategoria(categoria);
                 imov.setTipo(tipo);
@@ -196,7 +196,7 @@ public class DaoImovel {
             conn.close();
         }
     }
-    
+
     public void excluir(int idImovel) throws SQLException {
         //realiza a exclusão lógica
         String sql = "UPDATE imobiliariadbTESTE.IMOVEL SET enable=? WHERE idImovel=?";
@@ -217,7 +217,7 @@ public class DaoImovel {
             conn.close();
         }
     }
-    
+
     public Imovel buscar(Imovel imovel) throws ClassNotFoundException, SQLException {
 
         String sql = "SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE idImovel=? AND enable=?";
@@ -240,8 +240,8 @@ public class DaoImovel {
                 imov.setIdCliente(res.getInt("idCliente"));
                 imov.setCodImovel(res.getString("codImovel"));
                 imov.setDataCad(res.getString("dataCad"));
-                
-                imov.setCategoria(res.getString("categoria"));                
+
+                imov.setCategoria(res.getString("categoria"));
                 imov.setTipo(res.getString("tipo"));
                 imov.setQuartos(res.getInt("quartos"));
                 imov.setBanheiros(res.getInt("banheiros"));
@@ -250,7 +250,7 @@ public class DaoImovel {
                 imov.setAreaUtil(res.getDouble("areaUtil"));
                 imov.setAreaTotal(res.getDouble("areaTotal"));
                 imov.setInformacao(res.getString("informacao"));
-                
+
                 imov.setCep(res.getString("cep"));
                 imov.setRua(res.getString("rua"));
                 imov.setBairro(res.getString("bairro"));
@@ -258,12 +258,12 @@ public class DaoImovel {
                 imov.setUf(res.getString("uf"));
                 imov.setNum(res.getString("num"));
                 imov.setComplemento(res.getString("complemento"));
-                
+
                 imov.setValorVenda(res.getDouble("valorVenda"));
                 imov.setValorAluguel(res.getDouble("valorAluguel"));
                 imov.setCondominio(res.getDouble("condominio"));
                 imov.setIptu(res.getDouble("iptu"));
-                imov.setSituacao(res.getString("situacao"));                
+                imov.setSituacao(res.getString("situacao"));
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
