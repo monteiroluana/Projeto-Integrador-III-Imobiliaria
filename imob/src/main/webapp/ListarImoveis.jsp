@@ -17,6 +17,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/styles.css">
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script>
+		
 
 
     </head>
@@ -89,21 +90,79 @@
                                         <div class="col-xs-auto col-sm-auto col-md-2">
                                             <div class="form-group">
                                                 <div class="col-25">
-                                                    <label class="control-label" for="Status">Faixa de preço</label>
+                                                    <label class="control-label" for="min">Faixa de preço</label>
                                                 </div>
-
-
-
-
-                                                <!--
-                                                         <select id="Status" name="Status" class="form-control">
-                                                                <option value="1">Selecione</option>
-                                                                <option value="2">Livre</option>
-                                                                <option value="3">Ocupado</option>
-                                                        </select> -->
+												<input type="text" name="min" id="min" class="form-control input-sm" placeholder="menor valor">
+											</div>
+										</div>
+										<div class="col-xs-auto col-sm-auto col-md-2">
+											<div class="form-group">
+												<div class="col-25">
+												<label for="pesquisar">&nbsp;</label>
+											</div>
+												<input type="text" name="max" id="max" class="form-control input-sm" placeholder="maior valor">
                                             </div>
                                         </div>
-                                    </div>	
+										<div class="col-xs-auto col-sm-auto col-md-2">
+											<div class="form-group">
+												<div class="col-25">
+													<label class="control-label" for="servico">Serviço</label>
+													<select id="servico" name="servico" class="form-control">
+														<option>Selecione</option>
+														<option>Venda</option>
+														<option>Locação</option>                                                    
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-auto col-sm-auto col-md-1">
+											<div class="form-group">
+												<div class="col-25">
+													<label class="control-label" for="estado">UF</label>
+													<select id="estado" name="estado" class="form-control" style="width: auto">
+														<option>AC</option>
+														<option>AL</option>
+														<option>AP</option>
+														<option>AM</option>
+														<option>BA</option>
+														<option>CE</option>
+														<option>DF</option>
+														<option>ES</option>
+														<option>GO</option>
+														<option>MA</option>
+														<option>MT</option>
+														<option>MS</option>
+														<option>MG</option>
+														<option>PA</option>
+														<option>PB</option>
+														<option>PR</option>
+														<option>PE</option>
+														<option>PI</option>
+														<option>RJ</option>
+														<option>RN</option>
+														<option>RS</option>
+														<option>RO</option>
+														<option>RR</option>
+														<option>SC</option>
+														<option>SP</option>
+														<option>SE</option>
+														<option>TO</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-auto col-sm-auto col-md-1">
+											<div class="col-25">
+												<label for="pesquisar">&nbsp;</label>
+											</div>
+											
+											<button class="btn btn-info btn-sm" type="button" id="pesquisar">
+												<i class="glyphicon glyphicon-search"></i>
+											</button>
+										
+										</div>
+											
+                                    </div>
 
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-auto">
@@ -153,134 +212,6 @@
                 </div>	
             </div>
 
-            <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Dados do Cliente</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form role="form">
-                                <div class="row">
-                                    <div class="col-xs-auto col-sm-auto col-md-4">
-                                        <h3 class="panel-title">Dados Pessoais</h3>
-                                        <hr>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-auto col-sm-auto col-md-4">
-                                        <label for="Nome" class="control-label">Nome*</label>
-                                        <input type="text" name="Nome" id="Nome" class="form-control input-sm" placeholder="Nome Completo">
-                                    </div>
-                                    <div class="col-xs-auto col-sm-auto col-md-4">
-                                        <label for="Data" class="control-label">Data de nascimento*</label>
-                                        <input type="text" name="Data" id="Data" class="form-control input-sm" placeholder="DD/MM/AA">
-                                    </div>
-                                    <div class="col-xs-auto col-sm-auto col-md-4">
-                                        <label for="CPF" class="control-label">CPF*</label>
-                                        <input type="text" name="CPF" id="CPF" class="form-control input-sm" placeholder="000.000.000-00">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-auto col-sm-auto col-md-4">
-                                        <br>
-                                        <h3 class="panel-title">Endereço</h3>
-                                        <hr>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-auto col-sm-auto col-md-4">
-                                        <label for="CEP" class="control-label">CEP*</label>
-                                        <input type="text" name="CEP" id="CEP" class="form-control input-sm" placeholder="CEP">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-auto col-sm-auto col-md-4">
-                                        <label for="Rua" class="control-label">Rua</label>
-                                        <input type="text" name="Rua" id="Rua" class="form-control input-sm">
-                                    </div>
-                                    <div class="col-xs-auto col-sm-auto col-md-2">
-                                        <label for="Número" class="control-label">Número</label>
-                                        <input type="text" name="Número" id="Número" class="form-control input-sm">
-                                    </div>
-                                    <div class="col-xs-auto col-sm-auto col-md-3">
-                                        <label for="Complemento" class="control-label">Complemento</label>
-                                        <input type="text" name="Complemento" id="Complemento" class="form-control input-sm">
-                                    </div>
-                                    <div class="col-xs-auto col-sm-auto col-md-3">
-                                        <label for="Bairro" class="control-label">Bairro*</label>
-                                        <input type="text" name="Bairro" id="Bairro" class="form-control input-sm">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-auto col-sm-auto col-md-4">
-                                        <label for="Cidade" class="control-label">Cidade</label>
-                                        <input type="text" name="Cidade" id="Cidade" class="form-control input-sm">
-                                    </div>
-                                    <div class="col-xs-auto col-sm-auto col-md-4">
-                                        <label for="Estado" class="control-label">Estado</label>
-                                        <input type="text" name="Estado" id="Estado" class="form-control input-sm">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-auto col-sm-auto col-md-4">
-                                        <br>
-                                        <h3 class="panel-title">Contato</h3>
-                                        <hr>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-auto col-sm-auto col-md-4">
-                                        <label for="Telefone" class="control-label">Telefone</label>
-                                        <input type="text" name="Telefone" id="Telefone" class="form-control input-sm">
-                                    </div>
-                                    <div class="col-xs-auto col-sm-auto col-md-4">
-                                        <label for="Celular" class="control-label">Celular</label>
-                                        <input type="text" name="Celular" id="Celular" class="form-control input-sm">
-                                    </div>
-                                    <div class="col-xs-auto col-sm-auto col-md-4">
-                                        <label for="Email" class="control-label">Email</label>
-                                        <input type="text" name="Email" id="Email" class="form-control input-sm">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <br>
-                                    <div class="col-xs-10 col-sm-10 col-md-10">
-                                        <button type="button" class="btn btn-info" >Salvar</button>
-                                    </div>
-
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div><!--MODAL-EDITAR-->
-
-            <div id="removerModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Confirmar exclusão</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>Deseja realmente excluir o imóvel e todas as suas informações?</p>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Excluir</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div><!--CONFIRMAR-EXCLUSÃO-->
         </div> <!-- MAIN -->
     </body>
 </body>

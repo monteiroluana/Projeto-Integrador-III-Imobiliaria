@@ -89,6 +89,7 @@
             ;
 
         </script>
+		
     </head>
     <body>
         <div w3-include-html="menu.html"></div>
@@ -145,9 +146,10 @@
                                                             <label class="control-label" for="categoria">Categoria</label>
                                                         </div>	
                                                         <select id="categoria" name="categoria" class="form-control">
-                                                            <option value="1">Residencial</option>
-                                                            <option value="2">Comercial</option>
-                                                            <option value="3">Rural</option>
+                                                            <option>Selecione</option>
+															<option>Residencial</option>
+                                                            <option>Comercial</option>
+                                                            <option>Rural</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -157,9 +159,10 @@
                                                             <label class="control-label" for="tipo">Tipo do Imóvel</label>
                                                         </div>	
                                                         <select id="tipo" name="tipo" class="form-control">
-                                                            <option value="1">Apartamento</option>
-                                                            <option value="2">Casa</option>
-                                                            <option value="3">Terreno</option>
+															<option>Selecione</option>
+                                                            <option>Apartamento</option>
+                                                            <option>Casa</option>
+                                                            <option>Terreno</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -190,8 +193,9 @@
                                                             <label class="control-label" for="situacao">Status do Imóvel</label>
                                                         </div>	
                                                         <select id="situacao" name="situacao" class="form-control">
-                                                            <option value="1">Livre</option>
-                                                            <option value="2">Ocupado</option>
+                                                            <option>Selecione</option>
+															<option value="livre">Livre</option>
+                                                            <option value="ocupado">Ocupado</option>
                                                         </select>
                                                     </div>
 
