@@ -25,13 +25,13 @@ public class ServletUsuario extends HttpServlet {
             DaoUsuario daoUsuario = new DaoUsuario();
             List<Usuario> lista = null;
             String depart = request.getParameter("departamento");
-            String categ = request.getParameter("categoria");
-            String nome = request.getParameter("pesquisa");
+            String filial = request.getParameter("grupoFilial");
+            String nome = request.getParameter("nome");
 
-            String msg = nome + " " + depart + " " + categ;
-            System.out.println(msg);
+            String msg = "nome: " + nome + "\ndepart: " + depart + "\nfilial: " + filial;
+            System.out.println("servlet usuario listar: \n" + msg);
             try {
-                lista = daoUsuario.listar(depart, categ, nome);
+                lista = daoUsuario.listar(depart, filial, nome);
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);

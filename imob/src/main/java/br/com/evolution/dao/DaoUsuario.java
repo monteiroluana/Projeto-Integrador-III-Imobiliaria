@@ -11,9 +11,13 @@ import java.util.List;
 
 public class DaoUsuario {
 
-    public List<Usuario> listar(String depart, String categ, String name) throws ClassNotFoundException, SQLException {
+    public List<Usuario> listar(String depart, String filial, String name) throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE ((UPPER(departamento) LIKE UPPER(?) OR UPPER(cargo) LIKE UPPER(?) OR UPPER(nome) LIKE UPPER(?)) AND enable=?)";
+        String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE "
+                + "((UPPER(departamento) LIKE UPPER(?) "
+                + "AND UPPER(grupoFilial) LIKE UPPER(?) "
+                + "AND UPPER(nome) LIKE UPPER(?)) "
+                + "AND enable=?)";
 
         List<Usuario> lista = new ArrayList<Usuario>();
 
@@ -23,7 +27,7 @@ public class DaoUsuario {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + depart + "%");
-            stmt.setString(2, "%" + categ + "%");
+            stmt.setString(2, "%" + filial + "%");
             stmt.setString(3, "%" + name + "%");
             stmt.setBoolean(4, true);
             //Armazenará os resultados do banco de dados
@@ -170,7 +174,7 @@ public class DaoUsuario {
         }
         return user;
     }
-    
+
     /*public List<Usuario> listar() throws ClassNotFoundException, SQLException {
 
         String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE enable=?";
@@ -215,5 +219,4 @@ public class DaoUsuario {
 
         return lista;
     }*/
-
 }

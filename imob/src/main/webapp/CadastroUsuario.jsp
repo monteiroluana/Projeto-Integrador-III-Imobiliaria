@@ -76,7 +76,7 @@
                                                 <select id="departamento" name="departamento" class="form-control">
                                                     <option>Selecione</option>
                                                     <option>Diretoria</option>
-                                                    <option>Administrativo</option>
+                                                    <option>Retaguarda</option>
                                                     <option>Vendas</option>
                                                     <option>TI</option>
                                                 </select>
