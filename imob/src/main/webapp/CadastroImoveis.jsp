@@ -17,6 +17,78 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/styles.css">
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script><!--includeHTML-->
+        <script type="text/javascript" >
+
+            function limpa_formulário_cep() {
+                //Limpa valores do formulário de cep.
+                document.getElementById('rua').value = ("");
+                document.getElementById('bairro').value = ("");
+                document.getElementById('cidade').value = ("");
+                document.getElementById('uf').value = ("");
+                
+            }
+
+            function meu_callback(conteudo) {
+                if (!("erro" in conteudo)) {
+                    //Atualiza os campos com os valores.
+                    document.getElementById('rua').value = (conteudo.logradouro);
+                    document.getElementById('bairro').value = (conteudo.bairro);
+                    document.getElementById('cidade').value = (conteudo.localidade);
+                    document.getElementById('uf').value = (conteudo.uf);
+                    
+                } //end if.
+                else {
+                    //CEP não Encontrado.
+                    limpa_formulário_cep();
+                    alert("CEP não encontrado.");
+                }
+            }
+
+            function pesquisacep(valor) {
+
+                //Nova variável "cep" somente com dígitos.
+                var cep = valor.replace(/\D/g, '');
+
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+
+                    //Valida o formato do CEP.
+                    if (validacep.test(cep)) {
+
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        document.getElementById('rua').value = "...";
+                        document.getElementById('bairro').value = "...";
+                        document.getElementById('cidade').value = "...";
+                        document.getElementById('uf').value = "...";
+                        
+
+                        //Cria um elemento javascript.
+                        var script = document.createElement('script');
+
+                        //Sincroniza com o callback.
+                        script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+
+                        //Insere script no documento e carrega o conteúdo.
+                        document.body.appendChild(script);
+
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            }
+            ;
+
+        </script>
     </head>
     <body>
         <div w3-include-html="menu.html"></div>
@@ -36,33 +108,33 @@
                                 <h3 class="panel-title">Cadastro de Imóveis</h3>
                             </div>
                             <div class="panel-body">
-                                <form role="form" action="imovel" method="POST">
+                                <form role="form"  method="POST">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="row">
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
-                                                    
-                                                        <div class="form-group">
-                                                            <div class="col-25">
-                                                                <label for="dataCad" class="control-label">Data</label>
-                                                            </div>
 
-                                                            <input type="text" name="dataCad" id="dataCad" class="form-control input-sm" placeholder="DD/MM/AA">
+                                                    <div class="form-group">
+                                                        <div class="col-25">
+                                                            <label for="dataCad" class="control-label">Data</label>
                                                         </div>
-                                                    
+
+                                                        <input type="text" name="dataCad" id="dataCad" class="form-control input-sm" placeholder="DD/MM/AA">
+                                                    </div>
+
                                                 </div>
 
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
-													<div class="form-group">
-														<div class="col-25">
-															<label class="control-label" for="servico">Servico</label>
-															 <select id="Servico" name="Servico" class="form-control">
-															<option>Selecione</option>
-															<option>Venda</option>
-															<option>Locação</option>                                                    
-														</select>
-														</div>
-													</div>
+                                                    <div class="form-group">
+                                                        <div class="col-25">
+                                                            <label class="control-label" for="servico">Servico</label>
+                                                            <select id="Servico" name="Servico" class="form-control">
+                                                                <option>Selecione</option>
+                                                                <option>Venda</option>
+                                                                <option>Locação</option>                                                    
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                             </div>
@@ -122,44 +194,44 @@
                                                             <option value="2">Ocupado</option>
                                                         </select>
                                                     </div>
-													
-                                                </div>
-												<div class="row">
-													<div class="col-xs-4 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <div class="col-25">
-                                                        <label class="control-label" for="valorVenda">Valor de venda*</label>
-                                                    </div>	
-                                                    <input type="text" name="valorVenda" id="valorVenda" class="form-control input-sm" placeholder="Valor">
-                                                </div>
-                                            </div>
-											<div class="col-xs-4 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <div class="col-25">
-                                                        <label class="control-label" for="valorAluguel">Valor de aluguel*</label>
-                                                    </div>	
-                                                    <input type="text" name="valorAluguel" id="valorAluguel" class="form-control input-sm" placeholder="Valor">
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <div class="col-25">
-                                                        <label class="control-label" for="condominio">Condomínio</label>
-                                                    </div>	
-                                                    <input type="text" name="condominio" id="condominio" class="form-control input-sm" placeholder="Condomínio">
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <div class="col-25">
-                                                        <label class="control-label" for="iptu">IPTU</label>
-                                                    </div>	
-                                                    <input type="text" name="iptu" id="iptu" class="form-control input-sm" placeholder="IPTU">
-                                                </div>
-                                            </div>
 
-												</div>
-												
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-4 col-sm-4 col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-25">
+                                                                <label class="control-label" for="valorVenda">Valor de venda*</label>
+                                                            </div>	
+                                                            <input type="text" name="valorVenda" id="valorVenda" class="form-control input-sm" placeholder="Valor">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-4 col-sm-4 col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-25">
+                                                                <label class="control-label" for="valorAluguel">Valor de aluguel*</label>
+                                                            </div>	
+                                                            <input type="text" name="valorAluguel" id="valorAluguel" class="form-control input-sm" placeholder="Valor">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-4 col-sm-4 col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-25">
+                                                                <label class="control-label" for="condominio">Condomínio</label>
+                                                            </div>	
+                                                            <input type="text" name="condominio" id="condominio" class="form-control input-sm" placeholder="Condomínio">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-4 col-sm-4 col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-25">
+                                                                <label class="control-label" for="iptu">IPTU</label>
+                                                            </div>	
+                                                            <input type="text" name="iptu" id="iptu" class="form-control input-sm" placeholder="IPTU">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
                                             </div>
                                         </div>
 
@@ -254,7 +326,7 @@
                                                 <input type="text" name="vagasGaragem" id="vagasGaragem" class="form-control input-sm" placeholder="Vagas">
                                             </div>
                                         </div>
-                                        <div class="col-xs-auto col-sm-auto col-md-2">num
+                                        <div class="col-xs-auto col-sm-auto col-md-2">
                                             <div class="form-group">
                                                 <div class="col-25">
                                                     <label class="control-label" for="areaUtil">Área útil</label>
@@ -271,7 +343,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                     <hr>
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-6">								
@@ -287,7 +359,7 @@
                                                     <div class="col-25">
                                                         <label class="control-label" for="cep">CEP</label>
                                                     </div>	
-                                                    <input type="text" name="cep" id="cep" class="form-control input-sm" placeholder="CEP">
+                                                    <input type="text" name="cep" id="cep" class="form-control input-sm" placeholder="CEP"onblur="pesquisacep(this.value);">
                                                     <br>
                                                     <button type="button" class="btn btn-info">Buscar</button>
                                                 </div>
@@ -350,8 +422,8 @@
                                         </div>		
                                     </div>
                                     <hr>
-                                   
-                                    
+
+
                                     <div class="row">
                                         <br>
                                         <div class="col-xs-auto col-sm-auto col-md-6">
@@ -368,5 +440,6 @@
                 </div>
             </div>
         </div>
+        
     </body>
 </html>
