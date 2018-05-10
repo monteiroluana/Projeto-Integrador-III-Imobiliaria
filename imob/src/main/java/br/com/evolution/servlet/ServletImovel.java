@@ -93,6 +93,18 @@ public class ServletImovel extends HttpServlet {
             imovel.setIptu(Double.parseDouble(request.getParameter("iptu")));
             imovel.setCondominio(Double.parseDouble(request.getParameter("condominio")));
             imovel.setSituacao(request.getParameter("situacao"));
+            
+            DaoImovel daoImovel = new DaoImovel();
+
+            try {
+                daoImovel.inserir(imovel);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+
+            request.setAttribute("imovelCadastrado", imovel);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroResposta.jsp");
+            dispatcher.forward(request, response);
 
         } else if (request.getParameter("comando").equals("editar")) {
             //Pegando as informações que estão sendo passadas pelo formulario

@@ -36,7 +36,7 @@
                                 <h3 class="panel-title">Cadastro de Imóveis</h3>
                             </div>
                             <div class="panel-body">
-                                <form role="form">
+                                <form role="form" action="imovel" method="POST">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="row">
@@ -99,7 +99,7 @@
                                                     <div class="col-25">
                                                         <label class="control-label" for="cpf">CPF</label>
                                                     </div>	
-                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF">
+                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" value="${clienteP.cpf}">
                                                     <br>
                                                     <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=buscaCliente&cpfCliente=' + document.getElementById('cpf').value">Buscar</a>							
                                                 </div>
@@ -345,6 +345,7 @@
                                                     </div>	
                                                     <input type="text" name="uf" id="uf" class="form-control input-sm" placeholder="UF">
                                                 </div>
+                                                <input type="hidden" name="comando" id="comando" value="cadastrar"/>
                                             </div>
                                         </div>		
                                     </div>
@@ -354,7 +355,7 @@
                                     <div class="row">
                                         <br>
                                         <div class="col-xs-auto col-sm-auto col-md-6">
-                                            <button type="button" class="btn btn-info" >Salvar</button>
+                                            <button type="button submit" class="btn btn-info" >Salvar</button>
                                             <button type="button" class="btn btn-danger" >Cancelar</button>
                                         </div>
                                     </div>

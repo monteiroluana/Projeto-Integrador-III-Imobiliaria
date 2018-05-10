@@ -107,9 +107,9 @@ public class DaoImovel {
 
     public void inserir(Imovel imovel) throws SQLException {
 
-        String sql = "INSERT INTO imobiliariadbTESTE.IMOVEL (dataCad,categoria,tipo,quartos,banheiros,suites,vagasGaragem,areaUtil,areaTotal,"
+        String sql = "INSERT INTO imobiliariadbTESTE.IMOVEL (idCliente,dataCad,categoria,tipo,quartos,banheiros,suites,vagasGaragem,areaUtil,areaTotal,"
                 + "informacao,cep,rua,num,complemento,bairro,cidade,uf,valorVenda,valorAluguel,condominio,iptu,situacao,enable) "
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
 
         try {
@@ -117,30 +117,30 @@ public class DaoImovel {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             Timestamp tDataCad = new Timestamp(imovel.getDataCad().getTime());
-            stmt.setTimestamp(1, tDataCad);
-
-            stmt.setString(2, imovel.getCategoria());
-            stmt.setString(3, imovel.getTipo());
-            stmt.setInt(4, imovel.getQuartos());
-            stmt.setInt(5, imovel.getBanheiros());
-            stmt.setInt(6, imovel.getSuites());
-            stmt.setInt(7, imovel.getVagasGaragem());
-            stmt.setDouble(8, imovel.getAreaUtil());
-            stmt.setDouble(9, imovel.getAreaTotal());
-            stmt.setString(10, imovel.getInformacao());
-            stmt.setString(11, imovel.getCep());
-            stmt.setString(12, imovel.getRua());
-            stmt.setString(13, imovel.getNum());
-            stmt.setString(14, imovel.getComplemento());
-            stmt.setString(15, imovel.getBairro());
-            stmt.setString(16, imovel.getCidade());
-            stmt.setString(17, imovel.getUf());
-            stmt.setDouble(18, imovel.getValorVenda());
-            stmt.setDouble(19, imovel.getValorAluguel());
-            stmt.setDouble(20, imovel.getCondominio());
-            stmt.setDouble(21, imovel.getIptu());
-            stmt.setString(22, imovel.getSituacao());
-            stmt.setBoolean(23, true);
+            stmt.setInt(1, imovel.getIdCliente());
+            stmt.setTimestamp(2, tDataCad);
+            stmt.setString(3, imovel.getCategoria());
+            stmt.setString(4, imovel.getTipo());
+            stmt.setInt(5, imovel.getQuartos());
+            stmt.setInt(6, imovel.getBanheiros());
+            stmt.setInt(7, imovel.getSuites());
+            stmt.setInt(8, imovel.getVagasGaragem());
+            stmt.setDouble(9, imovel.getAreaUtil());
+            stmt.setDouble(10, imovel.getAreaTotal());
+            stmt.setString(11, imovel.getInformacao());
+            stmt.setString(12, imovel.getCep());
+            stmt.setString(13, imovel.getRua());
+            stmt.setString(14, imovel.getNum());
+            stmt.setString(15, imovel.getComplemento());
+            stmt.setString(16, imovel.getBairro());
+            stmt.setString(17, imovel.getCidade());
+            stmt.setString(18, imovel.getUf());
+            stmt.setDouble(19, imovel.getValorVenda());
+            stmt.setDouble(20, imovel.getValorAluguel());
+            stmt.setDouble(21, imovel.getCondominio());
+            stmt.setDouble(22, imovel.getIptu());
+            stmt.setString(23, imovel.getSituacao());
+            stmt.setBoolean(24, true);
             stmt.execute();
 
         } catch (ClassNotFoundException | SQLException ex) {
