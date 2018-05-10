@@ -63,6 +63,7 @@ CREATE TABLE imobiliariadbTESTE.IMOVEL (
 	condominio     DOUBLE,
 	iptu           DOUBLE,
 	situacao       VARCHAR(255),
+        servico        VARCHAR(50),
 	enable         BOOLEAN,
 	CONSTRAINT PK_IMOVEL PRIMARY KEY (idImovel),
 	FOREIGN KEY(idCliente) REFERENCES cliente(idCliente)
@@ -74,8 +75,7 @@ CREATE TABLE imobiliariadbTESTE.CONTRATO (
 	codContrato    VARCHAR(255) NOT NULL,
 	idImovel       INTEGER NOT NULL,
 	idCliente      INTEGER NOT NULL,
-	dataContrato   DATE NOT NULL,
-	tipoContrato   VARCHAR(255),
+	dataContrato   DATE NOT NULL,	
 	dataInicial    DATE,
 	dataFinal      DATE,
 	enable         BOOLEAN,

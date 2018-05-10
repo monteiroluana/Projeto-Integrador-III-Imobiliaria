@@ -13,9 +13,18 @@ import java.util.List;
 
 public class DaoImovel {
 
-    public List<Imovel> listar() throws ClassNotFoundException, SQLException {
+    public List<Imovel> listar(String serv, String tip, String cid, double vendaInicial, double vendaFinal, 
+            double aluguelInicial, double aluguelFinal, String codImov)
+            throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE enable=?";
+        String sql = "SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE "
+                + "((UPPER(servico) LIKE UPPER(?) "
+                + "AND UPPER(tipo) LIKE UPPER(?) "
+                + "AND UPPER(cidade) LIKE UPPER(?) "
+                + "AND (valorVenda) BETWEEN (?) AND (?) "
+                + "OR (valorAluguel) BETWEEN (?) AND (?) "
+                + "AND UPPER(codImovel) LIKE UPPER(?) "
+                + "AND enable=?)";
 
         List<Imovel> lista = new ArrayList<Imovel>();
 
@@ -24,7 +33,18 @@ public class DaoImovel {
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setBoolean(1, true);
+
+            //MUDAR/ADICIONAR OS CAMPOS
+            stmt.setString(1, "%" + serv + "%");
+            stmt.setString(2, "%" + tip + "%");
+            stmt.setString(3, "%" + cid + "%");
+            stmt.setDouble(4, vendaInicial);
+            stmt.setDouble(5, vendaFinal);
+            stmt.setDouble(6, aluguelInicial);
+            stmt.setDouble(7, aluguelFinal);
+            stmt.setString(8, "%" + codImov + "%");
+            stmt.setBoolean(9, true);
+
             //Armazenará os resultados do banco de dados
             ResultSet resultados = stmt.executeQuery();
 
@@ -60,6 +80,7 @@ public class DaoImovel {
                 Double iptu = resultados.getDouble("iptu");
 
                 String situacao = resultados.getString("situacao");
+                String servico = resultados.getString("servico");
 
                 Imovel imov = new Imovel();
                 imov.setIdImovel(id);
@@ -93,6 +114,7 @@ public class DaoImovel {
                 imov.setIptu(iptu);
 
                 imov.setSituacao(situacao);
+                imov.setServico(servico);
 
                 lista.add(imov);
             }
@@ -108,8 +130,8 @@ public class DaoImovel {
     public void inserir(Imovel imovel) throws SQLException {
 
         String sql = "INSERT INTO imobiliariadbTESTE.IMOVEL (idCliente,dataCad,categoria,tipo,quartos,banheiros,suites,vagasGaragem,areaUtil,areaTotal,"
-                + "informacao,cep,rua,num,complemento,bairro,cidade,uf,valorVenda,valorAluguel,condominio,iptu,situacao,enable) "
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                + "informacao,cep,rua,num,complemento,bairro,cidade,uf,valorVenda,valorAluguel,condominio,iptu,situacao,servico,enable) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
 
         try {
@@ -140,7 +162,8 @@ public class DaoImovel {
             stmt.setDouble(21, imovel.getCondominio());
             stmt.setDouble(22, imovel.getIptu());
             stmt.setString(23, imovel.getSituacao());
-            stmt.setBoolean(24, true);
+            stmt.setString(24, imovel.getServico());
+            stmt.setBoolean(25, true);
             stmt.execute();
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -157,8 +180,8 @@ public class DaoImovel {
         String sql = "UPDATE imobiliariadbTESTE.IMOVEL SET "
                 + "categoria=?,tipo=?,quartos=?,banheiros=?,suites=?,vagasGaragem=?,areaUtil=?,areaTotal=?,"
                 + "informacao=?,cep=?,rua=?,num=?,complemento=?,bairro=?,cidade=?,uf=?,"
-                + "valorVenda=?,valorAluguel=?,condominio=?,iptu=?,situacao=?"
-                + " WHERE idImovel=?";
+                + "valorVenda=?,valorAluguel=?,condominio=?,iptu=?,situacao=?,servico=? "
+                + "WHERE idImovel=?";
         Connection conn = null;
 
         try {
@@ -186,7 +209,8 @@ public class DaoImovel {
             stmt.setDouble(19, imovel.getCondominio());
             stmt.setDouble(20, imovel.getIptu());
             stmt.setString(21, imovel.getSituacao());
-            stmt.setInt(22, imovel.getIdImovel());
+            stmt.setString(22, imovel.getServico());
+            stmt.setInt(23, imovel.getIdImovel());
             stmt.execute();
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -264,6 +288,7 @@ public class DaoImovel {
                 imov.setCondominio(res.getDouble("condominio"));
                 imov.setIptu(res.getDouble("iptu"));
                 imov.setSituacao(res.getString("situacao"));
+                imov.setServico(res.getString("servico"));
             }
 
         } catch (ClassNotFoundException | SQLException ex) {

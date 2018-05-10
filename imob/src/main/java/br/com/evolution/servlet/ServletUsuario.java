@@ -24,12 +24,11 @@ public class ServletUsuario extends HttpServlet {
         if (request.getParameter("comando").equals("lista")) {
             DaoUsuario daoUsuario = new DaoUsuario();
             List<Usuario> lista = null;
+            
             String depart = request.getParameter("departamento");
             String filial = request.getParameter("grupoFilial");
             String nome = request.getParameter("nome");
 
-            String msg = "nome: " + nome + "\ndepart: " + depart + "\nfilial: " + filial;
-            System.out.println("servlet usuario listar: \n" + msg);
             try {
                 lista = daoUsuario.listar(depart, filial, nome);
 

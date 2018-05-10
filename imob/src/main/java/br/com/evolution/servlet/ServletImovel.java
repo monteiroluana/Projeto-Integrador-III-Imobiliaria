@@ -25,9 +25,18 @@ public class ServletImovel extends HttpServlet {
         if (request.getParameter("comando").equals("lista")) {
             DaoImovel daoImovel = new DaoImovel();
             List<Imovel> lista = null;
+            
+            String serv = request.getParameter("departamento");
+            String tip = request.getParameter("grupoFilial");
+            String cid = request.getParameter("nome");
+            double vInicial = Double.parseDouble(request.getParameter("nome"));
+            double vFinal = Double.parseDouble(request.getParameter("nome"));
+            double aInicial = Double.parseDouble(request.getParameter("nome"));
+            double aFinal = Double.parseDouble(request.getParameter("nome"));
+            String codImov = request.getParameter("nome");
 
             try {
-                lista = daoImovel.listar();
+                lista = daoImovel.listar(serv,tip,cid,vInicial,vFinal,aInicial,aFinal,codImov);
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
@@ -93,6 +102,7 @@ public class ServletImovel extends HttpServlet {
             imovel.setIptu(Double.parseDouble(request.getParameter("iptu")));
             imovel.setCondominio(Double.parseDouble(request.getParameter("condominio")));
             imovel.setSituacao(request.getParameter("situacao"));
+            imovel.setServico(request.getParameter("servico"));
             
             DaoImovel daoImovel = new DaoImovel();
 
@@ -132,6 +142,7 @@ public class ServletImovel extends HttpServlet {
             imovel.setIptu(Double.parseDouble(request.getParameter("iptu")));
             imovel.setCondominio(Double.parseDouble(request.getParameter("condominio")));
             imovel.setSituacao(request.getParameter("situacao"));
+            imovel.setServico(request.getParameter("servico"));
 
             DaoImovel daoImovel = new DaoImovel();
 

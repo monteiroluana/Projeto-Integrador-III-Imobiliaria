@@ -41,6 +41,7 @@ public class Imovel {
     private double condominio;
     private double iptu;
     private String situacao;
+    private String servico;
 
     public int getIdImovel() {
         return idImovel;
@@ -246,6 +247,14 @@ public class Imovel {
 
     public void setSituacao(String situacao) {
         this.situacao = situacao;
+    }
+
+    public String getServico() {
+        return servico;
+    }
+
+    public void setServico(String servico) {
+        this.servico = servico;
     }
 
 }
