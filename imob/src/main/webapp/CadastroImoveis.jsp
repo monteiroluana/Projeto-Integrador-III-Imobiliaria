@@ -41,26 +41,28 @@
                                         <div class="col-md-6">
                                             <div class="row">
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
-                                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                                    
                                                         <div class="form-group">
                                                             <div class="col-25">
-                                                                <label for="data" class="control-label">Data</label>
+                                                                <label for="dataCad" class="control-label">Data</label>
                                                             </div>
 
-                                                            <input type="text" name="data" id="data" class="form-control input-sm" placeholder="DD/MM/AA">
+                                                            <input type="text" name="dataCad" id="dataCad" class="form-control input-sm" placeholder="DD/MM/AA">
                                                         </div>
-                                                    </div>
+                                                    
                                                 </div>
 
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
-
-                                                    <label class="control-label" for="servico">Servico</label>
-                                                    <select id="Servico" name="Servico" class="form-control">
-                                                        <option>Selecione</option>
-                                                        <option>Venda</option>
-                                                        <option>Locação</option>                                                    
-                                                    </select>
-
+													<div class="form-group">
+														<div class="col-25">
+															<label class="control-label" for="servico">Servico</label>
+															 <select id="Servico" name="Servico" class="form-control">
+															<option>Selecione</option>
+															<option>Venda</option>
+															<option>Locação</option>                                                    
+														</select>
+														</div>
+													</div>
                                                 </div>
 
                                             </div>
@@ -80,9 +82,9 @@
                                                 <div class="col-xs-auto col-sm-auto col-md-6">	
                                                     <div class="form-group">
                                                         <div class="col-25">
-                                                            <label class="control-label" for="tipo_imovel">Tipo do Imóvel</label>
+                                                            <label class="control-label" for="tipo">Tipo do Imóvel</label>
                                                         </div>	
-                                                        <select id="tipo_imovel" name="tipo_imovel" class="form-control">
+                                                        <select id="tipo" name="tipo" class="form-control">
                                                             <option value="1">Apartamento</option>
                                                             <option value="2">Casa</option>
                                                             <option value="3">Terreno</option>
@@ -95,11 +97,11 @@
                                             <div class="row">
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
                                                     <div class="col-25">
-                                                        <label class="control-label" for="CPF">CPF</label>
+                                                        <label class="control-label" for="cpf">CPF</label>
                                                     </div>	
-                                                    <input type="text" name="CPF" id="CPF" class="form-control" placeholder="CPF">
+                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF">
                                                     <br>
-                                                    <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=buscaCliente&cpfCliente=' + document.getElementById('CPF').value">Buscar</a>							
+                                                    <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=buscaCliente&cpfCliente=' + document.getElementById('cpf').value">Buscar</a>							
                                                 </div>
 
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
@@ -113,14 +115,51 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-25">
-                                                            <label class="control-label" for="categoria">Status do Imóvel</label>
+                                                            <label class="control-label" for="situacao">Status do Imóvel</label>
                                                         </div>	
-                                                        <select id="Status" name="Status" class="form-control">
+                                                        <select id="situacao" name="situacao" class="form-control">
                                                             <option value="1">Livre</option>
                                                             <option value="2">Ocupado</option>
                                                         </select>
                                                     </div>
+													
                                                 </div>
+												<div class="row">
+													<div class="col-xs-4 col-sm-4 col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-25">
+                                                        <label class="control-label" for="valorVenda">Valor de venda*</label>
+                                                    </div>	
+                                                    <input type="text" name="valorVenda" id="valorVenda" class="form-control input-sm" placeholder="Valor">
+                                                </div>
+                                            </div>
+											<div class="col-xs-4 col-sm-4 col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-25">
+                                                        <label class="control-label" for="valorAluguel">Valor de aluguel*</label>
+                                                    </div>	
+                                                    <input type="text" name="valorAluguel" id="valorAluguel" class="form-control input-sm" placeholder="Valor">
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-25">
+                                                        <label class="control-label" for="condominio">Condomínio</label>
+                                                    </div>	
+                                                    <input type="text" name="condominio" id="condominio" class="form-control input-sm" placeholder="Condomínio">
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-25">
+                                                        <label class="control-label" for="iptu">IPTU</label>
+                                                    </div>	
+                                                    <input type="text" name="iptu" id="iptu" class="form-control input-sm" placeholder="IPTU">
+                                                </div>
+                                            </div>
+
+												</div>
+												
                                             </div>
                                         </div>
 
@@ -181,51 +220,58 @@
                                             <h3 class="panel-title">Dependencias</h3>
 
                                         </div>
-
-                                        <div class="col-xs-auto col-sm-auto col-md-3">
+                                        <div class="col-xs-auto col-sm-auto col-md-2">
                                             <div class="form-group">
                                                 <div class="col-25">
-                                                    <label class="control-label" for="Banheiros">Banheiros</label>
+                                                    <label class="control-label" for="quartos">Quartos</label>
                                                 </div>	
-                                                <input type="text" name="Banheiros" id="Banheiros" class="form-control input-sm" placeholder="Banheiros">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-auto col-sm-auto col-md-3">
-                                            <div class="form-group">
-                                                <div class="col-25">
-                                                    <label class="control-label" for="Suite">Suite</label>
-                                                </div>	
-                                                <input type="text" name="Suite" id="Suite" class="form-control input-sm" placeholder="Suite">
+                                                <input type="text" name="quartos" id="quartos" class="form-control input-sm" placeholder="Quartos">
                                             </div>
                                         </div>
 
-                                        <div class="col-xs-auto col-sm-auto col-md-3">
+                                        <div class="col-xs-auto col-sm-auto col-md-2">
                                             <div class="form-group">
                                                 <div class="col-25">
-                                                    <label class="control-label" for="Vagas">Vagas na Garagem</label>
+                                                    <label class="control-label" for="banheiros">Banheiros</label>
                                                 </div>	
-                                                <input type="text" name="Vagas" id="Vagas" class="form-control input-sm" placeholder="Vagas">
+                                                <input type="text" name="banheiros" id="banheiros" class="form-control input-sm" placeholder="banheiros">
                                             </div>
                                         </div>
-                                        <div class="col-xs-auto col-sm-auto col-md-3">
+                                        <div class="col-xs-auto col-sm-auto col-md-2">
                                             <div class="form-group">
                                                 <div class="col-25">
-                                                    <label class="control-label" for="Area_util">Área útil</label>
+                                                    <label class="control-label" for="suites">Suítes</label>
                                                 </div>	
-                                                <input type="text" name="Area_util" id="Area_util" class="form-control input-sm" placeholder="Área útil">
+                                                <input type="text" name="suites" id="suites" class="form-control input-sm" placeholder="Suítes">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-auto col-sm-auto col-md-2">
+                                            <div class="form-group">
+                                                <div class="col-25">
+                                                    <label class="control-label" for="vagasGaragem">Vagas na Garagem</label>
+                                                </div>	
+                                                <input type="text" name="vagasGaragem" id="vagasGaragem" class="form-control input-sm" placeholder="Vagas">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-auto col-sm-auto col-md-2">num
+                                            <div class="form-group">
+                                                <div class="col-25">
+                                                    <label class="control-label" for="areaUtil">Área útil</label>
+                                                </div>	
+                                                <input type="text" name="areaUtil" id="areaUtil" class="form-control input-sm" placeholder="Área útil">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-auto col-sm-auto col-md-2">
+                                            <div class="form-group">
+                                                <div class="col-25">
+                                                    <label class="control-label" for="areaTotal">Área total</label>
+                                                </div>	
+                                                <input type="text" name="areaTotal" id="areaTotal" class="form-control input-sm" placeholder="Área total">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-xs-auto col-sm-auto col-md-6">
-                                            <div class="form-group">
-                                                <div class="col-25">
-                                                    <label class="control-label" for="Area_total">Área total</label>
-                                                </div>	
-                                                <input type="text" name="Area_total" id="Area_total" class="form-control input-sm" placeholder="Área total">
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                     <hr>
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-6">								
@@ -239,9 +285,9 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <div class="col-25">
-                                                        <label class="control-label" for="CEP">CEP</label>
+                                                        <label class="control-label" for="cep">CEP</label>
                                                     </div>	
-                                                    <input type="text" name="CEP" id="CEP" class="form-control input-sm" placeholder="CEP">
+                                                    <input type="text" name="cep" id="cep" class="form-control input-sm" placeholder="CEP">
                                                     <br>
                                                     <button type="button" class="btn btn-info">Buscar</button>
                                                 </div>
@@ -250,18 +296,18 @@
                                             <div class="col-xs-auto col-sm-auto col-md-6">
                                                 <div class="form-group">
                                                     <div class="col-25">
-                                                        <label class="control-label" for="Rua">Rua</label>
+                                                        <label class="control-label" for="rua">Rua</label>
                                                     </div>	
-                                                    <input type="text" name="Rua" id="Rua" class="form-control input-sm" placeholder="Rua">
+                                                    <input type="text" name="rua" id="rua" class="form-control input-sm" placeholder="Rua">
                                                 </div>
                                             </div>
 
                                             <div class="col-xs-auto col-sm-auto col-md-6">
                                                 <div class="form-group">
                                                     <div class="col-25">
-                                                        <label class="control-label" for="Bairro">Bairro</label>
+                                                        <label class="control-label" for="bairro">Bairro</label>
                                                     </div>	
-                                                    <input type="text" name="Bairro" id="Bairro" class="form-control input-sm" placeholder="Bairro">
+                                                    <input type="text" name="bairro" id="bairro" class="form-control input-sm" placeholder="Bairro">
                                                 </div>
                                             </div>
                                         </div>
@@ -270,79 +316,41 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <div class="col-25">
-                                                        <label class="control-label" for="Número">Número</label>
+                                                        <label class="control-label" for="num">Número</label>
                                                     </div>	
-                                                    <input type="text" name="Numero" id="Numero" class="form-control input-sm" placeholder="Número">
+                                                    <input type="text" name="num" id="num" class="form-control input-sm" placeholder="Número">
                                                 </div>
                                             </div>
                                             <div class="col-xs-auto col-sm-auto col-md-6">
                                                 <div class="form-group">
                                                     <div class="col-25">
-                                                        <label class="control-label" for="Complemento">Complemento</label>
+                                                        <label class="control-label" for="complemento">Complemento</label>
                                                     </div>	
-                                                    <input type="text" name="Complemento" id="Complemento" class="form-control input-sm" placeholder="Complemento">
+                                                    <input type="text" name="complemento" id="complemento" class="form-control input-sm" placeholder="Complemento">
                                                 </div>
                                             </div>
 
                                             <div class="col-xs-auto col-sm-auto col-md-6">
                                                 <div class="form-group">
                                                     <div class="col-25">
-                                                        <label class="control-label" for="Cidade">Cidade</label>
+                                                        <label class="control-label" for="cidade">Cidade</label>
                                                     </div>	
-                                                    <input type="text" name="Cidade" id="Cidade" class="form-control input-sm" placeholder="Cidade">
+                                                    <input type="text" name="cidade" id="cidade" class="form-control input-sm" placeholder="Cidade">
                                                 </div>
                                             </div>
                                             <div class="col-xs-auto col-sm-auto col-md-6">
                                                 <div class="form-group">
                                                     <div class="col-25">
-                                                        <label class="control-label" for="UF">UF</label>
+                                                        <label class="control-label" for="uf">UF</label>
                                                     </div>	
-                                                    <input type="text" name="UF" id="UF" class="form-control input-sm" placeholder="UF">
+                                                    <input type="text" name="uf" id="uf" class="form-control input-sm" placeholder="UF">
                                                 </div>
                                             </div>
-
-
-
                                         </div>		
                                     </div>
                                     <hr>
-                                    <div class="row">
-                                        <div class="col-xs-auto col-sm-auto col-md-6">								
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title">Valores</h3>									
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-xs-auto col-sm-auto col-md6">
-                                            <div class="col-xs-4 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <div class="col-25">
-                                                        <label class="control-label" for="Valor">Valor*</label>
-                                                    </div>	
-                                                    <input type="text" name="Valor" id="Valor" class="form-control input-sm" placeholder="Valor">
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <div class="col-25">
-                                                        <label class="control-label" for="Condomínio">Condomínio</label>
-                                                    </div>	
-                                                    <input type="text" name="Condominio" id="Condominio" class="form-control input-sm" placeholder="Condomínio">
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <div class="col-25">
-                                                        <label class="control-label" for="IPTU">IPTU</label>
-                                                    </div>	
-                                                    <input type="text" name="IPTU" id="IPTU" class="form-control input-sm" placeholder="IPTU">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                                   
+                                    
                                     <div class="row">
                                         <br>
                                         <div class="col-xs-auto col-sm-auto col-md-6">
