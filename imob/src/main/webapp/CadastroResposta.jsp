@@ -2,6 +2,7 @@
 <%@page import="br.com.evolution.model.Usuario"%>
 <%@page import="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -32,6 +33,6 @@
         </div>
 
         <h1>Usuário <c:out value="${usuarioCadastrado.nome}" /> cadastrado com sucesso</h1>
-
+${msge}
     </body>
 </html>

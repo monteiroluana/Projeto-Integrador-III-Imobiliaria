@@ -72,7 +72,7 @@ public class ServletCliente extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
             request.setAttribute("clienteP", cliente);
             RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroImoveis.jsp");
             dispatcher.forward(request, response);

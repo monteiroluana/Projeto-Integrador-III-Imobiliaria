@@ -4,9 +4,11 @@
     Author     : I864970
 --%>
 
+<%@page import="br.com.evolution.model.Cliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,7 +27,7 @@
                 document.getElementById('bairro').value = ("");
                 document.getElementById('cidade').value = ("");
                 document.getElementById('uf').value = ("");
-                
+
             }
 
             function meu_callback(conteudo) {
@@ -35,7 +37,7 @@
                     document.getElementById('bairro').value = (conteudo.bairro);
                     document.getElementById('cidade').value = (conteudo.localidade);
                     document.getElementById('uf').value = (conteudo.uf);
-                    
+
                 } //end if.
                 else {
                     //CEP não Encontrado.
@@ -63,7 +65,7 @@
                         document.getElementById('bairro').value = "...";
                         document.getElementById('cidade').value = "...";
                         document.getElementById('uf').value = "...";
-                        
+
 
                         //Cria um elemento javascript.
                         var script = document.createElement('script');
@@ -88,8 +90,21 @@
             }
             ;
 
+            function pesquisaCliente() {
+                var cpf = document.getElementById('cpf').value;
+
+                //Verifica se o campo cpf possui algum valor
+                if (cpf != "") {
+                    document.location.href = "${pageContext.request.contextPath}/cliente?comando=buscaCliente&cpfCliente=" + cpf;
+                    document.getElementById('proprietario').value = ("${clienteP.nome}");
+
+                } else {
+                    alert("CPF inválido!");
+                }
+            }
+
         </script>
-		
+
     </head>
     <body>
         <div w3-include-html="menu.html"></div>
@@ -147,7 +162,7 @@
                                                         </div>	
                                                         <select id="categoria" name="categoria" class="form-control">
                                                             <option>Selecione</option>
-															<option>Residencial</option>
+                                                            <option>Residencial</option>
                                                             <option>Comercial</option>
                                                             <option>Rural</option>
                                                         </select>
@@ -159,7 +174,7 @@
                                                             <label class="control-label" for="tipo">Tipo do Imóvel</label>
                                                         </div>	
                                                         <select id="tipo" name="tipo" class="form-control">
-															<option>Selecione</option>
+                                                            <option>Selecione</option>
                                                             <option>Apartamento</option>
                                                             <option>Casa</option>
                                                             <option>Terreno</option>
@@ -174,9 +189,9 @@
                                                     <div class="col-25">
                                                         <label class="control-label" for="cpf">CPF</label>
                                                     </div>	
-                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" value="${clienteP.cpf}">
+                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF">
                                                     <br>
-                                                    <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=buscaCliente&cpfCliente=' + document.getElementById('cpf').value">Buscar</a>							
+                                                    <a href="#" class="btn btn-info" onclick="pesquisaCliente()">Buscar</a>							
                                                 </div>
 
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
@@ -184,8 +199,8 @@
                                                         <div class="col-25">
                                                             <label class="control-label" for="proprietario">Proprietário</label>
                                                         </div>	
-                                                        <input type="text" name="proprietário" id="proprietario" class="form-control input-sm" value="${clienteP.nome}">
-                                                        <input type="hidden" id="idCliente" name="idCliente" value="${clienteP.idCliente}">
+                                                        <input type="text" name="proprietário" id="proprietario" class="form-control input-sm">
+                                                       <!-- <input type="hidden" id="idCliente" name="idCliente" value="${clienteP.idCliente}">-->
 
                                                     </div>
                                                     <div class="form-group">
@@ -194,7 +209,7 @@
                                                         </div>	
                                                         <select id="situacao" name="situacao" class="form-control">
                                                             <option>Selecione</option>
-															<option value="livre">Livre</option>
+                                                            <option value="livre">Livre</option>
                                                             <option value="ocupado">Ocupado</option>
                                                         </select>
                                                     </div>
@@ -443,7 +458,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
+        </div>   
     </body>
 </html>
