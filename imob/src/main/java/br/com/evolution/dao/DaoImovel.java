@@ -13,18 +13,30 @@ import java.util.List;
 
 public class DaoImovel {
 
-    public List<Imovel> listar(String serv, String tip, String cid, double vendaInicial, double vendaFinal, 
-            double aluguelInicial, double aluguelFinal, String codImov)
+    public List<Imovel> listar(String codImov, String tip, String situ, double vendaInicial, double vendaFinal,
+            double aluguelInicial, double aluguelFinal, String serv, String est)
             throws ClassNotFoundException, SQLException {
 
         String sql = "SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE "
-                + "((UPPER(servico) LIKE UPPER(?) "
+                + "((UPPER(codImovel) LIKE UPPER(?) "
                 + "AND UPPER(tipo) LIKE UPPER(?) "
-                + "AND UPPER(cidade) LIKE UPPER(?) "
+                + "AND UPPER(situacao) LIKE UPPER(?) "
                 + "AND (valorVenda) BETWEEN (?) AND (?) "
                 + "OR (valorAluguel) BETWEEN (?) AND (?) "
-                + "AND UPPER(codImovel) LIKE UPPER(?) "
+                + "AND UPPER(servico) LIKE UPPER(?) "
+                + "AND UPPER(uf) LIKE UPPER(?)) "
                 + "AND enable=?)";
+        
+// ----TESTE MUDANDO A ORDEM DO SELECT----
+//SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE 
+//(((valorVenda) BETWEEN (0) AND (300000) 
+//OR (valorAluguel) BETWEEN (0) AND (null) 
+//AND UPPER(codImovel) LIKE UPPER(null) 
+//AND UPPER(tipo) LIKE UPPER(null) 
+//AND UPPER(situacao) LIKE UPPER(null) 
+//AND UPPER(servico) LIKE UPPER(null) 
+//AND UPPER(uf) LIKE UPPER(null)) 
+//AND enable=true);
 
         List<Imovel> lista = new ArrayList<Imovel>();
 
@@ -35,15 +47,16 @@ public class DaoImovel {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             //MUDAR/ADICIONAR OS CAMPOS
-            stmt.setString(1, "%" + serv + "%");
+            stmt.setString(1, "%" + codImov + "%");
             stmt.setString(2, "%" + tip + "%");
-            stmt.setString(3, "%" + cid + "%");
+            stmt.setString(3, "%" + situ + "%");
             stmt.setDouble(4, vendaInicial);
             stmt.setDouble(5, vendaFinal);
             stmt.setDouble(6, aluguelInicial);
             stmt.setDouble(7, aluguelFinal);
-            stmt.setString(8, "%" + codImov + "%");
-            stmt.setBoolean(9, true);
+            stmt.setString(8, "%" + serv + "%");
+            stmt.setString(9, "%" + est + "%");
+            stmt.setBoolean(10, true);
 
             //Armazenará os resultados do banco de dados
             ResultSet resultados = stmt.executeQuery();

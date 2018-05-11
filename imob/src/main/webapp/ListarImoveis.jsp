@@ -17,8 +17,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/styles.css">
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script>
-		
-
 
     </head>
     <body>
@@ -52,11 +50,14 @@
 
                                             <div id="custom-search-input">
                                                 <div class="input-group col-md-12">
-                                                    <input type="text" class="form-control input-sm" placeholder="digite o cód. de referência" />
+                                                    <input type="text" class="form-control input-sm" placeholder="digite o cód. do imóvel" id="codImovel" name="codImovel" />
                                                     <span class="input-group-btn">
-                                                        <button class="btn btn-info btn-sm" type="button" id="PesquisaNome">
+                                                        <!--<button class="btn btn-info btn-sm" type="button" id="PesquisaNome">
                                                             <i class="glyphicon glyphicon-search"></i>
-                                                        </button>
+                                                        </button>-->
+                                                        <a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista&codImov=' + document.getElementById('codImovel').value">
+                                                            <i class="glyphicon glyphicon-search"></i>
+                                                        </a>
                                                     </span>
                                                 </div>
                                             </div>
@@ -66,24 +67,24 @@
                                         <div class="col-xs-auto col-sm-auto col-md-2">
                                             <div class="form-group">
                                                 <div class="col-25">
-                                                    <label class="control-label" for="TipoImovel">Tipo do imóvel</label>
+                                                    <label class="control-label" for="tipo">Tipo do imóvel</label>
                                                 </div>	
-                                                <select id="TipoImovel" name="TipoImovel" class="form-control">
-                                                    <option value="1">Selecione</option>
-                                                    <option value="2">Casa</option>
-                                                    <option value="3">Apartamento</option>
+                                                <select id="tipo" name="tipo" class="form-control">
+                                                    <option value="">Selecione</option>
+                                                    <option value="casa">Casa</option>
+                                                    <option value="apartamento">Apartamento</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-2">
                                             <div class="form-group">
                                                 <div class="col-25">
-                                                    <label class="control-label" for="Status">Status do imóvel</label>
+                                                    <label class="control-label" for="situacao">Status do imóvel</label>
                                                 </div>	
-                                                <select id="Status" name="Status" class="form-control">
-                                                    <option value="1">Selecione</option>
-                                                    <option value="2">Livre</option>
-                                                    <option value="3">Ocupado</option>
+                                                <select id="situacao" name="situacao" class="form-control">
+                                                    <option value="">Selecione</option>
+                                                    <option value="livre">Livre</option>
+                                                    <option value="ocupado">Ocupado</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -92,76 +93,86 @@
                                                 <div class="col-25">
                                                     <label class="control-label" for="min">Faixa de preço</label>
                                                 </div>
-												<input type="text" name="min" id="min" class="form-control input-sm" placeholder="menor valor">
-											</div>
-										</div>
-										<div class="col-xs-auto col-sm-auto col-md-2">
-											<div class="form-group">
-												<div class="col-25">
-												<label for="pesquisar">&nbsp;</label>
-											</div>
-												<input type="text" name="max" id="max" class="form-control input-sm" placeholder="maior valor">
+                                                <input type="text" name="min" id="min" class="form-control input-sm" placeholder="menor valor">
                                             </div>
                                         </div>
-										<div class="col-xs-auto col-sm-auto col-md-2">
-											<div class="form-group">
-												<div class="col-25">
-													<label class="control-label" for="servico">Serviço</label>
-													<select id="servico" name="servico" class="form-control">
-														<option>Selecione</option>
-														<option>Venda</option>
-														<option>Locação</option>                                                    
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="col-xs-auto col-sm-auto col-md-1">
-											<div class="form-group">
-												<div class="col-25">
-													<label class="control-label" for="estado">UF</label>
-													<select id="estado" name="estado" class="form-control" style="width: auto">
-														<option>AC</option>
-														<option>AL</option>
-														<option>AP</option>
-														<option>AM</option>
-														<option>BA</option>
-														<option>CE</option>
-														<option>DF</option>
-														<option>ES</option>
-														<option>GO</option>
-														<option>MA</option>
-														<option>MT</option>
-														<option>MS</option>
-														<option>MG</option>
-														<option>PA</option>
-														<option>PB</option>
-														<option>PR</option>
-														<option>PE</option>
-														<option>PI</option>
-														<option>RJ</option>
-														<option>RN</option>
-														<option>RS</option>
-														<option>RO</option>
-														<option>RR</option>
-														<option>SC</option>
-														<option>SP</option>
-														<option>SE</option>
-														<option>TO</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="col-xs-auto col-sm-auto col-md-1">
-											<div class="col-25">
-												<label for="pesquisar">&nbsp;</label>
-											</div>
-											
-											<button class="btn btn-info btn-sm" type="button" id="pesquisar">
-												<i class="glyphicon glyphicon-search"></i>
-											</button>
-										
-										</div>
-											
+                                        <div class="col-xs-auto col-sm-auto col-md-2">
+                                            <div class="form-group">
+                                                <div class="col-25">
+                                                    <label for="pesquisar">&nbsp;</label>
+                                                </div>
+                                                <input type="text" name="max" id="max" class="form-control input-sm" placeholder="maior valor">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-auto col-sm-auto col-md-2">
+                                            <div class="form-group">
+                                                <div class="col-25">
+                                                    <label class="control-label" for="servico">Serviço</label>
+                                                    <select id="servico" name="servico" class="form-control">
+                                                        <option value="">Selecione</option>
+                                                        <option value="venda">Venda</option>
+                                                        <option value="locacao">Locação</option>                                                    
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-auto col-sm-auto col-md-1">
+                                            <div class="form-group">
+                                                <div class="col-25">
+                                                    <label class="control-label" for="uf">UF</label>
+                                                    <select id="uf" name="uf" class="form-control" style="width: auto">
+                                                        <option value="ac">AC</option>
+                                                        <option value="al">AL</option>
+                                                        <option value="ap">AP</option>
+                                                        <option value="am">AM</option>
+                                                        <option value="ba">BA</option>
+                                                        <option value="ce">CE</option>
+                                                        <option value="df">DF</option>
+                                                        <option value="es">ES</option>
+                                                        <option value="go">GO</option>
+                                                        <option value="ma">MA</option>
+                                                        <option value="mt">MT</option>
+                                                        <option value="ms">MS</option>
+                                                        <option value="mg">MG</option>
+                                                        <option value="pa">PA</option>
+                                                        <option value="pb">PB</option>
+                                                        <option value="pr">PR</option>
+                                                        <option value="pe">PE</option>
+                                                        <option value="pi">PI</option>
+                                                        <option value="rj">RJ</option>
+                                                        <option value="rn">RN</option>
+                                                        <option value="rs">RS</option>
+                                                        <option value="ro">RO</option>
+                                                        <option value="rr">RR</option>
+                                                        <option value="sc">SC</option>
+                                                        <option value="sp">SP</option>
+                                                        <option value="se">SE</option>
+                                                        <option value="to">TO</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-auto col-sm-auto col-md-1">
+                                            <div class="col-25">
+                                                <label for="pesquisar">&nbsp;</label>
+                                            </div>
+
+                                            <!--<button class="btn btn-info btn-sm" type="button" id="pesquisar">
+                                                <i class="glyphicon glyphicon-search"></i>
+                                            </button>-->
+
+                                            <span class="input-group-btn">
+                                                <a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista&codImov=' + document.getElementById('codImovel').value +
+                                                                '&tip=' + document.getElementById('tipo').value +
+                                                                '&situ=' + document.getElementById('situacao').value +
+                                                                '&vInicial=' + document.getElementById('min').value +
+                                                                '&vFinal=' + document.getElementById('max').value +
+                                                                '&serv=' + document.getElementById('servico').value +
+                                                                '&est=' + document.getElementById('uf').value">
+                                                    <i class="glyphicon glyphicon-search"></i>
+                                                </a>
+                                            </span>
+                                        </div>
                                     </div>
 
                                     <div class="row">
@@ -169,7 +180,7 @@
                                             <table class="table table-striped custab">
                                                 <thead>
                                                     <tr>
-                                                        <th>Cód. Ref</th>
+                                                        <th>Cód. Imóvel</th>
                                                         <th>Tipo do imóvel</th>
                                                         <th>Bairro</th>
                                                         <th>Cidade</th>

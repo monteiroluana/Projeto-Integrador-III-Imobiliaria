@@ -22,21 +22,38 @@ public class ServletImovel extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        System.out.println("chegou no servlet imovel");
         if (request.getParameter("comando").equals("lista")) {
             DaoImovel daoImovel = new DaoImovel();
             List<Imovel> lista = null;
-            
-            String serv = request.getParameter("departamento");
-            String tip = request.getParameter("grupoFilial");
-            String cid = request.getParameter("nome");
-            double vInicial = Double.parseDouble(request.getParameter("nome"));
-            double vFinal = Double.parseDouble(request.getParameter("nome"));
-            double aInicial = Double.parseDouble(request.getParameter("nome"));
-            double aFinal = Double.parseDouble(request.getParameter("nome"));
-            String codImov = request.getParameter("nome");
+
+            String codImov = request.getParameter("codImovel");
+            String tip = request.getParameter("tipo");
+            String situ = request.getParameter("situacao");
+            double vInicial = 0;
+            double vFinal = 300000;
+            double aInicial = 0;
+            double aFinal = 300000;
+            //double vInicial = Double.parseDouble(request.getParameter("min"));
+            //double vFinal = Double.parseDouble(request.getParameter("min"));
+            //double aInicial = Double.parseDouble(request.getParameter("max"));
+            //double aFinal = Double.parseDouble(request.getParameter("max"));
+            String serv = request.getParameter("servico");
+            String est = request.getParameter("uf");
+
+            System.out.println("MIN: " + request.getParameter("min"));
+            System.out.println("MAX: " + request.getParameter("max"));
+            System.out.println("codImov: " + codImov
+                    + "\ntip: " + tip
+                    + "\nvInicial: " + vInicial
+                    + "\nvFinal: " + vFinal
+                    + "\naInicial: " + aInicial
+                    + "\naFinal: " + aFinal
+                    + "\nserv: " + serv
+                    + "\nest: " + est);
 
             try {
-                lista = daoImovel.listar(serv,tip,cid,vInicial,vFinal,aInicial,aFinal,codImov);
+                lista = daoImovel.listar(codImov, tip, situ, vInicial, vFinal, aInicial, aFinal, serv, est);
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,7 +86,7 @@ public class ServletImovel extends HttpServlet {
             RequestDispatcher dispatcher
                     = request.getRequestDispatcher("CadastroResposta.jsp");
             dispatcher.forward(request, response);
-               
+
         }
     }
 
@@ -103,14 +120,14 @@ public class ServletImovel extends HttpServlet {
             imovel.setCondominio(Double.parseDouble(request.getParameter("condominio")));
             imovel.setSituacao(request.getParameter("situacao"));
             imovel.setServico(request.getParameter("servico"));
-            
+
             DaoImovel daoImovel = new DaoImovel();
 
             try {
                 daoImovel.inserir(imovel);
             } catch (SQLException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            }
 
             request.setAttribute("imovelCadastrado", imovel);
             RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroResposta.jsp");
