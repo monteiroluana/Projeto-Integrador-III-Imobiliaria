@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar clientes</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -30,7 +31,9 @@
         -->
     </head>
     <body>
+        
         <div w3-include-html="menu.html"></div>
+        
         <script>
             w3IncludeHTML();
         </script>
@@ -47,7 +50,7 @@
                                 <h3 class="panel-title">Consultar Clientes</h3>
                             </div>
                             <div class="panel-body">
-                                <form role="form">
+                                <!-- <form role="form"> -->
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <h3 class="panel-title">Filtrar busca</h3>
@@ -56,6 +59,7 @@
                                         <hr>
                                     </div>
                                     <div class="row">
+                                        
 
                                         <div class="col-xs-auto col-sm-auto col-md-4">
 
@@ -81,7 +85,8 @@
 
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-auto">
-                                            <table class="table table-striped custab">
+                                            
+                                           <table class="table table-striped custab">
                                                 <thead>
                                                     <tr>
                                                         <th>Nome</th>
@@ -93,33 +98,42 @@
                                                         <th>Telefone</th>
                                                         <th class="text-center">Opções</th>
                                                     </tr>
+                                                    
                                                 </thead>
-
+                                                </table>
                                                 <c:forEach items="${lista}" var="c">
+                                                    <form action="cliente" method="POST">
+                                                        <table>
                                                     <tr>
-                                                        <td><c:out value="${c.nome}" /></td>
-                                                        <td><c:out value="${c.cpf}" /></td>
-                                                        <td><c:out value="${c.rua}" /></td>
-                                                        <td><c:out value="${c.cidade}" /></td>
-                                                        <td><c:out value="${c.uf}" /></td>
-                                                        <td><c:out value="${c.email}" /></td>
-                                                        <td><c:out value="${c.telefone}" /></td>
+                                                    <input type="hidden" name="idCliente" id="idCliente" value="${c.idCliente}"/>
+                                                        <td id="nome"><c:out value="${c.nome}" /></td>
+                                                        <td id="cpf"><c:out value="${c.cpf}" /></td>
+                                                        <td id="rua"><c:out value="${c.rua}" /></td>
+                                                        <td id="cidade"><c:out value="${c.cidade}" /></td>
+                                                        <td id="uf"><c:out value="${c.uf}" /></td>
+                                                        <td id="email"><c:out value="${c.email}" /></td>
+                                                        <td id="telefone"><c:out value="${c.telefone}" /></td>
+                                                        <input type="hidden" name="comando" id="comando" value="listaEditar"/>
+                                                        
 
                                                         <td class="text-center">                                                            
                                                             <!-- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Editar</button> -->
                                                             <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Excluir</button> -->
-                                                            <a href="cliente?idCliente=${c.idCliente}&comando=listaEditar"class="btn btn-info btn-sm" target="_blank">Editar</a>
+                                                            <button type="submit" class="btn btn-danger btn-sm">Editar</button>
                                                             <a href="cliente?idCliente=${c.idCliente}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
+                                                            
                                                         </td>
                                                     </tr>
+                                                    </table>
+                                                    </form>
                                                 </c:forEach>
 
 
-                                            </table>
+                                            
 
                                         </div>
                                     </div>
-                                </form>
+                                <!-- </form> -->
                             </div>
                         </div>
                     </div>
@@ -136,6 +150,7 @@
                             <h4 class="modal-title">Dados do Cliente</h4>
                         </div>
                         <div class="modal-body">
+                            
                             <form role="form">
                                 <div class="row">
                                     <div class="col-xs-auto col-sm-auto col-md-4">
@@ -227,14 +242,19 @@
 
                                 </div>
                             </form>
+                            
                         </div>
+                        
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            
                         </div>
+                        
                     </div>
 
                 </div>
             </div><!--MODAL-EDITAR-->
+            
 
             <div id="removerModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
@@ -245,17 +265,23 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Confirmar exclusão</h4>
                         </div>
+                        
                         <div class="modal-body">
                             <p>Deseja realmente excluir o cliente e todas as suas informações?</p>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Excluir</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            
                         </div>
 
                     </div>
 
                 </div>
+                
             </div><!--CONFIRMAR-EXCLUSÃO-->
+            
         </div> <!-- MAIN -->
+        
+        
 
 
         <!--

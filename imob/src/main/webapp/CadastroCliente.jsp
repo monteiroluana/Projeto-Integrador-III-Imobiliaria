@@ -74,7 +74,7 @@
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-2">
                                             <label for="número" class="control-label">Número</label>
-                                            <input type="text" name="número" id="número" class="form-control input-sm">
+                                            <input type="text" name="num" id="num" class="form-control input-sm">
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-3">
                                             <label for="complemento" class="control-label">Complemento</label>
@@ -92,7 +92,7 @@
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="estado" class="control-label">Estado</label>
-                                            <input type="text" name="estado" id="estado" class="form-control input-sm">
+                                            <input type="text" name="uf" id="uf" class="form-control input-sm">
                                         </div>
                                     </div>
 

@@ -199,12 +199,12 @@ public class DaoCliente {
                 cli.setIdCliente(res.getInt("idCliente"));
                 cli.setCpf(res.getString("cpf"));
                 cli.setNome(res.getString("nome"));
-                cli.setDataNasc(res.getString("dataNasc"));
+                cli.setDataNasc(res.getString("dataNasc"));                
+                System.out.println(cli.getDataNasc());
                 cli.setSexo(res.getString("sexo"));
                 cli.setTelefone(res.getString("telefone"));
                 cli.setCelular(res.getString("celular"));
                 cli.setEmail(res.getString("email"));
-
                 cli.setCep(res.getString("cep"));
                 cli.setRua(res.getString("rua"));
                 cli.setBairro(res.getString("bairro"));
