@@ -107,7 +107,6 @@ public class ServletUsuario extends HttpServlet {
             usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
             usuario.setNome(request.getParameter("nome"));
             usuario.setLogin(request.getParameter("login"));
-            usuario.setSenha(request.getParameter("senha"));
             usuario.setEmail(request.getParameter("email"));
             usuario.setGrupoFilial(request.getParameter("grupoFilial"));
             usuario.setDepartamento(request.getParameter("departamento"));

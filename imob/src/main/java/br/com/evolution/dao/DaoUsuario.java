@@ -38,7 +38,6 @@ public class DaoUsuario {
                 String nome = resultados.getString("nome");
                 String email = resultados.getString("email");
                 String login = resultados.getString("login");
-                String senha = resultados.getString("senha");
                 String grupoFilial = resultados.getString("grupoFilial");
                 String departamento = resultados.getString("departamento");
                 String cargo = resultados.getString("cargo");
@@ -48,7 +47,6 @@ public class DaoUsuario {
                 user.setNome(nome);
                 user.setEmail(email);
                 user.setLogin(login);
-                user.setSenha(senha);
                 user.setGrupoFilial(grupoFilial);
                 user.setDepartamento(departamento);
                 user.setCargo(cargo);
@@ -95,7 +93,7 @@ public class DaoUsuario {
     public void editar(Usuario usuario) throws SQLException {
 
         String sql = "UPDATE imobiliariadbTESTE.USUARIO SET "
-                + "nome=?,login=?,senha=?,email=?,grupoFilial=?,departamento=?,cargo=? WHERE idUsuario=?";
+                + "nome=?,login=?,email=?,grupoFilial=?,departamento=?,cargo=? WHERE idUsuario=?";
         Connection conn = null;
 
         try {
@@ -104,12 +102,11 @@ public class DaoUsuario {
 
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getLogin());
-            stmt.setString(3, usuario.getSenha());
-            stmt.setString(4, usuario.getEmail());
-            stmt.setString(5, usuario.getGrupoFilial());
-            stmt.setString(6, usuario.getDepartamento());
-            stmt.setString(7, usuario.getCargo());
-            stmt.setInt(8, usuario.getIdUsuario());
+            stmt.setString(3, usuario.getEmail());
+            stmt.setString(4, usuario.getGrupoFilial());
+            stmt.setString(5, usuario.getDepartamento());
+            stmt.setString(6, usuario.getCargo());
+            stmt.setInt(7, usuario.getIdUsuario());
             stmt.execute();
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -163,7 +160,6 @@ public class DaoUsuario {
                 user.setNome(res.getString("nome"));
                 user.setEmail(res.getString("email"));
                 user.setLogin(res.getString("login"));
-                user.setSenha(res.getString("senha"));
                 user.setGrupoFilial(res.getString("grupoFilial"));
                 user.setDepartamento(res.getString("departamento"));
                 user.setCargo(res.getString("cargo"));
@@ -180,7 +176,7 @@ public class DaoUsuario {
         
         Usuario user = null;
         Connection conn;
-        String sql = "select * from usuario where login = ? and senha = ?";
+        String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE login=? AND senha=? AND enable=?";
         
         try{
             conn = Conexao.obterConexao();
@@ -188,7 +184,9 @@ public class DaoUsuario {
             
             stmt.setString(1,usuario.getLogin());
             stmt.setString(2, usuario.getSenha());
+            stmt.setBoolean(3, true);
             ResultSet res = stmt.executeQuery();
+            
             if(res.next()){
             user = new Usuario();
             user.setSenha(res.getString("senha"));

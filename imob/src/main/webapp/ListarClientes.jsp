@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar clientes</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -31,9 +31,9 @@
         -->
     </head>
     <body>
-        
+
         <div w3-include-html="menu.html"></div>
-        
+
         <script>
             w3IncludeHTML();
         </script>
@@ -51,88 +51,84 @@
                             </div>
                             <div class="panel-body">
                                 <!-- <form role="form"> -->
-                                    <div class="row">
-                                        <div class="col-xs-auto col-sm-auto col-md-4">
-                                            <h3 class="panel-title">Filtrar busca</h3>
+                                <div class="row">
+                                    <div class="col-xs-auto col-sm-auto col-md-4">
+                                        <h3 class="panel-title">Filtrar busca</h3>
 
-                                        </div>
-                                        <hr>
                                     </div>
-                                    <div class="row">
-                                        
+                                    <hr>
+                                </div>
+                                <div class="row">
 
-                                        <div class="col-xs-auto col-sm-auto col-md-4">
 
-                                            <div id="custom-search-input">
-                                                <div class="input-group col-md-12">
-                                                    <input type="text" class="form-control input-sm" placeholder="insira nome ou CPF" id="pesquisa" name="pesquisa"/>
-                                                    <span class="input-group-btn">
+                                    <div class="col-xs-auto col-sm-auto col-md-4">
 
-                                                        <!--<button class="btn btn-info btn-sm" type="button" id="PesquisaNome">
-                                                            <i class="glyphicon glyphicon-search"></i>
-                                                            
-                                                        </button>-->
+                                        <div id="custom-search-input">
+                                            <div class="input-group col-md-12">
+                                                <input type="text" class="form-control input-sm" placeholder="insira nome ou CPF" id="pesquisa" name="pesquisa"/>
+                                                <span class="input-group-btn">
 
-                                                        <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=lista&pesquisa=' + document.getElementById('pesquisa').value">
-                                                            <i class="glyphicon glyphicon-search"></i>
-                                                        </a>
+                                                    <!--<button class="btn btn-info btn-sm" type="button" id="PesquisaNome">
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                        
+                                                    </button>-->
 
-                                                    </span>
-                                                </div>
+                                                    <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=lista&pesquisa=' + document.getElementById('pesquisa').value">
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                    </a>
+
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="row">
-                                        <div class="col-xs-auto col-sm-auto col-md-auto">
-                                            
-                                           <table class="table table-striped custab">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nome</th>
-                                                        <th>CPF</th>
-                                                        <th>Endereço</th>
-                                                        <th>Cidade</th>
-                                                        <th>UF</th>
-                                                        <th>Email</th>
-                                                        <th>Telefone</th>
-                                                        <th class="text-center">Opções</th>
-                                                    </tr>
-                                                    
-                                                </thead>
-                                                </table>
-                                                <c:forEach items="${lista}" var="c">
-                                                    <form action="cliente" method="POST">
-                                                        <table>
+                                <div class="row">
+                                    <div class="col-xs-auto col-sm-auto col-md-auto">
+
+                                        <table class="table table-striped custab">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nome</th>
+                                                    <th>CPF</th>
+                                                    <th>Endereço</th>
+                                                    <th>Cidade</th>
+                                                    <th>UF</th>
+                                                    <th>Email</th>
+                                                    <th>Telefone</th>
+                                                    <th class="text-center">Opções</th>
+                                                </tr>
+
+                                            </thead>
+                                        </table>
+                                        <c:forEach items="${lista}" var="c">
+                                            <form action="cliente" method="POST">
+                                                <table>
                                                     <tr>
                                                     <input type="hidden" name="idCliente" id="idCliente" value="${c.idCliente}"/>
-                                                        <td id="nome"><c:out value="${c.nome}" /></td>
-                                                        <td id="cpf"><c:out value="${c.cpf}" /></td>
-                                                        <td id="rua"><c:out value="${c.rua}" /></td>
-                                                        <td id="cidade"><c:out value="${c.cidade}" /></td>
-                                                        <td id="uf"><c:out value="${c.uf}" /></td>
-                                                        <td id="email"><c:out value="${c.email}" /></td>
-                                                        <td id="telefone"><c:out value="${c.telefone}" /></td>
-                                                        <input type="hidden" name="comando" id="comando" value="listaEditar"/>
-                                                        
+                                                    <td id="nome"><c:out value="${c.nome}" /></td>
+                                                    <td id="cpf"><c:out value="${c.cpf}" /></td>
+                                                    <td id="rua"><c:out value="${c.rua}" /></td>
+                                                    <td id="cidade"><c:out value="${c.cidade}" /></td>
+                                                    <td id="uf"><c:out value="${c.uf}" /></td>
+                                                    <td id="email"><c:out value="${c.email}" /></td>
+                                                    <td id="telefone"><c:out value="${c.telefone}" /></td>
+                                                    <input type="hidden" name="comando" id="comando" value="listaEditar"/>
 
-                                                        <td class="text-center">                                                            
-                                                            <!-- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Editar</button> -->
-                                                            <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Excluir</button> -->
-                                                            <button type="submit" class="btn btn-danger btn-sm">Editar</button>
-                                                            <a href="cliente?idCliente=${c.idCliente}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
-                                                            
-                                                        </td>
+                                                    <td class="text-center">                                                            
+                                                        <!-- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Editar</button> -->
+                                                        <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Excluir</button> -->
+                                                        <button type="submit" class="btn btn-info btn-sm">Editar</button>                                                        
+                                                        <a href="cliente?idCliente=${c.idCliente}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
+
+                                                    </td>
                                                     </tr>
-                                                    </table>
-                                                    </form>
-                                                </c:forEach>
+                                                </table>
+                                            </form>
+                                        </c:forEach>
 
-
-                                            
-
-                                        </div>
                                     </div>
+                                </div>
                                 <!-- </form> -->
                             </div>
                         </div>
@@ -150,7 +146,7 @@
                             <h4 class="modal-title">Dados do Cliente</h4>
                         </div>
                         <div class="modal-body">
-                            
+
                             <form role="form">
                                 <div class="row">
                                     <div class="col-xs-auto col-sm-auto col-md-4">
@@ -242,19 +238,19 @@
 
                                 </div>
                             </form>
-                            
+
                         </div>
-                        
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            
+
                         </div>
-                        
+
                     </div>
 
                 </div>
             </div><!--MODAL-EDITAR-->
-            
+
 
             <div id="removerModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
@@ -265,23 +261,22 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Confirmar exclusão</h4>
                         </div>
-                        
+
                         <div class="modal-body">
                             <p>Deseja realmente excluir o cliente e todas as suas informações?</p>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Excluir</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            
+
                         </div>
 
                     </div>
 
                 </div>
-                
+
             </div><!--CONFIRMAR-EXCLUSÃO-->
-            
+
         </div> <!-- MAIN -->
-        
-        
+
 
 
         <!--

@@ -26,7 +26,7 @@ public class ServletCliente extends HttpServlet {
             DaoCliente daoCliente = new DaoCliente();
             List<Cliente> lista = null;
             String valor = request.getParameter("pesquisa");
-            
+
             try {
                 lista = daoCliente.procurarCliente(valor);
 
@@ -40,7 +40,24 @@ public class ServletCliente extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("ListarClientes.jsp");
             dispatcher.forward(request, response);
 
-        }  else if (request.getParameter("comando").equals("excluir")) {
+        } else if (request.getParameter("comando").equals("buscaCliente")) {
+            DaoCliente daoCliente = new DaoCliente();
+            String cpf = request.getParameter("cpfCliente");
+            Cliente cliente = null;
+
+            try {
+                cliente = daoCliente.buscarPorCpf(cpf);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            request.setAttribute("clienteP", cliente);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroImoveis.jsp");
+            dispatcher.forward(request, response);
+
+        } else if (request.getParameter("comando").equals("excluir")) {
             //ATUALIZANDO NO BANCO
             DaoCliente daoCliente = new DaoCliente();
 
@@ -56,23 +73,6 @@ public class ServletCliente extends HttpServlet {
             RequestDispatcher dispatcher
                     = request.getRequestDispatcher("CadastroResposta.jsp");
             dispatcher.forward(request, response);
-        } else if (request.getParameter("comando").equals("buscaCliente")) {
-            DaoCliente daoCliente = new DaoCliente();
-            String cpf = request.getParameter("cpfCliente");
-            Cliente cliente = null;
-
-            try {
-                cliente = daoCliente.buscarPorCpf(cpf);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            request.setAttribute("clienteP", cliente);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroImoveis.jsp");
-            dispatcher.forward(request, response);
-
         }
 
     }
@@ -82,10 +82,6 @@ public class ServletCliente extends HttpServlet {
             throws ServletException, IOException {
 
         //ifs para definir qual ação o servlet vai tomar
-        
-        if(request.getParameter("comando") == null){
-            System.out.println("Ta nulo");
-        }
         if (request.getParameter("comando").equals("cadastrar")) {
             //Pegando as informações que estão sendo passadas pelo formulario
             Cliente cliente = new Cliente();
@@ -150,16 +146,14 @@ public class ServletCliente extends HttpServlet {
             request.setAttribute("clienteCadastrado", cliente);
             RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroResposta.jsp");
             dispatcher.forward(request, response);
-        }
-        
-        else if (request.getParameter("comando").equals("listaEditar")) {
-            
+        } else if (request.getParameter("comando").equals("listaEditar")) {
+
             Cliente cliente = new Cliente();
-            
+
             cliente.setIdCliente(Integer.parseInt(request.getParameter("idCliente")));
-            
+
             DaoCliente daoCliente = new DaoCliente();
-            
+
             try {
                 cliente = daoCliente.buscar(cliente);
             } catch (ClassNotFoundException ex) {
@@ -167,7 +161,7 @@ public class ServletCliente extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             request.setAttribute("cliente", cliente);
             RequestDispatcher dispatcher = request.getRequestDispatcher("EditarCliente.jsp");
             dispatcher.forward(request, response);
