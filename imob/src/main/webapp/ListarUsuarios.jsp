@@ -273,7 +273,7 @@
             </div><!--CONFIRMAR-EXCLUSÃO-->
 
         </div> <!-- MAIN -->
-
+${msg}
         <!-- 
         <h1 style="text-align: center">Lista de Usuários</h1>
         <hr>
