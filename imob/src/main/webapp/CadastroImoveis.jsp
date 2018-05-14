@@ -20,9 +20,7 @@
         <link rel="stylesheet" href="css/styles.css">
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script><!--includeHTML-->
         <script type="text/javascript" >
-
-            
-            
+        
             function limpa_formulário_cep() {
             //Limpa valores do formulário de cep.
             document.getElementById('rua').value = ("");
@@ -82,17 +80,7 @@
             }
             }
             ;
-            function pesquisaCliente() {
-            var cpf = document.getElementById('cpf').value;
-            //Verifica se o campo cpf possui algum valor
-            if (cpf != "") {
-            document.location.href = "${pageContext.request.contextPath}/cliente?comando=buscaCliente&cpfCliente=" + cpf;
-            document.getElementById('proprietario').value = ("${clienteP.nome}");
-            } else {
-            alert("CPF inválido!");
-            }
-            }
-
+         
         </script>
 
     </head>
@@ -114,7 +102,7 @@
                                 <h3 class="panel-title">Cadastro de Imóveis</h3>
                             </div>
                             <div class="panel-body">
-                                <form role="form"  method="POST">
+                                <form role="form" action="imovel" method="POST">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="row">
@@ -179,9 +167,10 @@
                                                     <div class="col-25">
                                                         <label class="control-label" for="cpf">CPF</label>
                                                     </div>	
-                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF">
+                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" value="${clienteP.cpf}">
                                                     <br>
-                                                    <a href="#" class="btn btn-info" onclick="pesquisaCliente()">Buscar</a>							
+                                                    <!-- Buscando os dados do proprietário no 'ServletCliente'-->
+                                                    <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=buscaCliente&cpfCliente=' + document.getElementById('cpf').value">Buscar</a>							
                                                 </div>
 
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
@@ -189,8 +178,8 @@
                                                         <div class="col-25">
                                                             <label class="control-label" for="proprietario">Proprietário</label>
                                                         </div>	
-                                                        <input type="text" name="proprietário" id="proprietario" class="form-control input-sm">
-                                                       <!-- <input type="hidden" id="idCliente" name="idCliente" value="${clienteP.idCliente}">-->
+                                                        <input type="text" name="proprietário" id="proprietario" class="form-control input-sm" value="${clienteP.nome}">
+                                                        <input type="hidden" id="idCliente" name="idCliente" value="${clienteP.idCliente}">
 
                                                     </div>
                                                     <div class="form-group">

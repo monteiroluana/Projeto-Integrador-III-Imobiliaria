@@ -17,7 +17,7 @@ public class DaoImovel {
             double aluguelInicial, double aluguelFinal, String serv, String est)
             throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE "
+       /* String sql = "SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE "
                 + "((UPPER(codImovel) LIKE UPPER(?) "
                 + "AND UPPER(tipo) LIKE UPPER(?) "
                 + "AND UPPER(situacao) LIKE UPPER(?) "
@@ -25,8 +25,10 @@ public class DaoImovel {
                 + "OR (valorAluguel) BETWEEN (?) AND (?) "
                 + "AND UPPER(servico) LIKE UPPER(?) "
                 + "AND UPPER(uf) LIKE UPPER(?)) "
-                + "AND enable=?)";
-        
+                + "AND enable=?)"; */
+        String sql = "SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE enable=?";
+ 
+       
 // ----TESTE MUDANDO A ORDEM DO SELECT----
 //SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE 
 //(((valorVenda) BETWEEN (0) AND (300000) 
@@ -47,16 +49,16 @@ public class DaoImovel {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             //MUDAR/ADICIONAR OS CAMPOS
-            stmt.setString(1, "%" + codImov + "%");
-            stmt.setString(2, "%" + tip + "%");
-            stmt.setString(3, "%" + situ + "%");
-            stmt.setDouble(4, vendaInicial);
-            stmt.setDouble(5, vendaFinal);
-            stmt.setDouble(6, aluguelInicial);
-            stmt.setDouble(7, aluguelFinal);
-            stmt.setString(8, "%" + serv + "%");
-            stmt.setString(9, "%" + est + "%");
-            stmt.setBoolean(10, true);
+//            stmt.setString(1, "%" + codImov + "%");
+//            stmt.setString(2, "%" + tip + "%");
+//            stmt.setString(3, "%" + situ + "%");
+//            stmt.setDouble(4, vendaInicial);
+//            stmt.setDouble(5, vendaFinal);
+//            stmt.setDouble(6, aluguelInicial);
+//            stmt.setDouble(7, aluguelFinal);
+//            stmt.setString(8, "%" + serv + "%");
+//            stmt.setString(9, "%" + est + "%");
+            stmt.setBoolean(1, true);
 
             //Armazenará os resultados do banco de dados
             ResultSet resultados = stmt.executeQuery();
@@ -94,7 +96,7 @@ public class DaoImovel {
 
                 String situacao = resultados.getString("situacao");
                 String servico = resultados.getString("servico");
-
+            
                 Imovel imov = new Imovel();
                 imov.setIdImovel(id);
                 imov.setIdCliente(idCliente);
@@ -128,7 +130,7 @@ public class DaoImovel {
 
                 imov.setSituacao(situacao);
                 imov.setServico(servico);
-
+              
                 lista.add(imov);
             }
         } catch (ClassNotFoundException | SQLException ex) {
@@ -142,9 +144,9 @@ public class DaoImovel {
 
     public void inserir(Imovel imovel) throws SQLException {
 
-        String sql = "INSERT INTO imobiliariadbTESTE.IMOVEL (idCliente,dataCad,categoria,tipo,quartos,banheiros,suites,vagasGaragem,areaUtil,areaTotal,"
-                + "informacao,cep,rua,num,complemento,bairro,cidade,uf,valorVenda,valorAluguel,condominio,iptu,situacao,servico,enable) "
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+         String sql = "INSERT INTO imobiliariadbTESTE.IMOVEL (idCliente,dataCad,categoria,tipo,quartos,banheiros,suites,vagasGaragem,areaUtil,areaTotal,"
+                + "informacao,cep,rua,num,complemento,bairro,cidade,uf,valorVenda,valorAluguel,condominio,iptu,situacao,servico,codImovel,enable) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
 
         try {
@@ -176,7 +178,8 @@ public class DaoImovel {
             stmt.setDouble(22, imovel.getIptu());
             stmt.setString(23, imovel.getSituacao());
             stmt.setString(24, imovel.getServico());
-            stmt.setBoolean(25, true);
+            stmt.setString(25, imovel.getCodImovel());
+            stmt.setBoolean(26, true);
             stmt.execute();
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -193,7 +196,7 @@ public class DaoImovel {
         String sql = "UPDATE imobiliariadbTESTE.IMOVEL SET "
                 + "categoria=?,tipo=?,quartos=?,banheiros=?,suites=?,vagasGaragem=?,areaUtil=?,areaTotal=?,"
                 + "informacao=?,cep=?,rua=?,num=?,complemento=?,bairro=?,cidade=?,uf=?,"
-                + "valorVenda=?,valorAluguel=?,condominio=?,iptu=?,situacao=?,servico=? "
+                + "valorVenda=?,valorAluguel=?,condominio=?,iptu=?,situacao=?,servico=?,codImovel=? "
                 + "WHERE idImovel=?";
         Connection conn = null;
 
@@ -223,7 +226,8 @@ public class DaoImovel {
             stmt.setDouble(20, imovel.getIptu());
             stmt.setString(21, imovel.getSituacao());
             stmt.setString(22, imovel.getServico());
-            stmt.setInt(23, imovel.getIdImovel());
+            stmt.setString(23,imovel.getCodImovel());
+            stmt.setInt(24, imovel.getIdImovel());
             stmt.execute();
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -302,6 +306,7 @@ public class DaoImovel {
                 imov.setIptu(res.getDouble("iptu"));
                 imov.setSituacao(res.getString("situacao"));
                 imov.setServico(res.getString("servico"));
+                imov.setCodImovel(res.getString("codImovel"));
             }
 
         } catch (ClassNotFoundException | SQLException ex) {

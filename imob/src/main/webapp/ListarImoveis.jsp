@@ -171,6 +171,10 @@
                                                                 '&est=' + document.getElementById('uf').value">
                                                     <i class="glyphicon glyphicon-search"></i>
                                                 </a>
+                                              
+                                              <!--<a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista'">
+                                                  <i class="glyphicon glyphicon-search"></i>
+                                              </a>-->
                                             </span>
                                         </div>
                                     </div>
@@ -206,6 +210,7 @@
                                                         <a href="imovel?idImovel=${i.idImovel}&comando=listaEditar"class="btn btn-info btn-sm" target="_blank">Editar</a>
                                                         <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button> -->
                                                         <a href="imovel?idImovel=${i.idImovel}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
+                                                        <a href="imovel?tipoImovel=${i.tipo}&comando=contrato" class="btn btn-warning btn-sm">Contrato</a>
                                                     </td>
                                                     </tr>
 

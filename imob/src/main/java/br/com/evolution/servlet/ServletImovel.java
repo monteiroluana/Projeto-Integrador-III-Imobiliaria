@@ -22,7 +22,6 @@ public class ServletImovel extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        System.out.println("chegou no servlet imovel");
         if (request.getParameter("comando").equals("lista")) {
             DaoImovel daoImovel = new DaoImovel();
             List<Imovel> lista = null;
@@ -97,6 +96,7 @@ public class ServletImovel extends HttpServlet {
             //Pegando as informações que estão sendo passadas pelo formulario
             Imovel imovel = new Imovel();
 
+            imovel.setIdCliente(Integer.parseInt(request.getParameter("idCliente")));
             imovel.setDataCad(request.getParameter("dataCad"));
             imovel.setCategoria(request.getParameter("categoria"));
             imovel.setTipo(request.getParameter("tipo"));
@@ -120,11 +120,13 @@ public class ServletImovel extends HttpServlet {
             imovel.setCondominio(Double.parseDouble(request.getParameter("condominio")));
             imovel.setSituacao(request.getParameter("situacao"));
             imovel.setServico(request.getParameter("servico"));
+            imovel.setCodImovel("000111222");
 
             DaoImovel daoImovel = new DaoImovel();
 
             try {
                 daoImovel.inserir(imovel);
+                System.out.println("chegou no servlet imovel para cadastrar o imovel");
             } catch (SQLException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -160,6 +162,7 @@ public class ServletImovel extends HttpServlet {
             imovel.setCondominio(Double.parseDouble(request.getParameter("condominio")));
             imovel.setSituacao(request.getParameter("situacao"));
             imovel.setServico(request.getParameter("servico"));
+            imovel.setCodImovel(request.getParameter("codImovel"));
 
             DaoImovel daoImovel = new DaoImovel();
 
