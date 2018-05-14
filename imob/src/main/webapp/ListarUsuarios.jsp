@@ -106,23 +106,25 @@
                                                     <th>Cargo</th>
                                                     <th>Filial</th>
                                                     <th>Login</th>
+                                                    <th>Email</th>
                                                     <th class="text-center">Opções</th>
                                                 </tr>
                                             </thead>
-                                        </table>
+                                      
                                         <c:forEach items="${lista}" var="u">
                                             <!-- <form action="usuario?nome=${u.nome}&dpto=${u.departamento}&cargo=${u.cargo}&gf=${u.grupoFilial}&email=${u.email}&idUsuario=${u.idUsuario}&comando=listaEditar" method="GET"> -->
                                             <form action="usuario" method="POST">
-                                                <table>
+                                               
                                                     <tr>
-                                                    <input style="display: none" value="${u.idUsuario}"/> 
-                                                    <td><c:out value="${u.nome}"/></td>
-                                                    <td><c:out value="${u.departamento}" /></td>
-                                                    <td><c:out value="${u.cargo}" /></td>
-                                                    <td><c:out value="${u.grupoFilial}" /></td>
-                                                    <td><c:out value="${u.login}" /></td>
-                                                    <td><c:out value="${u.email}" /></td>
-                                                    <input style="display: none" value="editar"/> 
+                                                    <!--<input style="display: none" value="${u.idUsuario}"/> -->
+                                                    <input type="hidden" name="idUsuario" id="idUsuario" value="${u.idUsuario}"/>
+                                                    <td id="nome"><c:out value="${u.nome}"/></td>
+                                                    <td id="departamento"><c:out value="${u.departamento}" /></td>
+                                                    <td id="cargo"><c:out value="${u.cargo}" /></td>
+                                                    <td id="grupoFilial"><c:out value="${u.grupoFilial}" /></td>
+                                                    <td id="login"><c:out value="${u.login}" /></td>
+                                                    <td id="email"><c:out value="${u.email}" /></td>
+                                                    <input type="hidden" name="comando" id="comando" value="listaEditar"/>
 
 
                                                     <td class="text-center">
@@ -131,11 +133,11 @@
                                                         <a href="usuario?idUsuario=${u.idUsuario}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
                                                     </td>
                                                     </tr>
-                                                </table>
+                                                
                                             </form>
                                             <!-- </form> -->
                                         </c:forEach>                                           
-                                        <!--  </table> -->
+                                       </table>
                                     </div>
                                 </div>
                                 <!-- </form> -->

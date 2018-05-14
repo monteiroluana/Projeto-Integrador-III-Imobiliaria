@@ -45,7 +45,7 @@
                             <div class="row">
                                 <div class="col-xs-auto col-sm-auto col-md-4">
                                     <label for="nome" class="control-label">Nome*</label>
-                                    <input type="text" name="nome" id="nome" class="form-control input-sm" placeholder="Nome Completo" value=<%=request.getParameter("nome")%>>
+                                    <input type="text" name="nome" id="nome" class="form-control input-sm" placeholder="Nome Completo" value="${usuario.nome}">
                                 </div>
                                 <div class="col-xs-auto col-sm-auto col-md-2">
                                     <div class="form-group">
@@ -102,15 +102,15 @@
                             <div class="row">
                                 <div class="col-xs-auto col-sm-auto col-md-4">
                                     <label for="login" class="control-label">Login*</label>
-                                    <input type="text" name="login" id="login" class="form-control input-sm" placeholder="Login" value="<%=request.getParameter("login")%>">
+                                    <input type="text" name="login" id="login" class="form-control input-sm" placeholder="Login" value="${usuario.login}">
                                 </div>                                        
                                 <div class="col-xs-auto col-sm-auto col-md-4">
                                     <label for="email" class="control-label">Email</label>
-                                    <input type="text" name="email" id="email" class="form-control input-sm" placeholder="email" value="<%=request.getParameter("email")%>">
+                                    <input type="text" name="email" id="email" class="form-control input-sm" placeholder="email" value="${usuario.email}">
                                     <!-- input escondido que passa o comando para o servlet 
                                     (Deve ter um forma mais simples de fazer isso)-->
                                     <input type="hidden" name="comando" id="comando" value="editar">
-                                    <input type="hidden" id="idUsuario" name="idUsuario" value="<%=request.getParameter("idUsuario")%>">
+                                    <input type="hidden" id="idUsuario" name="idUsuario" value="${usuario.idUsuario}">
 
                                 </div>
                             </div>
@@ -128,9 +128,7 @@
                     </div>
                 </div>
             </div>
-
         </div>	
     </div>
-</div>
 </body>
 </html>

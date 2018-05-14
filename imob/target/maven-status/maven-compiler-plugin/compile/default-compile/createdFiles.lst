@@ -1,12 +1,12 @@
 br\com\evolution\dao\DaoUsuario.class
 br\com\evolution\servlet\ServletUsuario.class
 br\com\evolution\servlet\autenticador.class
+br\com\evolution\model\Cliente.class
+br\com\evolution\conexao\Conexao.class
 br\com\evolution\dao\DaoCliente.class
 br\com\evolution\servlet\ServletCliente.class
 br\com\evolution\model\Usuario.class
 br\com\evolution\dao\DaoImovel.class
 br\com\evolution\servlet\ServletImovel.class
-br\com\evolution\model\Cliente.class
 br\com\evolution\filtro\filtroPaginas.class
 br\com\evolution\model\Imovel.class
-br\com\evolution\conexao\Conexao.class

@@ -100,32 +100,33 @@
                                                 </tr>
 
                                             </thead>
-                                        </table>
+                                        
                                         <c:forEach items="${lista}" var="c">
                                             <form action="cliente" method="POST">
-                                                <table>
-                                                    <tr>
-                                                    <input type="hidden" name="idCliente" id="idCliente" value="${c.idCliente}"/>
-                                                    <td id="nome"><c:out value="${c.nome}" /></td>
-                                                    <td id="cpf"><c:out value="${c.cpf}" /></td>
-                                                    <td id="rua"><c:out value="${c.rua}" /></td>
-                                                    <td id="cidade"><c:out value="${c.cidade}" /></td>
-                                                    <td id="uf"><c:out value="${c.uf}" /></td>
-                                                    <td id="email"><c:out value="${c.email}" /></td>
-                                                    <td id="telefone"><c:out value="${c.telefone}" /></td>
-                                                    <input type="hidden" name="comando" id="comando" value="listaEditar"/>
 
-                                                    <td class="text-center">                                                            
-                                                        <!-- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Editar</button> -->
-                                                        <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Excluir</button> -->
-                                                        <button type="submit" class="btn btn-info btn-sm">Editar</button>                                                        
-                                                        <a href="cliente?idCliente=${c.idCliente}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
+                                                <tr>
+                                                <input type="hidden" name="idCliente" id="idCliente" value="${c.idCliente}"/>
+                                                <td id="nome"><c:out value="${c.nome}" /></td>
+                                                <td id="cpf"><c:out value="${c.cpf}" /></td>
+                                                <td id="rua"><c:out value="${c.rua}" /></td>
+                                                <td id="cidade"><c:out value="${c.cidade}" /></td>
+                                                <td id="uf"><c:out value="${c.uf}" /></td>
+                                                <td id="email"><c:out value="${c.email}" /></td>
+                                                <td id="telefone"><c:out value="${c.telefone}" /></td>
+                                                <input type="hidden" name="comando" id="comando" value="listaEditar"/>
 
-                                                    </td>
-                                                    </tr>
-                                                </table>
+                                                <td class="text-center">                                                            
+                                                    <!-- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Editar</button> -->
+                                                    <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Excluir</button> -->
+                                                    <button type="submit" class="btn btn-info btn-sm" target="_blank">Editar</button>                                                        
+                                                    <a href="cliente?idCliente=${c.idCliente}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
+
+                                                </td>
+                                                </tr>
                                             </form>
                                         </c:forEach>
+                                        </table>
+
 
                                     </div>
                                 </div>

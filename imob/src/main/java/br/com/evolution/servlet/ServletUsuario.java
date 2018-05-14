@@ -24,7 +24,7 @@ public class ServletUsuario extends HttpServlet {
         if (request.getParameter("comando").equals("lista")) {
             DaoUsuario daoUsuario = new DaoUsuario();
             List<Usuario> lista = null;
-            
+
             String depart = request.getParameter("departamento");
             String filial = request.getParameter("grupoFilial");
             String nome = request.getParameter("nome");
@@ -43,7 +43,7 @@ public class ServletUsuario extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
             dispatcher.forward(request, response);
 
-        }  else if (request.getParameter("comando").equals("excluir")) {
+        } else if (request.getParameter("comando").equals("excluir")) {
             //ATUALIZANDO NO BANCO
             DaoUsuario daoUsuario = new DaoUsuario();
 
@@ -95,8 +95,23 @@ public class ServletUsuario extends HttpServlet {
                     = request.getRequestDispatcher("CadastroUsuario.jsp");
             dispatcher.forward(request, response);
 
-        }  else if (request.getParameter("comando").equals("listaEditar")) {
+        } else if (request.getParameter("comando").equals("listaEditar")) {
 
+            Usuario usuario = new Usuario();
+
+            usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
+
+            DaoUsuario daoUsuario = new DaoUsuario();
+
+            try {
+                usuario = daoUsuario.buscar(usuario);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            request.setAttribute("usuario", usuario);
             RequestDispatcher dispatcher = request.getRequestDispatcher("EditarUsuario.jsp");
             dispatcher.forward(request, response);
 
