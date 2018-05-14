@@ -62,7 +62,7 @@
                                                 </div>	
                                                 <select id="grupoFilial" name="grupoFilial" class="form-control">
                                                     <option>Selecione</option>
-                                                    <option>São Paulo</option>
+                                                    <option>Sao Paulo</option>
                                                     <option>Porto Alegre</option>
                                                     <option>Recife</option>
                                                 </select>

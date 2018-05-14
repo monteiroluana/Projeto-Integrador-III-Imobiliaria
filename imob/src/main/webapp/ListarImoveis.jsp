@@ -121,33 +121,33 @@
                                                 <div class="col-25">
                                                     <label class="control-label" for="uf">UF</label>
                                                     <select id="uf" name="uf" class="form-control" style="width: auto">
-                                                        <option value="ac">AC</option>
-                                                        <option value="al">AL</option>
-                                                        <option value="ap">AP</option>
-                                                        <option value="am">AM</option>
-                                                        <option value="ba">BA</option>
-                                                        <option value="ce">CE</option>
-                                                        <option value="df">DF</option>
-                                                        <option value="es">ES</option>
-                                                        <option value="go">GO</option>
-                                                        <option value="ma">MA</option>
-                                                        <option value="mt">MT</option>
-                                                        <option value="ms">MS</option>
-                                                        <option value="mg">MG</option>
-                                                        <option value="pa">PA</option>
-                                                        <option value="pb">PB</option>
-                                                        <option value="pr">PR</option>
-                                                        <option value="pe">PE</option>
-                                                        <option value="pi">PI</option>
-                                                        <option value="rj">RJ</option>
-                                                        <option value="rn">RN</option>
-                                                        <option value="rs">RS</option>
-                                                        <option value="ro">RO</option>
-                                                        <option value="rr">RR</option>
-                                                        <option value="sc">SC</option>
-                                                        <option value="sp">SP</option>
-                                                        <option value="se">SE</option>
-                                                        <option value="to">TO</option>
+                                                        <option>AC</option>
+                                                        <option>AL</option>
+                                                        <option>AP</option>
+                                                        <option>AM</option>
+                                                        <option>BA</option>
+                                                        <option>CE</option>
+                                                        <option>DF</option>
+                                                        <option>ES</option>
+                                                        <option>GO</option>
+                                                        <option>MA</option>
+                                                        <option>MT</option>
+                                                        <option>MS</option>
+                                                        <option>MG</option>
+                                                        <option>PA</option>
+                                                        <option>PB</option>
+                                                        <option>PR</option>
+                                                        <option>PE</option>
+                                                        <option>PI</option>
+                                                        <option>RJ</option>
+                                                        <option>RN</option>
+                                                        <option>RS</option>
+                                                        <option>RO</option>
+                                                        <option>RR</option>
+                                                        <option>SC</option>
+                                                        <option>SP</option>
+                                                        <option>SE</option>
+                                                        <option>TO</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -171,10 +171,10 @@
                                                                 '&est=' + document.getElementById('uf').value">
                                                     <i class="glyphicon glyphicon-search"></i>
                                                 </a>
-                                              
-                                              <!--<a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista'">
-                                                  <i class="glyphicon glyphicon-search"></i>
-                                              </a>-->
+
+                                                <!--<a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista'">
+                                                    <i class="glyphicon glyphicon-search"></i>
+                                                </a>-->
                                             </span>
                                         </div>
                                     </div>
@@ -196,7 +196,9 @@
                                                 </thead>
 
                                                 <c:forEach items="${lista}" var="i">
-                                                    <tr>
+                                                    <form action="imovel" method="POST">
+                                                        <tr>
+                                                        <input type="hidden" name="idImovel" id="idImovel" value="${i.idImovel}"/>
                                                         <td><c:out value="${i.codImovel}"/></td>
                                                         <td><c:out value="${i.tipo}" /></td>
                                                         <td><c:out value="${i.bairro}" /></td>
@@ -204,15 +206,17 @@
                                                         <td><c:out value="${i.uf}" /></td>
                                                         <td><c:out value="${i.valorVenda}" /></td>
                                                         <td><c:out value="${i.situacao}" /></td>
-                                                    <input style="display: none" value="${i.idImovel}"/>                                                     
+                                                        <input type="hidden" name="comando" id="comando" value="listaEditar"/>
 
-                                                    <td class="text-center">
-                                                        <a href="imovel?idImovel=${i.idImovel}&comando=listaEditar"class="btn btn-info btn-sm" target="_blank">Editar</a>
-                                                        <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button> -->
-                                                        <a href="imovel?idImovel=${i.idImovel}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
-                                                        <a href="imovel?tipoImovel=${i.tipo}&comando=contrato" class="btn btn-warning btn-sm">Contrato</a>
-                                                    </td>
-                                                    </tr>
+                                                        <td class="text-center">
+                                                            <!--<a href="imovel?idImovel=${i.idImovel}&comando=listaEditar"class="btn btn-info btn-sm" target="_blank">Editar</a>-->
+                                                            <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button> -->
+                                                            <button type="submit" class="btn btn-info btn-sm" target="_blank">Editar</button>
+                                                            <a href="imovel?idImovel=${i.idImovel}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
+                                                            <a href="imovel?tipoImovel=${i.tipo}&comando=contrato" class="btn btn-warning btn-sm">Contrato</a>
+                                                        </td>
+                                                        </tr>
+                                                    </form>
 
                                                 </c:forEach>
 

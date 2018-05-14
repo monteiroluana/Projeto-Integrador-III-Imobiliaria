@@ -65,7 +65,7 @@
                                             </div>	
                                             <select id="grupoFilial" name="grupoFilial" class="form-control">
                                                 <option value="">Selecione</option>
-                                                <option value="São Paulo">São Paulo</option>
+                                                <option value="Sao Paulo">Sao Paulo</option>
                                                 <option value="Porto Alegre">Porto Alegre</option>
                                                 <option value="Recife">Recife</option>
                                             </select>
@@ -118,12 +118,12 @@
                                                     <tr>
                                                     <!--<input style="display: none" value="${u.idUsuario}"/> -->
                                                     <input type="hidden" name="idUsuario" id="idUsuario" value="${u.idUsuario}"/>
-                                                    <td id="nome"><c:out value="${u.nome}"/></td>
-                                                    <td id="departamento"><c:out value="${u.departamento}" /></td>
-                                                    <td id="cargo"><c:out value="${u.cargo}" /></td>
-                                                    <td id="grupoFilial"><c:out value="${u.grupoFilial}" /></td>
-                                                    <td id="login"><c:out value="${u.login}" /></td>
-                                                    <td id="email"><c:out value="${u.email}" /></td>
+                                                    <td><c:out value="${u.nome}"/></td>
+                                                    <td><c:out value="${u.departamento}" /></td>
+                                                    <td><c:out value="${u.cargo}" /></td>
+                                                    <td><c:out value="${u.grupoFilial}" /></td>
+                                                    <td><c:out value="${u.login}" /></td>
+                                                    <td><c:out value="${u.email}" /></td>
                                                     <input type="hidden" name="comando" id="comando" value="listaEditar"/>
 
 
@@ -173,7 +173,7 @@
                                                 </div>	
                                                 <select id="AlteraCategoria" name="AlteraCategoria" class="form-control">
                                                     <option value="1">Selecione</option>
-                                                    <option value="2">São Paulo</option>
+                                                    <option value="2">Sao Paulo</option>
                                                     <option value="3">Porto Alegre</option>
                                                     <option value="4">Recife</option>
                                                 </select>

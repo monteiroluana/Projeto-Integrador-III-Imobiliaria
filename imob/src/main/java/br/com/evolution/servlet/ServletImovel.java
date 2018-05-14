@@ -64,11 +64,6 @@ public class ServletImovel extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
             dispatcher.forward(request, response);
 
-        } else if (request.getParameter("comando").equals("listaEditar")) {
-
-            RequestDispatcher dispatcher = request.getRequestDispatcher("EditarImovel.jsp");
-            dispatcher.forward(request, response);
-
         } else if (request.getParameter("comando").equals("excluir")) {
             //ATUALIZANDO NO BANCO
             DaoImovel daoImovel = new DaoImovel();
@@ -126,13 +121,32 @@ public class ServletImovel extends HttpServlet {
 
             try {
                 daoImovel.inserir(imovel);
-                System.out.println("chegou no servlet imovel para cadastrar o imovel");
             } catch (SQLException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             request.setAttribute("imovelCadastrado", imovel);
             RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroResposta.jsp");
+            dispatcher.forward(request, response);
+
+        } else if (request.getParameter("comando").equals("listaEditar")) {
+
+            Imovel imovel = new Imovel();
+
+            imovel.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
+
+            DaoImovel daoImovel = new DaoImovel();
+
+            try {
+                imovel = daoImovel.buscar(imovel);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            request.setAttribute("imovel", imovel);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("EditarImovel.jsp");
             dispatcher.forward(request, response);
 
         } else if (request.getParameter("comando").equals("editar")) {
@@ -175,6 +189,7 @@ public class ServletImovel extends HttpServlet {
             request.setAttribute("imovelCadastrado", imovel);
             RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroResposta.jsp");
             dispatcher.forward(request, response);
+
         }
 
     }
