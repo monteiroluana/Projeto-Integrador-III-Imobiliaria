@@ -1,7 +1,7 @@
-package br.com.evolution.dao;
+package br.com.devolution.dao;
 
-import br.com.evolution.conexao.Conexao;
-import br.com.evolution.model.Usuario;
+import br.com.devolution.conexao.Conexao;
+import br.com.devolution.model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +13,7 @@ public class DaoUsuario {
 
     public List<Usuario> listar(String depart, String filial, String name) throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE "
+        String sql = "SELECT * FROM imobiliariadb.USUARIO WHERE "
                 + "((UPPER(departamento) LIKE UPPER(?) "
                 + "AND UPPER(grupoFilial) LIKE UPPER(?) "
                 + "AND UPPER(nome) LIKE UPPER(?)) "
@@ -64,7 +64,7 @@ public class DaoUsuario {
 
     public boolean inserir(Usuario usuario) throws SQLException {
 
-        String sql = "INSERT INTO imobiliariadbTESTE.USUARIO (nome,login,senha,email,grupoFilial,departamento,cargo,enable) "
+        String sql = "INSERT INTO imobiliariadb.USUARIO (nome,login,senha,email,grupoFilial,departamento,cargo,enable) "
                 + "VALUES (?,?,?,?,?,?,?,?)";
         Connection conn = null;
         try {
@@ -94,7 +94,7 @@ public class DaoUsuario {
 
     public boolean editar(Usuario usuario) throws SQLException {
 
-        String sql = "UPDATE imobiliariadbTESTE.USUARIO SET "
+        String sql = "UPDATE imobiliariadb.USUARIO SET "
                 + "nome=?,login=?,email=?,grupoFilial=?,departamento=?,cargo=? WHERE idUsuario=?";
         Connection conn = null;
 
@@ -123,7 +123,7 @@ public class DaoUsuario {
 
     public boolean excluir(int idUsuario) throws SQLException {
         //realiza a exclusão lógica
-        String sql = "UPDATE imobiliariadbTESTE.USUARIO SET enable=? WHERE idUsuario=?";
+        String sql = "UPDATE imobiliariadb.USUARIO SET enable=? WHERE idUsuario=?";
         Connection conn = null;
 
         try {
@@ -147,7 +147,7 @@ public class DaoUsuario {
 
     public Usuario buscar(Usuario usuario) throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE idUsuario=? AND enable=?";
+        String sql = "SELECT * FROM imobiliariadb.USUARIO WHERE idUsuario=? AND enable=?";
 
         Usuario user = null;
         Connection conn;
@@ -183,7 +183,7 @@ public class DaoUsuario {
 
         Usuario user = null;
         Connection conn;
-        String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE login=? AND senha=? AND enable=?";
+        String sql = "SELECT * FROM imobiliariadb.USUARIO WHERE login=? AND senha=? AND enable=?";
 
         try {
             conn = Conexao.obterConexao();
@@ -207,7 +207,7 @@ public class DaoUsuario {
     }
     /*public List<Usuario> listar() throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE enable=?";
+        String sql = "SELECT * FROM imobiliariadb.USUARIO WHERE enable=?";
 
         List<Usuario> lista = new ArrayList<Usuario>();
 

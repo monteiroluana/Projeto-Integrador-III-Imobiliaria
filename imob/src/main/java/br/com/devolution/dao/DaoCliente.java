@@ -1,4 +1,4 @@
-package br.com.evolution.dao;
+package br.com.devolution.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,15 +9,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import br.com.evolution.conexao.Conexao;
-import br.com.evolution.model.Cliente;
+import br.com.devolution.conexao.Conexao;
+import br.com.devolution.model.Cliente;
 
 public class DaoCliente {
 
     // TALVEZ APAGAAAARRRR, PQ TEM O BUSCAR POR CF LÁ NO FINAL ---- não entendi o motivo--> Rod
     public List<Cliente> listar() throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadbTESTE.CLIENTE WHERE enable=?";
+        String sql = "SELECT * FROM imobiliariadb.CLIENTE WHERE enable=?";
 
         List<Cliente> lista = new ArrayList<Cliente>();
 
@@ -78,7 +78,7 @@ public class DaoCliente {
 
     public boolean inserir(Cliente cliente) throws SQLException, ClassNotFoundException {
 
-        String sql = "INSERT INTO imobiliariadbTESTE.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable)"
+        String sql = "INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable)"
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
 
@@ -119,7 +119,7 @@ public class DaoCliente {
 
     public boolean editar(Cliente cliente) throws SQLException {
 
-        String sql = "UPDATE imobiliariadbTESTE.CLIENTE SET "
+        String sql = "UPDATE imobiliariadb.CLIENTE SET "
                 + "cpf=?,nome=?,dataNasc=?,sexo=?,telefone=?,celular=?,email=?,"
                 + "cep=?,rua=?,bairro=?,cidade=?,uf=?,num=?,complemento=? WHERE idCliente=?";
         Connection conn = null;
@@ -160,7 +160,7 @@ public class DaoCliente {
 
     public boolean excluir(int idCliente) throws SQLException {
         //realiza a exclusão lógica
-        String sql = "UPDATE imobiliariadbTESTE.CLIENTE SET enable=? WHERE idCliente=?";
+        String sql = "UPDATE imobiliariadb.CLIENTE SET enable=? WHERE idCliente=?";
         Connection conn = null;
 
         try {
@@ -182,7 +182,7 @@ public class DaoCliente {
 
     public Cliente buscar(Cliente cliente) throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadbTESTE.CLIENTE WHERE idCliente=? AND enable=?";
+        String sql = "SELECT * FROM imobiliariadb.CLIENTE WHERE idCliente=? AND enable=?";
 
         Cliente cli = null;
         Connection conn;
@@ -225,7 +225,7 @@ public class DaoCliente {
 
     public Cliente buscarPorCpf(String cpf) throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadbTESTE.CLIENTE WHERE cpf=? AND enable=?";
+        String sql = "SELECT * FROM imobiliariadb.CLIENTE WHERE cpf=? AND enable=?";
 
         Cliente cli = null;
         Connection conn;
@@ -268,7 +268,7 @@ public class DaoCliente {
 
     public List<Cliente> procurarCliente(String valor) throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadbTESTE.CLIENTE WHERE ((UPPER(nome) LIKE UPPER(?) OR UPPER(cpf) LIKE UPPER(?)) AND enable=?)";
+        String sql = "SELECT * FROM imobiliariadb.CLIENTE WHERE ((UPPER(nome) LIKE UPPER(?) OR UPPER(cpf) LIKE UPPER(?)) AND enable=?)";
 
         List<Cliente> lista = new ArrayList<Cliente>();
 

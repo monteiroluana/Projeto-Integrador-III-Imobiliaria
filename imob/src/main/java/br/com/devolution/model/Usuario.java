@@ -1,4 +1,4 @@
-package br.com.evolution.model;
+package br.com.devolution.model;
 
 public class Usuario {
 

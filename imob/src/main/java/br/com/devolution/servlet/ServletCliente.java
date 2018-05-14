@@ -1,6 +1,6 @@
-package br.com.evolution.servlet;
+package br.com.devolution.servlet;
 
-import br.com.evolution.dao.DaoCliente;
+import br.com.devolution.dao.DaoCliente;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import br.com.evolution.model.Cliente;
+import br.com.devolution.model.Cliente;
 
 @WebServlet(name = "cliente", urlPatterns = {"/cliente"})
 public class ServletCliente extends HttpServlet {

@@ -1,9 +1,7 @@
-package br.com.evolution.servlet;
+package br.com.devolution.servlet;
 
-import br.com.evolution.dao.DaoCliente;
-import br.com.evolution.dao.DaoImovel;
-import br.com.evolution.model.Cliente;
-import br.com.evolution.model.Imovel;
+import br.com.devolution.dao.DaoImovel;
+import br.com.devolution.model.Imovel;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -21,9 +19,9 @@ public class ServletImovel extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        DaoImovel daoImovel = new DaoImovel();
 
         if (request.getParameter("comando").equals("lista")) {
-            DaoImovel daoImovel = new DaoImovel();
             List<Imovel> lista = null;
 
             String codImov = request.getParameter("codImovel");
@@ -66,8 +64,6 @@ public class ServletImovel extends HttpServlet {
 
         } else if (request.getParameter("comando").equals("excluir")) {
             //ATUALIZANDO NO BANCO
-            DaoImovel daoImovel = new DaoImovel();
-
             int idImovel = Integer.parseInt(request.getParameter("idImovel"));
 
             try {
@@ -77,10 +73,22 @@ public class ServletImovel extends HttpServlet {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("CadastroResposta.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
             dispatcher.forward(request, response);
 
+        } else if (request.getParameter("comando").equals("buscarImovel")) {
+            Imovel imovel = new Imovel();
+            imovel.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
+            try {
+                 imovel = daoImovel.buscar(imovel);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            request.setAttribute("imovel", imovel);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("venda.jsp");
+            dispatcher.forward(request, response);
         }
     }
 

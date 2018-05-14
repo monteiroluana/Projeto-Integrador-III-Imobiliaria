@@ -1,7 +1,7 @@
-package br.com.evolution.dao;
+package br.com.devolution.dao;
 
-import br.com.evolution.conexao.Conexao;
-import br.com.evolution.model.Imovel;
+import br.com.devolution.conexao.Conexao;
+import br.com.devolution.model.Imovel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +17,7 @@ public class DaoImovel {
             double aluguelInicial, double aluguelFinal, String serv, String est)
             throws ClassNotFoundException, SQLException {
 
-       /* String sql = "SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE "
+       /* String sql = "SELECT * FROM imobiliariadb.IMOVEL WHERE "
                 + "((UPPER(codImovel) LIKE UPPER(?) "
                 + "AND UPPER(tipo) LIKE UPPER(?) "
                 + "AND UPPER(situacao) LIKE UPPER(?) "
@@ -26,11 +26,11 @@ public class DaoImovel {
                 + "AND UPPER(servico) LIKE UPPER(?) "
                 + "AND UPPER(uf) LIKE UPPER(?)) "
                 + "AND enable=?)"; */
-        String sql = "SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE enable=?";
+        String sql = "SELECT * FROM imobiliariadb.IMOVEL WHERE enable=?";
  
        
 // ----TESTE MUDANDO A ORDEM DO SELECT----
-//SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE 
+//SELECT * FROM imobiliariadb.IMOVEL WHERE 
 //(((valorVenda) BETWEEN (0) AND (300000) 
 //OR (valorAluguel) BETWEEN (0) AND (null) 
 //AND UPPER(codImovel) LIKE UPPER(null) 
@@ -144,7 +144,7 @@ public class DaoImovel {
 
     public void inserir(Imovel imovel) throws SQLException {
 
-         String sql = "INSERT INTO imobiliariadbTESTE.IMOVEL (idCliente,dataCad,categoria,tipo,quartos,banheiros,suites,vagasGaragem,areaUtil,areaTotal,"
+         String sql = "INSERT INTO imobiliariadb.IMOVEL (idCliente,dataCad,categoria,tipo,quartos,banheiros,suites,vagasGaragem,areaUtil,areaTotal,"
                 + "informacao,cep,rua,num,complemento,bairro,cidade,uf,valorVenda,valorAluguel,condominio,iptu,situacao,servico,codImovel,enable) "
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
@@ -193,7 +193,7 @@ public class DaoImovel {
 
     public void editar(Imovel imovel) throws SQLException {
 
-        String sql = "UPDATE imobiliariadbTESTE.IMOVEL SET "
+        String sql = "UPDATE imobiliariadb.IMOVEL SET "
                 + "categoria=?,tipo=?,quartos=?,banheiros=?,suites=?,vagasGaragem=?,areaUtil=?,areaTotal=?,"
                 + "informacao=?,cep=?,rua=?,num=?,complemento=?,bairro=?,cidade=?,uf=?,"
                 + "valorVenda=?,valorAluguel=?,condominio=?,iptu=?,situacao=?,servico=?,codImovel=? "
@@ -240,7 +240,7 @@ public class DaoImovel {
 
     public void excluir(int idImovel) throws SQLException {
         //realiza a exclusão lógica
-        String sql = "UPDATE imobiliariadbTESTE.IMOVEL SET enable=? WHERE idImovel=?";
+        String sql = "UPDATE imobiliariadb.IMOVEL SET enable=? WHERE idImovel=?";
         Connection conn = null;
 
         try {
@@ -261,7 +261,7 @@ public class DaoImovel {
 
     public Imovel buscar(Imovel imovel) throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadbTESTE.IMOVEL WHERE idImovel=? AND enable=?";
+        String sql = "SELECT * FROM imobiliariadb.IMOVEL WHERE idImovel=? AND enable=?";
 
         Imovel imov = null;
         Connection conn;
