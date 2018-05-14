@@ -277,7 +277,7 @@
             </div><!--CONFIRMAR-EXCLUSÃO-->
 
         </div> <!-- MAIN -->
-
+${msg}
 
 
         <!--

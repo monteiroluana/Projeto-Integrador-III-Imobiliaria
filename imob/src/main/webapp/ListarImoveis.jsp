@@ -233,6 +233,7 @@
             </div>
 
         </div> <!-- MAIN -->
+        ${msg}
     </body>
 </body>
 </html>
