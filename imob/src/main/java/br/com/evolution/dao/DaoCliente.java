@@ -15,7 +15,6 @@ import br.com.evolution.model.Cliente;
 public class DaoCliente {
 
     // TALVEZ APAGAAAARRRR, PQ TEM O BUSCAR POR CF LÁ NO FINAL ---- não entendi o motivo--> Rod
-    
     public List<Cliente> listar() throws ClassNotFoundException, SQLException {
 
         String sql = "SELECT * FROM imobiliariadbTESTE.CLIENTE WHERE enable=?";
@@ -77,7 +76,7 @@ public class DaoCliente {
         return lista;
     }
 
-    public void inserir(Cliente cliente) throws SQLException, ClassNotFoundException {
+    public boolean inserir(Cliente cliente) throws SQLException, ClassNotFoundException {
 
         String sql = "INSERT INTO imobiliariadbTESTE.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable)"
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -110,14 +109,15 @@ public class DaoCliente {
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
+            return (false);
 
         } finally {
             conn.close();
         }
-
+        return (true);
     }
 
-    public void editar(Cliente cliente) throws SQLException {
+    public boolean editar(Cliente cliente) throws SQLException {
 
         String sql = "UPDATE imobiliariadbTESTE.CLIENTE SET "
                 + "cpf=?,nome=?,dataNasc=?,sexo=?,telefone=?,celular=?,email=?,"
@@ -151,13 +151,14 @@ public class DaoCliente {
 
         } catch (ClassNotFoundException | SQLException ex) {
             System.err.println(ex.getMessage());
-
+            return (false);
         } finally {
             conn.close();
         }
+        return (true);
     }
 
-    public void excluir(int idCliente) throws SQLException {
+    public boolean excluir(int idCliente) throws SQLException {
         //realiza a exclusão lógica
         String sql = "UPDATE imobiliariadbTESTE.CLIENTE SET enable=? WHERE idCliente=?";
         Connection conn = null;
@@ -172,10 +173,11 @@ public class DaoCliente {
 
         } catch (ClassNotFoundException | SQLException ex) {
             System.err.println(ex.getMessage());
-
+            return (false);
         } finally {
             conn.close();
         }
+        return (true);
     }
 
     public Cliente buscar(Cliente cliente) throws ClassNotFoundException, SQLException {
@@ -199,7 +201,7 @@ public class DaoCliente {
                 cli.setIdCliente(res.getInt("idCliente"));
                 cli.setCpf(res.getString("cpf"));
                 cli.setNome(res.getString("nome"));
-                cli.setDataNasc(res.getString("dataNasc"));                
+                cli.setDataNasc(res.getString("dataNasc"));
                 System.out.println(cli.getDataNasc());
                 cli.setSexo(res.getString("sexo"));
                 cli.setTelefone(res.getString("telefone"));

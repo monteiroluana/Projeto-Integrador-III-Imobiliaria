@@ -62,7 +62,7 @@ public class DaoUsuario {
         return lista;
     }
 
-    public void inserir(Usuario usuario) throws SQLException {
+    public boolean inserir(Usuario usuario) throws SQLException {
 
         String sql = "INSERT INTO imobiliariadbTESTE.USUARIO (nome,login,senha,email,grupoFilial,departamento,cargo,enable) "
                 + "VALUES (?,?,?,?,?,?,?,?)";
@@ -81,16 +81,18 @@ public class DaoUsuario {
             stmt.setBoolean(8, true);
             stmt.execute();
 
+            return (true);
+
         } catch (ClassNotFoundException | SQLException ex) {
             System.err.println(ex.getMessage());
+            return (false);
 
         } finally {
             conn.close();
         }
-
     }
 
-    public void editar(Usuario usuario) throws SQLException {
+    public boolean editar(Usuario usuario) throws SQLException {
 
         String sql = "UPDATE imobiliariadbTESTE.USUARIO SET "
                 + "nome=?,login=?,email=?,grupoFilial=?,departamento=?,cargo=? WHERE idUsuario=?";
@@ -109,15 +111,17 @@ public class DaoUsuario {
             stmt.setInt(7, usuario.getIdUsuario());
             stmt.execute();
 
+            return true;
+
         } catch (ClassNotFoundException | SQLException ex) {
             System.err.println(ex.getMessage());
-
+            return false;
         } finally {
             conn.close();
         }
     }
 
-    public void excluir(int idUsuario) throws SQLException {
+    public boolean excluir(int idUsuario) throws SQLException {
         //realiza a exclusão lógica
         String sql = "UPDATE imobiliariadbTESTE.USUARIO SET enable=? WHERE idUsuario=?";
         Connection conn = null;
@@ -130,9 +134,12 @@ public class DaoUsuario {
             stmt.setInt(2, idUsuario);
             stmt.execute();
 
+            return true;
+
         } catch (ClassNotFoundException | SQLException ex) {
             System.err.println(ex.getMessage());
-
+            return false;
+            
         } finally {
             conn.close();
         }
@@ -172,28 +179,28 @@ public class DaoUsuario {
         return user;
     }
 
-    public Usuario autenticar(Usuario usuario) throws ClassNotFoundException, SQLException{
-        
+    public Usuario autenticar(Usuario usuario) throws ClassNotFoundException, SQLException {
+
         Usuario user = null;
         Connection conn;
         String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE login=? AND senha=? AND enable=?";
-        
-        try{
+
+        try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
-            
-            stmt.setString(1,usuario.getLogin());
+
+            stmt.setString(1, usuario.getLogin());
             stmt.setString(2, usuario.getSenha());
             stmt.setBoolean(3, true);
             ResultSet res = stmt.executeQuery();
-            
-            if(res.next()){
-            user = new Usuario();
-            user.setSenha(res.getString("senha"));
-            user.setLogin(res.getString("login"));
+
+            if (res.next()) {
+                user = new Usuario();
+                user.setSenha(res.getString("senha"));
+                user.setLogin(res.getString("login"));
             }
-            
-        }catch(ClassNotFoundException | SQLException ex){
+
+        } catch (ClassNotFoundException | SQLException ex) {
             System.err.println(ex.getMessage());
         }
         return user;

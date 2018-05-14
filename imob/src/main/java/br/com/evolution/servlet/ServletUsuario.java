@@ -16,58 +16,67 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "usuario", urlPatterns = {"/usuario"})
 public class ServletUsuario extends HttpServlet {
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         if (request.getParameter("comando").equals("lista")) {
             DaoUsuario daoUsuario = new DaoUsuario();
             List<Usuario> lista = null;
-
+            
             String depart = request.getParameter("departamento");
             String filial = request.getParameter("grupoFilial");
             String nome = request.getParameter("nome");
-
+            
             try {
                 lista = daoUsuario.listar(depart, filial, nome);
-
+                
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
-
+                
             } catch (SQLException ex) {
                 Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
             request.setAttribute("lista", lista);
             RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
             dispatcher.forward(request, response);
-
+            
         } else if (request.getParameter("comando").equals("excluir")) {
             //ATUALIZANDO NO BANCO
             DaoUsuario daoUsuario = new DaoUsuario();
-
+            String msg = null;
+            
             int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
-
+            
             try {
-                daoUsuario.excluir(idUsuario);
-
+                if (daoUsuario.excluir(idUsuario)) {
+                    msg = "<script>alert('Usuario excluido com sucesso');</script>";
+                } else {
+                    msg = "<script>alert('Erro ao excluir usuário');</script>";
+                }
+                
             } catch (SQLException ex) {
                 Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("CadastroResposta.jsp");
+            
+            request.setAttribute("msg", msg);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
             dispatcher.forward(request, response);
         }
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String msg = null;
+        Usuario usuario = new Usuario();
+        DaoUsuario daoUsuario = new DaoUsuario();
+
         //ifs para definir qual ação o servlet vai tomar
         if (request.getParameter("comando").equals("cadastrar")) {
-            Usuario usuario = new Usuario();
 
             //pegando as informações do formulário 
             usuario.setNome(request.getParameter("nome"));
@@ -79,30 +88,25 @@ public class ServletUsuario extends HttpServlet {
             usuario.setCargo(request.getParameter("cargo"));
 
             // INSERINDO NO BANCO
-            DaoUsuario daoUsuario = new DaoUsuario();
             try {
-                daoUsuario.inserir(usuario);
+                if (daoUsuario.inserir(usuario)) {
+                    msg = "<script>alert('Usuário inserido com sucesso');</script>";
+                } else {
+                    msg = "<script>alert('Erro ao inserir usuário');</script>";
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            String msg = "deu certo";
-
+            
             request.setAttribute("msg", msg);
             request.setAttribute("usuarioCadastrado", usuario);
-
-            RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("CadastroUsuario.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
             dispatcher.forward(request, response);
-
+            
         } else if (request.getParameter("comando").equals("listaEditar")) {
-
-            Usuario usuario = new Usuario();
-
+            
             usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
-
-            DaoUsuario daoUsuario = new DaoUsuario();
-
+            
             try {
                 usuario = daoUsuario.buscar(usuario);
             } catch (ClassNotFoundException ex) {
@@ -110,13 +114,12 @@ public class ServletUsuario extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
             request.setAttribute("usuario", usuario);
             RequestDispatcher dispatcher = request.getRequestDispatcher("EditarUsuario.jsp");
             dispatcher.forward(request, response);
-
+            
         } else if (request.getParameter("comando").equals("editar")) {
-            Usuario usuario = new Usuario();
 
             //pegando as informações do formulário 
             usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
@@ -128,18 +131,19 @@ public class ServletUsuario extends HttpServlet {
             usuario.setCargo(request.getParameter("cargo"));
 
             //ATUALIZANDO NO BANCO
-            DaoUsuario daoUsuario = new DaoUsuario();
-
             try {
-                daoUsuario.editar(usuario);
+                if (daoUsuario.editar(usuario)) {
+                    msg = "<script>alert('Usuário alterado com sucesso');</script>";
+                } else {
+                    msg = "<script>alert('Erro ao alterar usuário');</script>";
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("EditarConfirm.jsp");
+            request.setAttribute("msg", msg);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
             dispatcher.forward(request, response);
-
+            
         }
     }
 }
