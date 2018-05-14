@@ -43,12 +43,7 @@ public class ServletUsuario extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
             dispatcher.forward(request, response);
 
-        } else if (request.getParameter("comando").equals("listaEditar")) {
-
-            RequestDispatcher dispatcher = request.getRequestDispatcher("EditarUsuario.jsp");
-            dispatcher.forward(request, response);
-
-        } else if (request.getParameter("comando").equals("excluir")) {
+        }  else if (request.getParameter("comando").equals("excluir")) {
             //ATUALIZANDO NO BANCO
             DaoUsuario daoUsuario = new DaoUsuario();
 
@@ -98,6 +93,11 @@ public class ServletUsuario extends HttpServlet {
 
             RequestDispatcher dispatcher
                     = request.getRequestDispatcher("CadastroUsuario.jsp");
+            dispatcher.forward(request, response);
+
+        }  else if (request.getParameter("comando").equals("listaEditar")) {
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("EditarUsuario.jsp");
             dispatcher.forward(request, response);
 
         } else if (request.getParameter("comando").equals("editar")) {

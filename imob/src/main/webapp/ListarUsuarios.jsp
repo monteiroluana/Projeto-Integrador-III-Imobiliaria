@@ -98,7 +98,7 @@
 
                                 <div class="row">
                                     <div class="col-xs-auto col-sm-auto col-md-auto">
-                                        <table class="table table-striped custab">
+                                        <!-- <table class="table table-striped custab"> -->
                                             <thead>
                                                 <tr>
                                                     <th>Nome</th>
@@ -112,25 +112,30 @@
 
                                             <c:forEach items="${lista}" var="u">
                                                 <!-- <form action="usuario?nome=${u.nome}&dpto=${u.departamento}&cargo=${u.cargo}&gf=${u.grupoFilial}&email=${u.email}&idUsuario=${u.idUsuario}&comando=listaEditar" method="GET"> -->
+                                                <form action="usuario" method="POST">
+                                                <table>
                                                 <tr>
-
+                                                    <input style="display: none" value="${u.idUsuario}"/> 
                                                     <td><c:out value="${u.nome}"/></td>
                                                     <td><c:out value="${u.departamento}" /></td>
                                                     <td><c:out value="${u.cargo}" /></td>
                                                     <td><c:out value="${u.grupoFilial}" /></td>
                                                     <td><c:out value="${u.login}" /></td>
                                                     <td><c:out value="${u.email}" /></td>
-                                                <input style="display: none" value="${u.idUsuario}"/>                                                     
+                                                    <input style="display: none" value="editar"/> 
+                                                                                                    
 
                                                 <td class="text-center">
-                                                    <a href="usuario?nome=${u.nome}&dpto=${u.departamento}&cargo=${u.cargo}&gf=${u.grupoFilial}&login=${u.login}&email=${u.email}&idUsuario=${u.idUsuario}&comando=listaEditar"class="btn btn-info btn-sm" target="_blank">Editar</a>
+                                                    <button type="submit" class="btn btn-info btn-sm" target="_blank">Editar</button>
                                                     <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button> -->
                                                     <a href="usuario?idUsuario=${u.idUsuario}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
                                                 </td>
                                                 </tr>
+                                                </table>
+                                                </form>
                                                 <!-- </form> -->
                                             </c:forEach>                                           
-                                        </table>
+                                      <!--  </table> -->
                                     </div>
                                 </div>
                                 <!-- </form> -->
