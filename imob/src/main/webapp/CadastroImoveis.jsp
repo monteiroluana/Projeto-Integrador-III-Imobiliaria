@@ -21,86 +21,76 @@
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script><!--includeHTML-->
         <script type="text/javascript" >
 
+            
+            
             function limpa_formulário_cep() {
-                //Limpa valores do formulário de cep.
-                document.getElementById('rua').value = ("");
-                document.getElementById('bairro').value = ("");
-                document.getElementById('cidade').value = ("");
-                document.getElementById('uf').value = ("");
-
+            //Limpa valores do formulário de cep.
+            document.getElementById('rua').value = ("");
+            document.getElementById('bairro').value = ("");
+            document.getElementById('cidade').value = ("");
+            document.getElementById('uf').value = ("");
             }
 
             function meu_callback(conteudo) {
-                if (!("erro" in conteudo)) {
-                    //Atualiza os campos com os valores.
-                    document.getElementById('rua').value = (conteudo.logradouro);
-                    document.getElementById('bairro').value = (conteudo.bairro);
-                    document.getElementById('cidade').value = (conteudo.localidade);
-                    document.getElementById('uf').value = (conteudo.uf);
-
-                } //end if.
-                else {
-                    //CEP não Encontrado.
-                    limpa_formulário_cep();
-                    alert("CEP não encontrado.");
-                }
+            if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('rua').value = (conteudo.logradouro);
+            document.getElementById('bairro').value = (conteudo.bairro);
+            document.getElementById('cidade').value = (conteudo.localidade);
+            document.getElementById('uf').value = (conteudo.uf);
+            } //end if.
+            else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+            }
             }
 
             function pesquisacep(valor) {
 
-                //Nova variável "cep" somente com dígitos.
-                var cep = valor.replace(/\D/g, '');
+            //Nova variável "cep" somente com dígitos.
+            var cep = valor.replace(/\D/g, '');
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
 
-                //Verifica se campo cep possui valor informado.
-                if (cep != "") {
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+            //Valida o formato do CEP.
+            if (validacep.test(cep)) {
 
-                    //Expressão regular para validar o CEP.
-                    var validacep = /^[0-9]{8}$/;
-
-                    //Valida o formato do CEP.
-                    if (validacep.test(cep)) {
-
-                        //Preenche os campos com "..." enquanto consulta webservice.
-                        document.getElementById('rua').value = "...";
-                        document.getElementById('bairro').value = "...";
-                        document.getElementById('cidade').value = "...";
-                        document.getElementById('uf').value = "...";
-
-
-                        //Cria um elemento javascript.
-                        var script = document.createElement('script');
-
-                        //Sincroniza com o callback.
-                        script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
-
-                        //Insere script no documento e carrega o conteúdo.
-                        document.body.appendChild(script);
-
-                    } //end if.
-                    else {
-                        //cep é inválido.
-                        limpa_formulário_cep();
-                        alert("Formato de CEP inválido.");
-                    }
-                } //end if.
-                else {
-                    //cep sem valor, limpa formulário.
-                    limpa_formulário_cep();
-                }
+            //Preenche os campos com "..." enquanto consulta webservice.
+            document.getElementById('rua').value = "...";
+            document.getElementById('bairro').value = "...";
+            document.getElementById('cidade').value = "...";
+            document.getElementById('uf').value = "...";
+            //Cria um elemento javascript.
+            var script = document.createElement('script');
+            //Sincroniza com o callback.
+            script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+            //Insere script no documento e carrega o conteúdo.
+            document.body.appendChild(script);
+            } //end if.
+            else {
+            //cep é inválido.
+            limpa_formulário_cep();
+            alert("Formato de CEP inválido.");
+            }
+            } //end if.
+            else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+            }
             }
             ;
-
             function pesquisaCliente() {
-                var cpf = document.getElementById('cpf').value;
-
-                //Verifica se o campo cpf possui algum valor
-                if (cpf != "") {
-                    document.location.href = "${pageContext.request.contextPath}/cliente?comando=buscaCliente&cpfCliente=" + cpf;
-                    document.getElementById('proprietario').value = ("${clienteP.nome}");
-
-                } else {
-                    alert("CPF inválido!");
-                }
+            var cpf = document.getElementById('cpf').value;
+            //Verifica se o campo cpf possui algum valor
+            if (cpf != "") {
+            document.location.href = "${pageContext.request.contextPath}/cliente?comando=buscaCliente&cpfCliente=" + cpf;
+            document.getElementById('proprietario').value = ("${clienteP.nome}");
+            } else {
+            alert("CPF inválido!");
+            }
             }
 
         </script>
@@ -288,8 +278,8 @@
 
                                                 </div><!--carousel-->
 
-                                                <label for="selecao-arquivo" id="anexo">Selecionar um arquivo &#187;</label>
-                                                <input id="selecao-arquivo" type="file">
+                                                <label for="imagens">Selecionar um arquivo &#187;</label>
+                                                <input id="imagens" type="file" accept="image/x-png,image/gif,image/jpeg" onChange="previewFile()">
 
                                             </div><!--DIV DO CAROUSEL-->	
                                             <div class="col-xs-6 col-sm-6 col-md-6">
@@ -458,6 +448,7 @@
                     </div>
                 </div>
             </div>
-        </div>   
+        </div>
+
     </body>
 </html>

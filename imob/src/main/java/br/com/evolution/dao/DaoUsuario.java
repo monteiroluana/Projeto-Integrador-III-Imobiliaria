@@ -55,6 +55,7 @@ public class DaoUsuario {
                 lista.add(user);
             }
         } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex.getMessage());
             System.err.println(ex.getMessage());
         } finally {
             conn.close();
@@ -175,6 +176,30 @@ public class DaoUsuario {
         return user;
     }
 
+    public Usuario autenticar(Usuario usuario) throws ClassNotFoundException, SQLException{
+        
+        Usuario user = null;
+        Connection conn;
+        String sql = "select * from usuario where login = ? and senha = ?";
+        
+        try{
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            
+            stmt.setString(1,usuario.getLogin());
+            stmt.setString(2, usuario.getSenha());
+            ResultSet res = stmt.executeQuery();
+            if(res.next()){
+            user = new Usuario();
+            user.setSenha(res.getString("senha"));
+            user.setLogin(res.getString("login"));
+            }
+            
+        }catch(ClassNotFoundException | SQLException ex){
+            System.err.println(ex.getMessage());
+        }
+        return user;
+    }
     /*public List<Usuario> listar() throws ClassNotFoundException, SQLException {
 
         String sql = "SELECT * FROM imobiliariadbTESTE.USUARIO WHERE enable=?";

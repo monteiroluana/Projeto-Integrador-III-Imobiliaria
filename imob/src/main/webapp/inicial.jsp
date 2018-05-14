@@ -16,11 +16,20 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script><!--includeHTML-->
         <link rel="stylesheet" href="css/styles.css">
+        <script>
+            $.get("index.jsp", null, function(text){
+                
+                var nome = document.cookie;
+                alert("Olá, "+nome);
+                
+            });
+        </script>
     </head>
     <body>
         <div w3-include-html="menu.html"></div>
             <script>
                 w3IncludeHTML();
           </script>
+          
     </body>
 </html>

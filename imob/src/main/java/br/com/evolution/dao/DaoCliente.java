@@ -14,7 +14,7 @@ import br.com.evolution.model.Cliente;
 
 public class DaoCliente {
 
-    /* TALVEZ APAGAAAARRRR, PQ TEM O BUSCAR POR CF LÁ NO FINAL
+    // TALVEZ APAGAAAARRRR, PQ TEM O BUSCAR POR CF LÁ NO FINAL ---- não entendi o motivo--> Rod
     
     public List<Cliente> listar() throws ClassNotFoundException, SQLException {
 
@@ -75,7 +75,7 @@ public class DaoCliente {
         }
 
         return lista;
-    }*/
+    }
 
     public void inserir(Cliente cliente) throws SQLException, ClassNotFoundException {
 

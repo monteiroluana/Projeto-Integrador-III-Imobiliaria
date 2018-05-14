@@ -90,6 +90,8 @@ INSERT INTO imobiliariadbTESTE.USUARIO (nome,login,senha,email,grupoFilial,depar
 ("Jonas Araujo","jonas.araujo","jonas","jonas@jonas.com","SãoPaulo","","",true),
 ("Bruna Sayuri","bruna.sayuri","bruna","bruna@bruna.com","RioDeJaneiro","","",true),
 ("Rodrigo Normando","rodrigo.normando","rodrigo","rodrigo@rodrigo.com","SãoPaulo","","",true);
+INSERT INTO imobiliariadbTESTE.USUARIO (nome,login,senha,email,grupoFilial,departamento,cargo,enable) VALUES
+("Luana Monteiro", "luana.monteiro", "luana","luana@monteiro.com", "São Paulo","","", true);
 
 INSERT INTO imobiliariadbTESTE.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable) VALUES
 ("99991111111","kunieda aoi","1996-07-17","fem","1155554444","11944445555","aoi@aoi.com","04444000","","","","","","",true);
@@ -99,3 +101,5 @@ quartos,banheiros,suites,vagasGaragem,areaUtil,areaTotal,informacao,
 cep,rua,num,bairro,cidade,uf,valorVenda,valorAluguel,iptu,situacao,enable)
 VALUES (1,"codTeste","2018-05-08","residencial","casa",3,2,1,2,100,200,"aloaloaloalo",
 "04444000","rua teste","20","bairrozin","sao paulo","sp",250000,2500,200,"livre",true);
+
+select * from usuario;
