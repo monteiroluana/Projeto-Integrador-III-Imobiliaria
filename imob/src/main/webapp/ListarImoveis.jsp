@@ -181,7 +181,7 @@
 
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-auto">
-                                            <table class="table table-striped custab">
+                                           <table class="table table-striped custab">
                                                 <thead>
                                                     <tr>
                                                         <th>Cód. Imóvel</th>
@@ -197,6 +197,7 @@
 
                                                 <c:forEach items="${lista}" var="i">
                                                     <form action="imovel" method="POST">
+                                                        
                                                         <tr>
                                                         <input type="hidden" name="idImovel" id="idImovel" value="${i.idImovel}"/>
                                                         <td><c:out value="${i.codImovel}"/></td>
@@ -214,6 +215,7 @@
                                                             <a href="imovel?tipoImovel=${i.tipo}&comando=contrato" class="btn btn-warning btn-sm">Contrato</a>
                                                         </td>
                                                         </tr>
+                                                        
                                                     </form>
 
                                                 </c:forEach>

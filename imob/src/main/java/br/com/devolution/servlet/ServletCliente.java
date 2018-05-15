@@ -111,9 +111,9 @@ public class ServletCliente extends HttpServlet {
             
             try {
                 if (daoCliente.inserir(cliente)) {
+                    msg = "<script>alert('Erro ao inserir um novo Cliente');</script>";
                     msg = "<script>alert('Cliente inserido com sucesso');</script>";
                 } else {
-                    msg = "<script>alert('Erro ao inserir um novo Cliente');</script>";
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
