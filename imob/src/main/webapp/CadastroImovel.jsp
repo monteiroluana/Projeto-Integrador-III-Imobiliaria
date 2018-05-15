@@ -225,7 +225,7 @@
                                                     </div>	
                                                     <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" value="${clienteP.cpf}">
                                                     <br>
-                                                    <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=buscaCliente&cpfCliente=' + document.getElementbyId('cpf').value">Buscar</a>							
+                                                    <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=buscaCliente&cpfCliente=' + document.getElementById('cpf').value">Buscar</a>							
                                                 </div>
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
                                                     <div class="form-group">
