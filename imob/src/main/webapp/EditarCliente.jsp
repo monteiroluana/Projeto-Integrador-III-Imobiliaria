@@ -32,7 +32,7 @@
                         <br>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Edição de Clientes</h3>
+                                <h3 class="panel-title">Editar Cliente</h3>
                             </div>
                             <div class="panel-body">
                                 <form role="form" action="cliente" method="POST">

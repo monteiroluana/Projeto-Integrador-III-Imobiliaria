@@ -1,4 +1,4 @@
-<%@page import="br.com.evolution.model.Cliente"%>
+<%@page import="br.com.devolution.model.Cliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -93,7 +93,7 @@
                         <br>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Cadastro de Imóveis</h3>
+                                <h3 class="panel-title">Editar Imóvel</h3>
                             </div>
                             <div class="panel-body">
                                 <form role="form" action="imovel" method="POST">

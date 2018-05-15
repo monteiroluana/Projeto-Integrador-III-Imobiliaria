@@ -1,5 +1,5 @@
 <%-- 
-    Document   : CadastroImoveis
+    Document   : CadastroImovel
     Created on : May 4, 2018, 3:51:31 PM
     Author     : I864970
 --%>
@@ -298,10 +298,7 @@
 
                                             </div>
                                             <div class="row">
-
-
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
-
                                                     <div class="form-group">
                                                         <div class="col-25">
                                                             <label class="control-label" for="situacao">Status do Imóvel</label>
@@ -317,35 +314,43 @@
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
                                                     <div class="form-group">
                                                         <div class="col-25">
-                                                            <label class="control-label" for="iptu">IPTU</label>
+                                                            <label class="control-label" for="codImovel">Cód. Imóvel</label>
                                                         </div>	
-                                                        <input type="text" name="iptu" id="iptu" class="form-control input-sm" placeholder="IPTU">
+                                                        <input type="text" name="codImovel" id="codImovel" class="form-control input-sm" placeholder="codImovel">
                                                     </div>
                                                 </div>
                                             </div> 
                                             <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                                <div class="col-xs-3 col-sm-3 col-md-3">
                                                     <div class="form-group">
                                                         <div class="col-25">
-                                                            <label class="control-label" for="valorVenda">Valor de venda*</label>
+                                                            <label class="control-label" for="valorVenda">Venda*</label>
                                                         </div>	
-                                                        <input type="text" name="valorVenda" id="valorVenda" class="form-control input-sm" placeholder="Valor">
+                                                        <input type="text" name="valorVenda" id="valorVenda" class="form-control input-sm" placeholder="Valor venda">
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                                <div class="col-xs-3 col-sm-3 col-md-3">
                                                     <div class="form-group">
                                                         <div class="col-25">
-                                                            <label class="control-label" for="valorAluguel">Valor de aluguel*</label>
+                                                            <label class="control-label" for="valorAluguel">Aluguel*</label>
                                                         </div>	
-                                                        <input type="text" name="valorAluguel" id="valorAluguel" class="form-control input-sm" placeholder="Valor">
+                                                        <input type="text" name="valorAluguel" id="valorAluguel" class="form-control input-sm" placeholder="Valor aluguel">
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                                <div class="col-xs-3 col-sm-3 col-md-3">
                                                     <div class="form-group">
                                                         <div class="col-25">
                                                             <label class="control-label" for="condominio">Condomínio</label>
                                                         </div>	
                                                         <input type="text" name="condominio" id="condominio" class="form-control input-sm" placeholder="Condomínio">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="col-25">
+                                                            <label class="control-label" for="iptu">IPTU</label>
+                                                        </div>	
+                                                        <input type="text" name="iptu" id="iptu" class="form-control input-sm" placeholder="IPTU">
                                                     </div>
                                                 </div>
 
