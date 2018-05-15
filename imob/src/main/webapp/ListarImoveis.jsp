@@ -196,7 +196,7 @@
                                                 </thead>
 
                                                 <c:forEach items="${lista}" var="i">
-                                                    <form action="imovel" method="POST">
+                                                    
                                                         
                                                         <tr>
                                                         <input type="hidden" name="idImovel" id="idImovel" value="${i.idImovel}"/>
@@ -212,11 +212,11 @@
                                                         <td class="text-center">
                                                             <button type="submit" class="btn btn-info btn-sm" target="_blank">Editar</button>
                                                             <a href="imovel?idImovel=${i.idImovel}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
-                                                            <a href="imovel?tipoImovel=${i.tipo}&comando=contrato" class="btn btn-warning btn-sm">Contrato</a>
+                                                            <a href="imovel?comando=buscarImovel&idImovel=${i.idImovel}" class="btn btn-warning btn-sm">Contrato</a>
                                                         </td>
                                                         </tr>
                                                         
-                                                    </form>
+                                                    
 
                                                 </c:forEach>
 

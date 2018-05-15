@@ -3,7 +3,8 @@
     Created on : May 4, 2018, 3:21:24 PM
     Author     : I864970
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,11 +12,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Venda</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="css/styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/styles.css">
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script><!--includeHTML-->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script> 
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script> 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -23,10 +24,10 @@
         <script type="text/javascript" src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
     </head>
     <body>
-         <div w3-include-html="menu.html"></div>
-            <script>
-                w3IncludeHTML();
-          </script>
+        <div w3-include-html="menu.html"></div>
+        <script>
+            w3IncludeHTML();
+        </script>
 
         <div class="container">
             <div class="row centered-form">
@@ -102,7 +103,7 @@
                                     <div class="col-sm-4">
                                         <label for="cod" class="control-label">Cód. Referência*</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="00000" name="cod" id="cod">
+                                            <input type="text" class="form-control" placeholder="00000" name="cod" id="cod" value="${imovel.codImovel}">
                                             <span class="input-group-btn">
                                                 <button class="btn btn-info" type="button" id="cod-pesquisa"><span class="glyphicon glyphicon-search"></span>
                                                 </button>
@@ -111,8 +112,8 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label for="imovel" class="control-label">Imóvel*</label>
-                                            <input type="text" name="imovel" id="imovel" class="form-control input-sm" placeholder="imovel">
+                                            <label for="imovel" class="control-label">Tipo Imóvel</label>
+                                            <input type="text" name="tipo" id="tipo" class="form-control input-sm" placeholder="tipo imovel" value="${imovel.tipo}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
@@ -120,18 +121,19 @@
                                             <div class="col-25">
                                                 <label class="control-label" for="categoria">Categoria</label>
                                             </div>	
-                                            <select id="categoria" name="categoria" class="form-control">
+                                            <!--<select id="categoria" name="categoria" class="form-control">
                                                 <option value="0">Selecione</option>
                                                 <option value="1">Residencial</option>
                                                 <option value="2">Comercial</option>
-                                                <option value="3">Rural</option>
+                                                <option value="3">Rural</option>-->
+                                             <input type="text" name="categoria" id="categoria" class="form-control input-sm" placeholder="Categoria" value="${imovel.complemento}" disabled>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="proprietario" class="control-label">Proprietário*</label>
-                                            <input type="text" name="proprietario" id="proprietario" class="form-control input-sm" placeholder="proprietario">
+                                            <input type="text" name="proprietario" id="proprietario" class="form-control input-sm" placeholder="proprietario" value="${imovel.idCliente}" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -139,31 +141,31 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="endereco" class="control-label">Endereço*</label>
-                                            <input type="text" name="endereco" id="endereco" class="form-control input-sm" placeholder="endereco">
+                                            <input type="text" name="endereco" id="endereco" class="form-control input-sm" placeholder="endereco" value="${imovel.rua}"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="numero" class="control-label">Número*</label>
-                                            <input type="text" name="numero" id="numero" class="form-control input-sm" placeholder="numero">
+                                            <input type="text" name="numero" id="numero" class="form-control input-sm" placeholder="numero" value="${imovel.num}"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="complemento" class="control-label">Complemento</label>
-                                            <input type="text" name="complemento" id="complemento" class="form-control input-sm" placeholder="complemento">
+                                            <input type="text" name="complemento" id="complemento" class="form-control input-sm" placeholder="complemento" value="${imovel.complemento}"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="bairro" class="control-label">Bairro</label>
-                                            <input type="text" name="bairro" id="bairro" class="form-control input-sm" placeholder="bairro">
+                                            <input type="text" name="bairro" id="bairro" class="form-control input-sm" placeholder="bairro" value="${imovel.bairro}"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label for="cidade" class="control-label">Cidade</label>
-                                            <input type="text" name="cidade" id="cidade" class="form-control input-sm" placeholder="cidade">
+                                            <input type="text" name="cidade" id="cidade" class="form-control input-sm" placeholder="cidade" value="${imovel.cidade}"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-sm-1">
@@ -171,34 +173,7 @@
                                             <div class="col-25">
                                                 <label class="control-label" for="uf">UF*</label>
                                             </div>	
-                                            <select id="uf" name="ufuf" class="form-control">
-                                                <option value="AC">AC</option>
-                                                <option value="AL">AL</option>
-                                                <option value="AP">AP</option>
-                                                <option value="AM">AM</option>
-                                                <option value="BA">BA</option>
-                                                <option value="CE">CE</option>
-                                                <option value="DF">DF</option>
-                                                <option value="ES">ES</option>
-                                                <option value="GO">GO</option>
-                                                <option value="MA">MA</option>
-                                                <option value="MT">MT</option>
-                                                <option value="MS">MS</option>
-                                                <option value="MG">MG</option>
-                                                <option value="PB">PB</option>
-                                                <option value="PR">PR</option>
-                                                <option value="PE">PE</option>
-                                                <option value="PI">PI</option>
-                                                <option value="RJ">RJ</option>
-                                                <option value="RN">RN</option>
-                                                <option value="RS">RS</option>
-                                                <option value="RO">RO</option>
-                                                <option value="PR">PR</option>
-                                                <option value="SC">SC</option>
-                                                <option value="SP">SP</option>
-                                                <option value="SE">SE</option>
-                                                <option value="TO">TO</option>
-                                            </select>
+                                             <input type="text" name="uf" id="uf" class="form-control input-sm" placeholder="uf" value="${imovel.uf}" disabled>
                                         </div>
                                     </div>	
                                 </div>
@@ -274,22 +249,22 @@
             </div>
         </div>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
             $(function () {
                 $("#datetimepicker_de").datetimepicker({
                     defaultDate: "01/01/2018",
                     locale: "pt-br",
                 });
-				$("#datetimepicker_ate").datetimepicker({
+                $("#datetimepicker_ate").datetimepicker({
                     defaultDate: "12/12/2018",
                     locale: "pt-br",
                 });
-				$("#datetimepicker").datetimepicker({
+                $("#datetimepicker").datetimepicker({
                     defaultDate: "01/01/2018",
                     locale: "pt-br",
                 });
-				
+
             });
-            </script> <!--Calendario-->
+        </script> <!--Calendario-->
     </body>
 </html>
