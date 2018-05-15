@@ -326,7 +326,7 @@
                                                         <div class="col-25">
                                                             <label class="control-label" for="valorVenda">Venda*</label>
                                                         </div>	
-                                                        <input type="text" name="valorVenda" id="valorVenda" class="form-control input-sm" placeholder="Valor venda">
+                                                        <input type="text" name="valorVenda" id="valorVenda" class="form-control input-sm" placeholder="Valor venda" value="0">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-3 col-sm-3 col-md-3">
@@ -334,7 +334,7 @@
                                                         <div class="col-25">
                                                             <label class="control-label" for="valorAluguel">Aluguel*</label>
                                                         </div>	
-                                                        <input type="text" name="valorAluguel" id="valorAluguel" class="form-control input-sm" placeholder="Valor aluguel">
+                                                        <input type="text" name="valorAluguel" id="valorAluguel" class="form-control input-sm" placeholder="Valor aluguel" value="0">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-3 col-sm-3 col-md-3">
@@ -342,7 +342,7 @@
                                                         <div class="col-25">
                                                             <label class="control-label" for="condominio">Condomínio</label>
                                                         </div>	
-                                                        <input type="text" name="condominio" id="condominio" class="form-control input-sm" placeholder="Condomínio">
+                                                        <input type="text" name="condominio" id="condominio" class="form-control input-sm" placeholder="Condomínio" value="0">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-3 col-sm-3 col-md-3">
@@ -350,7 +350,7 @@
                                                         <div class="col-25">
                                                             <label class="control-label" for="iptu">IPTU</label>
                                                         </div>	
-                                                        <input type="text" name="iptu" id="iptu" class="form-control input-sm" placeholder="IPTU">
+                                                        <input type="text" name="iptu" id="iptu" class="form-control input-sm" placeholder="IPTU" value="0">
                                                     </div>
                                                 </div>
 
@@ -445,7 +445,7 @@
                                                 <div class="col-25">
                                                     <label class="control-label" for="quartos">Quartos</label>
                                                 </div>	
-                                                <input type="text" name="quartos" id="quartos" class="form-control input-sm" placeholder="Quartos">
+                                                <input type="text" name="quartos" id="quartos" class="form-control input-sm" placeholder="Quartos" value="0">
                                             </div>
                                         </div>
 
@@ -454,7 +454,7 @@
                                                 <div class="col-25">
                                                     <label class="control-label" for="banheiros">Banheiros</label>
                                                 </div>	
-                                                <input type="text" name="banheiros" id="banheiros" class="form-control input-sm" placeholder="banheiros">
+                                                <input type="text" name="banheiros" id="banheiros" class="form-control input-sm" placeholder="banheiros" value="0">
                                             </div>
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-2">
@@ -462,7 +462,7 @@
                                                 <div class="col-25">
                                                     <label class="control-label" for="suites">Suítes</label>
                                                 </div>	
-                                                <input type="text" name="suites" id="suites" class="form-control input-sm" placeholder="Suítes">
+                                                <input type="text" name="suites" id="suites" class="form-control input-sm" placeholder="Suítes" value="0">
                                             </div>
                                         </div>
 
@@ -471,7 +471,7 @@
                                                 <div class="col-25">
                                                     <label class="control-label" for="vagasGaragem">Vagas na Garagem</label>
                                                 </div>	
-                                                <input type="text" name="vagasGaragem" id="vagasGaragem" class="form-control input-sm" placeholder="Vagas">
+                                                <input type="text" name="vagasGaragem" id="vagasGaragem" class="form-control input-sm" placeholder="Vagas" value="0">
                                             </div>
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-2">
@@ -479,7 +479,7 @@
                                                 <div class="col-25">
                                                     <label class="control-label" for="areaUtil">Área útil</label>
                                                 </div>	
-                                                <input type="text" name="areaUtil" id="areaUtil" class="form-control input-sm" placeholder="Área útil">
+                                                <input type="text" name="areaUtil" id="areaUtil" class="form-control input-sm" placeholder="Área útil" value="0">
                                             </div>
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-2">
@@ -487,7 +487,7 @@
                                                 <div class="col-25">
                                                     <label class="control-label" for="areaTotal">Área total</label>
                                                 </div>	
-                                                <input type="text" name="areaTotal" id="areaTotal" class="form-control input-sm" placeholder="Área total">
+                                                <input type="text" name="areaTotal" id="areaTotal" class="form-control input-sm" placeholder="Área total" value="0">
                                             </div>
                                         </div>
                                     </div>
@@ -538,7 +538,7 @@
                                                     <div class="col-25">
                                                         <label class="control-label" for="num">Número</label>
                                                     </div>	
-                                                    <input type="text" name="num" id="num" class="form-control input-sm" placeholder="Número">
+                                                    <input type="text" name="num" id="num" class="form-control input-sm" placeholder="Número" value="0">
                                                 </div>
                                             </div>
                                             <div class="col-xs-auto col-sm-auto col-md-6">

@@ -37,7 +37,7 @@
                                 <h3 class="panel-title">Consultar Imóveis</h3>
                             </div>
                             <div class="panel-body">
-                                <form role="form">
+                                <!--<form role="form" action="imovel" method="POST">-->
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <h3 class="panel-title">Filtrar busca</h3>
@@ -181,50 +181,50 @@
 
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-auto">
-                                           <table class="table table-striped custab">
+                                            <table class="table table-striped custab">
                                                 <thead>
                                                     <tr>
-                                                        <th>Cód. Imóvel</th>
-                                                        <th>Tipo do imóvel</th>
+                                                        <th>Cód.</th>
+                                                        <th>Tipo</th>
                                                         <th>Bairro</th>
                                                         <th>Cidade</th>
                                                         <th>Estado</th>
-                                                        <th>Valor</th>
+                                                        <th>Venda(R$)</th>
+                                                        <th>Aluguel(R$)</th>
+                                                        <th>Serviço</th>
                                                         <th>Situação</th>
                                                         <th class="text-center">Opções</th>
                                                     </tr>
                                                 </thead>
 
-                                                <c:forEach items="${lista}" var="i">
-                                                    
-                                                        
-                                                        <tr>
-                                                        <input type="hidden" name="idImovel" id="idImovel" value="${i.idImovel}"/>
-                                                        <td><c:out value="${i.codImovel}"/></td>
-                                                        <td><c:out value="${i.tipo}" /></td>
-                                                        <td><c:out value="${i.bairro}" /></td>
-                                                        <td><c:out value="${i.cidade}" /></td>
-                                                        <td><c:out value="${i.uf}" /></td>
-                                                        <td><c:out value="${i.valorVenda}" /></td>
-                                                        <td><c:out value="${i.situacao}" /></td>
-                                                        <input type="hidden" name="comando" id="comando" value="listaEditar"/>
+                                                <c:forEach items="${lista}" var="i">                                                    
+                                                    <form action="imovel" method="POST">
+                                                    <tr>
+                                                    <input type="hidden" name="idImovel" id="idImovel" value="${i.idImovel}"/>
+                                                    <td><c:out value="${i.codImovel}"/></td>
+                                                    <td><c:out value="${i.tipo}" /></td>
+                                                    <td><c:out value="${i.bairro}" /></td>
+                                                    <td><c:out value="${i.cidade}" /></td>
+                                                    <td><c:out value="${i.uf}" /></td>
+                                                    <td><c:out value="${i.valorVenda}" /></td>
+                                                    <td><c:out value="${i.valorAluguel}" /></td>
+                                                    <td><c:out value="${i.servico}" /></td>
+                                                    <td><c:out value="${i.situacao}" /></td>                                                    
+                                                    <input type="hidden" name="comando" id="comando" value="listaEditar"/>
 
-                                                        <td class="text-center">
-                                                            <button type="submit" class="btn btn-info btn-sm" target="_blank">Editar</button>
-                                                            <a href="imovel?idImovel=${i.idImovel}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
-                                                            <a href="imovel?comando=buscarImovel&idImovel=${i.idImovel}" class="btn btn-warning btn-sm">Contrato</a>
-                                                        </td>
-                                                        </tr>
-                                                        
-                                                    
-
+                                                    <td class="text-center">
+                                                        <button type="submit" class="btn btn-info btn-sm" target="_blank">Editar</button>
+                                                        <a href="imovel?idImovel=${i.idImovel}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
+                                                        <a href="imovel?comando=buscarImovel&idImovel=${i.idImovel}" class="btn btn-warning btn-sm">Contrato</a>
+                                                    </td>
+                                                    </tr>
+                                                    </form>
                                                 </c:forEach>
-
                                             </table>
 
                                         </div>
                                     </div>
-                                </form>
+                                <!--</form>-->
                             </div>
                         </div>
                     </div>

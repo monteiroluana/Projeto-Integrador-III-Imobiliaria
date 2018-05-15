@@ -1,6 +1,8 @@
 package br.com.devolution.servlet;
 
+import br.com.devolution.dao.DaoCliente;
 import br.com.devolution.dao.DaoImovel;
+import br.com.devolution.model.Cliente;
 import br.com.devolution.model.Imovel;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -123,7 +125,7 @@ public class ServletImovel extends HttpServlet {
             imovel.setCondominio(Double.parseDouble(request.getParameter("condominio")));
             imovel.setSituacao(request.getParameter("situacao"));
             imovel.setServico(request.getParameter("servico"));
-            imovel.setCodImovel("000111222");
+            imovel.setCodImovel(request.getParameter("codImovel"));
 
             DaoImovel daoImovel = new DaoImovel();
 
@@ -134,19 +136,24 @@ public class ServletImovel extends HttpServlet {
             }
 
             request.setAttribute("imovelCadastrado", imovel);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroImovel .jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
             dispatcher.forward(request, response);
 
         } else if (request.getParameter("comando").equals("listaEditar")) {
 
             Imovel imovel = new Imovel();
+            Cliente cliente = new Cliente();
 
             imovel.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
-
+                                    
             DaoImovel daoImovel = new DaoImovel();
+            DaoCliente daoCliente = new DaoCliente();
 
             try {
                 imovel = daoImovel.buscar(imovel);
+                cliente.setIdCliente(imovel.getIdCliente());
+                cliente = daoCliente.buscar(cliente);
+                
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
@@ -154,6 +161,7 @@ public class ServletImovel extends HttpServlet {
             }
 
             request.setAttribute("imovel", imovel);
+            request.setAttribute("cliente", cliente);
             RequestDispatcher dispatcher = request.getRequestDispatcher("EditarImovel.jsp");
             dispatcher.forward(request, response);
 
@@ -195,7 +203,7 @@ public class ServletImovel extends HttpServlet {
             }
 
             request.setAttribute("imovelCadastrado", imovel);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroResposta.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
             dispatcher.forward(request, response);
 
         }
