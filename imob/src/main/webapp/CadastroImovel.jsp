@@ -20,69 +20,69 @@
         <link rel="stylesheet" href="css/styles.css">
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script><!--includeHTML-->
         <script type="text/javascript" >
-        
+
             function limpa_formulário_cep() {
-            //Limpa valores do formulário de cep.
-            document.getElementById('rua').value = ("");
-            document.getElementById('bairro').value = ("");
-            document.getElementById('cidade').value = ("");
-            document.getElementById('uf').value = ("");
+                //Limpa valores do formulário de cep.
+                document.getElementById('rua').value = ("");
+                document.getElementById('bairro').value = ("");
+                document.getElementById('cidade').value = ("");
+                document.getElementById('uf').value = ("");
             }
 
             function meu_callback(conteudo) {
-            if (!("erro" in conteudo)) {
-            //Atualiza os campos com os valores.
-            document.getElementById('rua').value = (conteudo.logradouro);
-            document.getElementById('bairro').value = (conteudo.bairro);
-            document.getElementById('cidade').value = (conteudo.localidade);
-            document.getElementById('uf').value = (conteudo.uf);
-            } //end if.
-            else {
-            //CEP não Encontrado.
-            limpa_formulário_cep();
-            alert("CEP não encontrado.");
-            }
+                if (!("erro" in conteudo)) {
+                    //Atualiza os campos com os valores.
+                    document.getElementById('rua').value = (conteudo.logradouro);
+                    document.getElementById('bairro').value = (conteudo.bairro);
+                    document.getElementById('cidade').value = (conteudo.localidade);
+                    document.getElementById('uf').value = (conteudo.uf);
+                } //end if.
+                else {
+                    //CEP não Encontrado.
+                    limpa_formulário_cep();
+                    alert("CEP não encontrado.");
+                }
             }
 
             function pesquisacep(valor) {
 
-            //Nova variável "cep" somente com dígitos.
-            var cep = valor.replace(/\D/g, '');
-            //Verifica se campo cep possui valor informado.
-            if (cep != "") {
+                //Nova variável "cep" somente com dígitos.
+                var cep = valor.replace(/\D/g, '');
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
 
-            //Expressão regular para validar o CEP.
-            var validacep = /^[0-9]{8}$/;
-            //Valida o formato do CEP.
-            if (validacep.test(cep)) {
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+                    //Valida o formato do CEP.
+                    if (validacep.test(cep)) {
 
-            //Preenche os campos com "..." enquanto consulta webservice.
-            document.getElementById('rua').value = "...";
-            document.getElementById('bairro').value = "...";
-            document.getElementById('cidade').value = "...";
-            document.getElementById('uf').value = "...";
-            //Cria um elemento javascript.
-            var script = document.createElement('script');
-            //Sincroniza com o callback.
-            script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
-            //Insere script no documento e carrega o conteúdo.
-            document.body.appendChild(script);
-            } //end if.
-            else {
-            //cep é inválido.
-            limpa_formulário_cep();
-            alert("Formato de CEP inválido.");
-            }
-            } //end if.
-            else {
-            //cep sem valor, limpa formulário.
-            limpa_formulário_cep();
-            }
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        document.getElementById('rua').value = "...";
+                        document.getElementById('bairro').value = "...";
+                        document.getElementById('cidade').value = "...";
+                        document.getElementById('uf').value = "...";
+                        //Cria um elemento javascript.
+                        var script = document.createElement('script');
+                        //Sincroniza com o callback.
+                        script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+                        //Insere script no documento e carrega o conteúdo.
+                        document.body.appendChild(script);
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
             }
             ;
-         
+
         </script>
-        
+
     </head>
     <script>
 
@@ -111,11 +111,11 @@
                                 '<div class="image-cancel" data-no="' + num + '">x</div>' +
                                 '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
                                 '</div>';
-                        
+
                         output.append(html);//coloca as imagens na parte de baixo da div
-                        $('<li data-target="#myCarousel" data-slide-to="'+ num +'" class=""></li>').appendTo('#indicator');
-                        
-                        $('<div class="item"> <img class="slide preview-image preview-show-"'+num+'" src="'+ picFile.result +'""></div>').appendTo("#car");
+                        $('<li data-target="#myCarousel" data-slide-to="' + num + '" class=""></li>').appendTo('#indicator');
+
+                        $('<div class="item"> <img class="slide preview-image preview-show-"' + num + '" src="' + picFile.result + '""></div>').appendTo("#car");
                         num = num + 1;
                     });
 
@@ -130,7 +130,7 @@
 
 
     </script>
-    
+
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <style>
         .preview-images-zone {
@@ -196,11 +196,11 @@
         }
 
     </style>
-    
+
     <body>
         <div w3-include-html="menu.html"></div>
         <script>
-            w3IncludeHTML();
+        w3IncludeHTML();
         </script>
         <div class="main">
             <div class="container">
@@ -219,7 +219,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="row">
-                                                 <div class="col-xs-auto col-sm-auto col-md-6">
+                                                <div class="col-xs-auto col-sm-auto col-md-6">
                                                     <div class="col-25">
                                                         <label class="control-label" for="cpf">CPF</label>
                                                     </div>	
@@ -236,13 +236,13 @@
                                                         <input type="hidden" id="idCliente" name="idCliente" value="${clienteP.idCliente}">
 
                                                     </div>
-                                                
+
+                                                </div>
                                             </div>
-                                          </div>
-                                            
+
                                             <div class="row">
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
-                                                    
+
                                                     <div class="form-group">
                                                         <div class="col-25">
                                                             <label for="dataCad" class="control-label">Data</label>
@@ -298,25 +298,10 @@
 
                                             </div>
                                             <div class="row">
-                                                <div class="col-xs-auto col-sm-auto col-md-6">
-                                                    <div class="col-25">
-                                                        <label class="control-label" for="cpf">CPF</label>
-                                                    </div>	
-                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" value="${clienteP.cpf}">
-                                                    <br>
-                                                    <!-- Buscando os dados do proprietário no 'ServletCliente'-->
-                                                    <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=buscaCliente&cpfCliente=' + document.getElementById('cpf').value">Buscar</a>							
-                                                </div>
+
 
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
-                                                    <div class="form-group">
-                                                        <div class="col-25">
-                                                            <label class="control-label" for="proprietario">Proprietário</label>
-                                                        </div>	
-                                                        <input type="text" name="proprietário" id="proprietario" class="form-control input-sm" value="${clienteP.nome}">
-                                                        <input type="hidden" id="idCliente" name="idCliente" value="${clienteP.idCliente}">
 
-                                                    </div>
                                                     <div class="form-group">
                                                         <div class="col-25">
                                                             <label class="control-label" for="situacao">Status do Imóvel</label>
@@ -329,44 +314,56 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-xs-4 col-sm-4 col-md-4">
-                                                        <div class="form-group">
-                                                            <div class="col-25">
-                                                                <label class="control-label" for="valorVenda">Valor de venda*</label>
-                                                            </div>	
-                                                            <input type="text" name="valorVenda" id="valorVenda" class="form-control input-sm" placeholder="Valor">
-                                                        </div>
+                                                <div class="col-xs-auto col-sm-auto col-md-6">
+                                                    <div class="form-group">
+                                                        <div class="col-25">
+                                                            <label class="control-label" for="iptu">IPTU</label>
+                                                        </div>	
+                                                        <input type="text" name="iptu" id="iptu" class="form-control input-sm" placeholder="IPTU">
                                                     </div>
-                                                    <div class="col-xs-4 col-sm-4 col-md-4">
-                                                        <div class="form-group">
-                                                            <div class="col-25">
-                                                                <label class="control-label" for="valorAluguel">Valor de aluguel*</label>
-                                                            </div>	
-                                                            <input type="text" name="valorAluguel" id="valorAluguel" class="form-control input-sm" placeholder="Valor">
-                                                        </div>
+                                                </div>
+                                            </div> 
+                                            <div class="row">
+                                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <div class="col-25">
+                                                            <label class="control-label" for="valorVenda">Valor de venda*</label>
+                                                        </div>	
+                                                        <input type="text" name="valorVenda" id="valorVenda" class="form-control input-sm" placeholder="Valor">
                                                     </div>
-                                                    <div class="col-xs-4 col-sm-4 col-md-4">
-                                                        <div class="form-group">
-                                                            <div class="col-25">
-                                                                <label class="control-label" for="condominio">Condomínio</label>
-                                                            </div>	
-                                                            <input type="text" name="condominio" id="condominio" class="form-control input-sm" placeholder="Condomínio">
-                                                        </div>
+                                                </div>
+                                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <div class="col-25">
+                                                            <label class="control-label" for="valorAluguel">Valor de aluguel*</label>
+                                                        </div>	
+                                                        <input type="text" name="valorAluguel" id="valorAluguel" class="form-control input-sm" placeholder="Valor">
                                                     </div>
-                                                    <div class="col-xs-4 col-sm-4 col-md-4">
-                                                        <div class="form-group">
-                                                            <div class="col-25">
-                                                                <label class="control-label" for="iptu">IPTU</label>
-                                                            </div>	
-                                                            <input type="text" name="iptu" id="iptu" class="form-control input-sm" placeholder="IPTU">
-                                                        </div>
+                                                </div>
+                                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <div class="col-25">
+                                                            <label class="control-label" for="condominio">Condomínio</label>
+                                                        </div>	
+                                                        <input type="text" name="condominio" id="condominio" class="form-control input-sm" placeholder="Condomínio">
                                                     </div>
-
                                                 </div>
 
+
                                             </div>
+                                            <div class="row">
+                                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                                    <div class="col-25">
+                                                        <label class="control-label" for="info">Outras Informações</label>
+                                                    </div>	
+                                                </div>
+                                                <div class="form-group">
+                                                    <textarea class="form-control" rows="4" id="info"></textarea>
+                                                </div>
+                                            </div>
+
                                         </div>
+
 
                                         <div class="col-xs-auto col-sm-auto col-md-6">
                                             <div>
@@ -376,7 +373,7 @@
                                                         <li class="preview-image preview-show-1" data-target="#myCarousel" data-slide-to="0" class=""></li>
                                                         <li class="preview-image preview-show-2" data-target="#myCarousel" data-slide-to="1" class=""></li>
                                                         <li class="preview-image preview-show-3" data-target="#myCarousel" data-slide-to="2" class=""></li>
-                                                        
+
                                                     </ol>
                                                     <div class="carousel-inner" role="listbox" id="car">
                                                         <div class="item active ">
@@ -426,14 +423,7 @@
                                                 <!-- -------------------------------------------------------------------------------------------->
 
                                             </div><!--DIV DO CAROUSEL-->	
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <div class="col-25">
-                                                    <label class="control-label" for="info">Outras Informações</label>
-                                                </div>	
-                                            </div>
-                                            <div class="form-group">
-                                                <textarea class="form-control" rows="4" id="info"></textarea>
-                                            </div>
+
 
 
                                         </div>
@@ -580,7 +570,7 @@
                                     <div class="row">
                                         <br>
                                         <div class="col-xs-auto col-sm-auto col-md-6">
-                                            <button type="button submit" class="btn btn-info" >Salvar</button>
+                                            <button type="submit" class="btn btn-info" >Salvar</button>
                                             <button type="button" class="btn btn-danger" >Cancelar</button>
                                         </div>
                                     </div>

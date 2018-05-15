@@ -134,7 +134,7 @@ public class ServletImovel extends HttpServlet {
             }
 
             request.setAttribute("imovelCadastrado", imovel);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroResposta.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroImovel .jsp");
             dispatcher.forward(request, response);
 
         } else if (request.getParameter("comando").equals("listaEditar")) {

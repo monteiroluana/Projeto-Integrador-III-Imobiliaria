@@ -182,10 +182,10 @@ public class DaoImovel {
             stmt.setBoolean(26, true);
             stmt.execute();
 
-        } catch (ClassNotFoundException | SQLException ex) {
+        }catch(ClassNotFoundException | SQLException ex ){
             System.err.println(ex.getMessage());
 
-        } finally {
+        }finally {
             conn.close();
         }
 
