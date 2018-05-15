@@ -6,11 +6,13 @@
 package br.com.devolution.servlet;
 
 import br.com.devolution.dao.DaoCliente;
+import br.com.devolution.dao.DaoContrato;
 import br.com.devolution.dao.DaoImovel;
 import br.com.devolution.model.Cliente;
+import br.com.devolution.model.Contrato;
 import br.com.devolution.model.Imovel;
+import br.com.devolution.model.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -43,8 +46,12 @@ public class ServletContrato extends HttpServlet {
         Cliente cliente = new Cliente();
         Imovel imovel = new Imovel();
         String pag = null;
+        HttpSession session = request.getSession();
+        Usuario usuSession = (Usuario) session.getAttribute("usuAutenticado");
+        usuSession.getNome();
+        usuSession.getIdUsuario();
 
-        if (request.getParameter("locatario").equals("") && !request.getParameter("idImovel").equals("")) {
+        if (request.getParameter("locatario").equals("")) {
 
             try {
                 cliente = daoCliente.buscarPorCpf(request.getParameter("cpf"));
@@ -59,12 +66,33 @@ public class ServletContrato extends HttpServlet {
 
             request.setAttribute("imovel", imovel);
             request.setAttribute("cliente", cliente);
-            pag = "venda.jsp";
-
+            RequestDispatcher dispatcher = request.getRequestDispatcher("venda.jsp");
+            dispatcher.forward(request, response);
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(pag);
-        dispatcher.forward(request, response);
+        if (!request.getParameter("locatario").equals("") && !request.getParameter("idImovel").equals("")) {
+            Contrato contrato = new Contrato();
+            DaoContrato daoContrato = new DaoContrato();
+
+            contrato.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
+            contrato.setIdCliente(Integer.parseInt(request.getParameter("idCliente")));
+            contrato.setCodContrato("a2a52a5");
+            contrato.setDataContrato(request.getParameter("datetimepicker"));
+            contrato.setDataInicial(request.getParameter("datetimepicker_de"));
+            contrato.setDataFinal(request.getParameter("datetimepicker_ate"));
+            
+            
+            try {
+                daoContrato.inserir(contrato);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            String msg="<script>alert('Contrato cadastrado com sucesso'"+usuSession.getNome()+"');</script>";
+            
+            request.setAttribute("msg", msg);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
+            dispatcher.forward(request, response);
+        }
 
     }
 

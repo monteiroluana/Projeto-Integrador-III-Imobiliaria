@@ -12,7 +12,8 @@ import java.util.Date;
 
 
 public class Contrato {    
-    
+
+    private int idContrato;
     String codContrato;
     int idImovel;
     int idCliente;
@@ -106,7 +107,14 @@ public class Contrato {
     public void setTipoContrato(String tipoContrato) {
         this.tipoContrato = tipoContrato;
     }
-    
+      
+    public int getIdContrato() {
+        return idContrato;
+    }
+
+    public void setIdContrato(int idContrato) {
+        this.idContrato = idContrato;
+    }
     
     
 }

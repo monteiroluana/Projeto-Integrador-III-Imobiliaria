@@ -50,8 +50,8 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label for="datetimepicker" class="control-label">Data</label>
-                                            <div class="input-group date" id="datetimepicker">
-                                                <input type="text" class="form-control"/>
+                                            <div class="input-group date">
+                                                <input type="text" id="datetimepicker" name="datetimepicker" class="form-control"/>
                                                 <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>
@@ -199,8 +199,8 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="datetimepicker_de" class="control-label">De</label>
-                                            <div class="input-group date" id="datetimepicker_de">
-                                                <input type="text" class="form-control"/>
+                                            <div class="input-group date" >
+                                                <input id="datetimepicker_de" name="datetimepicker_de" type="text" class="form-control"/>
                                                 <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>
@@ -210,8 +210,8 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="datetimepicker_ate" class="control-label">Até</label>
-                                            <div class="input-group date" id="datetimepicker_ate">
-                                                <input type="text" class="form-control"/>
+                                            <div class="input-group date" >
+                                                <input id="datetimepicker_ate" name="datetimepicker_ate" type="text" class="form-control"/>
                                                 <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>
@@ -248,7 +248,8 @@
 
                                     </div>
                                     <div class="col-sm-3">
-                                        <input type="hidden" name="idImovel" id="idImovel" value="${imovel.idImovel}">    
+                                        <input type="hidden" name="idImovel" id="idImovel" value="${imovel.idImovel}">
+                                        <input type="hidden" name="idCliente" id="idCliente" value="${cliente.idCliente}">  
                                         <button type="button" class="btn btn-info">Gerar contrato</button>
                                         <button type="button" class="btn btn-danger" >Cancelar</button>
                                     </div>
