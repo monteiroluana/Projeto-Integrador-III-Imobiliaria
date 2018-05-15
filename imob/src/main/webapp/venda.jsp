@@ -39,7 +39,7 @@
                             <h3 class="panel-title">Abertura de vendas e locação</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <form role="form" action="contrato" method="POST">
                                 <div class="row">
                                     <div class="col-xs-auto col-sm-auto col-md-4">
                                         <h3 class="panel-title">Vendas e locação</h3>
@@ -77,15 +77,17 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="locatario" class="control-label">Locatário*</label>
-                                            <input type="text" name="locatario" id="locatario" class="form-control input-sm" placeholder="locatario">
+                                            <input type="text" name="locatario" id="locatario" class="form-control input-sm" placeholder="locatario" value="${cliente.nome}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <label for="cpf" class="control-label">CPF*</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="000.000.000-00" name="cpf" id="cpf">
+                                            <input type="text" class="form-control" placeholder="000.000.000-00" name="cpf" id="cpf" value="${cliente.cpf}">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-info" type="button" id="cpf-pesquisa"><span class="glyphicon glyphicon-search"></span>
+                                                <!-- <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=buscaLocatario&i=${imovel.idImovel}&cpfLocatario=' + document.getElementById('cpf').value">Buscar</a> -->
+                                                <button class="btn btn-info" type="submit">
+                                                    <span class="glyphicon glyphicon-search"></span>
                                                 </button>
                                             </span>
                                         </div>
@@ -101,15 +103,18 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label for="cod" class="control-label">Cód. Referência*</label>
+                                        <label for="codRef" class="control-label">Cód. Referência*</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="00000" name="cod" id="cod" value="${imovel.codImovel}">
+                                            <input type="text" class="form-control" placeholder="00000" name="codRef" id="codRef" value="${imovel.codImovel}" disabled>
                                             <span class="input-group-btn">
-                                                <button class="btn btn-info" type="button" id="cod-pesquisa"><span class="glyphicon glyphicon-search"></span>
-                                                </button>
+                                                <!-- <button class="btn btn-info" type="button" id="cod-pesquisa"><span class="glyphicon glyphicon-search"></span>
+                                                </button> -->
                                             </span>
+                                            
                                         </div>
                                     </div>
+                                                                                           
+                            
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="imovel" class="control-label">Tipo Imóvel</label>
@@ -126,7 +131,7 @@
                                                 <option value="1">Residencial</option>
                                                 <option value="2">Comercial</option>
                                                 <option value="3">Rural</option>-->
-                                             <input type="text" name="categoria" id="categoria" class="form-control input-sm" placeholder="Categoria" value="${imovel.complemento}" disabled>
+                                            <input type="text" name="categoria" id="categoria" class="form-control input-sm" placeholder="Categoria" value="${imovel.complemento}" disabled>
                                             </select>
                                         </div>
                                     </div>
@@ -173,7 +178,7 @@
                                             <div class="col-25">
                                                 <label class="control-label" for="uf">UF*</label>
                                             </div>	
-                                             <input type="text" name="uf" id="uf" class="form-control input-sm" placeholder="uf" value="${imovel.uf}" disabled>
+                                            <input type="text" name="uf" id="uf" class="form-control input-sm" placeholder="uf" value="${imovel.uf}" disabled>
                                         </div>
                                     </div>	
                                 </div>
@@ -191,7 +196,7 @@
 
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="datetimepicker_de" class="control-label">De</label>
                                             <div class="input-group date" id="datetimepicker_de">
@@ -202,7 +207,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="datetimepicker_ate" class="control-label">Até</label>
                                             <div class="input-group date" id="datetimepicker_ate">
@@ -215,20 +220,26 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label for="valor" class="control-label">Valor</label>
-                                            <input type="text" name="valor" id="valor" class="form-control input-sm" placeholder="valor">
+                                            <label for="valorVenda" class="control-label">Valor Venda</label>
+                                            <input type="text" name="valorVenda" id="valorVenda" class="form-control input-sm" placeholder="Valor de venda" value="${imovel.valorVenda}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label for="valorAluguel" class="control-label">Valor Aluguel</label>
+                                            <input type="text" name="valorAluguel" id="valorAluguel" class="form-control input-sm" placeholder="Valor de aluguel" value="${imovel.valorAluguel}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="condominio" class="control-label">Condomínio</label>
-                                            <input type="text" name="condominio" id="condominio" class="form-control input-sm" placeholder="condominio">
+                                            <input type="text" name="condominio" id="condominio" class="form-control input-sm" placeholder="condominio" value="${imovel.condominio}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="iptu" class="control-label">IPTU</label>
-                                            <input type="text" name="cidade" id="iptu" class="form-control input-sm" placeholder="iptu">
+                                            <input type="text" name="cidade" id="iptu" class="form-control input-sm" placeholder="iptu" value="${imovel.iptu}" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -237,6 +248,7 @@
 
                                     </div>
                                     <div class="col-sm-3">
+                                        <input type="hidden" name="idImovel" id="idImovel" value="${imovel.idImovel}">    
                                         <button type="button" class="btn btn-info">Gerar contrato</button>
                                         <button type="button" class="btn btn-danger" >Cancelar</button>
                                     </div>

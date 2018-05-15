@@ -57,7 +57,28 @@ public class ServletCliente extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroImovel.jsp");
             dispatcher.forward(request, response);
             
-        } else if (request.getParameter("comando").equals("excluir")) {
+        } 
+        else if (request.getParameter("comando").equals("buscaLocatario")) {
+            DaoCliente daoCliente = new DaoCliente();
+            String cpf = request.getParameter("cpfLocatario");
+            Cliente cliente = null;
+            
+            try {
+                cliente = daoCliente.buscarPorCpf(cpf);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            request.setAttribute("clienteP", cliente);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("venda.jsp");
+            dispatcher.forward(request, response);
+            
+        }
+        
+        
+        else if (request.getParameter("comando").equals("excluir")) {
             //ATUALIZANDO NO BANCO
             DaoCliente daoCliente = new DaoCliente();
             
