@@ -15,10 +15,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script>
-        <link rel="stylesheet" href="css/styles.css">
-        <link rel="stylesheet" href="css/login.css">
-
-
+        
     </head>
     <style>
         body{
@@ -117,7 +114,7 @@
             opacity: 1;
         }
         body{
-            background-image: url(../img/background_login.jpg);
+            background-image: url(img/login_fail.png);
             background-repeat: no-repeat;
             background-size: cover;
             
