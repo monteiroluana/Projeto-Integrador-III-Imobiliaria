@@ -82,8 +82,121 @@
             ;
          
         </script>
-
+        
     </head>
+    <script>
+
+        $(document).ready(function () {
+            document.getElementById('pro-image').addEventListener('change', readImage, false);
+            $(".preview-images-zone").sortable();
+            $(document).on('click', '.image-cancel', function () {
+                let no = $(this).data('no');
+                $(".preview-image.preview-show-" + no).remove();
+                $().remove();
+            });
+        });
+        var num = 4;
+        function readImage() {
+            if (window.File && window.FileList && window.FileReader) {
+                var files = event.target.files; //FileList object
+                var output = $(".preview-images-zone");
+                for (let i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    if (!file.type.match('image'))
+                        continue;
+                    var picReader = new FileReader();
+                    picReader.addEventListener('load', function (event) {
+                        var picFile = event.target;
+                        var html = '<div class="preview-image preview-show-' + num + '">' +
+                                '<div class="image-cancel" data-no="' + num + '">x</div>' +
+                                '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
+                                '</div>';
+                        
+                        output.append(html);//coloca as imagens na parte de baixo da div
+                        $('<li data-target="#myCarousel" data-slide-to="'+ num +'" class=""></li>').appendTo('#indicator');
+                        
+                        $('<div class="item"> <img class="slide preview-image preview-show-"'+num+'" src="'+ picFile.result +'""></div>').appendTo("#car");
+                        num = num + 1;
+                    });
+
+                    picReader.readAsDataURL(file);
+                }
+                $("#pro-image").val('');
+            } else {
+                console.log('Browser not support');
+            }
+        }
+
+
+
+    </script>
+    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        .preview-images-zone {
+            width: 400px;
+            min-height: 180px;
+            /* display: flex; */
+            padding: 5px 5px 0px 5px;
+            position: relative;
+            overflow:auto;
+        }
+        .preview-images-zone > .preview-image {
+            height: 90px;
+            width: 90px;
+            position: relative;
+            margin-right: 5px;
+            float: left;
+            margin-bottom: 5px;
+        }
+        .preview-images-zone > .preview-image > .image-zone {
+            width: 100%;
+            height: 100%;
+        }
+        .preview-images-zone > .preview-image > .image-zone > img {
+            width: 100%;
+            height: 100%;
+        }
+        .preview-images-zone > .preview-image > .tools-edit-image {
+            position: absolute;
+            z-index: 100;
+            color: #fff;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+            display: none;
+        }
+        .preview-images-zone > .preview-image > .image-cancel {
+            font-size: 18px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-weight: bold;
+            margin-right: 10px;
+            cursor: pointer;
+            display: none;
+            z-index: 100;
+        }
+        .preview-image:hover > .image-zone {
+            cursor: move;
+            opacity: .5;
+        }
+        .preview-image:hover > .tools-edit-image,
+        .preview-image:hover > .image-cancel {
+            display: block;
+        }
+        .ui-sortable-helper {
+            width: 90px !important;
+            height: 90px !important;
+        }
+
+        .container {
+            padding-top: 50px;
+        }
+
+    </style>
+    
     <body>
         <div w3-include-html="menu.html"></div>
         <script>
@@ -106,8 +219,30 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="row">
+                                                 <div class="col-xs-auto col-sm-auto col-md-6">
+                                                    <div class="col-25">
+                                                        <label class="control-label" for="cpf">CPF</label>
+                                                    </div>	
+                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF">
+                                                    <br>
+                                                    <a href="#" class="btn btn-info" onclick="pesquisaCliente()">Buscar</a>							
+                                                </div>
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
+                                                    <div class="form-group">
+                                                        <div class="col-25">
+                                                            <label class="control-label" for="proprietario">Proprietário</label>
+                                                        </div>	
+                                                        <input type="text" name="proprietário" id="proprietario" class="form-control input-sm">
+                                                       <!-- <input type="hidden" id="idCliente" name="idCliente" value="${clienteP.idCliente}">-->
 
+                                                    </div>
+                                                
+                                            </div>
+                                          </div>
+                                            
+                                            <div class="row">
+                                                <div class="col-xs-auto col-sm-auto col-md-6">
+                                                    
                                                     <div class="form-group">
                                                         <div class="col-25">
                                                             <label for="dataCad" class="control-label">Data</label>
@@ -237,22 +372,22 @@
                                             <div>
                                                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                                     <!-- Indicators -->
-                                                    <ol class="carousel-indicators">
-                                                        <li data-target="#myCarousel" data-slide-to="0" class=""></li>
-                                                        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-                                                        <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+                                                    <ol class="carousel-indicators"id="indicator">
+                                                        <li class="preview-image preview-show-1" data-target="#myCarousel" data-slide-to="0" class=""></li>
+                                                        <li class="preview-image preview-show-2" data-target="#myCarousel" data-slide-to="1" class=""></li>
+                                                        <li class="preview-image preview-show-3" data-target="#myCarousel" data-slide-to="2" class=""></li>
+                                                        
                                                     </ol>
-                                                    <div class="carousel-inner" role="listbox">
-                                                        <div class="item active">
-                                                            <img class="first-slide"  src="img/1.jpeg" alt="Foto da casa">
+                                                    <div class="carousel-inner" role="listbox" id="car">
+                                                        <div class="item active ">
+                                                            <img class="first-slide preview-image preview-show-1"  src="img/1.jpeg" data-no="1" alt="Foto da casa">
+                                                        </div>
+                                                        <div class="item">
+                                                            <img class="second-slide preview-image preview-show-2" src="img/2.jpeg" data-no="2" alt="Foto da casa">
 
                                                         </div>
                                                         <div class="item">
-                                                            <img class="second-slide" src="img/2.jpeg" alt="Foto da casa">
-
-                                                        </div>
-                                                        <div class="item">
-                                                            <img class="third-slide" src="img/3.jpeg" alt="Foto da casa">
+                                                            <img class="third-slide preview-image preview-show-3" src="img/3.jpeg" data-no="3" alt="Foto da casa">
 
                                                         </div>
                                                     </div>
@@ -267,8 +402,28 @@
 
                                                 </div><!--carousel-->
 
-                                                <label for="imagens">Selecionar um arquivo &#187;</label>
-                                                <input id="imagens" type="file" accept="image/x-png,image/gif,image/jpeg" onChange="previewFile()">
+                                                <!-- -------------------------------------------------------------------------------------------->
+                                                <div class="container">
+                                                    <fieldset class="form-group">
+                                                        <a href="javascript:void(0)" onclick="$('#pro-image').click()">Selecione algumas imagens    </a>
+                                                        <input type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
+                                                    </fieldset>
+                                                    <div class="preview-images-zone">
+                                                        <div class="preview-image preview-show-1">
+                                                            <div class="image-cancel" data-no="1">x</div>
+                                                            <div class="image-zone"><img id="pro-img-1" src="img/1.jpeg"></div>
+                                                        </div>
+                                                        <div class="preview-image preview-show-2">
+                                                            <div class="image-cancel" data-no="2">x</div>
+                                                            <div class="image-zone"><img id="pro-img-2" src="img/2.jpeg"></div>
+                                                        </div>
+                                                        <div class="preview-image preview-show-3">
+                                                            <div class="image-cancel" data-no="3">x</div>
+                                                            <div class="image-zone"><img id="pro-img-3" src="img/3.jpeg"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- -------------------------------------------------------------------------------------------->
 
                                             </div><!--DIV DO CAROUSEL-->	
                                             <div class="col-xs-6 col-sm-6 col-md-6">
