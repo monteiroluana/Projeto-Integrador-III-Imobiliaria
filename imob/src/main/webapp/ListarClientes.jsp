@@ -116,9 +116,10 @@
                                                 <input type="hidden" name="comando" id="comando" value="listaEditar"/>
 
                                                 <td class="text-center">                                                            
-                                                    
-                                                    <button type="submit" class="btn btn-info btn-sm glyphicon glyphicon-pencil" target="_blank"></button>                                                        
-                                                    <a href="cliente?idCliente=${c.idCliente}&comando=excluir"class="btn btn-danger btn-sm glyphicon glyphicon-remove"></a>
+                                                    <!-- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Editar</button> -->
+                                                    <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Excluir</button> -->
+                                                    <button type="submit" class="btn btn-info btn-sm" target="_blank">Editar</button>                                                        
+                                                    <a href="cliente?idCliente=${c.idCliente}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
 
                                                 </td>
                                                 </tr>

@@ -117,10 +117,12 @@
             opacity: 1;
         }
         body{
-            background-image: url(../img/background_login.jpg);
+            background-image: url(img/background_login.jpg);
             background-repeat: no-repeat;
             background-size: cover;
-            
+            background-image: url(img/background_login.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
         }	
         ﻿
         body,html{
