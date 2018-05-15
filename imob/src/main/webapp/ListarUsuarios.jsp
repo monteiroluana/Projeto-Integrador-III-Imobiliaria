@@ -17,6 +17,7 @@
 
         </script>
     </head>
+    
     <body>
         <div w3-include-html="menu.html"></div>
         <script>
@@ -110,11 +111,11 @@
                                                     <th class="text-center">Opções</th>
                                                 </tr>
                                             </thead>
-                                      
-                                        <c:forEach items="${lista}" var="u">
-                                            <!-- <form action="usuario?nome=${u.nome}&dpto=${u.departamento}&cargo=${u.cargo}&gf=${u.grupoFilial}&email=${u.email}&idUsuario=${u.idUsuario}&comando=listaEditar" method="GET"> -->
-                                            <form action="usuario" method="POST">
-                                               
+
+                                            <c:forEach items="${lista}" var="u">
+                                                <!-- <form action="usuario?nome=${u.nome}&dpto=${u.departamento}&cargo=${u.cargo}&gf=${u.grupoFilial}&email=${u.email}&idUsuario=${u.idUsuario}&comando=listaEditar" method="GET"> -->
+                                                <form action="usuario" method="POST">
+
                                                     <tr>
                                                     <!--<input style="display: none" value="${u.idUsuario}"/> -->
                                                     <input type="hidden" name="idUsuario" id="idUsuario" value="${u.idUsuario}"/>
@@ -128,16 +129,17 @@
 
 
                                                     <td class="text-center">
-                                                        <button type="submit" class="btn btn-info btn-sm" target="_blank">Editar</button>
-                                                        <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button> -->
-                                                        <a href="usuario?idUsuario=${u.idUsuario}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
+                                                        
+                                                        <button type="submit" class="btn btn-info btn-sm glyphicon glyphicon-pencil" target="_blank"></button>
+                                                        <a href="usuario?idUsuario=${u.idUsuario}&comando=excluir" class="btn btn-danger btn-sm glyphicon glyphicon-remove"></a>
+                                                        
                                                     </td>
                                                     </tr>
+
+                                                </form>
                                                 
-                                            </form>
-                                            <!-- </form> -->
-                                        </c:forEach>                                           
-                                       </table>
+                                            </c:forEach>                                           
+                                        </table>
                                     </div>
                                 </div>
                                 <!-- </form> -->
@@ -273,7 +275,7 @@
             </div><!--CONFIRMAR-EXCLUSÃO-->
 
         </div> <!-- MAIN -->
-${msg}
+        ${msg}
         <!-- 
         <h1 style="text-align: center">Lista de Usuários</h1>
         <hr>
