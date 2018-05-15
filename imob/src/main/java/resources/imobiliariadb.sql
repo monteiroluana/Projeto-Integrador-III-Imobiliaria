@@ -87,11 +87,11 @@ CREATE TABLE imobiliariadb.CONTRATO (
 
 
 INSERT INTO imobiliariadb.USUARIO (nome,login,senha,email,grupoFilial,departamento,cargo,enable) VALUES
-("Jonas Araujo","jonas.araujo","jonas","jonas@jonas.com","SãoPaulo","","",true),
-("Bruna Sayuri","bruna.sayuri","bruna","bruna@bruna.com","RioDeJaneiro","","",true),
-("Rodrigo Normando","rodrigo.normando","rodrigo","rodrigo@rodrigo.com","SãoPaulo","","",true);
+("Jonas Araujo","jonas.araujo","jonas","jonas@jonas.com","Sao Paulo","","",true),
+("Bruna Sayuri","bruna.sayuri","bruna","bruna@bruna.com","Rio de Janeiro","","",true),
+("Rodrigo Normando","rodrigo.normando","rodrigo","rodrigo@rodrigo.com","Sao Paulo","","",true);
 INSERT INTO imobiliariadb.USUARIO (nome,login,senha,email,grupoFilial,departamento,cargo,enable) VALUES
-("Luana Monteiro", "luana.monteiro", "luana","luana@monteiro.com", "São Paulo","","", true);
+("Luana Monteiro", "luana.monteiro", "luana","luana@monteiro.com", "Sao Paulo","","", true);
 
 INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable) VALUES
 ("99991111111","kunieda aoi","1996-07-17","fem","1155554444","11944445555","aoi@aoi.com","04444000","","","","","","",true);
