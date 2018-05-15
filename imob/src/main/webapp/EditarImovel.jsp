@@ -219,7 +219,7 @@
                                                     </div>	
                                                     <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" value="${cliente.cpf}">
                                                     <br>
-                                                    						
+
                                                 </div>
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
                                                     <div class="form-group">
@@ -559,7 +559,8 @@
                                                     </div>	
                                                     <input type="text" name="uf" id="uf" class="form-control input-sm" placeholder="UF" value="${imovel.uf}">
                                                 </div>
-                                                <input type="hidden" name="comando" id="comando" value="editar"/>
+                                                <input type="hidden" name="comando" id="comando" value="editar">
+                                                <input type="hidden" id="idImovel" name="idImovel" value="${imovel.idImovel}">
                                             </div>
                                         </div>		
                                     </div>
@@ -569,8 +570,8 @@
                                     <div class="row">
                                         <br>
                                         <div class="col-xs-auto col-sm-auto col-md-6">
-                                            <button type="submit" class="btn btn-info" >Salvar</button>
-                                            <button type="button" class="btn btn-danger" >Cancelar</button>
+                                            <button type="button submit" class="btn btn-info" >Salvar</button>
+                                            <button type="button" class="btn btn-danger" onclick="javascript:window.close()" >Cancelar</button>
                                         </div>
                                     </div>
 

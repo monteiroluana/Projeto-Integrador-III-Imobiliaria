@@ -169,6 +169,7 @@ public class ServletImovel extends HttpServlet {
             //Pegando as informações que estão sendo passadas pelo formulario
             Imovel imovel = new Imovel();
 
+            imovel.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
             imovel.setDataCad(request.getParameter("dataCad"));
             imovel.setCategoria(request.getParameter("categoria"));
             imovel.setTipo(request.getParameter("tipo"));
