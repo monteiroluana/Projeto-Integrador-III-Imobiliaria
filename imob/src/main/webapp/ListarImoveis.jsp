@@ -209,8 +209,6 @@
                                                         <input type="hidden" name="comando" id="comando" value="listaEditar"/>
 
                                                         <td class="text-center">
-                                                            <!--<a href="imovel?idImovel=${i.idImovel}&comando=listaEditar"class="btn btn-info btn-sm" target="_blank">Editar</a>-->
-                                                            <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#removerModal">Deletar</button> -->
                                                             <button type="submit" class="btn btn-info btn-sm" target="_blank">Editar</button>
                                                             <a href="imovel?idImovel=${i.idImovel}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
                                                             <a href="imovel?tipoImovel=${i.tipo}&comando=contrato" class="btn btn-warning btn-sm">Contrato</a>

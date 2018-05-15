@@ -54,7 +54,7 @@ public class ServletCliente extends HttpServlet {
             }
             
             request.setAttribute("clienteP", cliente);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroImoveis.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroImovel.jsp");
             dispatcher.forward(request, response);
             
         } else if (request.getParameter("comando").equals("excluir")) {

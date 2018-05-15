@@ -1,6 +1,6 @@
 <%@page import="java.util.List"%>
-<%@page import="br.com.evolution.model.Cliente"%>
-<%@page import="br.com.evolution.dao.DaoCliente"%>
+<%@page import="br.com.devolution.model.Cliente"%>
+<%@page import="br.com.devolution.dao.DaoCliente"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

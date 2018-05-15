@@ -4,7 +4,7 @@
     Author     : I864970
 --%>
 
-<%@page import="br.com.evolution.model.Cliente"%>
+<%@page import="br.com.devolution.model.Cliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -223,17 +223,17 @@
                                                     <div class="col-25">
                                                         <label class="control-label" for="cpf">CPF</label>
                                                     </div>	
-                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF">
+                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" value="${clienteP.cpf}">
                                                     <br>
-                                                    <a href="#" class="btn btn-info" onclick="pesquisaCliente()">Buscar</a>							
+                                                    <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=buscaCliente&cpfCliente=' + document.getElementbyId('cpf').value">Buscar</a>							
                                                 </div>
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
                                                     <div class="form-group">
                                                         <div class="col-25">
                                                             <label class="control-label" for="proprietario">Proprietário</label>
                                                         </div>	
-                                                        <input type="text" name="proprietário" id="proprietario" class="form-control input-sm">
-                                                       <!-- <input type="hidden" id="idCliente" name="idCliente" value="${clienteP.idCliente}">-->
+                                                        <input type="text" name="proprietario" id="proprietario" class="form-control input-sm" value="${clienteP.nome}">
+                                                        <input type="hidden" id="idCliente" name="idCliente" value="${clienteP.idCliente}">
 
                                                     </div>
                                                 
