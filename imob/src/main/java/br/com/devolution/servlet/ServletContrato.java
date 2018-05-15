@@ -37,13 +37,14 @@ public class ServletContrato extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         DaoImovel daoImovel = new DaoImovel();
         DaoCliente daoCliente = new DaoCliente();
         Cliente cliente = new Cliente();
         Imovel imovel = new Imovel();
+        String pag = null;
 
-        if (request.getParameter("locatario").equals("")) {
+        if (request.getParameter("locatario").equals("") && !request.getParameter("idImovel").equals("")) {
 
             try {
                 cliente = daoCliente.buscarPorCpf(request.getParameter("cpf"));
@@ -58,9 +59,12 @@ public class ServletContrato extends HttpServlet {
 
             request.setAttribute("imovel", imovel);
             request.setAttribute("cliente", cliente);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("venda.jsp");
-            dispatcher.forward(request, response);
+            pag = "venda.jsp";
+
         }
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher(pag);
+        dispatcher.forward(request, response);
 
     }
 
