@@ -77,7 +77,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="locatario" class="control-label">Locatário*</label>
-                                            <input type="text" name="locatario" id="locatario" class="form-control input-sm" placeholder="locatario" value="${cliente.nome}" disabled>
+                                            <input type="text" name="locatario" id="locatario" class="form-control input-sm" placeholder="locatario" value="${cliente.nome}">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
