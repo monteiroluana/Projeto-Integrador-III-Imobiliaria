@@ -213,9 +213,9 @@
                                                     <input type="hidden" name="comando" id="comando" value="listaEditar"/>
 
                                                     <td class="text-center">
-                                                        <button type="submit" class="btn btn-info btn-sm" target="_blank">Editar</button>
-                                                        <a href="imovel?idImovel=${i.idImovel}&comando=excluir"class="btn btn-danger btn-sm">Excluir</a>
-                                                        <a href="imovel?comando=buscarImovel&idImovel=${i.idImovel}" class="btn btn-warning btn-sm">Contrato</a>
+                                                        <button type="submit" class="btn btn-info btn-sm glyphicon glyphicon-pencil" target="_blank"></button>
+                                                        <a href="imovel?idImovel=${i.idImovel}&comando=excluir"class="btn btn-danger btn-sm glyphicon glyphicon-remove"></a>
+                                                        <a href="imovel?comando=buscarImovel&idImovel=${i.idImovel}" class="btn btn-warning btn-sm glyphicon glyphicon-file"></a>
                                                     </td>
                                                     </tr>
                                                     </form>
