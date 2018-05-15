@@ -114,13 +114,14 @@
             opacity: 1;
         }
         body{
-            background-image: url(img/login_fail.png);
-            background-repeat: no-repeat;
-            background-size: cover;
+            
             
         }	
         ﻿
         body,html{
+            background-image: url(https://images.pexels.com/photos/40142/new-york-skyline-manhattan-hudson-40142.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
             height: 100%;
             background-color: #525252;
         }.centered-form{
