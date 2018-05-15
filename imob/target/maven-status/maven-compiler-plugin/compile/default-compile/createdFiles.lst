@@ -2,11 +2,11 @@ br\com\devolution\dao\DaoImovel.class
 br\com\devolution\model\Imovel.class
 br\com\devolution\model\Usuario.class
 br\com\devolution\conexao\Conexao.class
-br\com\devolution\dao\DaoCliente.class
 br\com\devolution\servlet\ServletCliente.class
-br\com\devolution\servlet\ServletImovel.class
 br\com\devolution\servlet\ServletUsuario.class
-br\com\devolution\dao\DaoUsuario.class
-br\com\devolution\filtro\filtroPaginas.class
 br\com\devolution\model\Cliente.class
 br\com\devolution\servlet\autenticador.class
+br\com\devolution\dao\DaoCliente.class
+br\com\devolution\servlet\ServletImovel.class
+br\com\devolution\dao\DaoUsuario.class
+br\com\devolution\filtro\filtroPaginas.class
