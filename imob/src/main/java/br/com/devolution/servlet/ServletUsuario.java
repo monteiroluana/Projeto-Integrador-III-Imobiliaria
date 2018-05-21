@@ -1,6 +1,7 @@
 package br.com.devolution.servlet;
 
 import br.com.devolution.dao.DaoUsuario;
+import br.com.devolution.exceptions.UsuarioException;
 import br.com.devolution.model.Usuario;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import br.com.devolution.model.validadores.ValidadorUsuario;
 
 @WebServlet(name = "usuario", urlPatterns = {"/usuario"})
 public class ServletUsuario extends HttpServlet {
@@ -86,15 +88,20 @@ public class ServletUsuario extends HttpServlet {
             usuario.setGrupoFilial(request.getParameter("grupoFilial"));
             usuario.setDepartamento(request.getParameter("departamento"));
             usuario.setCargo(request.getParameter("cargo"));
+            
+            
 
             // INSERINDO NO BANCO
             try {
-                if (daoUsuario.inserir(usuario)) {
+                if (ValidadorUsuario.validar(usuario)) {
+                    daoUsuario.inserir(usuario);
                     msg = "<script>alert('Usuário inserido com sucesso');</script>";
                 } else {
                     msg = "<script>alert('Erro ao inserir usuário');</script>";
                 }
             } catch (SQLException ex) {
+                Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UsuarioException ex) {
                 Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
             

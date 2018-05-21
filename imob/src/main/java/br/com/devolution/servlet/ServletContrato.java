@@ -48,7 +48,7 @@ public class ServletContrato extends HttpServlet {
         String pag = null;
         HttpSession session = request.getSession();
         Usuario usuSession = (Usuario) session.getAttribute("usuAutenticado");
-        usuSession.getNome();
+        String nome = usuSession.getNome();
         usuSession.getIdUsuario();
 
         if (request.getParameter("locatario").equals("")) {
