@@ -328,5 +328,54 @@ public class DaoCliente {
 
         return lista;
     }
+    
+    
+    //método para verificar se existe o cpf registrado no bd
+    public static boolean obterCpf(String cpf) throws SQLException, Exception {
+
+        String sql = "SELECT * FROM cliente WHERE (cpf=? and enable=?)";
+
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+
+        //Armazenará os resultados do banco de dados
+        ResultSet result = null;
+        try {
+            //Abre uma conexão com o banco de dados
+            connection = Conexao.obterConexao();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, cpf);
+            preparedStatement.setBoolean(2, true);
+
+            //Executa a consulta SQL no banco de dados
+            result = preparedStatement.executeQuery();
+            
+            //se eentrar no if, significa que já tem cliente com o cpf
+            if (result.next()) {                             
+                
+                return true;                
+            }
+        } finally {
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        //Se o return anterior não foi executado
+        return false;
+    }
 
 }
+
+

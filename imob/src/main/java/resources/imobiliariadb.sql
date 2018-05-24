@@ -19,7 +19,7 @@ CREATE TABLE imobiliariadb.CLIENTE(
 	idCliente      INTEGER NOT NULL AUTO_INCREMENT,
 	nome           VARCHAR(255),
 	dataNasc       DATE,
-	cpf            VARCHAR(11),
+	cpf            VARCHAR(11) NOT NULL,
 	sexo           VARCHAR(15),
 	cep            VARCHAR(8),
 	rua            VARCHAR(255),
@@ -103,4 +103,3 @@ cep,rua,num,bairro,cidade,uf,valorVenda,valorAluguel,iptu,situacao,enable)
 VALUES (1,"codTeste","2018-05-08","residencial","casa",3,2,1,2,100,200,"aloaloaloalo",
 "04444000","rua teste","20","bairrozin","sao paulo","sp",250000,2500,200,"livre",true);
 
-select * from usuario;

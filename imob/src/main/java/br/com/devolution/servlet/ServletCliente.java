@@ -2,6 +2,8 @@ package br.com.devolution.servlet;
 
 import br.com.devolution.dao.DaoCliente;
 
+import br.com.devolution.model.validadores.ValidadorCliente;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -131,7 +133,8 @@ public class ServletCliente extends HttpServlet {
             DaoCliente daoCliente = new DaoCliente();
             
             try {
-                if (daoCliente.inserir(cliente)) {
+                if (ValidadorCliente.validar(cliente)) {
+                    daoCliente.inserir(cliente);
                     msg = "<script>alert('Erro ao inserir um novo Cliente');</script>";
                     msg = "<script>alert('Cliente inserido com sucesso');</script>";
                 } else {
@@ -139,6 +142,8 @@ public class ServletCliente extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
                 Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
             
