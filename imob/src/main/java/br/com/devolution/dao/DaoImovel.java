@@ -258,6 +258,53 @@ public class DaoImovel {
             conn.close();
         }
     }
+    
+    public boolean conferirCodImovel(String codImovel) throws ClassNotFoundException, SQLException{
+        
+        String sql = "SELECT * FROM imovel WHERE (codImovel=? and enable=?)";
+
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+
+        //Armazenará os resultados do banco de dados
+        ResultSet result = null;
+        try {
+            //Abre uma conexão com o banco de dados
+            connection = Conexao.obterConexao();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, codImovel);
+            preparedStatement.setBoolean(2, true);
+
+            //Executa a consulta SQL no banco de dados
+            result = preparedStatement.executeQuery();
+            
+            //se eentrar no if, significa que já tem Imovel com o codigo passado
+            if (result.next()) {                             
+                
+                return true;                
+            }
+        } finally {
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        //Se o return anterior não foi executado
+        return false;
+    
+        
+    }
 
     public Imovel buscar(Imovel imovel) throws ClassNotFoundException, SQLException {
 

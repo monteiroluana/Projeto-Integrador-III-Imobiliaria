@@ -133,6 +133,7 @@ public class ServletCliente extends HttpServlet {
             DaoCliente daoCliente = new DaoCliente();
             
             try {
+                //se o cliente for válido, vai para o dao
                 if (ValidadorCliente.validar(cliente)) {
                     daoCliente.inserir(cliente);
                     msg = "<script>alert('Erro ao inserir um novo Cliente');</script>";
@@ -174,12 +175,15 @@ public class ServletCliente extends HttpServlet {
             DaoCliente daoCliente = new DaoCliente();
             
             try {
-                if (daoCliente.editar(cliente)) {
+                if (ValidadorCliente.validar(cliente)) {                    
+                    daoCliente.editar(cliente);
                     msg = "<script>alert('Cliente alterado com sucesso');</script>";
                 } else {
                     msg = "<script>alert('Erro ao alterar o cliente');</script>";
                 }
             } catch (SQLException ex) {
+                Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
                 Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
             request.setAttribute("msg", msg);

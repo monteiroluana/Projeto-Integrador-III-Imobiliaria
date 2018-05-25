@@ -2,6 +2,7 @@ package br.com.devolution.servlet;
 
 import br.com.devolution.dao.DaoCliente;
 import br.com.devolution.dao.DaoImovel;
+import br.com.devolution.exceptions.ImovelException;
 import br.com.devolution.model.Cliente;
 import br.com.devolution.model.Imovel;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import br.com.devolution.model.validadores.ValidadorImovel;
 
 @WebServlet(name = "imovel", urlPatterns = {"/imovel"})
 public class ServletImovel extends HttpServlet {
@@ -97,9 +99,10 @@ public class ServletImovel extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Imovel imovel = new Imovel();
         if (request.getParameter("comando").equals("cadastrar")) {
             //Pegando as informações que estão sendo passadas pelo formulario
-            Imovel imovel = new Imovel();
+            
 
             imovel.setIdCliente(Integer.parseInt(request.getParameter("idCliente")));
             imovel.setDataCad(request.getParameter("dataCad"));
@@ -130,8 +133,13 @@ public class ServletImovel extends HttpServlet {
             DaoImovel daoImovel = new DaoImovel();
 
             try {
+                if(ValidadorImovel.validar(imovel))
                 daoImovel.inserir(imovel);
             } catch (SQLException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ImovelException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             }
 
@@ -141,7 +149,7 @@ public class ServletImovel extends HttpServlet {
 
         } else if (request.getParameter("comando").equals("listaEditar")) {
 
-            Imovel imovel = new Imovel();
+
             Cliente cliente = new Cliente();
 
             imovel.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
@@ -167,7 +175,7 @@ public class ServletImovel extends HttpServlet {
 
         } else if (request.getParameter("comando").equals("editar")) {
             //Pegando as informações que estão sendo passadas pelo formulario
-            Imovel imovel = new Imovel();
+            
 
             imovel.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
             imovel.setDataCad(request.getParameter("dataCad"));
