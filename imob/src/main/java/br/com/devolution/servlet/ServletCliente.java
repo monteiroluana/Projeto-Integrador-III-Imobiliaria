@@ -175,7 +175,7 @@ public class ServletCliente extends HttpServlet {
             DaoCliente daoCliente = new DaoCliente();
             
             try {
-                if (ValidadorCliente.validar(cliente)) {                    
+                if (ValidadorCliente.validarEdicao(cliente)) {                    
                     daoCliente.editar(cliente);
                     msg = "<script>alert('Cliente alterado com sucesso');</script>";
                 } else {

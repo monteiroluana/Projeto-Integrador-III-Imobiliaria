@@ -22,6 +22,10 @@ public class ValidadorImovel {
         DaoImovel daoImovel = new DaoImovel();
         // dados do cliente
         
+        if(imovel == null){
+        throw new ImovelException("Imovel não informado.");
+        }
+        
         if (imovel.getIdCliente() <= -1) {
             throw new ImovelException("Cliente não informado");
         }
@@ -35,7 +39,25 @@ public class ValidadorImovel {
             throw new ImovelException("É necessário informar a data de cadastro");
         }
          
-         
+          if (imovel.getAreaUtil() > imovel.getAreaTotal()) {
+            throw new ImovelException("Area útil maior do que área total!");
+        }
+          
+          if (imovel.getServico().equals("Selecione")) {
+            throw new ImovelException("Serviço não informado");
+        }
+          
+          if (imovel.getCategoria().equals("Selecione")) {
+            throw new ImovelException("Categoria não informado");
+        }
+          
+          if (imovel.getTipo().equals("Selecione")) {
+            throw new ImovelException("Tipo do imóvel não informado");
+        }
+          
+          if (imovel.getSituacao().equals("Selecione")) {
+            throw new ImovelException("Status não informado");
+        }                  
         
         return true;
     }
