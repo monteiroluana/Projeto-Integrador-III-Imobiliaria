@@ -251,7 +251,7 @@
                                                     <div class="form-group">
                                                         <div class="col-25">
                                                             <label class="control-label" for="servico">Servico</label>
-                                                            <select id="Servico" name="Servico" class="form-control">
+                                                            <select id="servico" name="servico" class="form-control">
                                                                 <option>Selecione</option>
                                                                 <option>Venda</option>
                                                                 <option>Locação</option>                                                    

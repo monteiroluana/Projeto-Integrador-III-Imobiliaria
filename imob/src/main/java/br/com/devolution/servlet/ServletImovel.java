@@ -84,7 +84,7 @@ public class ServletImovel extends HttpServlet {
             Imovel imovel = new Imovel();
             imovel.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
             try {
-                 imovel = daoImovel.buscar(imovel);
+                imovel = daoImovel.buscar(imovel);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
@@ -102,7 +102,6 @@ public class ServletImovel extends HttpServlet {
         Imovel imovel = new Imovel();
         if (request.getParameter("comando").equals("cadastrar")) {
             //Pegando as informações que estão sendo passadas pelo formulario
-            
 
             imovel.setIdCliente(Integer.parseInt(request.getParameter("idCliente")));
             imovel.setDataCad(request.getParameter("dataCad"));
@@ -133,8 +132,9 @@ public class ServletImovel extends HttpServlet {
             DaoImovel daoImovel = new DaoImovel();
 
             try {
-                if(ValidadorImovel.validar(imovel))
-                daoImovel.inserir(imovel);
+                if (ValidadorImovel.validar(imovel)) {
+                    daoImovel.inserir(imovel);
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ImovelException ex) {
@@ -149,11 +149,10 @@ public class ServletImovel extends HttpServlet {
 
         } else if (request.getParameter("comando").equals("listaEditar")) {
 
-
             Cliente cliente = new Cliente();
 
             imovel.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
-                                    
+
             DaoImovel daoImovel = new DaoImovel();
             DaoCliente daoCliente = new DaoCliente();
 
@@ -161,7 +160,7 @@ public class ServletImovel extends HttpServlet {
                 imovel = daoImovel.buscar(imovel);
                 cliente.setIdCliente(imovel.getIdCliente());
                 cliente = daoCliente.buscar(cliente);
-                
+
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
@@ -175,7 +174,6 @@ public class ServletImovel extends HttpServlet {
 
         } else if (request.getParameter("comando").equals("editar")) {
             //Pegando as informações que estão sendo passadas pelo formulario
-            
 
             imovel.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
             imovel.setDataCad(request.getParameter("dataCad"));
@@ -206,16 +204,23 @@ public class ServletImovel extends HttpServlet {
             DaoImovel daoImovel = new DaoImovel();
 
             try {
-                daoImovel.editar(imovel);
-            } catch (SQLException ex) {
+                if (ValidadorImovel.validarEdicao(imovel)) {
+                    daoImovel.editar(imovel);
+                }
+            
+        }catch (SQLException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ImovelException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            request.setAttribute("imovelCadastrado", imovel);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
-            dispatcher.forward(request, response);
-
-        }
+        request.setAttribute("imovelCadastrado", imovel);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
+        dispatcher.forward(request, response);
 
     }
+
+}
 }
