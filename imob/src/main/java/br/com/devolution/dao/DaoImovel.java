@@ -10,6 +10,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 public class DaoImovel {
 
@@ -17,7 +18,7 @@ public class DaoImovel {
             double aluguelInicial, double aluguelFinal, String serv, String est)
             throws ClassNotFoundException, SQLException {
 
-       /* String sql = "SELECT * FROM imobiliariadb.IMOVEL WHERE "
+        /* String sql = "SELECT * FROM imobiliariadb.IMOVEL WHERE "
                 + "((UPPER(codImovel) LIKE UPPER(?) "
                 + "AND UPPER(tipo) LIKE UPPER(?) "
                 + "AND UPPER(situacao) LIKE UPPER(?) "
@@ -27,8 +28,7 @@ public class DaoImovel {
                 + "AND UPPER(uf) LIKE UPPER(?)) "
                 + "AND enable=?)"; */
         String sql = "SELECT * FROM imobiliariadb.IMOVEL WHERE enable=?";
- 
-       
+
 // ----TESTE MUDANDO A ORDEM DO SELECT----
 //SELECT * FROM imobiliariadb.IMOVEL WHERE 
 //(((valorVenda) BETWEEN (0) AND (300000) 
@@ -39,7 +39,6 @@ public class DaoImovel {
 //AND UPPER(servico) LIKE UPPER(null) 
 //AND UPPER(uf) LIKE UPPER(null)) 
 //AND enable=true);
-
         List<Imovel> lista = new ArrayList<Imovel>();
 
         Connection conn = null;
@@ -96,7 +95,7 @@ public class DaoImovel {
 
                 String situacao = resultados.getString("situacao");
                 String servico = resultados.getString("servico");
-            
+
                 Imovel imov = new Imovel();
                 imov.setIdImovel(id);
                 imov.setIdCliente(idCliente);
@@ -130,7 +129,7 @@ public class DaoImovel {
 
                 imov.setSituacao(situacao);
                 imov.setServico(servico);
-              
+
                 lista.add(imov);
             }
         } catch (ClassNotFoundException | SQLException ex) {
@@ -144,7 +143,7 @@ public class DaoImovel {
 
     public void inserir(Imovel imovel) throws SQLException {
 
-         String sql = "INSERT INTO imobiliariadb.IMOVEL (idCliente,dataCad,categoria,tipo,quartos,banheiros,suites,vagasGaragem,areaUtil,areaTotal,"
+        String sql = "INSERT INTO imobiliariadb.IMOVEL (idCliente,dataCad,categoria,tipo,quartos,banheiros,suites,vagasGaragem,areaUtil,areaTotal,"
                 + "informacao,cep,rua,num,complemento,bairro,cidade,uf,valorVenda,valorAluguel,condominio,iptu,situacao,servico,codImovel,enable) "
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
@@ -182,10 +181,10 @@ public class DaoImovel {
             stmt.setBoolean(26, true);
             stmt.execute();
 
-        }catch(ClassNotFoundException | SQLException ex ){
+        } catch (ClassNotFoundException | SQLException ex) {
             System.err.println(ex.getMessage());
 
-        }finally {
+        } finally {
             conn.close();
         }
 
@@ -226,7 +225,7 @@ public class DaoImovel {
             stmt.setDouble(20, imovel.getIptu());
             stmt.setString(21, imovel.getSituacao());
             stmt.setString(22, imovel.getServico());
-            stmt.setString(23,imovel.getCodImovel());
+            stmt.setString(23, imovel.getCodImovel());
             stmt.setInt(24, imovel.getIdImovel());
             stmt.execute();
 
@@ -258,9 +257,9 @@ public class DaoImovel {
             conn.close();
         }
     }
-    
-    public boolean conferirCodImovel(String codImovel) throws ClassNotFoundException, SQLException{
-        
+
+    public boolean conferirCodImovel(String codImovel) throws ClassNotFoundException, SQLException {
+
         String sql = "SELECT * FROM imovel WHERE (codImovel=? and enable=?)";
 
         //Conexão para abertura e fechamento
@@ -280,11 +279,11 @@ public class DaoImovel {
 
             //Executa a consulta SQL no banco de dados
             result = preparedStatement.executeQuery();
-            
+
             //se eentrar no if, significa que já tem Imovel com o codigo passado
-            if (result.next()) {                             
-                
-                return true;                
+            if (result.next()) {
+
+                return true;
             }
         } finally {
             //Se o result ainda estiver aberto, realiza seu fechamento
@@ -302,8 +301,7 @@ public class DaoImovel {
         }
         //Se o return anterior não foi executado
         return false;
-    
-        
+
     }
 
     public Imovel buscar(Imovel imovel) throws ClassNotFoundException, SQLException {
@@ -361,6 +359,45 @@ public class DaoImovel {
         }
 
         return imov;
+    }
+
+    public static int gerarCod() throws SQLException {
+
+        Random rnd = new Random();
+
+        int codGerado = rnd.nextInt(10000);
+
+        String sql = "SELECT * FROM imobiliariadb.IMOVEL WHERE codImovel=? AND enable=?";
+        Connection conn = null;
+
+        try {
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, codGerado);
+            stmt.setBoolean(2, true);
+
+            stmt.execute();
+
+            ResultSet res = stmt.executeQuery();
+
+            if (res.next()) {
+                
+                
+                codGerado = rnd.nextInt(10000);
+
+                return codGerado;
+            }                        
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.err.println(ex.getMessage());
+
+        } finally {
+            conn.close();
+        }
+        
+        return codGerado;
+
     }
 
 }

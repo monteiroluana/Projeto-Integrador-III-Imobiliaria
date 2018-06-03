@@ -1,6 +1,7 @@
 package br.com.devolution.servlet;
 
 import br.com.devolution.dao.DaoCliente;
+import br.com.devolution.dao.DaoImovel;
 
 import br.com.devolution.model.validadores.ValidadorCliente;
 
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import br.com.devolution.model.Cliente;
 import java.text.ParseException;
+import java.util.Random;
 
 @WebServlet(name = "cliente", urlPatterns = {"/cliente"})
 public class ServletCliente extends HttpServlet {
@@ -47,15 +49,20 @@ public class ServletCliente extends HttpServlet {
             DaoCliente daoCliente = new DaoCliente();
             String cpf = request.getParameter("cpfCliente");
             Cliente cliente = null;
+            Random rnd = new Random();
+            int codGerado = rnd.nextInt(10000);
             
             try {
                 cliente = daoCliente.buscarPorCpf(cpf);
+                int codImovel = DaoImovel.gerarCod();
+                
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            request.setAttribute("codGerado", codGerado);
             request.setAttribute("clienteP", cliente);
             RequestDispatcher dispatcher = request.getRequestDispatcher("CadastroImovel.jsp");
             dispatcher.forward(request, response);

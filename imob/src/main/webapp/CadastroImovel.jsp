@@ -316,7 +316,7 @@
                                                         <div class="col-25">
                                                             <label class="control-label" for="codImovel">Cód. Imóvel</label>
                                                         </div>	
-                                                        <input type="text" name="codImovel" id="codImovel" class="form-control input-sm" placeholder="codImovel">
+                                                        <input type="text" name="codImovel" id="codImovel" class="form-control input-sm" placeholder="codImovel" value=${codGerado}>
                                                     </div>
                                                 </div>
                                             </div> 
