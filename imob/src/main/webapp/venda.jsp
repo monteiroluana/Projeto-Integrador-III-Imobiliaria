@@ -250,6 +250,7 @@
                                     <div class="col-sm-3">
                                         <input type="hidden" name="idImovel" id="idImovel" value="${imovel.idImovel}">
                                         <input type="hidden" name="idCliente" id="idCliente" value="${cliente.idCliente}">  
+                                        <input type="hidden" name="codContrato" id="codContrato" value="${codContrato}">  
                                         <button type="button submit" class="btn btn-info">Gerar contrato</button>
                                         <button type="button" class="btn btn-danger" >Cancelar</button>
                                     </div>

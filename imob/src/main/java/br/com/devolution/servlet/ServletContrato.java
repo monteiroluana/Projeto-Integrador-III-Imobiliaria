@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 /**
  *
  * @author luana.mpereira5
@@ -53,17 +54,23 @@ public class ServletContrato extends HttpServlet {
 
         if (request.getParameter("locatario").equals("")) {
 
+            int codGerado = -1;
+            
             try {
                 cliente = daoCliente.buscarPorCpf(request.getParameter("cpf"));
                 imovel.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
                 imovel = daoImovel.buscar(imovel);
+                
+                codGerado = DaoContrato.gerarCod();
+                                                
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
+            request.setAttribute("codContrato", codGerado);
             request.setAttribute("imovel", imovel);
             request.setAttribute("cliente", cliente);
             RequestDispatcher dispatcher = request.getRequestDispatcher("venda.jsp");
@@ -76,7 +83,7 @@ public class ServletContrato extends HttpServlet {
 
             contrato.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
             contrato.setIdCliente(Integer.parseInt(request.getParameter("idCliente")));
-            contrato.setCodContrato("48484");
+            contrato.setCodContrato(Integer.parseInt(request.getParameter("codContrato")));
             contrato.setDataContrato(request.getParameter("datetimepicker"));
             contrato.setDataInicial(request.getParameter("datetimepicker_de"));
             contrato.setDataFinal(request.getParameter("datetimepicker_ate"));

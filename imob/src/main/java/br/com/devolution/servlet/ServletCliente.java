@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import br.com.devolution.model.Cliente;
 import java.text.ParseException;
-import java.util.Random;
+
 
 @WebServlet(name = "cliente", urlPatterns = {"/cliente"})
 public class ServletCliente extends HttpServlet {
@@ -49,8 +49,8 @@ public class ServletCliente extends HttpServlet {
             DaoCliente daoCliente = new DaoCliente();
             String cpf = request.getParameter("cpfCliente");
             Cliente cliente = null;
-            Random rnd = new Random();
-            int codGerado = rnd.nextInt(10000);
+
+            int codGerado = -1;
             
             try {
                 cliente = daoCliente.buscarPorCpf(cpf);

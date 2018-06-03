@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class DaoContrato {
 
@@ -30,7 +31,7 @@ public class DaoContrato {
             while (resultados.next()) {
 
                 Integer idContrato = resultados.getInt("IdContrato");
-                String codContrato = resultados.getString("codContrato");
+                int codContrato = Integer.parseInt(resultados.getString("codContrato"));
                 Integer idImovel = resultados.getInt("idImovel");
                 Integer idCliente = resultados.getInt("idCliente");
                 String dataContrato = resultados.getString("dataContrato");
@@ -67,7 +68,7 @@ public class DaoContrato {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            stmt.setString(1, contrato.getCodContrato());
+            stmt.setInt(1, contrato.getCodContrato());
             stmt.setInt(2, contrato.getIdImovel());
             stmt.setInt(3, contrato.getIdCliente());
 
@@ -87,5 +88,44 @@ public class DaoContrato {
         } finally {
             conn.close();
         }
+    }
+    
+    public static int gerarCod() throws SQLException {
+
+        Random rnd = new Random();
+
+        int codGerado = rnd.nextInt(10000);
+
+        String sql = "SELECT * FROM imobiliariadb.CONTRATO WHERE codContrato=? AND enable=?";
+        Connection conn = null;
+
+        try {
+            conn = Conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, codGerado);
+            stmt.setBoolean(2, true);
+
+            stmt.execute();
+
+            ResultSet res = stmt.executeQuery();
+
+            if (res.next()) {
+                
+                
+                codGerado = rnd.nextInt(10000);
+
+                return codGerado;
+            }                        
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.err.println(ex.getMessage());
+
+        } finally {
+            conn.close();
+        }
+        
+        return codGerado;
+
     }
 }
