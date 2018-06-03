@@ -76,7 +76,7 @@ public class ServletContrato extends HttpServlet {
 
             contrato.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
             contrato.setIdCliente(Integer.parseInt(request.getParameter("idCliente")));
-            contrato.setCodContrato("a2a52a5");
+            contrato.setCodContrato("48484");
             contrato.setDataContrato(request.getParameter("datetimepicker"));
             contrato.setDataInicial(request.getParameter("datetimepicker_de"));
             contrato.setDataFinal(request.getParameter("datetimepicker_ate"));

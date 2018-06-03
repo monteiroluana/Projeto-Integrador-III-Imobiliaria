@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import br.com.devolution.model.Cliente;
+import java.text.ParseException;
 
 @WebServlet(name = "cliente", urlPatterns = {"/cliente"})
 public class ServletCliente extends HttpServlet {
@@ -203,6 +204,8 @@ public class ServletCliente extends HttpServlet {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
+                Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
                 Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
             

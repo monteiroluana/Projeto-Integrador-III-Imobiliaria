@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import br.com.devolution.model.validadores.ValidadorImovel;
+import java.text.ParseException;
 
 @WebServlet(name = "imovel", urlPatterns = {"/imovel"})
 public class ServletImovel extends HttpServlet {
@@ -164,6 +165,8 @@ public class ServletImovel extends HttpServlet {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             }
 

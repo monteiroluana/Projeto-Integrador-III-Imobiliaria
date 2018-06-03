@@ -48,11 +48,12 @@ public class Cliente {
     }
 
     public Date getDataNasc() {
+        
         return dataNasc;
     }
 
     public void setDataNasc(String dataNasc) {
-           DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+           DateFormat formatador = new SimpleDateFormat("dd-MM-yyyy");
 
         try {
             this.dataNasc = formatador.parse(dataNasc);

@@ -11,6 +11,9 @@ import java.util.List;
 
 import br.com.devolution.conexao.Conexao;
 import br.com.devolution.model.Cliente;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class DaoCliente {
 
@@ -76,7 +79,7 @@ public class DaoCliente {
         return lista;
     }
 
-    public boolean inserir(Cliente cliente) throws SQLException, ClassNotFoundException {
+    public boolean inserir(Cliente cliente) throws SQLException, ClassNotFoundException, ParseException {
 
         String sql = "INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable)"
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -87,8 +90,7 @@ public class DaoCliente {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, cliente.getCpf());
-            stmt.setString(2, cliente.getNome());
-
+            stmt.setString(2, cliente.getNome());                                     
             Timestamp tDataNasc = new Timestamp(cliente.getDataNasc().getTime());
             stmt.setTimestamp(3, tDataNasc);
 
@@ -117,7 +119,7 @@ public class DaoCliente {
         return (true);
     }
 
-    public boolean editar(Cliente cliente) throws SQLException {
+    public boolean editar(Cliente cliente) throws SQLException, ParseException {
 
         String sql = "UPDATE imobiliariadb.CLIENTE SET "
                 + "cpf=?,nome=?,dataNasc=?,sexo=?,telefone=?,celular=?,email=?,"
@@ -129,11 +131,11 @@ public class DaoCliente {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, cliente.getCpf());
-            stmt.setString(2, cliente.getNome());
-
+            stmt.setString(2, cliente.getNome());            
+            
             Timestamp tDataNasc = new Timestamp(cliente.getDataNasc().getTime());
             stmt.setTimestamp(3, tDataNasc);
-
+            
             stmt.setString(4, cliente.getSexo());
             stmt.setString(5, cliente.getTelefone());
             stmt.setString(6, cliente.getCelular());
@@ -180,7 +182,7 @@ public class DaoCliente {
         return (true);
     }
 
-    public Cliente buscar(Cliente cliente) throws ClassNotFoundException, SQLException {
+    public Cliente buscar(Cliente cliente) throws ClassNotFoundException, SQLException, ParseException {
 
         String sql = "SELECT * FROM imobiliariadb.CLIENTE WHERE idCliente=? AND enable=?";
 
@@ -200,7 +202,7 @@ public class DaoCliente {
 
                 cli.setIdCliente(res.getInt("idCliente"));
                 cli.setCpf(res.getString("cpf"));
-                cli.setNome(res.getString("nome"));
+                cli.setNome(res.getString("nome"));                                
                 cli.setDataNasc(res.getString("dataNasc"));
                 System.out.println(cli.getDataNasc());
                 cli.setSexo(res.getString("sexo"));
