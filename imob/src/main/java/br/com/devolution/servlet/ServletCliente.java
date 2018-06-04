@@ -54,7 +54,7 @@ public class ServletCliente extends HttpServlet {
 
             try {
                 cliente = daoCliente.buscarPorCpf(cpf);
-                int codImovel = DaoImovel.gerarCod();
+                codGerado = DaoImovel.gerarCod();
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
