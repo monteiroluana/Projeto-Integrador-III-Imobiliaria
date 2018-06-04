@@ -250,67 +250,66 @@
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
                                                     <div class="form-group">
                                                         <div class="col-25">
-                                                            <label class="control-label" for="servico">Servico</label>
+                                                            <label class="control-label" for="servico">Serviço</label>
                                                             <select id="servico" name="servico" class="form-control">
                                                                 <option>Selecione</option>
-                                                                <option>Venda</option>
-                                                                <option>Locação</option>                                                    
+                                                                <option <c:if test="${imovel.servico=='Venda'}">selected</c:if>>Venda</option>
+                                                                <option <c:if test="${imovel.servico=='Locação'}">selected</c:if>>Locação</option>                                                    
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-xs-auto col-sm-auto col-md-6">
+                                                        <div class="form-group">
+                                                            <div class="col-25">
+                                                                <label class="control-label" for="categoria">Categoria</label>
+                                                            </div>	
+                                                            <select id="categoria" name="categoria" class="form-control">
+                                                                <option>Selecione</option>
+                                                                <option <c:if test="${imovel.categoria=='Residencial'}">selected</c:if>>Residencial</option>
+                                                            <option <c:if test="${imovel.categoria=='Comercial'}">selected</c:if>>Comercial</option>
+                                                            <option <c:if test="${imovel.categoria=='Rural'}">selected</c:if>>Rural</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-auto col-sm-auto col-md-6">	
+                                                        <div class="form-group">
+                                                            <div class="col-25">
+                                                                <label class="control-label" for="tipo">Tipo do Imóvel</label>
+                                                            </div>	
+                                                            <select id="tipo" name="tipo" class="form-control">
+                                                                <option>Selecione</option>
+                                                                <option <c:if test="${imovel.tipo=='Apartamento'}">selected</c:if>>Apartamento</option>
+                                                            <option <c:if test="${imovel.tipo=='Casa'}">selected</c:if>>Casa</option>
+                                                            <option <c:if test="${imovel.tipo=='Terreno'}">selected</c:if>>Terreno</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-auto col-sm-auto col-md-6">
-                                                    <div class="form-group">
-                                                        <div class="col-25">
-                                                            <label class="control-label" for="categoria">Categoria</label>
-                                                        </div>	
-                                                        <select id="categoria" name="categoria" class="form-control">
-                                                            <option>Selecione</option>
-                                                            <option>Residencial</option>
-                                                            <option>Comercial</option>
-                                                            <option>Rural</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-auto col-sm-auto col-md-6">	
-                                                    <div class="form-group">
-                                                        <div class="col-25">
-                                                            <label class="control-label" for="tipo">Tipo do Imóvel</label>
-                                                        </div>	
-                                                        <select id="tipo" name="tipo" class="form-control">
-                                                            <option>Selecione</option>
-                                                            <option>Apartamento</option>
-                                                            <option>Casa</option>
-                                                            <option>Terreno</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-auto col-sm-auto col-md-6">
+                                                        <div class="form-group">
+                                                            <div class="col-25">
+                                                                <label class="control-label" for="situacao">Status do Imóvel</label>
+                                                            </div>	
+                                                            <select id="situacao" name="situacao" class="form-control">
+                                                                <option>Selecione</option>
+                                                                <option <c:if test="${imovel.situacao=='livre'}">selected</c:if>>Livre</option>
+                                                                <option <c:if test="${imovel.situacao=='ocupado'}">selected</c:if>>Ocupado</option>
+                                                            </select>
+                                                        </div>
 
-
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-auto col-sm-auto col-md-6">
-                                                    <div class="form-group">
-                                                        <div class="col-25">
-                                                            <label class="control-label" for="situacao">Status do Imóvel</label>
-                                                        </div>	
-                                                        <select id="situacao" name="situacao" class="form-control">
-                                                            <option>Selecione</option>
-                                                            <option value="livre">Livre</option>
-                                                            <option value="ocupado">Ocupado</option>
-                                                        </select>
                                                     </div>
-
-                                                </div>
-                                                <div class="col-xs-auto col-sm-auto col-md-6">
-                                                    <div class="form-group">
-                                                        <div class="col-25">
-                                                            <label class="control-label" for="codImovel">Cód. Imóvel</label>
-                                                        </div>	
-                                                        <input type="text" name="codImovel" id="codImovel" class="form-control input-sm" placeholder="codImovel" value="${imovel.codImovel}">
+                                                    <div class="col-xs-auto col-sm-auto col-md-6">
+                                                        <div class="form-group">
+                                                            <div class="col-25">
+                                                                <label class="control-label" for="codImovel">Cód. Imóvel</label>
+                                                            </div>	
+                                                            <input type="text" name="codImovel" id="codImovel" class="form-control input-sm" placeholder="codImovel" value="${imovel.codImovel}">
                                                     </div>
                                                 </div>
                                             </div> 

@@ -87,11 +87,11 @@ CREATE TABLE imobiliariadb.CONTRATO (
 
 
 INSERT INTO imobiliariadb.USUARIO (nome,login,senha,email,grupoFilial,departamento,cargo,enable) VALUES
-("Jonas Araujo","jonas.araujo","jonas","jonas@jonas.com","Sao Paulo","","",true),
-("Bruna Sayuri","bruna.sayuri","bruna","bruna@bruna.com","Rio de Janeiro","","",true),
-("Rodrigo Normando","rodrigo.normando","rodrigo","rodrigo@rodrigo.com","Sao Paulo","","",true),
-("Luana Monteiro", "luana.monteiro", "luana","luana@monteiro.com", "Sao Paulo","","", true),
-("Pedro Henrique", "pedro.henrique", "pedro","pedro@henrique.com", "Recife","","", true);
+("Jonas Araujo","jonas.araujo","jonas","jonas@jonas.com","Sao Paulo","Diretoria","Diretor(a)",true),
+("Bruna Sayuri","bruna.sayuri","bruna","bruna@bruna.com","Porto Alegre","TI","Suporte Técnico",true),
+("Rodrigo Normando","rodrigo.normando","rodrigo","rodrigo@rodrigo.com","Sao Paulo","Vendas","Gerente",true),
+("Luana Monteiro", "luana.monteiro", "luana","luana@monteiro.com", "Recife","TI","Gerente", true),
+("Pedro Henrique", "pedro.henrique", "pedro","pedro@henrique.com", "Recife","Retaguarda","Backoffice", true);
 
 INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable) VALUES
 ("99991111111","kunieda aoi","1996-07-17","fem","1155554444","11944445555","aoi@aoi.com","04444000","","","","","","",true),
@@ -99,7 +99,6 @@ INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,
 
 INSERT INTO imobiliariadb.IMOVEL(idCliente,codImovel,dataCad,categoria,tipo,
 quartos,banheiros,suites,vagasGaragem,areaUtil,areaTotal,informacao,
-cep,rua,num,bairro,cidade,uf,valorVenda,valorAluguel,iptu,situacao,enable)
-VALUES (1,"codTeste","2018-05-08","residencial","casa",3,2,1,2,100,200,"aloaloaloalo",
-"04444000","rua teste","20","bairrozin","sao paulo","sp",250000,2500,200,"livre",true);
-
+cep,rua,num,bairro,cidade,uf,valorVenda,valorAluguel,iptu,situacao,servico,enable)
+VALUES (1,"codTeste","2018-05-08","Residencial","Casa",3,2,1,2,100,200,"aloaloaloalo",
+"04444000","rua teste","20","bairrozin","São Paulo","SP",250000,2500,200,"livre","Venda",true);

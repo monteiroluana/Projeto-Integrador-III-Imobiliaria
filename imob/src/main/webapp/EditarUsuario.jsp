@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -54,55 +57,55 @@
                                         </div>	
                                         <select id="grupoFilial" name="grupoFilial" class="form-control">
                                             <option>Selecione</option>
-                                            <option>São Paulo</option>
-                                            <option>Porto Alegre</option>
-                                            <option>Recife</option>
+                                            <option <c:if test="${usuario.grupoFilial=='Sao Paulo'}">selected</c:if>>Sao Paulo</option>
+                                            <option <c:if test="${usuario.grupoFilial=='Porto Alegre'}">selected</c:if>>Porto Alegre</option>
+                                            <option <c:if test="${usuario.grupoFilial=='Recife'}">selected</c:if>>Recife</option>
                                         </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-auto col-sm-auto col-md-2">
-                                    <div class="form-group">
-                                        <div class="col-25">
-                                            <label class="control-label" for="departamento">Departamento*</label>
-                                        </div>	
-                                        <select id="departamento" name="departamento" class="form-control">
-                                            <option>Selecione</option>
-                                            <option>Diretoria</option>
-                                            <option>Retaguarda</option>
-                                            <option>Vendas</option>
-                                            <option>TI</option>
-                                        </select>
+                                    <div class="col-xs-auto col-sm-auto col-md-2">
+                                        <div class="form-group">
+                                            <div class="col-25">
+                                                <label class="control-label" for="departamento">Departamento*</label>
+                                            </div>	
+                                            <select id="departamento" name="departamento" class="form-control">
+                                                <option>Selecione</option>
+                                                <option <c:if test="${usuario.departamento=='Diretoria'}">selected</c:if>>Diretoria</option>
+                                                <option <c:if test="${usuario.departamento=='Retaguarda'}">selected</c:if>>Retaguarda</option>
+                                                <option <c:if test="${usuario.departamento=='Vendas'}">selected</c:if>>Vendas</option>
+                                                <option <c:if test="${usuario.departamento=='TI'}">selected</c:if>>TI</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-auto col-sm-auto col-md-2">
-                                    <div class="form-group">
-                                        <div class="col-25">
-                                            <label class="control-label" for="Cargo">Cargo*</label>
-                                        </div>	
-                                        <select id="cargo" name="cargo" class="form-control">
-                                            <option>Selecione</option> 
-                                            <option value="Diretor(a)">Diretor(a)</option>
-                                            <option value="Gerente">Gerente</option>
-                                            <option value="Backoffice">BackOffice</option>
-                                            <option value="Vendedor(a)">Vendedor(a)</option>
-                                            <option value="Suporte Técnico">Suporte Técnico</option>
-                                        </select>
+                                    <div class="col-xs-auto col-sm-auto col-md-2">
+                                        <div class="form-group">
+                                            <div class="col-25">
+                                                <label class="control-label" for="Cargo">Cargo*</label>
+                                            </div>	
+                                            <select id="cargo" name="cargo" class="form-control">
+                                                <option>Selecione</option> 
+                                                <option <c:if test="${usuario.cargo=='Diretor(a)'}">selected</c:if>>Diretor(a)</option>
+                                                <option  <c:if test="${usuario.cargo=='Gerente'}">selected</c:if>>Gerente</option>
+                                                <option  <c:if test="${usuario.cargo=='Backoffice'}">selected</c:if>>BackOffice</option>
+                                                <option  <c:if test="${usuario.cargo=='Vendedor(a)'}">selected</c:if>>Vendedor(a)</option>
+                                                <option  <c:if test="${usuario.cargo=='Suporte Técnico'}">selected</c:if>>Suporte Técnico</option>
+                                            </select>
+                                        </div>
                                     </div>
+
                                 </div>
 
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xs-auto col-sm-auto col-md-4">
-                                    <br>
-                                    <h3 class="panel-title">Dados de Acesso </h3>
-                                    <hr>
+                                <div class="row">
+                                    <div class="col-xs-auto col-sm-auto col-md-4">
+                                        <br>
+                                        <h3 class="panel-title">Dados de Acesso </h3>
+                                        <hr>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-auto col-sm-auto col-md-4">
-                                    <label for="login" class="control-label">Login*</label>
-                                    <input type="text" name="login" id="login" class="form-control input-sm" placeholder="Login" value="${usuario.login}">
+                                <div class="row">
+                                    <div class="col-xs-auto col-sm-auto col-md-4">
+                                        <label for="login" class="control-label">Login*</label>
+                                        <input type="text" name="login" id="login" class="form-control input-sm" placeholder="Login" value="${usuario.login}">
                                 </div>                                        
                                 <div class="col-xs-auto col-sm-auto col-md-4">
                                     <label for="email" class="control-label">Email</label>
