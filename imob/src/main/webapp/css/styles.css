@@ -1,15 +1,11 @@
 ﻿
-body,html{
-		height: 100%;
-		background-color: #525252;
-		}.centered-form{
+.centered-form{
 			margin-top: 60px;
 		}.centered-form .panel{
 			background: rgba(255, 255, 255, 0.8);
 			box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
 		}figure{
-			border: medium solid blac
-				k;
+			border: medium solid black;
 			float: right;
 		}input[type=text], select, textarea{
 			  width: 100%;
@@ -38,6 +34,8 @@ body,html{
 		/* remove outer padding */
 	}nav.sidebar.navbar {
 		border-radius: 0px;
+                background-color: #260000;
+                
 		/*Remove rounded coners*/
 	}nav.sidebar, .main{
 		-webkit-transition: margin 200ms ease-out;
@@ -106,17 +104,19 @@ body,html{
 			/*give sidebar 100% width;*/
 		}nav.sidebar:hover{
 			margin-left: 0px;
+                        opacity: .8;
 			/* Move nav to full on mouse over*/
 		}.forAnimate{
 			opacity: 0;
 			/*for hiden things when navbar hidden*/
 		}
 	}nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
-		color: #CCC;
+		color: #CCC;/*item dentro do menu*/
 		background-color: transparent;
-	}
+        }
 	nav:hover .forAnimate{
 		opacity: 1;
+                
 	}
 	section{
 		padding-left: 15px;
@@ -171,7 +171,4 @@ body,html{
 .custab:hover{
     box-shadow: 3px 3px 0px transparent;
     transition: 0.5s;
-		}#tabela{
-	
-         
 		}

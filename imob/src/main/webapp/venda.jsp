@@ -23,6 +23,14 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
         <script type="text/javascript" src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
     </head>
+    <style>
+        body{
+            background-image: url(https://i.imgur.com/KSBmJOW.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
     <body>
         <div w3-include-html="menu.html"></div>
         <script>
@@ -110,11 +118,11 @@
                                                 <!-- <button class="btn btn-info" type="button" id="cod-pesquisa"><span class="glyphicon glyphicon-search"></span>
                                                 </button> -->
                                             </span>
-                                            
+
                                         </div>
                                     </div>
-                                                                                           
-                            
+
+
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="imovel" class="control-label">Tipo Imóvel</label>

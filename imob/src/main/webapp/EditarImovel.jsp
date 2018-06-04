@@ -4,7 +4,15 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
-<html>
+<html>    
+    <style>
+        body{
+            background-image: url(https://i.imgur.com/KSBmJOW.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Editar Imóvel</title>
@@ -299,7 +307,7 @@
                                                             <select id="situacao" name="situacao" class="form-control">
                                                                 <option>Selecione</option>
                                                                 <option <c:if test="${imovel.situacao=='livre'}">selected</c:if>>Livre</option>
-                                                                <option <c:if test="${imovel.situacao=='ocupado'}">selected</c:if>>Ocupado</option>
+                                                            <option <c:if test="${imovel.situacao=='ocupado'}">selected</c:if>>Ocupado</option>
                                                             </select>
                                                         </div>
 

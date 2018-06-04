@@ -82,6 +82,14 @@
         </script>
 
     </head>
+            <style>
+            body{
+            background-image: url(https://i.imgur.com/KSBmJOW.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
     <body>
         <div w3-include-html="menu.html"></div>
         <script>

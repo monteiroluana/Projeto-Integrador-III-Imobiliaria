@@ -19,6 +19,14 @@
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script>
 
     </head>
+    <style>
+        body{
+            background-image: url(https://i.imgur.com/KSBmJOW.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
     <body>
         <div w3-include-html="menu.html"></div>
         <script>
@@ -38,167 +46,167 @@
                             </div>
                             <div class="panel-body">
                                 <!--<form role="form" action="imovel" method="POST">-->
-                                    <div class="row">
-                                        <div class="col-xs-auto col-sm-auto col-md-4">
-                                            <h3 class="panel-title">Filtrar busca</h3>
-                                        </div>
-                                        <hr>
+                                <div class="row">
+                                    <div class="col-xs-auto col-sm-auto col-md-4">
+                                        <h3 class="panel-title">Filtrar busca</h3>
                                     </div>
-                                    <div class="row">
+                                    <hr>
+                                </div>
+                                <div class="row">
 
-                                        <div class="col-xs-auto col-sm-auto col-md-4">
+                                    <div class="col-xs-auto col-sm-auto col-md-4">
 
-                                            <div id="custom-search-input">
-                                                <div class="input-group col-md-12">
-                                                    <input type="text" class="form-control input-sm" placeholder="digite o cód. do imóvel" id="codImovel" name="codImovel" />
-                                                    <span class="input-group-btn">
-                                                        <!--<button class="btn btn-info btn-sm" type="button" id="PesquisaNome">
-                                                            <i class="glyphicon glyphicon-search"></i>
-                                                        </button>-->
-                                                        <a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista&codImov=' + document.getElementById('codImovel').value">
-                                                            <i class="glyphicon glyphicon-search"></i>
-                                                        </a>
-                                                    </span>
-                                                </div>
+                                        <div id="custom-search-input">
+                                            <div class="input-group col-md-12">
+                                                <input type="text" class="form-control input-sm" placeholder="digite o cód. do imóvel" id="codImovel" name="codImovel" />
+                                                <span class="input-group-btn">
+                                                    <!--<button class="btn btn-info btn-sm" type="button" id="PesquisaNome">
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                    </button>-->
+                                                    <a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista&codImov=' + document.getElementById('codImovel').value">
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                    </a>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-xs-auto col-sm-auto col-md-2">
-                                            <div class="form-group">
-                                                <div class="col-25">
-                                                    <label class="control-label" for="tipo">Tipo do imóvel</label>
-                                                </div>	
-                                                <select id="tipo" name="tipo" class="form-control">
-                                                    <option value="">Selecione</option>
-                                                    <option value="casa">Casa</option>
-                                                    <option value="apartamento">Apartamento</option>
-                                                </select>
-                                            </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-auto col-sm-auto col-md-2">
+                                        <div class="form-group">
+                                            <div class="col-25">
+                                                <label class="control-label" for="tipo">Tipo do imóvel</label>
+                                            </div>	
+                                            <select id="tipo" name="tipo" class="form-control">
+                                                <option value="">Selecione</option>
+                                                <option value="casa">Casa</option>
+                                                <option value="apartamento">Apartamento</option>
+                                            </select>
                                         </div>
-                                        <div class="col-xs-auto col-sm-auto col-md-2">
-                                            <div class="form-group">
-                                                <div class="col-25">
-                                                    <label class="control-label" for="situacao">Status do imóvel</label>
-                                                </div>	
-                                                <select id="situacao" name="situacao" class="form-control">
-                                                    <option value="">Selecione</option>
-                                                    <option value="livre">Livre</option>
-                                                    <option value="ocupado">Ocupado</option>
-                                                </select>
-                                            </div>
+                                    </div>
+                                    <div class="col-xs-auto col-sm-auto col-md-2">
+                                        <div class="form-group">
+                                            <div class="col-25">
+                                                <label class="control-label" for="situacao">Status do imóvel</label>
+                                            </div>	
+                                            <select id="situacao" name="situacao" class="form-control">
+                                                <option value="">Selecione</option>
+                                                <option value="livre">Livre</option>
+                                                <option value="ocupado">Ocupado</option>
+                                            </select>
                                         </div>
-                                        <div class="col-xs-auto col-sm-auto col-md-2">
-                                            <div class="form-group">
-                                                <div class="col-25">
-                                                    <label class="control-label" for="min">Faixa de preço</label>
-                                                </div>
-                                                <input type="text" name="min" id="min" class="form-control input-sm" placeholder="menor valor">
+                                    </div>
+                                    <div class="col-xs-auto col-sm-auto col-md-2">
+                                        <div class="form-group">
+                                            <div class="col-25">
+                                                <label class="control-label" for="min">Faixa de preço</label>
                                             </div>
+                                            <input type="text" name="min" id="min" class="form-control input-sm" placeholder="menor valor">
                                         </div>
-                                        <div class="col-xs-auto col-sm-auto col-md-2">
-                                            <div class="form-group">
-                                                <div class="col-25">
-                                                    <label for="pesquisar">&nbsp;</label>
-                                                </div>
-                                                <input type="text" name="max" id="max" class="form-control input-sm" placeholder="maior valor">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-auto col-sm-auto col-md-2">
-                                            <div class="form-group">
-                                                <div class="col-25">
-                                                    <label class="control-label" for="servico">Serviço</label>
-                                                    <select id="servico" name="servico" class="form-control">
-                                                        <option value="">Selecione</option>
-                                                        <option value="venda">Venda</option>
-                                                        <option value="locacao">Locação</option>                                                    
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-auto col-sm-auto col-md-1">
-                                            <div class="form-group">
-                                                <div class="col-25">
-                                                    <label class="control-label" for="uf">UF</label>
-                                                    <select id="uf" name="uf" class="form-control" style="width: auto">
-                                                        <option>AC</option>
-                                                        <option>AL</option>
-                                                        <option>AP</option>
-                                                        <option>AM</option>
-                                                        <option>BA</option>
-                                                        <option>CE</option>
-                                                        <option>DF</option>
-                                                        <option>ES</option>
-                                                        <option>GO</option>
-                                                        <option>MA</option>
-                                                        <option>MT</option>
-                                                        <option>MS</option>
-                                                        <option>MG</option>
-                                                        <option>PA</option>
-                                                        <option>PB</option>
-                                                        <option>PR</option>
-                                                        <option>PE</option>
-                                                        <option>PI</option>
-                                                        <option>RJ</option>
-                                                        <option>RN</option>
-                                                        <option>RS</option>
-                                                        <option>RO</option>
-                                                        <option>RR</option>
-                                                        <option>SC</option>
-                                                        <option>SP</option>
-                                                        <option>SE</option>
-                                                        <option>TO</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-auto col-sm-auto col-md-1">
+                                    </div>
+                                    <div class="col-xs-auto col-sm-auto col-md-2">
+                                        <div class="form-group">
                                             <div class="col-25">
                                                 <label for="pesquisar">&nbsp;</label>
                                             </div>
-
-                                            <!--<button class="btn btn-info btn-sm" type="button" id="pesquisar">
-                                                <i class="glyphicon glyphicon-search"></i>
-                                            </button>-->
-
-                                            <span class="input-group-btn">
-                                                <a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista&codImov=' + document.getElementById('codImovel').value +
-                                                                '&tip=' + document.getElementById('tipo').value +
-                                                                '&situ=' + document.getElementById('situacao').value +
-                                                                '&vInicial=' + document.getElementById('min').value +
-                                                                '&vFinal=' + document.getElementById('max').value +
-                                                                '&serv=' + document.getElementById('servico').value +
-                                                                '&est=' + document.getElementById('uf').value">
-                                                    <i class="glyphicon glyphicon-search"></i>
-                                                </a>
-
-                                                <!--<a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista'">
-                                                    <i class="glyphicon glyphicon-search"></i>
-                                                </a>-->
-                                            </span>
+                                            <input type="text" name="max" id="max" class="form-control input-sm" placeholder="maior valor">
                                         </div>
                                     </div>
+                                    <div class="col-xs-auto col-sm-auto col-md-2">
+                                        <div class="form-group">
+                                            <div class="col-25">
+                                                <label class="control-label" for="servico">Serviço</label>
+                                                <select id="servico" name="servico" class="form-control">
+                                                    <option value="">Selecione</option>
+                                                    <option value="venda">Venda</option>
+                                                    <option value="locacao">Locação</option>                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-auto col-sm-auto col-md-1">
+                                        <div class="form-group">
+                                            <div class="col-25">
+                                                <label class="control-label" for="uf">UF</label>
+                                                <select id="uf" name="uf" class="form-control" style="width: auto">
+                                                    <option>AC</option>
+                                                    <option>AL</option>
+                                                    <option>AP</option>
+                                                    <option>AM</option>
+                                                    <option>BA</option>
+                                                    <option>CE</option>
+                                                    <option>DF</option>
+                                                    <option>ES</option>
+                                                    <option>GO</option>
+                                                    <option>MA</option>
+                                                    <option>MT</option>
+                                                    <option>MS</option>
+                                                    <option>MG</option>
+                                                    <option>PA</option>
+                                                    <option>PB</option>
+                                                    <option>PR</option>
+                                                    <option>PE</option>
+                                                    <option>PI</option>
+                                                    <option>RJ</option>
+                                                    <option>RN</option>
+                                                    <option>RS</option>
+                                                    <option>RO</option>
+                                                    <option>RR</option>
+                                                    <option>SC</option>
+                                                    <option>SP</option>
+                                                    <option>SE</option>
+                                                    <option>TO</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-auto col-sm-auto col-md-1">
+                                        <div class="col-25">
+                                            <label for="pesquisar">&nbsp;</label>
+                                        </div>
 
-                                    <div class="row">
-                                        <div class="col-xs-auto col-sm-auto col-md-auto">
-                                            <table class="table table-striped custab">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Cód.</th>
-                                                        <th>Tipo</th>
-                                                        <th>Bairro</th>
-                                                        <th>Cidade</th>
-                                                        <th>Estado</th>
-                                                        <th>Venda(R$)</th>
-                                                        <th>Aluguel(R$)</th>
-                                                        <th>Serviço</th>
-                                                        <th>Situação</th>
-                                                        <th class="text-center">Opções</th>
-                                                    </tr>
-                                                </thead>
+                                        <!--<button class="btn btn-info btn-sm" type="button" id="pesquisar">
+                                            <i class="glyphicon glyphicon-search"></i>
+                                        </button>-->
 
-                                                <c:forEach items="${lista}" var="i">                                                    
-                                                    <form action="imovel" method="POST">
+                                        <span class="input-group-btn">
+                                            <a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista&codImov=' + document.getElementById('codImovel').value +
+                                                            '&tip=' + document.getElementById('tipo').value +
+                                                            '&situ=' + document.getElementById('situacao').value +
+                                                            '&vInicial=' + document.getElementById('min').value +
+                                                            '&vFinal=' + document.getElementById('max').value +
+                                                            '&serv=' + document.getElementById('servico').value +
+                                                            '&est=' + document.getElementById('uf').value">
+                                                <i class="glyphicon glyphicon-search"></i>
+                                            </a>
+
+                                            <!--<a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista'">
+                                                <i class="glyphicon glyphicon-search"></i>
+                                            </a>-->
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-auto col-sm-auto col-md-auto">
+                                        <table class="table table-striped custab">
+                                            <thead>
+                                                <tr>
+                                                    <th>Cód.</th>
+                                                    <th>Tipo</th>
+                                                    <th>Bairro</th>
+                                                    <th>Cidade</th>
+                                                    <th>Estado</th>
+                                                    <th>Venda(R$)</th>
+                                                    <th>Aluguel(R$)</th>
+                                                    <th>Serviço</th>
+                                                    <th>Situação</th>
+                                                    <th class="text-center">Opções</th>
+                                                </tr>
+                                            </thead>
+
+                                            <c:forEach items="${lista}" var="i">                                                    
+                                                <form action="imovel" method="POST">
                                                     <tr>
                                                     <input type="hidden" name="idImovel" id="idImovel" value="${i.idImovel}"/>
                                                     <td><c:out value="${i.codImovel}"/></td>
@@ -218,12 +226,12 @@
                                                         <a href="imovel?comando=buscarImovel&idImovel=${i.idImovel}" class="btn btn-warning btn-sm glyphicon glyphicon-file"></a>
                                                     </td>
                                                     </tr>
-                                                    </form>
-                                                </c:forEach>
-                                            </table>
+                                                </form>
+                                            </c:forEach>
+                                        </table>
 
-                                        </div>
                                     </div>
+                                </div>
                                 <!--</form>-->
                             </div>
                         </div>

@@ -17,7 +17,15 @@
 
         </script>
     </head>
-    
+    <style>
+        body{
+            background-image: url(https://i.imgur.com/KSBmJOW.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+
     <body>
         <div w3-include-html="menu.html"></div>
         <script>
@@ -129,15 +137,15 @@
 
 
                                                     <td class="text-center">
-                                                        
+
                                                         <button type="submit" class="btn btn-info btn-sm glyphicon glyphicon-pencil" target="_blank"></button>
                                                         <a href="usuario?idUsuario=${u.idUsuario}&comando=excluir" class="btn btn-danger btn-sm glyphicon glyphicon-remove"></a>
-                                                        
+
                                                     </td>
                                                     </tr>
 
                                                 </form>
-                                                
+
                                             </c:forEach>                                           
                                         </table>
                                     </div>

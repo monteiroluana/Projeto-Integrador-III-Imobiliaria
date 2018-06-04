@@ -25,6 +25,14 @@
             });
         </script>
     </head>
+    <style>
+            body{
+            background-image: url(https://uploaddeimagens.com.br/images/001/449/776/original/tela_home.jpg?1528108869);
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+        }
+    </style>
     <body>
         <div w3-include-html="menu.html"></div>
             <script>

@@ -17,11 +17,6 @@
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script>
         
     </head>
-    <style>
-        body{
-            
-        }
-    </style>
     <body>
         <div class="jumbotron col-md-3 col-xs-auto" id="loginn">
             <div class="row">
@@ -113,17 +108,11 @@
         }#loginn:hover{
             opacity: 1;
         }
-        body{
-            
-            
-        }	
-        ﻿
         body,html{
             background-image: url(https://images.pexels.com/photos/40142/new-york-skyline-manhattan-hudson-40142.jpeg);
             background-repeat: no-repeat;
             background-size: cover;
             height: 100%;
-            background-color: #525252;
         }.centered-form{
             margin-top: 60px;
         }.centered-form .panel{
@@ -293,9 +282,6 @@
         .custab:hover{
             box-shadow: 3px 3px 0px transparent;
             transition: 0.5s;
-        }#tabela{
-
-
         }
 
 

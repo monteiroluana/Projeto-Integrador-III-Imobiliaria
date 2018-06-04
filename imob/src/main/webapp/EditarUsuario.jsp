@@ -10,6 +10,14 @@
 
 <!DOCTYPE html>
 <html>
+    <style>
+        body{
+            background-image: url(https://i.imgur.com/KSBmJOW.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
     <head>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -60,7 +68,7 @@
                                             <option <c:if test="${usuario.grupoFilial=='Sao Paulo'}">selected</c:if>>Sao Paulo</option>
                                             <option <c:if test="${usuario.grupoFilial=='Porto Alegre'}">selected</c:if>>Porto Alegre</option>
                                             <option <c:if test="${usuario.grupoFilial=='Recife'}">selected</c:if>>Recife</option>
-                                        </select>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-xs-auto col-sm-auto col-md-2">
@@ -71,9 +79,9 @@
                                             <select id="departamento" name="departamento" class="form-control">
                                                 <option>Selecione</option>
                                                 <option <c:if test="${usuario.departamento=='Diretoria'}">selected</c:if>>Diretoria</option>
-                                                <option <c:if test="${usuario.departamento=='Retaguarda'}">selected</c:if>>Retaguarda</option>
-                                                <option <c:if test="${usuario.departamento=='Vendas'}">selected</c:if>>Vendas</option>
-                                                <option <c:if test="${usuario.departamento=='TI'}">selected</c:if>>TI</option>
+                                            <option <c:if test="${usuario.departamento=='Retaguarda'}">selected</c:if>>Retaguarda</option>
+                                            <option <c:if test="${usuario.departamento=='Vendas'}">selected</c:if>>Vendas</option>
+                                            <option <c:if test="${usuario.departamento=='TI'}">selected</c:if>>TI</option>
                                             </select>
                                         </div>
                                     </div>
@@ -85,10 +93,10 @@
                                             <select id="cargo" name="cargo" class="form-control">
                                                 <option>Selecione</option> 
                                                 <option <c:if test="${usuario.cargo=='Diretor(a)'}">selected</c:if>>Diretor(a)</option>
-                                                <option  <c:if test="${usuario.cargo=='Gerente'}">selected</c:if>>Gerente</option>
-                                                <option  <c:if test="${usuario.cargo=='Backoffice'}">selected</c:if>>BackOffice</option>
-                                                <option  <c:if test="${usuario.cargo=='Vendedor(a)'}">selected</c:if>>Vendedor(a)</option>
-                                                <option  <c:if test="${usuario.cargo=='Suporte Técnico'}">selected</c:if>>Suporte Técnico</option>
+                                            <option  <c:if test="${usuario.cargo=='Gerente'}">selected</c:if>>Gerente</option>
+                                            <option  <c:if test="${usuario.cargo=='Backoffice'}">selected</c:if>>BackOffice</option>
+                                            <option  <c:if test="${usuario.cargo=='Vendedor(a)'}">selected</c:if>>Vendedor(a)</option>
+                                            <option  <c:if test="${usuario.cargo=='Suporte Técnico'}">selected</c:if>>Suporte Técnico</option>
                                             </select>
                                         </div>
                                     </div>
