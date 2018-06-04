@@ -8,10 +8,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import br.com.devolution.conexao.Conexao;
 import br.com.devolution.model.Cliente;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -38,8 +36,7 @@ public class DaoCliente {
                 String cpf = resultados.getString("cpf");
                 String nome = resultados.getString("nome");
 
-                Date d = new Date(resultados.getTimestamp("dataNasc").getTime());
-                String dataNasc = resultados.getString("dataNasc");
+                Date dataNasc = resultados.getTimestamp("dataNasc");
                 String sexo = resultados.getString("sexo");
                 String telefone = resultados.getString("telefone");
                 String celular = resultados.getString("celular");
@@ -56,7 +53,8 @@ public class DaoCliente {
                 cli.setIdCliente(id);
                 cli.setCpf(cpf);
                 cli.setNome(nome);
-                cli.setDataNasc(dataNasc);
+                SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
+                cli.setDataNasc(formatar.format(dataNasc));
                 cli.setSexo(sexo);
                 cli.setTelefone(telefone);
                 cli.setCelular(celular);
@@ -90,7 +88,7 @@ public class DaoCliente {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, cliente.getCpf());
-            stmt.setString(2, cliente.getNome());                                     
+            stmt.setString(2, cliente.getNome());
             Timestamp tDataNasc = new Timestamp(cliente.getDataNasc().getTime());
             stmt.setTimestamp(3, tDataNasc);
 
@@ -131,11 +129,11 @@ public class DaoCliente {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, cliente.getCpf());
-            stmt.setString(2, cliente.getNome());            
-            
+            stmt.setString(2, cliente.getNome());
+
             Timestamp tDataNasc = new Timestamp(cliente.getDataNasc().getTime());
             stmt.setTimestamp(3, tDataNasc);
-            
+
             stmt.setString(4, cliente.getSexo());
             stmt.setString(5, cliente.getTelefone());
             stmt.setString(6, cliente.getCelular());
@@ -202,9 +200,12 @@ public class DaoCliente {
 
                 cli.setIdCliente(res.getInt("idCliente"));
                 cli.setCpf(res.getString("cpf"));
-                cli.setNome(res.getString("nome"));                                
-                cli.setDataNasc(res.getString("dataNasc"));
-                System.out.println(cli.getDataNasc());
+                cli.setNome(res.getString("nome"));
+
+                Date dataNasci = res.getDate("dataNasc");
+                SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
+                cli.setDataNasc(formatar.format(dataNasci));
+
                 cli.setSexo(res.getString("sexo"));
                 cli.setTelefone(res.getString("telefone"));
                 cli.setCelular(res.getString("celular"));
@@ -330,8 +331,7 @@ public class DaoCliente {
 
         return lista;
     }
-    
-    
+
     //método para verificar se existe o cpf registrado no bd
     public static boolean obterCpf(String cpf) throws SQLException, Exception {
 
@@ -354,11 +354,11 @@ public class DaoCliente {
 
             //Executa a consulta SQL no banco de dados
             result = preparedStatement.executeQuery();
-            
+
             //se eentrar no if, significa que já tem cliente com o cpf
-            if (result.next()) {                             
-                
-                return true;                
+            if (result.next()) {
+
+                return true;
             }
         } finally {
             //Se o result ainda estiver aberto, realiza seu fechamento
@@ -379,5 +379,3 @@ public class DaoCliente {
     }
 
 }
-
-
