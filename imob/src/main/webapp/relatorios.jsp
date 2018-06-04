@@ -64,32 +64,24 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <div class="form-group">
-                                                <label for="datetimepicker_de" class="control-label">Data inicial</label>
-                                                <div class="input-group date" id="datetimepicker_de">
-                                                    <input type="text" class="form-control"/>
-                                                    <span class="input-group-addon">
-                                                        <span class="glyphicon glyphicon-calendar"></span>
-                                                    </span>
-                                                </div>
+                                                <label for="dataInicial" class="control-label">Data inicial</label>                                                
+                                                <input type="text" name="dataInicial" id="dataInicial" class="form-control input-sm" placeholder="DD/MM/AA">
                                             </div>
                                         </div>	
                                         <div class="col-sm-3">
                                             <div class="form-group">
-                                                <label for="datetimepicker_ate" class="control-label">Data final</label>
-                                                <div class="input-group date" id="datetimepicker_ate">
-                                                    <input type="text" class="form-control"/>
-                                                    <span class="input-group-addon">
-                                                        <span class="glyphicon glyphicon-calendar"></span>
-                                                    </span>
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-info" type="button" id="buttonData">
-                                                            <span class="glyphicon glyphicon-search"></span>
-                                                        </button>
-                                                    </span>
-                                                </div>
+                                                <label for="dataFinal" class="control-label">Data final</label>
+                                                <input type="text" name="dataFinal" id="dataFinal" class="form-control input-sm" placeholder="DD/MM/AA">
 
+                                                <!--ARRUMAR ESSE BOTAO AQUI, RODRIGO-->
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-info" type="button" id="buttonData">
+                                                        <span class="glyphicon glyphicon-search"></span>
+                                                    </button>
+                                                </span>
                                             </div>
                                         </div>
+
                                         <div class="col-sm-2">
                                             <label class="control-label" for="filtro"> Filtrar busca </label>
                                             <div>
