@@ -17,27 +17,27 @@
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script><!--includeHTML-->
         <link rel="stylesheet" href="css/styles.css">
         <script>
-            $.get("index.jsp", null, function(text){
-                
+            $.get("index.jsp", null, function (text) {
+
                 var nome = document.cookie;
-                alert("Olá, "+nome);
-                
+                alert("Olá, " + nome);
+
             });
         </script>
     </head>
     <style>
-            body{
-            background-image: url(https://uploaddeimagens.com.br/images/001/449/776/original/tela_home.jpg?1528108869);
+        body{
+            background-image: url(https://i.imgur.com/KSBmJOW.jpg);
             background-repeat: no-repeat;
             background-size: cover;
-            
+            background-attachment: fixed;
         }
     </style>
     <body>
         <div w3-include-html="menu.html"></div>
-            <script>
-                w3IncludeHTML();
-          </script>
-          
+        <script>
+            w3IncludeHTML();
+        </script>
+
     </body>
 </html>
