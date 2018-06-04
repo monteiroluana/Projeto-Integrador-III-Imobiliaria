@@ -52,26 +52,27 @@
                                     </div>
                                     <hr>
                                 </div>
+
                                 <div class="row">
-
                                     <div class="col-xs-auto col-sm-auto col-md-4">
-
-                                        <div id="custom-search-input">
-                                            <div class="input-group col-md-12">
+                                        <div class="col-25">
+                                            <label class="control-label" for="codImovel">Código do Imóvel</label>
+                                        </div>
+                                        <div id="custom-search-input">                                            
+                                            <div class="input-group col-md-12">                                                
                                                 <input type="text" class="form-control input-sm" placeholder="digite o cód. do imóvel" id="codImovel" name="codImovel" />
                                                 <span class="input-group-btn">
                                                     <!--<button class="btn btn-info btn-sm" type="button" id="PesquisaNome">
                                                         <i class="glyphicon glyphicon-search"></i>
-                                                    </button>-->
+                                                    </button>
                                                     <a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista&codImov=' + document.getElementById('codImovel').value">
                                                         <i class="glyphicon glyphicon-search"></i>
-                                                    </a>
+                                                    </a>-->
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
+
                                     <div class="col-xs-auto col-sm-auto col-md-2">
                                         <div class="form-group">
                                             <div class="col-25">
@@ -84,6 +85,7 @@
                                             </select>
                                         </div>
                                     </div>
+
                                     <div class="col-xs-auto col-sm-auto col-md-2">
                                         <div class="form-group">
                                             <div class="col-25">
@@ -96,7 +98,8 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-xs-auto col-sm-auto col-md-2">
+
+                                    <!--<div class="col-xs-auto col-sm-auto col-md-2">
                                         <div class="form-group">
                                             <div class="col-25">
                                                 <label class="control-label" for="min">Faixa de preço</label>
@@ -111,7 +114,8 @@
                                             </div>
                                             <input type="text" name="max" id="max" class="form-control input-sm" placeholder="maior valor">
                                         </div>
-                                    </div>
+                                    </div>-->
+
                                     <div class="col-xs-auto col-sm-auto col-md-2">
                                         <div class="form-group">
                                             <div class="col-25">
@@ -124,7 +128,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-auto col-sm-auto col-md-1">
+
+                                    <!--<div class="col-xs-auto col-sm-auto col-md-1">
                                         <div class="form-group">
                                             <div class="col-25">
                                                 <label class="control-label" for="uf">UF</label>
@@ -159,7 +164,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="col-xs-auto col-sm-auto col-md-1">
                                         <div class="col-25">
                                             <label for="pesquisar">&nbsp;</label>
@@ -170,13 +175,13 @@
                                         </button>-->
 
                                         <span class="input-group-btn">
+                                            <!--<a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista&codImov=' + document.getElementById('codImovel').value">
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                    </a>-->
                                             <a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista&codImov=' + document.getElementById('codImovel').value +
                                                             '&tip=' + document.getElementById('tipo').value +
                                                             '&situ=' + document.getElementById('situacao').value +
-                                                            '&vInicial=' + document.getElementById('min').value +
-                                                            '&vFinal=' + document.getElementById('max').value +
-                                                            '&serv=' + document.getElementById('servico').value +
-                                                            '&est=' + document.getElementById('uf').value">
+                                                            '&serv=' + document.getElementById('servico').value">
                                                 <i class="glyphicon glyphicon-search"></i>
                                             </a>
 

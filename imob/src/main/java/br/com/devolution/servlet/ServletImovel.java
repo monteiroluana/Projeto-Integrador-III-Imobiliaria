@@ -27,35 +27,21 @@ public class ServletImovel extends HttpServlet {
         DaoImovel daoImovel = new DaoImovel();
 
         if (request.getParameter("comando").equals("lista")) {
+
             List<Imovel> lista = null;
 
             String codImov = request.getParameter("codImovel");
             String tip = request.getParameter("tipo");
             String situ = request.getParameter("situacao");
-            double vInicial = 0;
-            double vFinal = 300000;
-            double aInicial = 0;
-            double aFinal = 300000;
-            //double vInicial = Double.parseDouble(request.getParameter("min"));
-            //double vFinal = Double.parseDouble(request.getParameter("min"));
-            //double aInicial = Double.parseDouble(request.getParameter("max"));
-            //double aFinal = Double.parseDouble(request.getParameter("max"));
             String serv = request.getParameter("servico");
-            String est = request.getParameter("uf");
 
-            System.out.println("MIN: " + request.getParameter("min"));
-            System.out.println("MAX: " + request.getParameter("max"));
             System.out.println("codImov: " + codImov
                     + "\ntip: " + tip
-                    + "\nvInicial: " + vInicial
-                    + "\nvFinal: " + vFinal
-                    + "\naInicial: " + aInicial
-                    + "\naFinal: " + aFinal
-                    + "\nserv: " + serv
-                    + "\nest: " + est);
+                    + "\nsitu: " + situ
+                    + "\nserv: " + serv);
 
             try {
-                lista = daoImovel.listar(codImov, tip, situ, vInicial, vFinal, aInicial, aFinal, serv, est);
+                lista = daoImovel.listar(codImov, tip, situ, serv);
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
@@ -210,8 +196,8 @@ public class ServletImovel extends HttpServlet {
                 if (ValidadorImovel.validarEdicao(imovel)) {
                     daoImovel.editar(imovel);
                 }
-            
-        }catch (SQLException ex) {
+
+            } catch (SQLException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ImovelException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
@@ -219,11 +205,11 @@ public class ServletImovel extends HttpServlet {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        request.setAttribute("imovelCadastrado", imovel);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
-        dispatcher.forward(request, response);
+            request.setAttribute("imovelCadastrado", imovel);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
+            dispatcher.forward(request, response);
+
+        }
 
     }
-
-}
 }
