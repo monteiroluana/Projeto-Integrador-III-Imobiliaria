@@ -15,68 +15,6 @@ import java.text.SimpleDateFormat;
 
 public class DaoCliente {
 
-    // TALVEZ APAGAAAARRRR, PQ TEM O BUSCAR POR CF LÁ NO FINAL ---- não entendi o motivo--> Rod
-    public List<Cliente> listar() throws ClassNotFoundException, SQLException {
-
-        String sql = "SELECT * FROM imobiliariadb.CLIENTE WHERE enable=?";
-
-        List<Cliente> lista = new ArrayList<Cliente>();
-
-        Connection conn = null;
-
-        try {
-            conn = Conexao.obterConexao();
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setBoolean(1, true);
-            //Armazenará os resultados do banco de dados
-            ResultSet resultados = stmt.executeQuery();
-
-            while (resultados.next()) {
-                Integer id = resultados.getInt("idCliente");
-                String cpf = resultados.getString("cpf");
-                String nome = resultados.getString("nome");
-
-                Date dataNasc = resultados.getTimestamp("dataNasc");
-                String sexo = resultados.getString("sexo");
-                String telefone = resultados.getString("telefone");
-                String celular = resultados.getString("celular");
-                String email = resultados.getString("email");
-                String cep = resultados.getString("cep");
-                String rua = resultados.getString("rua");
-                String bairro = resultados.getString("bairro");
-                String cidade = resultados.getString("cidade");
-                String uf = resultados.getString("uf");
-                String num = resultados.getString("num");
-                String complemento = resultados.getString("complemento");
-
-                Cliente cli = new Cliente();
-                cli.setIdCliente(id);
-                cli.setCpf(cpf);
-                cli.setNome(nome);
-                SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
-                cli.setDataNasc(formatar.format(dataNasc));
-                cli.setSexo(sexo);
-                cli.setTelefone(telefone);
-                cli.setCelular(celular);
-                cli.setEmail(email);
-                cli.setCep(cep);
-                cli.setRua(rua);
-                cli.setBairro(bairro);
-                cli.setCidade(cidade);
-                cli.setUf(uf);
-                cli.setNum(num);
-                cli.setComplemento(complemento);
-                lista.add(cli);
-            }
-        } catch (ClassNotFoundException | SQLException ex) {
-            System.err.println(ex.getMessage());
-        } finally {
-            conn.close();
-        }
-
-        return lista;
-    }
-
     public boolean inserir(Cliente cliente) throws SQLException, ClassNotFoundException, ParseException {
 
         String sql = "INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable)"
@@ -247,7 +185,11 @@ public class DaoCliente {
                 cli.setIdCliente(res.getInt("idCliente"));
                 cli.setCpf(res.getString("cpf"));
                 cli.setNome(res.getString("nome"));
-                cli.setDataNasc(res.getString("dataNasc"));
+
+                Date dataNasci = res.getDate("dataNasc");
+                SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
+                cli.setDataNasc(formatar.format(dataNasci));
+
                 cli.setSexo(res.getString("sexo"));
                 cli.setTelefone(res.getString("telefone"));
                 cli.setCelular(res.getString("celular"));
@@ -291,7 +233,7 @@ public class DaoCliente {
                 String cpf = resultados.getString("cpf");
                 String nome = resultados.getString("nome");
 
-                Date d = new Date(resultados.getTimestamp("dataNasc").getTime());
+                Date dataNasci = resultados.getDate("dataNasc");
                 String dataNasc = resultados.getString("dataNasc");
                 String sexo = resultados.getString("sexo");
                 String telefone = resultados.getString("telefone");
@@ -309,7 +251,8 @@ public class DaoCliente {
                 cli.setIdCliente(id);
                 cli.setCpf(cpf);
                 cli.setNome(nome);
-                cli.setDataNasc(dataNasc);
+                SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
+                cli.setDataNasc(formatar.format(dataNasci));
                 cli.setSexo(sexo);
                 cli.setTelefone(telefone);
                 cli.setCelular(celular);
