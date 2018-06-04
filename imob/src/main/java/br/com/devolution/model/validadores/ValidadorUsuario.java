@@ -39,7 +39,11 @@ public class ValidadorUsuario {
         if (usuario.getSenha() == null || "".equals(usuario.getSenha())) {
             throw new UsuarioException("É necessário informar o senha");
         }
-        if (usuario.getSenha().length() > 8 && usuario.getSenha().length() < 25) {
+        
+        String x = usuario.getSenha();
+        int i = usuario.getSenha().length();
+        
+        if (usuario.getSenha().length() < 8 || usuario.getSenha().length() > 25) {
             throw new UsuarioException("Quantidade de caracteres da senha entre 8 e 25");
         }
         if (usuario.getGrupoFilial() == null || "".equals(usuario.getGrupoFilial())) {
