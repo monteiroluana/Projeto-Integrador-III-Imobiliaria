@@ -7,7 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -15,7 +17,10 @@ public class DaoContrato {
 
     public List<Contrato> listar() throws ClassNotFoundException, SQLException {
 
-        String sql = "SELECT * FROM imobiliariadb.CONTRATO WHERE enable=?";
+        String sql = "SELECT i.servico, i.tipo, l.nome AS locatario, c.*FROM Contrato c "
+                + "INNER JOIN imovel i ON c.idImovel = i.idImovel "
+                + "INNER JOIN cliente l ON c.idCliente = l.idCliente "
+                + "WHERE c.enable = ? ";
 
         List<Contrato> lista = new ArrayList<Contrato>();
 
@@ -34,18 +39,25 @@ public class DaoContrato {
                 int codContrato = Integer.parseInt(resultados.getString("codContrato"));
                 Integer idImovel = resultados.getInt("idImovel");
                 Integer idCliente = resultados.getInt("idCliente");
-                String dataContrato = resultados.getString("dataContrato");
+                Date dataContrato = resultados.getDate("dataContrato");
                 String dataInicial = resultados.getString("dataInicial");
                 String dataFinal = resultados.getString("dataFinal");
+                String tipoImovel = resultados.getString("tipo");
+                String tipoContrato = resultados.getString("servico");
+                String locatario = resultados.getString("locatario");
 
                 Contrato contrato = new Contrato();
                 contrato.setIdContrato(idContrato);
                 contrato.setCodContrato(codContrato);
                 contrato.setIdImovel(idImovel);
                 contrato.setIdCliente(idCliente);
-                contrato.setDataContrato(dataContrato);
+                SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
+                contrato.setDataContrato(formatar.format(dataContrato));
                 contrato.setDataInicial(dataInicial);
                 contrato.setDataFinal(dataFinal);
+                contrato.setLocatario(locatario);
+                contrato.setTipoImovel(tipoImovel);
+                contrato.setTipoContrato(tipoContrato);
                 lista.add(contrato);
 
             }
@@ -89,7 +101,7 @@ public class DaoContrato {
             conn.close();
         }
     }
-    
+
     public static int gerarCod() throws SQLException {
 
         Random rnd = new Random();
@@ -111,20 +123,19 @@ public class DaoContrato {
             ResultSet res = stmt.executeQuery();
 
             if (res.next()) {
-                
-                
+
                 codGerado = rnd.nextInt(10000);
 
                 return codGerado;
-            }                        
-            
+            }
+
         } catch (ClassNotFoundException | SQLException ex) {
             System.err.println(ex.getMessage());
 
         } finally {
             conn.close();
         }
-        
+
         return codGerado;
 
     }

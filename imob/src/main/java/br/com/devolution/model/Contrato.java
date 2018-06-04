@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.devolution.model;
 
 import java.text.DateFormat;
@@ -10,22 +5,23 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
-public class Contrato {    
+public class Contrato {
 
     private int idContrato;
-    int codContrato;
-    int idImovel;
-    int idCliente;
-    int idUsuario;
-    
-    Date dataContrato;
-    Date dataInicial;
-    Date dataFinal;    
-    
-    String corretor;
-    String tipoContrato;
-    
+    private int codContrato;
+    private int idImovel;
+    private int idCliente;
+    private int idUsuario;
+
+    private Date dataContrato;
+    private Date dataInicial;
+    private Date dataFinal;
+
+    private String corretor;
+    private String tipoContrato;
+    private String tipoImovel;
+    private String locatario;
+
     public int getCodContrato() {
         return codContrato;
     }
@@ -72,7 +68,7 @@ public class Contrato {
         DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
-            this.dataInicial= formatador.parse(dataInicial);
+            this.dataInicial = formatador.parse(dataInicial);
         } catch (ParseException e) {
 
         }
@@ -107,7 +103,7 @@ public class Contrato {
     public void setTipoContrato(String tipoContrato) {
         this.tipoContrato = tipoContrato;
     }
-      
+
     public int getIdContrato() {
         return idContrato;
     }
@@ -115,6 +111,20 @@ public class Contrato {
     public void setIdContrato(int idContrato) {
         this.idContrato = idContrato;
     }
-    
-    
+
+    public String getTipoImovel() {
+        return tipoImovel;
+    }
+
+    public void setTipoImovel(String tipoImovel) {
+        this.tipoImovel = tipoImovel;
+    }
+
+    public String getLocatario() {
+        return locatario;
+    }
+
+    public void setLocatario(String locatario) {
+        this.locatario = locatario;
+    }
 }

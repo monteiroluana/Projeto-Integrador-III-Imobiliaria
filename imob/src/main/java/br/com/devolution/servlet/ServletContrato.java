@@ -14,6 +14,7 @@ import br.com.devolution.model.Imovel;
 import br.com.devolution.model.Usuario;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -23,7 +24,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 /**
  *
@@ -35,7 +35,23 @@ public class ServletContrato extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        DaoContrato daoContrato = new DaoContrato();
+        if (request.getParameter("comando").equals("lista")) {
 
+            List<Contrato> lista = null;
+
+            try {
+                lista = daoContrato.listar();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            request.setAttribute("lista", lista);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("relatorios.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 
     @Override
@@ -55,21 +71,20 @@ public class ServletContrato extends HttpServlet {
         if (request.getParameter("locatario").equals("")) {
 
             int codGerado = -1;
-            
+
             try {
                 cliente = daoCliente.buscarPorCpf(request.getParameter("cpf"));
                 imovel.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
                 imovel = daoImovel.buscar(imovel);
-                
+
                 codGerado = DaoContrato.gerarCod();
-                                                
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             request.setAttribute("codContrato", codGerado);
             request.setAttribute("imovel", imovel);
             request.setAttribute("cliente", cliente);
@@ -87,15 +102,14 @@ public class ServletContrato extends HttpServlet {
             contrato.setDataContrato(request.getParameter("datetimepicker"));
             contrato.setDataInicial(request.getParameter("datetimepicker_de"));
             contrato.setDataFinal(request.getParameter("datetimepicker_ate"));
-            
-            
+
             try {
                 daoContrato.inserir(contrato);
             } catch (SQLException ex) {
                 Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
             }
-            String msg="<script>alert('Contrato cadastrado com sucesso'"+usuSession.getNome()+"');</script>";
-            
+            String msg = "<script>alert('Contrato cadastrado com sucesso');</script>";
+
             request.setAttribute("msg", msg);
             RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
             dispatcher.forward(request, response);

@@ -3,7 +3,8 @@
     Created on : May 4, 2018, 3:37:09 PM
     Author     : I864970
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -115,10 +116,22 @@
                                                         <th>Locatario</th>
                                                         <th>Imovel</th>
                                                         <th>CodRef</th>
-                                                        
+
                                                     </tr>
                                                 </thead>
-                                                <tbody>	
+
+                                                <c:forEach items="${lista}" var="c">                                                    
+                                                    <tr>                               
+                                                        <td><fmt:formatDate value ="${c.dataContrato}"/></td>
+                                                        <td><c:out value="${c.codContrato}" /></td>
+                                                        <td><c:out value="${c.tipoContrato}" /></td>
+                                                        <td><c:out value="${c.locatario}" /></td>
+                                                        <td><c:out value="${c.tipoImovel}" /></td>
+                                                        <td><c:out value="${c.idContrato}" /></td>                        
+                                                    </tr>
+
+                                                </c:forEach>
+                                                <!--<tbody>	
                                                     <tr>
                                                         <td>10/10/2015</td>
                                                         <td>001</td>
@@ -126,7 +139,7 @@
                                                         <td>Miguel Reis</td>
                                                         <td>Casa</td>
                                                         <td>001</td>
-                                                       
+
                                                     </tr>
                                                     <tr>
                                                         <td>10/10/2018</td>
@@ -135,7 +148,7 @@
                                                         <td>Italo Macedo</td>
                                                         <td>Apartamento</td>
                                                         <td>003</td>
-                                                        	
+
                                                     </tr>
                                                     <tr>
                                                         <td>10/10/2014</td>
@@ -144,9 +157,9 @@
                                                         <td>Fernanda Martins</td>
                                                         <td>Casa</td>
                                                         <td>004</td>
-                                                        
+
                                                     </tr>
-                                                </tbody>
+                                                </tbody>-->
                                             </table>
 
                                         </div>
