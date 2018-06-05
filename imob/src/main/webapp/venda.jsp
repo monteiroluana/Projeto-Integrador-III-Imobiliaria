@@ -55,6 +55,16 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label for="codigoContrato" class="control-label">Código do contrato</label>
+                                            <div class="input-group">
+                                                <input type="text" name="codigoContrato" id="codigoContrato" class="form-control input-sm" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label for="datetimepicker" class="control-label">Data</label>
@@ -91,7 +101,7 @@
                                     <div class="col-sm-3">
                                         <label for="cpf" class="control-label">CPF*</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="000.000.000-00" name="cpf" id="cpf" value="${cliente.cpf}">
+                                            <input type="text" class="form-control" placeholder="00000000000" name="cpf" id="cpf" value="${cliente.cpf}">
                                             <span class="input-group-btn">
                                                 <!-- <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=buscaLocatario&i=${imovel.idImovel}&cpfLocatario=' + document.getElementById('cpf').value">Buscar</a> -->
                                                 <button class="btn btn-info" type="submit">

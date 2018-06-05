@@ -65,26 +65,26 @@
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <label for="dataInicial" class="control-label">Data inicial</label>                                                
-                                                <input type="text" name="dataInicial" id="dataInicial" class="form-control input-sm" placeholder="DD/MM/AA">
+                                                <input type="text" name="dataInicial" id="dataInicial" class="form-control input" placeholder="DD/MM/AA">
                                             </div>
                                         </div>	
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <label for="dataFinal" class="control-label">Data final</label>
-                                                <input type="text" name="dataFinal" id="dataFinal" class="form-control input-sm" placeholder="DD/MM/AA">
+                                                <input type="text" name="dataFinal" id="dataFinal" class="form-control input" placeholder="DD/MM/AA">
 
-                                                <!--ARRUMAR ESSE BOTAO AQUI, RODRIGO-->
+                                                <!--ARRUMAR ESSE BOTAO AQUI, RODRIGO
                                                 <span class="input-group-btn">
                                                     <!--   <button class="btn btn-info" type="button" id="buttonData">
                                                            <span class="glyphicon glyphicon-search"></span>
                                                        </button>
-                                                    -->
+                                                    
                                                     <a href="#" class="btn btn-info" onclick="this.href = 'contrato?comando=lista&dtInicio=' + document.getElementById('dataInicial').value +
                                                                     '&dtFim=' + document.getElementById('dataFinal').value">
                                                         <i class="glyphicon glyphicon-search"></i>
                                                     </a>
 
-                                                </span>
+                                                </span>-->
                                             </div>
                                         </div>
 
@@ -98,16 +98,21 @@
                                                 </select>
                                             </div> 
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <label class="control-label" > <br> </label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" placeholder="digite o número do contrato...">
-                                                <span class="input-group-btn">
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <label><br></label>
+                                            <div>
+                                                 <span class="input-group-btn">
                                                     <button class="btn btn-info" type="button" id="buttonNumeroContrato"><span class="glyphicon glyphicon-search"></span>
                                                     </button>
                                                 </span>
                                             </div>
-
                                         </div>
                                     </div>
                                     <div class="row">
