@@ -7,6 +7,7 @@ package br.com.devolution.model.validadores;
 import br.com.devolution.dao.DaoImovel;
 import br.com.devolution.model.Imovel;
 import br.com.devolution.exceptions.ImovelException;
+import br.com.devolution.model.Usuario;
 import java.sql.SQLException;
 
 /**
@@ -18,9 +19,22 @@ import java.sql.SQLException;
 
 //AINDA EM DESENVOLVIMENTO!!!!
 public class ValidadorImovel {
-    public static boolean validar(Imovel imovel) throws ImovelException, ClassNotFoundException, SQLException{
+    public static boolean validar(Imovel imovel, Usuario usuarioLogado) throws ImovelException, ClassNotFoundException, SQLException{
         DaoImovel daoImovel = new DaoImovel();
-        // dados do cliente
+        
+        String ufUsuario = usuarioLogado.getGrupoFilial();
+        
+        //IF para determinar estado do Usuario logado                        
+        
+        if (usuarioLogado.getGrupoFilial().equals("Recife")) {
+            ufUsuario = "PE";
+        } else if (usuarioLogado.getGrupoFilial().equals("Sao Paulo")) {
+            ufUsuario = "SP";
+        } else if (usuarioLogado.getGrupoFilial().equals("Porto alegre")) {
+            ufUsuario = "RS";
+        }
+        
+        
         
         if(imovel == null){
         throw new ImovelException("Imovel não informado.");
@@ -57,7 +71,11 @@ public class ValidadorImovel {
           
           if (imovel.getSituacao().equals("Selecione")) {
             throw new ImovelException("Status não informado");
-        }                  
+        }        
+
+        if (!imovel.getUf().equals(ufUsuario)) {
+            throw new ImovelException("Imóvel não esta no mesmo estado da filial");
+        }
         
         return true;
     }

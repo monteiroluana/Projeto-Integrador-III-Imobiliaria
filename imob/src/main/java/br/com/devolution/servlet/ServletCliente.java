@@ -24,23 +24,18 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "cliente", urlPatterns = {"/cliente"})
 public class ServletCliente extends HttpServlet {
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
 
         if (request.getParameter("comando").equals("lista")) {
             DaoCliente daoCliente = new DaoCliente();
             List<Cliente> lista = null;
             String valor = request.getParameter("pesquisa");
 
-            try {
-                HttpSession sessao = request.getSession();
-                
-                Usuario usuarioLogado = new Usuario();
-                usuarioLogado = (Usuario)sessao.getAttribute("usuAutenticado");
-                
-                System.out.println(usuarioLogado.getGrupoFilial());
+            try {                                        
                 
                 lista = daoCliente.procurarCliente(valor);
 
@@ -121,6 +116,9 @@ public class ServletCliente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
+        
         String msg = null;
         //ifs para definir qual ação o servlet vai tomar
         if (request.getParameter("comando").equals("cadastrar")) {

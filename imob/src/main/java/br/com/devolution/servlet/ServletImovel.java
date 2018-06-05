@@ -5,6 +5,7 @@ import br.com.devolution.dao.DaoImovel;
 import br.com.devolution.exceptions.ImovelException;
 import br.com.devolution.model.Cliente;
 import br.com.devolution.model.Imovel;
+import br.com.devolution.model.Usuario;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import br.com.devolution.model.validadores.ValidadorImovel;
 import java.text.ParseException;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "imovel", urlPatterns = {"/imovel"})
 public class ServletImovel extends HttpServlet {
@@ -86,6 +88,12 @@ public class ServletImovel extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        //puxar dados do usuario logado
+        HttpSession sessao = request.getSession();
+        Usuario usuarioLogado = new Usuario();
+        usuarioLogado = (Usuario)sessao.getAttribute("usuAutenticado");
+        
         Imovel imovel = new Imovel();
         if (request.getParameter("comando").equals("cadastrar")) {
             //Pegando as informações que estão sendo passadas pelo formulario
@@ -119,7 +127,7 @@ public class ServletImovel extends HttpServlet {
             DaoImovel daoImovel = new DaoImovel();
 
             try {
-                if (ValidadorImovel.validar(imovel)) {
+                if (ValidadorImovel.validar(imovel, usuarioLogado)) {
                     daoImovel.inserir(imovel);
                 }
             } catch (SQLException ex) {
