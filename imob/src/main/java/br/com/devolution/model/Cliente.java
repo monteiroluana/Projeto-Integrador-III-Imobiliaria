@@ -11,7 +11,6 @@ public class Cliente {
     private String cpf;
     private String nome;
     private Date dataNasc;
-    private String sexo;
     private String telefone;
     private String celular;
     private String email;
@@ -60,14 +59,6 @@ public class Cliente {
         } catch (ParseException e) {
 
         }
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
     }
 
     public String getTelefone() {

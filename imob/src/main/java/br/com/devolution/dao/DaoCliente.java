@@ -17,8 +17,8 @@ public class DaoCliente {
 
     public boolean inserir(Cliente cliente) throws SQLException, ClassNotFoundException, ParseException {
 
-        String sql = "INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable)"
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable)"
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
 
         try {
@@ -30,18 +30,17 @@ public class DaoCliente {
             Timestamp tDataNasc = new Timestamp(cliente.getDataNasc().getTime());
             stmt.setTimestamp(3, tDataNasc);
 
-            stmt.setString(4, cliente.getSexo());
-            stmt.setString(5, cliente.getTelefone());
-            stmt.setString(6, cliente.getCelular());
-            stmt.setString(7, cliente.getEmail());
-            stmt.setString(8, cliente.getCep());
-            stmt.setString(9, cliente.getRua());
-            stmt.setString(10, cliente.getBairro());
-            stmt.setString(11, cliente.getCidade());
-            stmt.setString(12, cliente.getUf());
-            stmt.setString(13, cliente.getNum());
-            stmt.setString(14, cliente.getComplemento());
-            stmt.setBoolean(15, true);
+            stmt.setString(4, cliente.getTelefone());
+            stmt.setString(5, cliente.getCelular());
+            stmt.setString(6, cliente.getEmail());
+            stmt.setString(7, cliente.getCep());
+            stmt.setString(8, cliente.getRua());
+            stmt.setString(9, cliente.getBairro());
+            stmt.setString(10, cliente.getCidade());
+            stmt.setString(11, cliente.getUf());
+            stmt.setString(12, cliente.getNum());
+            stmt.setString(13, cliente.getComplemento());
+            stmt.setBoolean(14, true);
 
             stmt.execute();
 
@@ -58,7 +57,7 @@ public class DaoCliente {
     public boolean editar(Cliente cliente) throws SQLException, ParseException {
 
         String sql = "UPDATE imobiliariadb.CLIENTE SET "
-                + "cpf=?,nome=?,dataNasc=?,sexo=?,telefone=?,celular=?,email=?,"
+                + "cpf=?,nome=?,dataNasc=?,telefone=?,celular=?,email=?,"
                 + "cep=?,rua=?,bairro=?,cidade=?,uf=?,num=?,complemento=? WHERE idCliente=?";
         Connection conn = null;
 
@@ -72,18 +71,17 @@ public class DaoCliente {
             Timestamp tDataNasc = new Timestamp(cliente.getDataNasc().getTime());
             stmt.setTimestamp(3, tDataNasc);
 
-            stmt.setString(4, cliente.getSexo());
-            stmt.setString(5, cliente.getTelefone());
-            stmt.setString(6, cliente.getCelular());
-            stmt.setString(7, cliente.getEmail());
-            stmt.setString(8, cliente.getCep());
-            stmt.setString(9, cliente.getRua());
-            stmt.setString(10, cliente.getBairro());
-            stmt.setString(11, cliente.getCidade());
-            stmt.setString(12, cliente.getUf());
-            stmt.setString(13, cliente.getNum());
-            stmt.setString(14, cliente.getComplemento());
-            stmt.setInt(15, cliente.getIdCliente());
+            stmt.setString(6, cliente.getTelefone());
+            stmt.setString(7, cliente.getCelular());
+            stmt.setString(8, cliente.getEmail());
+            stmt.setString(9, cliente.getCep());
+            stmt.setString(10, cliente.getRua());
+            stmt.setString(11, cliente.getBairro());
+            stmt.setString(12, cliente.getCidade());
+            stmt.setString(13, cliente.getUf());
+            stmt.setString(14, cliente.getNum());
+            stmt.setString(15, cliente.getComplemento());
+            stmt.setInt(16, cliente.getIdCliente());
 
             stmt.execute();
 
@@ -144,7 +142,6 @@ public class DaoCliente {
                 SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
                 cli.setDataNasc(formatar.format(dataNasci));
 
-                cli.setSexo(res.getString("sexo"));
                 cli.setTelefone(res.getString("telefone"));
                 cli.setCelular(res.getString("celular"));
                 cli.setEmail(res.getString("email"));
@@ -190,7 +187,6 @@ public class DaoCliente {
                 SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
                 cli.setDataNasc(formatar.format(dataNasci));
 
-                cli.setSexo(res.getString("sexo"));
                 cli.setTelefone(res.getString("telefone"));
                 cli.setCelular(res.getString("celular"));
                 cli.setEmail(res.getString("email"));
@@ -235,7 +231,6 @@ public class DaoCliente {
 
                 Date dataNasci = resultados.getDate("dataNasc");
                 String dataNasc = resultados.getString("dataNasc");
-                String sexo = resultados.getString("sexo");
                 String telefone = resultados.getString("telefone");
                 String celular = resultados.getString("celular");
                 String email = resultados.getString("email");
@@ -253,7 +248,6 @@ public class DaoCliente {
                 cli.setNome(nome);
                 SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
                 cli.setDataNasc(formatar.format(dataNasci));
-                cli.setSexo(sexo);
                 cli.setTelefone(telefone);
                 cli.setCelular(celular);
                 cli.setEmail(email);

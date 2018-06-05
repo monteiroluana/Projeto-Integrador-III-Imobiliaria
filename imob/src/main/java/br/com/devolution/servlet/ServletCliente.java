@@ -128,7 +128,6 @@ public class ServletCliente extends HttpServlet {
             cliente.setCpf(request.getParameter("cpf"));
             cliente.setNome(request.getParameter("nome"));
             cliente.setDataNasc(request.getParameter("data"));
-            cliente.setSexo(request.getParameter("sexo"));
             cliente.setTelefone(request.getParameter("telefone"));
             cliente.setCelular(request.getParameter("celular"));
             cliente.setEmail(request.getParameter("email"));
@@ -171,7 +170,6 @@ public class ServletCliente extends HttpServlet {
             cliente.setCpf(request.getParameter("cpf"));
             cliente.setNome(request.getParameter("nome"));
             cliente.setDataNasc(request.getParameter("data"));
-            cliente.setSexo(request.getParameter("sexo"));
             cliente.setTelefone(request.getParameter("telefone"));
             cliente.setCelular(request.getParameter("celular"));
             cliente.setEmail(request.getParameter("email"));
