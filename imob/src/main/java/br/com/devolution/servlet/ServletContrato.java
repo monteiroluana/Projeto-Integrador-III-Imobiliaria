@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.devolution.servlet;
 
 import br.com.devolution.dao.DaoCliente;
@@ -14,6 +9,10 @@ import br.com.devolution.model.Imovel;
 import br.com.devolution.model.Usuario;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,10 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author luana.mpereira5
- */
+
 @WebServlet(name = "contrato", urlPatterns = {"/contrato"})
 public class ServletContrato extends HttpServlet {
 
@@ -36,12 +32,28 @@ public class ServletContrato extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DaoContrato daoContrato = new DaoContrato();
+
         if (request.getParameter("comando").equals("lista")) {
+
+            DateFormat formatador;
+            formatador = new SimpleDateFormat("dd/MM/yyyy");
+            Date dtInicio = null, dtFim = null;
+
+            try {
+                //Convertendo as datas passadas por parâmetro em tipo 'Date'
+                dtInicio = formatador.parse(request.getParameter("dtInicio"));
+                dtFim = formatador.parse(request.getParameter("dtFim"));
+
+            } catch (ParseException ex) {
+                Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             List<Contrato> lista = null;
 
             try {
-                lista = daoContrato.listar();
+                //Listar contratos num intervalo de datas
+                lista = daoContrato.listar(dtInicio, dtFim);
+
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
@@ -68,11 +80,13 @@ public class ServletContrato extends HttpServlet {
         String nome = usuSession.getNome();
         usuSession.getIdUsuario();
 
+        //Se o locatário estiver vázio, será feita a busca do cliente pelo cpf que que está sendo passado por parâmetro 
         if (request.getParameter("locatario").equals("")) {
 
             int codGerado = -1;
 
             try {
+                //Buscando cliente por cpf
                 cliente = daoCliente.buscarPorCpf(request.getParameter("cpf"));
                 imovel.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
                 imovel = daoImovel.buscar(imovel);
@@ -84,7 +98,7 @@ public class ServletContrato extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            //Retornando codigo gerado para o contrato, Imovel e o cliente(Locatário)
             request.setAttribute("codContrato", codGerado);
             request.setAttribute("imovel", imovel);
             request.setAttribute("cliente", cliente);
@@ -92,10 +106,12 @@ public class ServletContrato extends HttpServlet {
             dispatcher.forward(request, response);
         }
 
+        //Se locatário e idImovel não estiver vazio, será cadastrado o contrato
         if (!request.getParameter("locatario").equals("") && !request.getParameter("idImovel").equals("")) {
             Contrato contrato = new Contrato();
             DaoContrato daoContrato = new DaoContrato();
 
+            //Pegando as informações do formulário para cadastrar o contrato
             contrato.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
             contrato.setIdCliente(Integer.parseInt(request.getParameter("idCliente")));
             contrato.setCodContrato(Integer.parseInt(request.getParameter("codContrato")));
@@ -104,17 +120,20 @@ public class ServletContrato extends HttpServlet {
             contrato.setDataFinal(request.getParameter("datetimepicker_ate"));
 
             try {
+                //Enviando um objeto contrato para o banco de dados
                 daoContrato.inserir(contrato);
             } catch (SQLException ex) {
                 Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
             }
             String msg = "<script>alert('Contrato cadastrado com sucesso');</script>";
 
+            //Retornando uma mensangem de sucesso ou erro e redirecionando para tela ListarImoveis
             request.setAttribute("msg", msg);
             RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
             dispatcher.forward(request, response);
         }
-
+        RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
+        dispatcher.forward(request, response);
     }
 
 }

@@ -75,9 +75,15 @@
 
                                                 <!--ARRUMAR ESSE BOTAO AQUI, RODRIGO-->
                                                 <span class="input-group-btn">
-                                                    <button class="btn btn-info" type="button" id="buttonData">
-                                                        <span class="glyphicon glyphicon-search"></span>
-                                                    </button>
+                                                    <!--   <button class="btn btn-info" type="button" id="buttonData">
+                                                           <span class="glyphicon glyphicon-search"></span>
+                                                       </button>
+                                                    -->
+                                                    <a href="#" class="btn btn-info" onclick="this.href = 'contrato?comando=lista&dtInicio=' + document.getElementById('dataInicial').value +
+                                                                    '&dtFim=' + document.getElementById('dataFinal').value">
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                    </a>
+
                                                 </span>
                                             </div>
                                         </div>
