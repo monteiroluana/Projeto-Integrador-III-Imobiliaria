@@ -15,21 +15,28 @@ import java.util.Random;
 
 public class DaoContrato {
 
-    public List<Contrato> listar() throws ClassNotFoundException, SQLException {
+    public List<Contrato> listar(Date Inicio, Date Fim) throws ClassNotFoundException, SQLException {
 
         String sql = "SELECT i.servico, i.tipo, l.nome AS locatario, c.*FROM Contrato c "
                 + "INNER JOIN imovel i ON c.idImovel = i.idImovel "
                 + "INNER JOIN cliente l ON c.idCliente = l.idCliente "
-                + "WHERE c.enable = ? ";
+                + "WHERE c.enable = ? AND c.dataContrato BETWEEN ? AND ? ";
 
         List<Contrato> lista = new ArrayList<Contrato>();
 
+        //Convertendo a data para ser usada na instrução sql
+        Timestamp dtInicio = new Timestamp(Inicio.getTime());
+        Timestamp dtFim = new Timestamp(Fim.getTime());
+      
         Connection conn = null;
 
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setBoolean(1, true);
+            stmt.setTimestamp(2, dtInicio);
+            stmt.setTimestamp(3, dtFim);
+           
             //Armazenará os resultados do banco de dados
             ResultSet resultados = stmt.executeQuery();
 
