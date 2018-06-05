@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class DaoImovel {
 
-    public List<Imovel> listar(String codImov, String tip, String situ, String serv)
+    public List<Imovel> listar(String codImov, String tip, String situ, String serv, String ufUsuario)
             throws ClassNotFoundException, SQLException {
 
         String sql = "SELECT * FROM imobiliariadb.IMOVEL WHERE "
@@ -22,7 +22,8 @@ public class DaoImovel {
                 + "AND UPPER(tipo) LIKE UPPER(?) "
                 + "AND UPPER(situacao) LIKE UPPER(?) "
                 + "AND UPPER(servico) LIKE UPPER(?)) "
-                + "AND enable=?);";
+                + "AND enable=? "
+                + "AND uf=?);";
 
         List<Imovel> lista = new ArrayList<Imovel>();
 
@@ -37,6 +38,7 @@ public class DaoImovel {
             stmt.setString(3, "%" + situ + "%");
             stmt.setString(4, "%" + serv + "%");
             stmt.setBoolean(5, true);
+            stmt.setString(6, ufUsuario);
 
             //Armazenará os resultados do banco de dados
             ResultSet resultados = stmt.executeQuery();

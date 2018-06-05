@@ -28,6 +28,13 @@ public class ServletImovel extends HttpServlet {
             throws ServletException, IOException {
         DaoImovel daoImovel = new DaoImovel();
 
+        //puxar dados do usuario logado
+        HttpSession sessao = request.getSession();
+        Usuario usuarioLogado = new Usuario();
+        usuarioLogado = (Usuario) sessao.getAttribute("usuAutenticado");
+
+        ValidadorImovel validaImovelUf = new ValidadorImovel();
+
         if (request.getParameter("comando").equals("lista")) {
 
             List<Imovel> lista = null;
@@ -37,9 +44,16 @@ public class ServletImovel extends HttpServlet {
             String situ = request.getParameter("situacao");
             String serv = request.getParameter("servico");
 
+            //verifica a filial do usuario e expande o filtro para o Estado em que pertence
+            String ufUsuario = null;
             try {
-                lista = daoImovel.listar(codImov, tip, situ, serv);
+                ufUsuario = validaImovelUf.convertUf(usuarioLogado);
+            } catch (ImovelException ex) {
+                Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
+            try {
+                lista = daoImovel.listar(codImov, tip, situ, serv, ufUsuario);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
@@ -89,6 +103,8 @@ public class ServletImovel extends HttpServlet {
         Usuario usuarioLogado = new Usuario();
         usuarioLogado = (Usuario) sessao.getAttribute("usuAutenticado");
 
+        ValidadorImovel validaImovelUf = new ValidadorImovel();
+
         Imovel imovel = new Imovel();
         if (request.getParameter("comando").equals("cadastrar")) {
             //Pegando as informações que estão sendo passadas pelo formulario
@@ -122,9 +138,9 @@ public class ServletImovel extends HttpServlet {
             DaoImovel daoImovel = new DaoImovel();
 
             try {
-                if (ValidadorImovel.validar(imovel, usuarioLogado)) {
-                    daoImovel.inserir(imovel);
-                }
+                ValidadorImovel.validar(imovel);
+                validaImovelUf.convertUf(usuarioLogado);
+                daoImovel.inserir(imovel);
             } catch (SQLException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ImovelException ex) {
@@ -196,9 +212,9 @@ public class ServletImovel extends HttpServlet {
             DaoImovel daoImovel = new DaoImovel();
 
             try {
-                if (ValidadorImovel.validarEdicao(imovel)) {
-                    daoImovel.editar(imovel);
-                }
+                ValidadorImovel.validarEdicao(imovel);
+                validaImovelUf.convertUf(usuarioLogado);
+                daoImovel.editar(imovel);
 
             } catch (SQLException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
