@@ -16,28 +16,35 @@ import java.util.Random;
 
 public class DaoContrato {
 
-    public List<Contrato> listar(Date Inicio, Date Fim) throws ClassNotFoundException, SQLException {
+    public List<Contrato> listar(Date Inicio, Date Fim, String cdContrato, String servico, String filial) throws ClassNotFoundException, SQLException {
 
         String sql = "SELECT i.servico, i.tipo, l.nome AS locatario, c.*FROM Contrato c "
                 + "INNER JOIN imovel i ON c.idImovel = i.idImovel "
                 + "INNER JOIN cliente l ON c.idCliente = l.idCliente "
-                + "WHERE c.enable = ? AND c.dataContrato BETWEEN ? AND ? ";
+                + "INNER JOIN usuario u ON c.idUsuario = u.idUsuario "
+                + "WHERE (c.dataContrato BETWEEN ? AND ?) OR u.grupoFilial LIKE ? AND c.codContrato LIKE ? OR i.servico LIKE ?";
 
         List<Contrato> lista = new ArrayList<Contrato>();
 
+        //Verificando se o objeto do tipo data não está vazio
         //Convertendo a data para ser usada na instrução sql
-        Timestamp dtInicio = new Timestamp(Inicio.getTime());
-        Timestamp dtFim = new Timestamp(Fim.getTime());
-      
+        Timestamp dtInicio = null;
+        Timestamp dtFim = null;
+        if (Inicio != null && Fim != null) {
+            dtInicio = new Timestamp(Inicio.getTime());
+            dtFim = new Timestamp(Fim.getTime());
+        }
         Connection conn = null;
 
         try {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setBoolean(1, true);
-            stmt.setTimestamp(2, dtInicio);
-            stmt.setTimestamp(3, dtFim);
-           
+
+            stmt.setTimestamp(1, dtInicio);
+            stmt.setTimestamp(2, dtFim);
+            stmt.setString(3, "%" + filial + "%");
+            stmt.setString(4, "%" + cdContrato + "%");
+            stmt.setString(5, "%" + servico + "%");
             //Armazenará os resultados do banco de dados
             ResultSet resultados = stmt.executeQuery();
 
@@ -48,8 +55,8 @@ public class DaoContrato {
                 Integer idImovel = resultados.getInt("idImovel");
                 Integer idCliente = resultados.getInt("idCliente");
                 Date dataContrato = resultados.getDate("dataContrato");
-                String dataInicial = resultados.getString("dataInicial");
-                String dataFinal = resultados.getString("dataFinal");
+                Date dataInicial = resultados.getDate("dataInicial");
+                Date dataFinal = resultados.getDate("dataFinal");
                 String tipoImovel = resultados.getString("tipo");
                 String tipoContrato = resultados.getString("servico");
                 String locatario = resultados.getString("locatario");
@@ -61,13 +68,13 @@ public class DaoContrato {
                 contrato.setIdCliente(idCliente);
                 SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
                 contrato.setDataContrato(formatar.format(dataContrato));
-                contrato.setDataInicial(dataInicial);
-                contrato.setDataFinal(dataFinal);
+                contrato.setDataInicial(formatar.format(dataInicial));
+                contrato.setDataFinal(formatar.format(dataFinal));
                 contrato.setLocatario(locatario);
                 contrato.setTipoImovel(tipoImovel);
                 contrato.setTipoContrato(tipoContrato);
                 lista.add(contrato);
-
+                System.out.println(contrato.getDataContrato());
             }
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.getMessage());
@@ -78,7 +85,6 @@ public class DaoContrato {
 
         return lista;
     }
-
 
     public void inserir(Contrato contrato, Usuario usuarioLogado) throws SQLException {
 

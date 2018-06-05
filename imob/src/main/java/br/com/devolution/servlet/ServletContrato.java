@@ -24,7 +24,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 @WebServlet(name = "contrato", urlPatterns = {"/contrato"})
 public class ServletContrato extends HttpServlet {
 
@@ -32,17 +31,27 @@ public class ServletContrato extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DaoContrato daoContrato = new DaoContrato();
+        HttpSession session = request.getSession();
+        Usuario usuarioLogado = (Usuario) session.getAttribute("usuAutenticado");
+
+        String filial, cdContrato, servico;
+        filial = usuarioLogado.getGrupoFilial();
+        cdContrato = request.getParameter("codContrato");
+        servico = request.getParameter("servico");
 
         if (request.getParameter("comando").equals("lista")) {
 
-            DateFormat formatador;
-            formatador = new SimpleDateFormat("dd/MM/yyyy");
             Date dtInicio = null, dtFim = null;
 
             try {
-                //Convertendo as datas passadas por parâmetro em tipo 'Date'
-                dtInicio = formatador.parse(request.getParameter("dtInicio"));
-                dtFim = formatador.parse(request.getParameter("dtFim"));
+                //Verificando se os parametros de data estão vazios
+                if (!request.getParameter("dtInicio").equals("") || !request.getParameter("dtFim").equals("")) {
+                    //Convertendo as datas passadas por parâmetro em tipo 'Date'
+                    DateFormat formatador;
+                    formatador = new SimpleDateFormat("dd/MM/yyyy");
+                    dtInicio = formatador.parse(request.getParameter("dtInicio"));
+                    dtFim = formatador.parse(request.getParameter("dtFim"));
+                }
 
             } catch (ParseException ex) {
                 Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,7 +61,9 @@ public class ServletContrato extends HttpServlet {
 
             try {
                 //Listar contratos num intervalo de datas
-                lista = daoContrato.listar(dtInicio, dtFim);
+
+                lista = daoContrato.listar(dtInicio, dtFim, cdContrato, servico, filial);
+                ;
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,12 +86,11 @@ public class ServletContrato extends HttpServlet {
         Cliente cliente = new Cliente();
         Imovel imovel = new Imovel();
         String pag = null;
-        
+
         HttpSession session = request.getSession();
         Usuario usuarioLogado = (Usuario) session.getAttribute("usuAutenticado");
         String nome = usuarioLogado.getNome();
         System.out.println(nome);
-        
 
         //Se o locatário estiver vázio, será feita a busca do cliente pelo cpf que que está sendo passado por parâmetro 
         if (request.getParameter("locatario").equals("")) {

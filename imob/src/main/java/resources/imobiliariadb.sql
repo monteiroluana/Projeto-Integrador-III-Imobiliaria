@@ -79,10 +79,10 @@ CREATE TABLE imobiliariadb.CONTRATO (
 	dataContrato   DATE NOT NULL,	
 	dataInicial    DATE,
 	dataFinal      DATE,
-	enable         BOOLEAN,
 	CONSTRAINT PK_IMOVEL PRIMARY KEY (idContrato),
 	FOREIGN KEY(idCliente) REFERENCES cliente(idCliente),
-	FOREIGN KEY(idImovel) REFERENCES imovel(idImovel)
+	FOREIGN KEY(idImovel) REFERENCES imovel(idImovel),
+        FOREIGN KEY (idUsuario) REFERENCES usuario (idUsuario)
 );
 
 
