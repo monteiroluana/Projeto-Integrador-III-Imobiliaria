@@ -59,7 +59,7 @@
                                         <div class="form-group">
                                             <label for="codigoContrato" class="control-label">Código do contrato</label>
                                             <div class="input-group">
-                                                <input type="text" name="codigoContrato" id="codigoContrato" class="form-control input-sm" disabled>
+                                                <input type="text" name="codigoContrato" id="codigoContrato" class="form-control input-sm" value="${codContrato}" disabled>
                                             </div>
                                         </div>
                                     </div>
