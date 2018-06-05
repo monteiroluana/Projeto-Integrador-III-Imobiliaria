@@ -75,10 +75,12 @@ public class ServletContrato extends HttpServlet {
         Cliente cliente = new Cliente();
         Imovel imovel = new Imovel();
         String pag = null;
+        
         HttpSession session = request.getSession();
-        Usuario usuSession = (Usuario) session.getAttribute("usuAutenticado");
-        String nome = usuSession.getNome();
-        usuSession.getIdUsuario();
+        Usuario usuarioLogado = (Usuario) session.getAttribute("usuAutenticado");
+        String nome = usuarioLogado.getNome();
+        System.out.println(nome);
+        
 
         //Se o locatário estiver vázio, será feita a busca do cliente pelo cpf que que está sendo passado por parâmetro 
         if (request.getParameter("locatario").equals("")) {
@@ -114,6 +116,7 @@ public class ServletContrato extends HttpServlet {
             //Pegando as informações do formulário para cadastrar o contrato
             contrato.setIdImovel(Integer.parseInt(request.getParameter("idImovel")));
             contrato.setIdCliente(Integer.parseInt(request.getParameter("idCliente")));
+            contrato.setIdUsuario(usuarioLogado.getIdUsuario());
             contrato.setCodContrato(Integer.parseInt(request.getParameter("codContrato")));
             contrato.setDataContrato(request.getParameter("datetimepicker"));
             contrato.setDataInicial(request.getParameter("datetimepicker_de"));
@@ -121,7 +124,7 @@ public class ServletContrato extends HttpServlet {
 
             try {
                 //Enviando um objeto contrato para o banco de dados
-                daoContrato.inserir(contrato);
+                daoContrato.inserir(contrato, usuarioLogado);
             } catch (SQLException ex) {
                 Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
             }

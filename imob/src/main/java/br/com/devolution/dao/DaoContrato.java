@@ -2,6 +2,7 @@ package br.com.devolution.dao;
 
 import br.com.devolution.conexao.Conexao;
 import br.com.devolution.model.Contrato;
+import br.com.devolution.model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -78,10 +79,11 @@ public class DaoContrato {
         return lista;
     }
 
-    public void inserir(Contrato contrato) throws SQLException {
 
-        String sql = "INSERT INTO imobiliariadb.CONTRATO (codContrato,idImovel,idCliente,dataContrato,dataInicial,dataFinal,enable) "
-                + "VALUES (?,?,?,?,?,?,?)";
+    public void inserir(Contrato contrato, Usuario usuarioLogado) throws SQLException {
+
+        String sql = "INSERT INTO imobiliariadb.CONTRATO (codContrato,idImovel,idCliente, idUsuario, dataContrato,dataInicial,dataFinal,enable) "
+                + "VALUES (?,?,?,?,?,?,?,?)";
         Connection conn = null;
         try {
             conn = Conexao.obterConexao();
@@ -90,15 +92,16 @@ public class DaoContrato {
             stmt.setInt(1, contrato.getCodContrato());
             stmt.setInt(2, contrato.getIdImovel());
             stmt.setInt(3, contrato.getIdCliente());
+            stmt.setInt(4, contrato.getIdUsuario());
 
             Timestamp tDataContrato = new Timestamp(contrato.getDataContrato().getTime());
             Timestamp tDataInicial = new Timestamp(contrato.getDataInicial().getTime());
             Timestamp tDataFinal = new Timestamp(contrato.getDataFinal().getTime());
-            stmt.setTimestamp(4, tDataContrato);
-            stmt.setTimestamp(5, tDataInicial);
-            stmt.setTimestamp(6, tDataFinal);
+            stmt.setTimestamp(5, tDataContrato);
+            stmt.setTimestamp(6, tDataInicial);
+            stmt.setTimestamp(7, tDataFinal);
 
-            stmt.setBoolean(7, true);
+            stmt.setBoolean(8, true);
             stmt.execute();
 
         } catch (ClassNotFoundException | SQLException ex) {

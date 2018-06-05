@@ -13,6 +13,7 @@ public class Contrato {
     private int idCliente;
     private int idUsuario;
 
+
     private Date dataContrato;
     private Date dataInicial;
     private Date dataFinal;
@@ -126,5 +127,13 @@ public class Contrato {
 
     public void setLocatario(String locatario) {
         this.locatario = locatario;
+    }    
+    
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 }
