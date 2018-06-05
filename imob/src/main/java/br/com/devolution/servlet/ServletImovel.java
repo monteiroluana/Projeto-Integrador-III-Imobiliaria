@@ -42,7 +42,6 @@ public class ServletImovel extends HttpServlet {
 
             String codImov = request.getParameter("codImovel");
             String tip = request.getParameter("tipo");
-            String situ = request.getParameter("situacao");
             String serv = request.getParameter("servico");
 
             //verifica a filial do usuario e expande o filtro para o Estado em que pertence
@@ -54,7 +53,7 @@ public class ServletImovel extends HttpServlet {
             }
 
             try {
-                lista = daoImovel.listar(codImov, tip, situ, serv, ufUsuario);
+                lista = daoImovel.listar(codImov, tip, serv, ufUsuario);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
@@ -134,7 +133,6 @@ public class ServletImovel extends HttpServlet {
             imovel.setValorAluguel(Double.parseDouble(request.getParameter("valorAluguel")));
             imovel.setIptu(Double.parseDouble(request.getParameter("iptu")));
             imovel.setCondominio(Double.parseDouble(request.getParameter("condominio")));
-            imovel.setSituacao(request.getParameter("situacao"));
             imovel.setServico(request.getParameter("servico"));
             imovel.setCodImovel(request.getParameter("codImovel"));
 
@@ -215,7 +213,6 @@ public class ServletImovel extends HttpServlet {
             imovel.setValorAluguel(Double.parseDouble(request.getParameter("valorAluguel")));
             imovel.setIptu(Double.parseDouble(request.getParameter("iptu")));
             imovel.setCondominio(Double.parseDouble(request.getParameter("condominio")));
-            imovel.setSituacao(request.getParameter("situacao"));
             imovel.setServico(request.getParameter("servico"));
             imovel.setCodImovel(request.getParameter("codImovel"));
 

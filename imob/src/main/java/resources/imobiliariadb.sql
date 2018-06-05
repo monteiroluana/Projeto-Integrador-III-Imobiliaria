@@ -19,8 +19,7 @@ CREATE TABLE imobiliariadb.CLIENTE(
 	idCliente      INTEGER NOT NULL AUTO_INCREMENT,
 	nome           VARCHAR(255),
 	dataNasc       DATE,
-	cpf            VARCHAR(11) NOT NULL,
-	sexo           VARCHAR(15),
+	cpf            VARCHAR(11) NOT NULL,	
 	cep            VARCHAR(8),
 	rua            VARCHAR(255),
 	num            VARCHAR(10),
@@ -61,8 +60,7 @@ CREATE TABLE imobiliariadb.IMOVEL (
 	valorVenda     DOUBLE,
         valorAluguel   DOUBLE,
 	condominio     DOUBLE,
-	iptu           DOUBLE,
-	situacao       VARCHAR(255),
+	iptu           DOUBLE,	
         servico        VARCHAR(50),
 	enable         BOOLEAN,
 	CONSTRAINT PK_IMOVEL PRIMARY KEY (idImovel),
@@ -86,7 +84,6 @@ CREATE TABLE imobiliariadb.CONTRATO (
 );
 
 
-
 INSERT INTO imobiliariadb.USUARIO (nome,login,senha,email,grupoFilial,departamento,cargo,enable) VALUES
 ("Jonas Araujo","jonas.araujo","jonas","jonas@jonas.com","Sao Paulo","Diretoria","Diretor(a)",true),
 ("Bruna Sayuri","bruna.sayuri","bruna","bruna@bruna.com","Porto Alegre","TI","Suporte Técnico",true),
@@ -94,12 +91,17 @@ INSERT INTO imobiliariadb.USUARIO (nome,login,senha,email,grupoFilial,departamen
 ("Luana Monteiro", "luana.monteiro", "luana","luana@monteiro.com", "Recife","TI","Gerente", true),
 ("Pedro Henrique", "pedro.henrique", "pedro","pedro@henrique.com", "Recife","Retaguarda","Backoffice", true);
 
-INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,sexo,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable) VALUES
-("99991111111","kunieda aoi","1996-07-17","fem","1155554444","11944445555","aoi@aoi.com","04444000","","","","","","",true),
-("12345678900","joao da silva","2000-05-01","masc","116415967","119302158","joao@silva.com","","","","","","","",true);
+INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable) VALUES
+("99991111111","Kunieda Aoi","1996-07-17","1155554444","11944445555","aoi@aoi.com","04444000","rua aaa","Santo Amaro","São Paulo","SP","300","",true),
+("12345678900","Joao da Silva","2000-05-01","556415967","95369874","joao@silva.com","08888000","rua bbb","Boa Viagem","Recife","PE","400","",true),
+("80495398063","Maria Souza","1990-10-20","55988551","95487150","maria@souza.com","02222000","rua bbb","Santa Teresa","Porto Alegre","RS","500","",true);
 
 INSERT INTO imobiliariadb.IMOVEL(idCliente,codImovel,dataCad,categoria,tipo,
 quartos,banheiros,suites,vagasGaragem,areaUtil,areaTotal,informacao,
-cep,rua,num,bairro,cidade,uf,valorVenda,valorAluguel,iptu,situacao,servico,enable)
-VALUES (1,"codTeste","2018-05-08","Residencial","Casa",3,2,1,2,100,200,"aloaloaloalo",
-"04444000","rua teste","20","bairrozin","São Paulo","SP",250000,2500,200,"livre","Venda",true);
+cep,rua,num,bairro,cidade,uf,valorVenda,valorAluguel,iptu,servico,enable) VALUES 
+(1,"50","2018-05-08","Residencial","Casa",3,2,1,2,100,200,"aloaloaloalo",
+"08962000","rua teste","20","bairrozin","São Paulo","SP",250000,0,1000,"Venda",true), 
+(2,"70","2018-06-05","Comercial","Apartamento",3,2,1,2,100,200,"",
+"07777000","avenida aleatoria","55","Boa Viagem","Recife","PE",0,2000,800,"Aluguel",true),
+(3,"80","2018-10-20","Residencial","Terreno",0,0,0,0,0,250,"",
+"06666000","estrada nenhuma","100","Santa Teresa","Porto Alegre","RS",200000,000,1500,"Venda",true);

@@ -44,10 +44,6 @@ public class ValidadorImovel {
             throw new ImovelException("Tipo do imóvel não informado");
         }
 
-        if (imovel.getSituacao().equals("Selecione")) {
-            throw new ImovelException("Status não informado");
-        }
-
         return true;
     }
 
@@ -84,10 +80,6 @@ public class ValidadorImovel {
 
         if (imovel.getTipo().equals("Selecione")) {
             throw new ImovelException("Tipo do imóvel não informado");
-        }
-
-        if (imovel.getSituacao().equals("Selecione")) {
-            throw new ImovelException("Status não informado");
         }
 
         return true;
