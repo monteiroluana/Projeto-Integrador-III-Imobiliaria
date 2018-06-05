@@ -104,4 +104,15 @@ cep,rua,num,bairro,cidade,uf,valorVenda,valorAluguel,iptu,servico,enable) VALUES
 (2,"70","2018-06-05","Comercial","Apartamento",3,2,1,2,100,200,"",
 "07777000","avenida aleatoria","55","Boa Viagem","Recife","PE",0,2000,800,"Aluguel",true),
 (3,"80","2018-10-20","Residencial","Terreno",0,0,0,0,0,250,"",
-"06666000","estrada nenhuma","100","Santa Teresa","Porto Alegre","RS",200000,000,1500,"Venda",true);
+"06666000","estrada nenhuma","100","Santa Teresa","Porto Alegre","RS",200000,000,1500,"Venda",true),
+(1,"90","2018-01-05","Comercial","Apartamento",3,2,1,2,100,200,"",
+"07777000","avenida Santo Amaro","55","Santo Amaro","Sao Paulo","SP",0,10000,780,"Venda",true),
+(3,"100","2018-11-20","Residencial","Terreno",0,0,0,0,0,250,"",
+"06666000","av santa teresa","9","Santa Teresa","Porto Alegre","RS",150000,000,3000,"Aluguel",true);
+
+INSERT INTO contrato (idContrato,codContrato,idImovel,idCliente,idUsuario,dataContrato, dataInicial, dataFinal) 
+VALUES (1,111,1,1,1,'2018-06-05','2018-06-05','2019-06-05'),
+(2,222,2,2,3,'2018-05-01','2018-05-01','2019-05-01'),
+(3,333,3,3,5,'2018-09-15','2018-09-20','2019-09-20'),
+(4,444,4,1,3,'2018-03-01','2018-03-01','2019-03-01'),
+(5,555,5,3,5,'2018-12-15','2018-12-20','2019-12-20');  
