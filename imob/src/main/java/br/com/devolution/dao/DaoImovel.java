@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -47,8 +48,8 @@ public class DaoImovel {
                 Integer id = resultados.getInt("idImovel");
                 Integer idCliente = resultados.getInt("idCliente");
                 String codImovel = resultados.getString("codImovel");
-                Date d = new Date(resultados.getTimestamp("dataCad").getTime());
-                String dataCad = resultados.getString("dataCad");
+                Date dataCad = resultados.getDate("dataCad");
+               
                 String categoria = resultados.getString("categoria");
                 String tipo = resultados.getString("tipo");
 
@@ -82,7 +83,8 @@ public class DaoImovel {
                 imov.setIdCliente(idCliente);
                 imov.setCodImovel(codImovel);
 
-                imov.setDataCad(dataCad);
+                SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
+                imov.setDataCad(formatar.format(dataCad));
                 imov.setCategoria(categoria);
                 imov.setTipo(tipo);
 
@@ -306,7 +308,10 @@ public class DaoImovel {
                 imov.setIdImovel(res.getInt("idImovel"));
                 imov.setIdCliente(res.getInt("idCliente"));
                 imov.setCodImovel(res.getString("codImovel"));
-                imov.setDataCad(res.getString("dataCad"));
+                
+                SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
+                Date data = res.getDate("dataCad");
+                imov.setDataCad(formatar.format(data));
 
                 imov.setCategoria(res.getString("categoria"));
                 imov.setTipo(res.getString("tipo"));

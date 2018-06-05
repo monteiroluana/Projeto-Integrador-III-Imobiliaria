@@ -250,7 +250,7 @@
                                                             <label for="dataCad" class="control-label">Data</label>
                                                         </div>
 
-                                                        <input type="text" name="dataCad" id="dataCad" class="form-control input-sm" placeholder="DD/MM/AA" value="${imovel.dataCad}">
+                                                        <input type="text" name="dataCad" id="dataCad" class="form-control input-sm" placeholder="DD/MM/AA" value="${dataCad}">
                                                     </div>
 
                                                 </div>

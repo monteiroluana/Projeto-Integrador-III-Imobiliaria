@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import br.com.devolution.model.validadores.ValidadorImovel;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "imovel", urlPatterns = {"/imovel"})
@@ -106,6 +107,8 @@ public class ServletImovel extends HttpServlet {
         ValidadorImovel validaImovelUf = new ValidadorImovel();
 
         Imovel imovel = new Imovel();
+        
+        //Enviar os dados para serem cadastros no db pela classe 'daoImovel.insert'
         if (request.getParameter("comando").equals("cadastrar")) {
             //Pegando as informações que estão sendo passadas pelo formulario
 
@@ -153,6 +156,7 @@ public class ServletImovel extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
             dispatcher.forward(request, response);
 
+            //Pegando o imovel selecionado e passando os dados do imovel para tela de Editar
         } else if (request.getParameter("comando").equals("listaEditar")) {
 
             Cliente cliente = new Cliente();
@@ -161,11 +165,15 @@ public class ServletImovel extends HttpServlet {
 
             DaoImovel daoImovel = new DaoImovel();
             DaoCliente daoCliente = new DaoCliente();
-
+            String data = null;
             try {
                 imovel = daoImovel.buscar(imovel);
                 cliente.setIdCliente(imovel.getIdCliente());
                 cliente = daoCliente.buscar(cliente);
+
+                //formatando a data numa String temporariamente para mandar a data já formatada para a tela! ou não kkkk
+                SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
+                data = (formatar.format(imovel.getDataCad()));
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
@@ -175,11 +183,13 @@ public class ServletImovel extends HttpServlet {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             }
 
+            request.setAttribute("dataCad", data);
             request.setAttribute("imovel", imovel);
             request.setAttribute("cliente", cliente);
             RequestDispatcher dispatcher = request.getRequestDispatcher("EditarImovel.jsp");
             dispatcher.forward(request, response);
 
+            //Enviando os dados do imovel para serem atualizados no db
         } else if (request.getParameter("comando").equals("editar")) {
             //Pegando as informações que estão sendo passadas pelo formulario
 
