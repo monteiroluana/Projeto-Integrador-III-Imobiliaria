@@ -94,7 +94,7 @@
                                                 <select id="filtro" name="filtro" class="form-control">
                                                     <option>Selecione</option>
                                                     <option>Venda</option>
-                                                    <option>Locação</option>
+                                                    <option>Aluguel</option>
                                                 </select>
                                             </div> 
                                         </div>
@@ -135,37 +135,8 @@
                                                         <td><c:out value="${c.tipoImovel}" /></td>
                                                         <td><c:out value="${c.idContrato}" /></td>                        
                                                     </tr>
-
                                                 </c:forEach>
-                                                <!--<tbody>	
-                                                    <tr>
-                                                        <td>10/10/2015</td>
-                                                        <td>001</td>
-                                                        <td>Venda</td>
-                                                        <td>Miguel Reis</td>
-                                                        <td>Casa</td>
-                                                        <td>001</td>
 
-                                                    </tr>
-                                                    <tr>
-                                                        <td>10/10/2018</td>
-                                                        <td>002</td>
-                                                        <td>Venda</td>
-                                                        <td>Italo Macedo</td>
-                                                        <td>Apartamento</td>
-                                                        <td>003</td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td>10/10/2014</td>
-                                                        <td>003</td>
-                                                        <td>Locação</td>
-                                                        <td>Fernanda Martins</td>
-                                                        <td>Casa</td>
-                                                        <td>004</td>
-
-                                                    </tr>
-                                                </tbody>-->
                                             </table>
 
                                         </div>
