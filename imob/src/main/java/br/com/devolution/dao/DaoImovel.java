@@ -17,14 +17,12 @@ public class DaoImovel {
     public List<Imovel> listar(String codImov, String tip, String situ, String serv)
             throws ClassNotFoundException, SQLException {
 
-//        String sql = "SELECT * FROM imobiliariadb.IMOVEL WHERE "
-//                + "((UPPER(codImovel) LIKE UPPER(?) "
-//                + "OR UPPER(tipo) LIKE UPPER(?) "
-//                + "OR UPPER(situacao) LIKE UPPER(?) "
-//                + "OR UPPER(servico) LIKE UPPER(?)) "
-//                + "AND enable=?);";
-
-        String sql = "SELECT * FROM imobiliariadb.IMOVEL WHERE enable=?";
+        String sql = "SELECT * FROM imobiliariadb.IMOVEL WHERE "
+                + "((UPPER(codImovel) LIKE UPPER(?) "
+                + "AND UPPER(tipo) LIKE UPPER(?) "
+                + "AND UPPER(situacao) LIKE UPPER(?) "
+                + "AND UPPER(servico) LIKE UPPER(?)) "
+                + "AND enable=?);";
 
         List<Imovel> lista = new ArrayList<Imovel>();
 
@@ -34,13 +32,11 @@ public class DaoImovel {
             conn = Conexao.obterConexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-//            //MUDAR/ADICIONAR OS CAMPOS
-//            stmt.setString(1, "%" + codImov + "%");
-//            stmt.setString(2, "%" + tip + "%");
-//            stmt.setString(3, "%" + situ + "%");
-//            stmt.setString(4, "%" + serv + "%");
-//            stmt.setBoolean(5, true);
-            stmt.setBoolean(1, true);
+            stmt.setString(1, "%" + codImov + "%");
+            stmt.setString(2, "%" + tip + "%");
+            stmt.setString(3, "%" + situ + "%");
+            stmt.setString(4, "%" + serv + "%");
+            stmt.setBoolean(5, true);
 
             //Armazenará os resultados do banco de dados
             ResultSet resultados = stmt.executeQuery();

@@ -127,44 +127,8 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>                                    
 
-                                    <!--<div class="col-xs-auto col-sm-auto col-md-1">
-                                        <div class="form-group">
-                                            <div class="col-25">
-                                                <label class="control-label" for="uf">UF</label>
-                                                <select id="uf" name="uf" class="form-control" style="width: auto">
-                                                    <option>AC</option>
-                                                    <option>AL</option>
-                                                    <option>AP</option>
-                                                    <option>AM</option>
-                                                    <option>BA</option>
-                                                    <option>CE</option>
-                                                    <option>DF</option>
-                                                    <option>ES</option>
-                                                    <option>GO</option>
-                                                    <option>MA</option>
-                                                    <option>MT</option>
-                                                    <option>MS</option>
-                                                    <option>MG</option>
-                                                    <option>PA</option>
-                                                    <option>PB</option>
-                                                    <option>PR</option>
-                                                    <option>PE</option>
-                                                    <option>PI</option>
-                                                    <option>RJ</option>
-                                                    <option>RN</option>
-                                                    <option>RS</option>
-                                                    <option>RO</option>
-                                                    <option>RR</option>
-                                                    <option>SC</option>
-                                                    <option>SP</option>
-                                                    <option>SE</option>
-                                                    <option>TO</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>-->
                                     <div class="col-xs-auto col-sm-auto col-md-1">
                                         <div class="col-25">
                                             <label for="pesquisar">&nbsp;</label>
@@ -178,10 +142,10 @@
                                             <!--<a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista&codImov=' + document.getElementById('codImovel').value">
                                                         <i class="glyphicon glyphicon-search"></i>
                                                     </a>-->
-                                            <a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista&codImov=' + document.getElementById('codImovel').value +
-                                                            '&tip=' + document.getElementById('tipo').value +
-                                                            '&situ=' + document.getElementById('situacao').value +
-                                                            '&serv=' + document.getElementById('servico').value">
+                                            <a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista&codImovel=' + document.getElementById('codImovel').value +
+                                                            '&tipo=' + document.getElementById('tipo').value +
+                                                            '&situacao=' + document.getElementById('situacao').value +
+                                                            '&servico=' + document.getElementById('servico').value">
                                                 <i class="glyphicon glyphicon-search"></i>
                                             </a>
 

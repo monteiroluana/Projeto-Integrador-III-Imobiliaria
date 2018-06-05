@@ -37,11 +37,6 @@ public class ServletImovel extends HttpServlet {
             String situ = request.getParameter("situacao");
             String serv = request.getParameter("servico");
 
-            System.out.println("codImov: " + codImov
-                    + "\ntip: " + tip
-                    + "\nsitu: " + situ
-                    + "\nserv: " + serv);
-
             try {
                 lista = daoImovel.listar(codImov, tip, situ, serv);
 
@@ -88,12 +83,12 @@ public class ServletImovel extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         //puxar dados do usuario logado
         HttpSession sessao = request.getSession();
         Usuario usuarioLogado = new Usuario();
-        usuarioLogado = (Usuario)sessao.getAttribute("usuAutenticado");
-        
+        usuarioLogado = (Usuario) sessao.getAttribute("usuAutenticado");
+
         Imovel imovel = new Imovel();
         if (request.getParameter("comando").equals("cadastrar")) {
             //Pegando as informações que estão sendo passadas pelo formulario
