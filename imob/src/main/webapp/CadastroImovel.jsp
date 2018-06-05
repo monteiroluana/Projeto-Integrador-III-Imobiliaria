@@ -307,25 +307,15 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
-                                                    <div class="form-group">
-                                                        <div class="col-25">
-                                                            <label class="control-label" for="situacao">Status do Imóvel</label>
-                                                        </div>	
-                                                        <select id="situacao" name="situacao" class="form-control">
-                                                            <option>Selecione</option>
-                                                            <option value="livre">Livre</option>
-                                                            <option value="ocupado">Ocupado</option>
-                                                        </select>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-xs-auto col-sm-auto col-md-6">
-                                                    <div class="form-group">
+                                                   <div class="form-group">
                                                         <div class="col-25">
                                                             <label class="control-label" for="codImovel">Cód. Imóvel</label>
                                                         </div>	
                                                         <input type="text" name="codImovel" id="codImovel" class="form-control input-sm" placeholder="codImovel" value=${codGerado}>
                                                     </div>
+                                                </div>
+                                                <div class="col-xs-auto col-sm-auto col-md-6">
+                                                    
                                                 </div>
                                             </div> 
                                             <div class="row">

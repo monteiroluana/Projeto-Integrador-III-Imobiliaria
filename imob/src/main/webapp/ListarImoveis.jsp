@@ -89,36 +89,6 @@
                                     <div class="col-xs-auto col-sm-auto col-md-2">
                                         <div class="form-group">
                                             <div class="col-25">
-                                                <label class="control-label" for="situacao">Status do imóvel</label>
-                                            </div>	
-                                            <select id="situacao" name="situacao" class="form-control">
-                                                <option value="">Selecione</option>
-                                                <option value="livre">Livre</option>
-                                                <option value="ocupado">Ocupado</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <!--<div class="col-xs-auto col-sm-auto col-md-2">
-                                        <div class="form-group">
-                                            <div class="col-25">
-                                                <label class="control-label" for="min">Faixa de preço</label>
-                                            </div>
-                                            <input type="text" name="min" id="min" class="form-control input-sm" placeholder="menor valor">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-auto col-sm-auto col-md-2">
-                                        <div class="form-group">
-                                            <div class="col-25">
-                                                <label for="pesquisar">&nbsp;</label>
-                                            </div>
-                                            <input type="text" name="max" id="max" class="form-control input-sm" placeholder="maior valor">
-                                        </div>
-                                    </div>-->
-
-                                    <div class="col-xs-auto col-sm-auto col-md-2">
-                                        <div class="form-group">
-                                            <div class="col-25">
                                                 <label class="control-label" for="servico">Serviço</label>
                                                 <select id="servico" name="servico" class="form-control">
                                                     <option value="">Selecione</option>
@@ -134,24 +104,12 @@
                                             <label for="pesquisar">&nbsp;</label>
                                         </div>
 
-                                        <!--<button class="btn btn-info btn-sm" type="button" id="pesquisar">
-                                            <i class="glyphicon glyphicon-search"></i>
-                                        </button>-->
-
                                         <span class="input-group-btn">
-                                            <!--<a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista&codImov=' + document.getElementById('codImovel').value">
-                                                        <i class="glyphicon glyphicon-search"></i>
-                                                    </a>-->
                                             <a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista&codImovel=' + document.getElementById('codImovel').value +
                                                             '&tipo=' + document.getElementById('tipo').value +
-                                                            '&situacao=' + document.getElementById('situacao').value +
                                                             '&servico=' + document.getElementById('servico').value">
                                                 <i class="glyphicon glyphicon-search"></i>
-                                            </a>
-
-                                            <!--<a href="#" class="btn btn-info" onclick="this.href = 'imovel?comando=lista'">
-                                                <i class="glyphicon glyphicon-search"></i>
-                                            </a>-->
+                                            </a>                                            
                                         </span>
                                     </div>
                                 </div>
@@ -169,7 +127,6 @@
                                                     <th>Venda(R$)</th>
                                                     <th>Aluguel(R$)</th>
                                                     <th>Serviço</th>
-                                                    <th>Situação</th>
                                                     <th class="text-center">Opções</th>
                                                 </tr>
                                             </thead>
@@ -185,14 +142,14 @@
                                                     <td><c:out value="${i.uf}" /></td>
                                                     <td><c:out value="${i.valorVenda}" /></td>
                                                     <td><c:out value="${i.valorAluguel}" /></td>
-                                                    <td><c:out value="${i.servico}" /></td>
-                                                    <td><c:out value="${i.situacao}" /></td>                                                    
+                                                    <td><c:out value="${i.servico}" /></td>                                                                               
                                                     <input type="hidden" name="comando" id="comando" value="listaEditar"/>
 
                                                     <td class="text-center">
                                                         <button type="submit" class="btn btn-info btn-sm glyphicon glyphicon-pencil" target="_blank"></button>
                                                         <a href="imovel?idImovel=${i.idImovel}&comando=excluir"class="btn btn-danger btn-sm glyphicon glyphicon-remove"></a>
                                                         <a href="imovel?comando=buscarImovel&idImovel=${i.idImovel}" class="btn btn-warning btn-sm glyphicon glyphicon-file"></a>
+
                                                     </td>
                                                     </tr>
                                                 </form>

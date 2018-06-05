@@ -302,22 +302,15 @@
                                                     <div class="col-xs-auto col-sm-auto col-md-6">
                                                         <div class="form-group">
                                                             <div class="col-25">
-                                                                <label class="control-label" for="situacao">Status do Imóvel</label>
+                                                                <label class="control-label" for="codImovel">Cód. Imóvel</label>
                                                             </div>	
-                                                            <select id="situacao" name="situacao" class="form-control">
-                                                                <option>Selecione</option>
-                                                                <option <c:if test="${imovel.situacao=='livre'}">selected</c:if>>Livre</option>
-                                                            <option <c:if test="${imovel.situacao=='ocupado'}">selected</c:if>>Ocupado</option>
-                                                            </select>
+                                                            <input type="text" name="codImovel" id="codImovel" class="form-control input-sm" placeholder="codImovel" value="${imovel.codImovel}">
                                                         </div>
 
                                                     </div>
                                                     <div class="col-xs-auto col-sm-auto col-md-6">
                                                         <div class="form-group">
-                                                            <div class="col-25">
-                                                                <label class="control-label" for="codImovel">Cód. Imóvel</label>
-                                                            </div>	
-                                                            <input type="text" name="codImovel" id="codImovel" class="form-control input-sm" placeholder="codImovel" value="${imovel.codImovel}">
+                                                            
                                                     </div>
                                                 </div>
                                             </div> 
