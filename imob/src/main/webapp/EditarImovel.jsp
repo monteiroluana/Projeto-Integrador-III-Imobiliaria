@@ -570,8 +570,7 @@
                                     <div class="row">
                                         <br>
                                         <div class="col-xs-auto col-sm-auto col-md-6">
-                                            <button type="button submit" class="btn btn-info" >Salvar</button>
-                                            <button type="button" class="btn btn-danger" onclick="javascript:window.close()" >Cancelar</button>
+                                            <button type="button submit" class="btn btn-info" >Salvar</button>                                            
                                         </div>
                                     </div>
 
