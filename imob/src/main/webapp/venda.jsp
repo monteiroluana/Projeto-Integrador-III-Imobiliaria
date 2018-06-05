@@ -44,13 +44,13 @@
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Abertura de vendas e locação</h3>
+                            <h3 class="panel-title">Abertura de Contrato Venda/Aluguel</h3>
                         </div>
                         <div class="panel-body">
                             <form role="form" action="contrato" method="POST">
                                 <div class="row">
                                     <div class="col-xs-auto col-sm-auto col-md-4">
-                                        <h3 class="panel-title">Vendas e locação</h3>
+                                        <h3 class="panel-title">Venda/Aluguel</h3>
                                         <hr>
                                     </div>
                                 </div>
@@ -77,8 +77,8 @@
                                         <div>
                                             <select id="filtro" name="filtro" class="form-control">
                                                 <option>Selecione</option>
-                                                <option>Venda</option>
-                                                <option>Locação</option>
+                                                <option<c:if test="${imovel.servico=='Venda'}">selected</c:if>>Venda</option>
+                                                <option<c:if test="${imovel.servico=='Aluguel'}">selected</c:if>>Aluguel</option>
                                             </select>
                                         </div>
                                     </div>
@@ -193,7 +193,7 @@
                                 <div class="row">
                                     <div class="col-xs-auto col-sm-auto col-md-6">
                                         <br>
-                                        <h3 class="panel-title">Período de locação</h3>
+                                        <h3 class="panel-title">Período de aluguel</h3>
                                         <hr>
                                     </div>
                                     <div class="col-xs-auto col-sm-auto col-md-6">

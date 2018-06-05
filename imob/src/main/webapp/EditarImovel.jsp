@@ -262,7 +262,7 @@
                                                             <select id="servico" name="servico" class="form-control">
                                                                 <option>Selecione</option>
                                                                 <option <c:if test="${imovel.servico=='Venda'}">selected</c:if>>Venda</option>
-                                                                <option <c:if test="${imovel.servico=='Locação'}">selected</c:if>>Locação</option>                                                    
+                                                                <option <c:if test="${imovel.servico=='Aluguel'}">selected</c:if>>Aluguel</option>                                                    
                                                                 </select>
                                                             </div>
                                                         </div>

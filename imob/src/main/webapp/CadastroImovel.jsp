@@ -268,7 +268,7 @@
                                                             <select id="servico" name="servico" class="form-control">
                                                                 <option>Selecione</option>
                                                                 <option>Venda</option>
-                                                                <option>Locação</option>                                                    
+                                                                <option>Aluguel</option>                                                    
                                                             </select>
                                                         </div>
                                                     </div>

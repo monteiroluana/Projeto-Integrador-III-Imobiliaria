@@ -123,7 +123,7 @@
                                                 <select id="servico" name="servico" class="form-control">
                                                     <option value="">Selecione</option>
                                                     <option value="venda">Venda</option>
-                                                    <option value="locacao">Locação</option>                                                    
+                                                    <option value="aluguel">Aluguel</option>                                                    
                                                 </select>
                                             </div>
                                         </div>
