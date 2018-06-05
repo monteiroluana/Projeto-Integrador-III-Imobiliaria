@@ -17,8 +17,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import br.com.devolution.model.Cliente;
+import br.com.devolution.model.Usuario;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "cliente", urlPatterns = {"/cliente"})
 public class ServletCliente extends HttpServlet {
@@ -33,6 +35,13 @@ public class ServletCliente extends HttpServlet {
             String valor = request.getParameter("pesquisa");
 
             try {
+                HttpSession sessao = request.getSession();
+                
+                Usuario usuarioLogado = new Usuario();
+                usuarioLogado = (Usuario)sessao.getAttribute("usuAutenticado");
+                
+                System.out.println(usuarioLogado.getGrupoFilial());
+                
                 lista = daoCliente.procurarCliente(valor);
 
             } catch (ClassNotFoundException ex) {

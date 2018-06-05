@@ -196,8 +196,15 @@ public class DaoUsuario {
 
             if (res.next()) {
                 user = new Usuario();
+                user.setIdUsuario(res.getInt("idUsuario"));
                 user.setSenha(res.getString("senha"));
                 user.setLogin(res.getString("login"));
+                user.setGrupoFilial(res.getString("grupoFilial"));
+                
+                System.out.println(user.getIdUsuario());
+                System.out.println(user.getLogin());
+                System.out.println(user.getGrupoFilial());
+                
             }
 
         } catch (ClassNotFoundException | SQLException ex) {

@@ -107,18 +107,15 @@ public class filtroPaginas implements Filter {
         HttpSession sessao = httpServletRequest.getSession();//captura sessão
 
         //verificar se o usuario está logado
-        if (sessao.getAttribute("usuAutenticado") != null || url.lastIndexOf("index.jsp") > -1 || url.lastIndexOf("autenticador") > -1){
+        if (sessao.getAttribute("usuAutenticado") != null || url.lastIndexOf("index.jsp") > -1 || url.lastIndexOf("autenticador") > -1) {
             chain.doFilter(request, response);
-        }else{
-             ((HttpServletResponse) response).sendRedirect("index.jsp");
-            }
-
-        
+        } else {
+            ((HttpServletResponse) response).sendRedirect("index.jsp");
+        }
 
         doBeforeProcessing(request, response);
 
         Throwable problem = null;
-        
 
         doAfterProcessing(request, response);
 

@@ -40,9 +40,7 @@ public class autenticador extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             String login = request.getParameter("usr");
-            String senha = request.getParameter("pass");
-            System.out.println(login);
-            System.out.println(senha);
+            String senha = request.getParameter("pass");            
             
             Usuario usu = new Usuario();
             usu.setLogin(login);
