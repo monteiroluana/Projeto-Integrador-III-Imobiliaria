@@ -86,33 +86,38 @@ CREATE TABLE imobiliariadb.CONTRATO (
 
 INSERT INTO imobiliariadb.USUARIO (nome,login,senha,email,grupoFilial,departamento,cargo,enable) VALUES
 ("Jonas Araujo","jonas.araujo","jonas","jonas@jonas.com","Sao Paulo","Diretoria","Diretor(a)",true),
+("Luana Monteiro", "luana.monteiro", "luana","luana@monteiro.com", "Recife","TI","Gerente", true),
 ("Bruna Sayuri","bruna.sayuri","bruna","bruna@bruna.com","Porto Alegre","TI","Suporte Técnico",true),
 ("Rodrigo Normando","rodrigo.normando","rodrigo","rodrigo@rodrigo.com","Sao Paulo","Vendas","Gerente",true),
-("Luana Monteiro", "luana.monteiro", "luana","luana@monteiro.com", "Recife","TI","Gerente", true),
 ("Pedro Henrique", "pedro.henrique", "pedro","pedro@henrique.com", "Recife","Retaguarda","Backoffice", true);
 
 INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable) VALUES
-("99991111111","Kunieda Aoi","1996-07-17","1155554444","11944445555","aoi@aoi.com","04444000","rua aaa","Santo Amaro","São Paulo","SP","300","",true),
-("12345678900","Joao da Silva","2000-05-01","556415967","95369874","joao@silva.com","08888000","rua bbb","Boa Viagem","Recife","PE","400","",true),
-("80495398063","Maria Souza","1990-10-20","55988551","95487150","maria@souza.com","02222000","rua bbb","Santa Teresa","Porto Alegre","RS","500","",true);
+("99991111111","Kunieda Aoi","1996-07-17","1155554444","11944445555","aoi@aoi.com","04444000","rua aaa","Santo Amaro","São Paulo","SP","352","",true),
+("12345678900","Joao da Silva","2000-05-01","8155641596","8195369874","joao@silva.com","08888000","rua bbb","Boa Viagem","Recife","PE","468","",true),
+("80495398063","Maria Souza","1990-10-20","5155988551","5195487150","maria@souza.com","02222000","rua ccc","Santa Tereza","Porto Alegre","RS","547","",true),
+("33543222848","Josicleide Santana","1985-02-15","1154545757","11965236544","josicleide@santana.com","05555000","rua ddd","Tucuruvi","São Paulo","SP","676","",true),
+("07042759451","Luciano Alves","1974-08-26","8159625588","81998784775","luciano@alves.com","03333000","rua eee","Rosarinho","Recife","PE","752","",true),
+("78164603090","Clodoaldo Batista","1987-11-30","5154653221","5195487150","clodoaldo@batista.com","07777000","rua fff","Menino Deus","Porto Alegre","RS","812","",true);
 
 INSERT INTO imobiliariadb.IMOVEL(idCliente,codImovel,dataCad,categoria,tipo,
 quartos,banheiros,suites,vagasGaragem,areaUtil,areaTotal,informacao,
 cep,rua,num,bairro,cidade,uf,valorVenda,valorAluguel,iptu,servico,enable) VALUES 
 (1,"50","2018-05-08","Residencial","Casa",3,2,1,2,100,200,"aloaloaloalo",
 "08962000","rua teste","20","bairrozin","São Paulo","SP",250000,0,1000,"Venda",true), 
-(2,"70","2018-06-05","Comercial","Apartamento",3,2,1,2,100,200,"",
+(2,"70","2018-06-05","Rural","Apartamento",3,2,1,2,100,300,"",
 "07777000","avenida aleatoria","55","Boa Viagem","Recife","PE",0,2000,800,"Aluguel",true),
-(3,"80","2018-10-20","Residencial","Terreno",0,0,0,0,0,250,"",
-"06666000","estrada nenhuma","100","Santa Teresa","Porto Alegre","RS",200000,000,1500,"Venda",true),
-(1,"90","2018-01-05","Comercial","Apartamento",3,2,1,2,100,200,"",
-"07777000","avenida Santo Amaro","55","Santo Amaro","Sao Paulo","SP",0,10000,780,"Venda",true),
-(3,"100","2018-11-20","Residencial","Terreno",0,0,0,0,0,250,"",
-"06666000","av santa teresa","9","Santa Teresa","Porto Alegre","RS",150000,000,3000,"Aluguel",true);
+(3,"80","2018-09-10","Residencial","Terreno",0,0,0,0,0,500,"",
+"06666000","estrada nenhuma","100","Santa Tereza","Porto Alegre","RS",200000,000,1500,"Venda",true),
+(4,"90","2018-01-25","Comercial","Apartamento",3,2,1,2,100,350,"",
+"08888000","rua abcde","46","Vila Mariana","Sao Paulo","SP",0,350000,2900,"Venda",true),
+(5,"70","2018-06-05","Rural","Apartamento",3,2,1,2,100,300,"",
+"07777000","avenida aleatoria","55","Mustardinha","Recife","PE",0,2000,800,"Aluguel",true),
+(6,"100","2018-11-20","Residencial","Casa",0,0,0,0,0,250,"",
+"09999000","av lalala","85","Tristeza","Porto Alegre","RS",0,1500,3000,"Aluguel",true);
 
-INSERT INTO contrato (idContrato,codContrato,idImovel,idCliente,idUsuario,dataContrato, dataInicial, dataFinal) 
+INSERT INTO imobiliariadb.CONTRATO (idContrato,codContrato,idImovel,idCliente,idUsuario,dataContrato, dataInicial, dataFinal) 
 VALUES (1,111,1,1,1,'2018-06-05','2018-06-05','2019-06-05'),
-(2,222,2,2,3,'2018-05-01','2018-05-01','2019-05-01'),
-(3,333,3,3,5,'2018-09-15','2018-09-20','2019-09-20'),
-(4,444,4,1,3,'2018-03-01','2018-03-01','2019-03-01'),
-(5,555,5,3,5,'2018-12-15','2018-12-20','2019-12-20');  
+(2,222,2,2,2,'2018-05-01','2018-05-01','2019-05-01'),
+(3,333,3,3,3,'2018-09-15','2018-09-20','2019-09-20'),
+(4,444,4,4,4,'2018-03-01','2018-03-01','2019-03-01'),
+(5,555,5,5,5,'2018-12-15','2018-12-20','2019-12-20');
