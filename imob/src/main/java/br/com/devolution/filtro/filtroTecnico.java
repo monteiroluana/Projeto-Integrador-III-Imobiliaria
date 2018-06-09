@@ -25,25 +25,25 @@ import javax.servlet.http.HttpSession;
  *
  * @author I864970
  */
-@WebFilter(filterName = "filtroPaginas", urlPatterns = {"/*"})
-public class filtroPaginas implements Filter {
-
+@WebFilter(filterName = "filtroTecnico", urlPatterns = {"/CadastroUsuario.jsp", "/EditarUsuario.jsp", "/ListarUsuarios.jsp"})
+public class filtroTecnico implements Filter {
+    
     private static final boolean debug = true;
 
     // The filter configuration object we are associated with.  If
     // this value is null, this filter instance is not currently
     // configured. 
     private FilterConfig filterConfig = null;
-
-    public filtroPaginas() {
-    }
-
+    
+    public filtroTecnico() {
+    }    
+    
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("filtroPaginas:DoBeforeProcessing");
+            log("filtroTecnico:DoBeforeProcessing");
         }
-        
+
         // Write code here to process the request and/or response before
         // the rest of the filter chain is invoked.
         // For example, a logging filter might log items on the request object,
@@ -64,12 +64,12 @@ public class filtroPaginas implements Filter {
 	    log(buf.toString());
 	}
          */
-    }
-
+    }    
+    
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("filtroPaginas:DoAfterProcessing");
+            log("filtroTecnico:DoAfterProcessing");
         }
 
         // Write code here to process the request and/or response after
@@ -103,21 +103,37 @@ public class filtroPaginas implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-        String url = httpServletRequest.getRequestURI();//captura as urls
-        HttpSession sessao = httpServletRequest.getSession();//captura sessão
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+        HttpSession sessao = httpRequest.getSession();
+        
+        Usuario usuarioLogado = (Usuario) sessao.getAttribute("usuAutenticado");
+        String cargo = usuarioLogado.getCargo();
 
-        //verificar se o usuario está logado
-        if (sessao.getAttribute("usuAutenticado") != null || url.lastIndexOf("index.jsp") > -1 || url.lastIndexOf("autenticador") > -1) {
+        if (cargo.equals("Suporte Técnico")){
             chain.doFilter(request, response);
         } else {
-            ((HttpServletResponse) response).sendRedirect("index.jsp");
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/autorizacao.jsp");
         }
-
+        
+        
+        if (debug) {
+            log("filtroTecnico:doFilter()");
+        }
+        
         doBeforeProcessing(request, response);
-
+        
         Throwable problem = null;
-
+        try {
+            chain.doFilter(request, response);
+        } catch (Throwable t) {
+            // If an exception is thrown somewhere down the filter chain,
+            // we still want to execute our after processing, and then
+            // rethrow the problem after that.
+            problem = t;
+            t.printStackTrace();
+        }
+        
         doAfterProcessing(request, response);
 
         // If there was a problem, we want to rethrow it if it is
@@ -152,17 +168,17 @@ public class filtroPaginas implements Filter {
     /**
      * Destroy method for this filter
      */
-    public void destroy() {
+    public void destroy() {        
     }
 
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {
+    public void init(FilterConfig filterConfig) {        
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
-            if (debug) {
-                log("filtroPaginas:Initializing filter");
+            if (debug) {                
+                log("filtroTecnico:Initializing filter");
             }
         }
     }
@@ -173,27 +189,27 @@ public class filtroPaginas implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("filtroPaginas()");
+            return ("filtroTecnico()");
         }
-        StringBuffer sb = new StringBuffer("filtroPaginas(");
+        StringBuffer sb = new StringBuffer("filtroTecnico(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
     }
-
+    
     private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);
-
+        String stackTrace = getStackTrace(t);        
+        
         if (stackTrace != null && !stackTrace.equals("")) {
             try {
                 response.setContentType("text/html");
                 PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);
+                PrintWriter pw = new PrintWriter(ps);                
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
                 // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
-                pw.print(stackTrace);
+                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
+                pw.print(stackTrace);                
                 pw.print("</pre></body>\n</html>"); //NOI18N
                 pw.close();
                 ps.close();
@@ -210,7 +226,7 @@ public class filtroPaginas implements Filter {
             }
         }
     }
-
+    
     public static String getStackTrace(Throwable t) {
         String stackTrace = null;
         try {
@@ -224,9 +240,9 @@ public class filtroPaginas implements Filter {
         }
         return stackTrace;
     }
-
+    
     public void log(String msg) {
-        filterConfig.getServletContext().log(msg);
+        filterConfig.getServletContext().log(msg);        
     }
-
+    
 }

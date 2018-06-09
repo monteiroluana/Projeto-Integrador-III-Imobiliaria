@@ -31,8 +31,6 @@ public class autenticador extends HttpServlet {
             sessao.invalidate();
             response.sendRedirect("index.jsp");
         }
-        
-        
     }
 
 

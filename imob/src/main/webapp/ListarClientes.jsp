@@ -44,6 +44,13 @@
 
         <script>
             w3IncludeHTML();
+            function mudaImagem() {
+
+                document.getElementById("imagem_do_menu").style.cssText = "width: 200px; height: 136px; margin-left:0; margin-top: 0";
+            }
+            function resetaImagem() {
+                document.getElementById("imagem_do_menu").style.cssText = "width: 60px; height: 50px; margin-left: 128px; margin-top: 100px;";
+            }
         </script>
 
         <div class="main">
@@ -311,19 +318,8 @@
                 <th>EMAIL</th>
                 <th>--AÇÃO--</th>
             </tr>
-        <c:forEach items="${lista}" var="c">
-            <tr>
-                <td><c:out value="${c.cpf}" /></td>
-                <td><c:out value="${c.nome}" /></td>
-                <td><c:out value="${c.dataNasc}" /></td>
-                <td><c:out value="${c.sexo}" /></td>
-                <td><c:out value="${c.telefone}" /></td>
-                <td><c:out value="${c.celular}" /></td>
-                <td><c:out value="${c.email}" /></td>
-                <td><a href="#">Editar</a>
-                    <a href="#">Excluir</a></td>
-            </tr>
-        </c:forEach>
+        
+        
     </table>
         -->
     </body>

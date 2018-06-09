@@ -87,6 +87,13 @@
         <div w3-include-html="menu.html"></div>
         <script>
             w3IncludeHTML();
+            function mudaImagem() {
+
+                document.getElementById("imagem_do_menu").style.cssText = "width: 200px; height: 136px; margin-left:0; margin-top: 0";
+            }
+            function resetaImagem() {
+                document.getElementById("imagem_do_menu").style.cssText = "width: 60px; height: 50px; margin-left: 128px; margin-top: 100px;";
+            }
         </script>        
 
 

@@ -12,16 +12,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script>
         <link rel="stylesheet" href="css/styles.css">
-        <script>
-            function check(){
-                var x = ${msg};
-                if(x.localeCompare("deu certo")){
-                    
-                }else{
-                    
-                }
-            }
-        </script>
+        
     </head>
     <style>
             body{
@@ -37,6 +28,13 @@
     <div w3-include-html="menu.html"></div>
             <script>
                 w3IncludeHTML();
+                function mudaImagem() {
+
+                document.getElementById("imagem_do_menu").style.cssText = "width: 200px; height: 136px; margin-left:0; margin-top: 0";
+            }
+            function resetaImagem() {
+                document.getElementById("imagem_do_menu").style.cssText = "width: 60px; height: 50px; margin-left: 128px; margin-top: 100px;";
+            }
           </script>
 
         <div class="main">
@@ -143,7 +141,7 @@
                                         <br>
                                         <div class="col-xs-10 col-sm-10 col-md-10">
                                             <button type="button submit" class="btn btn-info" >Salvar</button>
-                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Deu certo?</button>
+                                            
                                         </div>
                                     </div>
 
