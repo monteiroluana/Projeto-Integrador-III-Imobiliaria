@@ -118,15 +118,6 @@ public class ServletCliente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //filtro
-        HttpSession sessao = request.getSession();
-        Usuario usuarioLogado = (Usuario) sessao.getAttribute("usuAutenticado");
-        String cargo = usuarioLogado.getGrupoFilial();
-        
-        if (!cargo.equals("Suporte Técnico")){
-            response.sendRedirect("erroLogin.jsp");
-        }else{
-        //filtro
         
         
         String msg = null;
@@ -240,4 +231,4 @@ public class ServletCliente extends HttpServlet {
         }
     }
     }
-}
+
