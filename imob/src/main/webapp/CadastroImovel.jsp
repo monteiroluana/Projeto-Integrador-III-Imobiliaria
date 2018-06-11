@@ -236,9 +236,11 @@
                                             <div class="row">
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
                                                     <div class="col-25">
-                                                        <label class="control-label" for="cpf">CPF</label>
+                                                        <label class="control-label" for="cpf" oninvalid="this.setCustomValidity('Insira um CPF')" oninput="this.setCustomValidity('')" required >CPF*</label>
                                                     </div>	
-                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" value="${clienteP.cpf}">
+                                                    <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                   type = "number"
+                                                   maxlength = "11" type="number" name="cpf" id="cpf" class="form-control" placeholder="CPF" value="${clienteP.cpf}">
                                                     <br>
                                                     <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=buscaCliente&cpfCliente=' + document.getElementById('cpf').value">Buscar</a>							
                                                 </div>
@@ -263,7 +265,7 @@
                                                             <label for="dataCad" class="control-label">Data</label>
                                                         </div>
 
-                                                        <input type="text" name="dataCad" id="dataCad" class="form-control input-sm" placeholder="DD/MM/AA">
+                                                        <input type="number" name="dataCad" id="dataCad" class="form-control input-sm" placeholder="DD/MM/AA">
                                                     </div>
 
                                                 </div>
@@ -329,17 +331,17 @@
                                                 <div class="col-xs-3 col-sm-3 col-md-3">
                                                     <div class="form-group">
                                                         <div class="col-25">
-                                                            <label class="control-label" for="valorVenda">Venda*</label>
+                                                            <label class="control-label" for="valorVenda"oninvalid="this.setCustomValidity('Campo obrigatório')" oninput="this.setCustomValidity('')" required >Venda*</label>
                                                         </div>	
-                                                        <input type="text" name="valorVenda" id="valorVenda" class="form-control input-sm" placeholder="Valor venda" value="0">
+                                                        <input type="number" name="valorVenda" id="valorVenda" class="form-control input-sm" placeholder="Valor venda" value="0">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-3 col-sm-3 col-md-3">
                                                     <div class="form-group">
                                                         <div class="col-25">
-                                                            <label class="control-label" for="valorAluguel">Aluguel*</label>
+                                                            <label class="control-label" for="valorAluguel" oninvalid="this.setCustomValidity('Campo obrigatório')" oninput="this.setCustomValidity('')" required >Aluguel*</label>
                                                         </div>	
-                                                        <input type="text" name="valorAluguel" id="valorAluguel" class="form-control input-sm" placeholder="Valor aluguel" value="0">
+                                                        <input type="number" name="valorAluguel" id="valorAluguel" class="form-control input-sm" placeholder="Valor aluguel" value="0">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-3 col-sm-3 col-md-3">
@@ -347,7 +349,7 @@
                                                         <div class="col-25">
                                                             <label class="control-label" for="condominio">Condomínio</label>
                                                         </div>	
-                                                        <input type="text" name="condominio" id="condominio" class="form-control input-sm" placeholder="Condomínio" value="0">
+                                                        <input type="number" name="condominio" id="condominio" class="form-control input-sm" placeholder="Condomínio" value="0">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-3 col-sm-3 col-md-3">
@@ -355,7 +357,7 @@
                                                         <div class="col-25">
                                                             <label class="control-label" for="iptu">IPTU</label>
                                                         </div>	
-                                                        <input type="text" name="iptu" id="iptu" class="form-control input-sm" placeholder="IPTU" value="0">
+                                                        <input type="number" name="iptu" id="iptu" class="form-control input-sm" placeholder="IPTU" value="0">
                                                     </div>
                                                 </div>
 
@@ -450,7 +452,7 @@
                                                 <div class="col-25">
                                                     <label class="control-label" for="quartos">Quartos</label>
                                                 </div>	
-                                                <input type="text" name="quartos" id="quartos" class="form-control input-sm" placeholder="Quartos" value="0">
+                                                <input type="number" name="quartos" id="quartos" class="form-control input-sm" placeholder="Quartos" value="0">
                                             </div>
                                         </div>
 
@@ -459,7 +461,7 @@
                                                 <div class="col-25">
                                                     <label class="control-label" for="banheiros">Banheiros</label>
                                                 </div>	
-                                                <input type="text" name="banheiros" id="banheiros" class="form-control input-sm" placeholder="banheiros" value="0">
+                                                <input type="number" name="banheiros" id="banheiros" class="form-control input-sm" placeholder="banheiros" value="0">
                                             </div>
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-2">
@@ -467,7 +469,7 @@
                                                 <div class="col-25">
                                                     <label class="control-label" for="suites">Suítes</label>
                                                 </div>	
-                                                <input type="text" name="suites" id="suites" class="form-control input-sm" placeholder="Suítes" value="0">
+                                                <input type="number" name="suites" id="suites" class="form-control input-sm" placeholder="Suítes" value="0">
                                             </div>
                                         </div>
 
@@ -476,23 +478,23 @@
                                                 <div class="col-25">
                                                     <label class="control-label" for="vagasGaragem">Vagas na Garagem</label>
                                                 </div>	
-                                                <input type="text" name="vagasGaragem" id="vagasGaragem" class="form-control input-sm" placeholder="Vagas" value="0">
+                                                <input type="number" name="vagasGaragem" id="vagasGaragem" class="form-control input-sm" placeholder="Vagas" value="0">
                                             </div>
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-2">
                                             <div class="form-group">
                                                 <div class="col-25">
-                                                    <label class="control-label" for="areaUtil">Área útil</label>
+                                                    <label class="control-label" for="areaUtil">Área útil*</label>
                                                 </div>	
-                                                <input type="text" name="areaUtil" id="areaUtil" class="form-control input-sm" placeholder="Área útil" value="0">
+                                                <input type="number" name="areaUtil" id="areaUtil" class="form-control input-sm" placeholder="Área útil" value="0" oninvalid="this.setCustomValidity('Campo obrigatório')" oninput="this.setCustomValidity('')" required>
                                             </div>
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-2">
                                             <div class="form-group">
                                                 <div class="col-25">
-                                                    <label class="control-label" for="areaTotal">Área total</label>
+                                                    <label class="control-label" for="areaTotal" oninvalid="this.setCustomValidity('Campo obrigatório')" oninput="this.setCustomValidity('')" required>Área total*</label>
                                                 </div>	
-                                                <input type="text" name="areaTotal" id="areaTotal" class="form-control input-sm" placeholder="Área total" value="0">
+                                                <input type="number" name="areaTotal" id="areaTotal" class="form-control input-sm" placeholder="Área total" value="0">
                                             </div>
                                         </div>
                                     </div>
@@ -510,9 +512,9 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <div class="col-25">
-                                                        <label class="control-label" for="cep">CEP</label>
+                                                        <label class="control-label" for="cep" oninvalid="this.setCustomValidity('Campo obrigatório')" oninput="this.setCustomValidity('')" required >CEP*</label>
                                                     </div>	
-                                                    <input type="text" name="cep" id="cep" class="form-control input-sm" placeholder="CEP"onblur="pesquisacep(this.value);">
+                                                    <input type="number" name="cep" id="cep" class="form-control input-sm" placeholder="CEP"onblur="pesquisacep(this.value);">
                                                     <br>
                                                     <button type="button" class="btn btn-info">Buscar</button>
                                                 </div>
@@ -541,9 +543,9 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <div class="col-25">
-                                                        <label class="control-label" for="num">Número</label>
+                                                        <label class="control-label" for="num" oninvalid="this.setCustomValidity('Campo obrigatório')" oninput="this.setCustomValidity('')" required >Número*</label>
                                                     </div>	
-                                                    <input type="text" name="num" id="num" class="form-control input-sm" placeholder="Número" value="0">
+                                                    <input type="number" name="num" id="num" class="form-control input-sm" placeholder="Número" value="0">
                                                 </div>
                                             </div>
                                             <div class="col-xs-auto col-sm-auto col-md-6">

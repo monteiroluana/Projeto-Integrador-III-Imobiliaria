@@ -15,21 +15,40 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script> <!--validador-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script> <!--validador-->
+        
         
     </head>
+    <script>
+        function checkUser(){
+            var user = document.querySelector("#usr");
+            if(user.value === ""){
+                user.setCustomValidity("Insira um usuário");
+            }
+        }
+        
+        function checkSenha(){
+            var senha = document.querySelector("#pass");
+            if(senha.value === ""){
+                senha.setCustomValidity("Insira uma senha");
+            }
+        }
+    </script>
     <body>
         <div class="jumbotron col-md-3 col-xs-auto" id="loginn">
             <div class="row">
                 <div class="col-md-12">
 
-                    <form class="form" role="form" method="post" action="autenticador" accept-charset="UTF-8" id="login-nav" name="login-nav">
+                    <form class="form" role="form" method="post" data toogle="validator" action="autenticador" accept-charset="UTF-8" id="login-nav" name="login-nav">
                         <div class="form-group">
 
-                            <input type="text" class="form-control" name="usr" id="usr" placeholder="nome de usuário" required>
+                            <input type="text" class="form-control" name="usr" id="usr" placeholder="nome de usuário" oninvalid="checkUser();" oninput="this.setCustomValidity('')" required>
+                            <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
 
-                            <input type="password" class="form-control" id="pass" name="pass" placeholder="senha" required>
+                            <input type="password" class="form-control" id="pass" name="pass" placeholder="senha" oninvalid="checkSenha();" oninput="this.setCustomValidity('')" required>
                             <div class="help-block text-right"><a href="">Esqueci minha senha</a></div>
                         </div>
                         <div class="form-group">

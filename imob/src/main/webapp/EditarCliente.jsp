@@ -133,7 +133,9 @@
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="cpf" class="control-label">CPF*</label>
-                                            <input type="text" name="cpf" id="cpf" class="form-control input-sm" placeholder="000.000.000-00" value="${cliente.cpf}">
+                                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                   type = "number"
+                                                   maxlength = "11" type="text" name="cpf" id="cpf" class="form-control input-sm" placeholder="000.000.000-00" value="${cliente.cpf}">
                                         </div>
 
                                     </div>
@@ -190,11 +192,15 @@
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="telefone" class="control-label">Telefone</label>
-                                            <input type="text" name="telefone" id="telefone" class="form-control input-sm" value="${cliente.telefone}">
+                                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                   type = "number"
+                                                   maxlength = "11" type="text" name="telefone" id="telefone" class="form-control input-sm" value="${cliente.telefone}">
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="celular" class="control-label">Celular</label>
-                                            <input type="text" name="celular" id="celular" class="form-control input-sm" value="${cliente.celular}">
+                                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                   type = "number"
+                                                   maxlength = "11" type="text" name="celular" id="celular" class="form-control input-sm" value="${cliente.celular}">
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="email" class="control-label">Email</label>

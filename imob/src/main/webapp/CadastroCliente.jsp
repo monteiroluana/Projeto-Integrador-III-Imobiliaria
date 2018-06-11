@@ -10,73 +10,73 @@
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script>
         <title>Cadastro - Clientes</title>
         <script type="text/javascript" >
-        
+
             function limpa_formulário_cep() {
-            //Limpa valores do formulário de cep.
-            document.getElementById('rua').value = ("");
-            document.getElementById('bairro').value = ("");
-            document.getElementById('cidade').value = ("");
-            document.getElementById('uf').value = ("");
+                //Limpa valores do formulário de cep.
+                document.getElementById('rua').value = ("");
+                document.getElementById('bairro').value = ("");
+                document.getElementById('cidade').value = ("");
+                document.getElementById('uf').value = ("");
             }
 
             function meu_callback(conteudo) {
-            if (!("erro" in conteudo)) {
-            //Atualiza os campos com os valores.
-            document.getElementById('rua').value = (conteudo.logradouro);
-            document.getElementById('bairro').value = (conteudo.bairro);
-            document.getElementById('cidade').value = (conteudo.localidade);
-            document.getElementById('uf').value = (conteudo.uf);
-            } //end if.
-            else {
-            //CEP não Encontrado.
-            limpa_formulário_cep();
-            alert("CEP não encontrado.");
-            }
+                if (!("erro" in conteudo)) {
+                    //Atualiza os campos com os valores.
+                    document.getElementById('rua').value = (conteudo.logradouro);
+                    document.getElementById('bairro').value = (conteudo.bairro);
+                    document.getElementById('cidade').value = (conteudo.localidade);
+                    document.getElementById('uf').value = (conteudo.uf);
+                } //end if.
+                else {
+                    //CEP não Encontrado.
+                    limpa_formulário_cep();
+                    alert("CEP não encontrado.");
+                }
             }
 
             function pesquisacep(valor) {
 
-            //Nova variável "cep" somente com dígitos.
-            var cep = valor.replace(/\D/g, '');
-            //Verifica se campo cep possui valor informado.
-            if (cep != "") {
+                //Nova variável "cep" somente com dígitos.
+                var cep = valor.replace(/\D/g, '');
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
 
-            //Expressão regular para validar o CEP.
-            var validacep = /^[0-9]{8}$/;
-            //Valida o formato do CEP.
-            if (validacep.test(cep)) {
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+                    //Valida o formato do CEP.
+                    if (validacep.test(cep)) {
 
-            //Preenche os campos com "..." enquanto consulta webservice.
-            document.getElementById('rua').value = "...";
-            document.getElementById('bairro').value = "...";
-            document.getElementById('cidade').value = "...";
-            document.getElementById('uf').value = "...";
-            //Cria um elemento javascript.
-            var script = document.createElement('script');
-            //Sincroniza com o callback.
-            script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
-            //Insere script no documento e carrega o conteúdo.
-            document.body.appendChild(script);
-            } //end if.
-            else {
-            //cep é inválido.
-            limpa_formulário_cep();
-            alert("Formato de CEP inválido.");
-            }
-            } //end if.
-            else {
-            //cep sem valor, limpa formulário.
-            limpa_formulário_cep();
-            }
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        document.getElementById('rua').value = "...";
+                        document.getElementById('bairro').value = "...";
+                        document.getElementById('cidade').value = "...";
+                        document.getElementById('uf').value = "...";
+                        //Cria um elemento javascript.
+                        var script = document.createElement('script');
+                        //Sincroniza com o callback.
+                        script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+                        //Insere script no documento e carrega o conteúdo.
+                        document.body.appendChild(script);
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
             }
             ;
-         
+
         </script>
 
 
     </head>
-        <style>
-            body{
+    <style>
+        body{
             background-image: url(https://i.imgur.com/KSBmJOW.jpg);
             background-repeat: no-repeat;
             background-size: cover;
@@ -93,6 +93,30 @@
             }
             function resetaImagem() {
                 document.getElementById("imagem_do_menu").style.cssText = "width: 60px; height: 50px; margin-left: 128px; margin-top: 100px;";
+            }
+            function checkNome() {
+                var nome = document.querySelector("#nome");
+                if (nome.value === "") {
+                    nome.setCustomValidity("Insira um nome");
+                }
+            }
+            function checkData() {
+                var data = document.querySelector("#data");
+                if (data.value === "") {
+                    data.setCustomValidity("Insira uma data");
+                }
+            }
+            function checkCpf() {
+                var cpf = document.querySelector("#cpf");
+                if (cpf.value === "") {
+                    cpf.setCustomValidity("Insira um cpf");
+                }
+            }
+            function checkEmail() {
+                var email = document.querySelector("#email");
+                if (email === "") {
+                    email.setCustomValidity("Insira um email válido");
+                }
             }
         </script>        
 
@@ -119,16 +143,18 @@
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="nome" class="control-label">Nome*</label>
-                                            <input type="text" name="nome" id="nome" class="form-control input-sm" placeholder="Nome Completo">
+                                            <input type="text" name="nome" id="nome" class="form-control input-sm" placeholder="Nome Completo" oninput="this.setCustomValidity('')" oninvalid="checkNome();" required>
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-4">
 
                                             <label for="data" class="control-label">Data de nascimento*</label>
-                                            <input type="text" name="data" id="data" class="form-control input-sm" placeholder="DD/MM/AAAA">
+                                            <input type="text" name="data" id="data" class="form-control input-sm" placeholder="DD/MM/AAAA" oninput="this.setCustomValidity('')" oninvalid="checkData();" required>
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="cpf" class="control-label">CPF*</label>
-                                            <input type="text" name="cpf" id="cpf" class="form-control input-sm" placeholder="000.000.000-00">
+                                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                   type = "number"
+                                                   maxlength = "11" type="number" name="cpf" id="cpf" class="form-control input-sm" placeholder="000.000.000-00" data-mask="000.000.000-00" data-mask-selectonfocus="true" type="number" oninput="this.setCustomValidity('')" oninvalid="checkCpf();" required size="11">
                                         </div>
 
                                     </div>
@@ -143,7 +169,7 @@
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="cep" class="control-label">CEP*</label>
-                                            <input type="text" name="cep" id="cep" class="form-control input-sm" placeholder="CEP" onblur="pesquisacep(this.value);">
+                                            <input type="number" name="cep" id="cep" class="form-control input-sm" placeholder="CEP" oninvalid="this.setCustomValidity('Insira um CEP')" oninput="this.setCustomValidity('')" onblur="pesquisacep(this.value);" required>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -152,8 +178,8 @@
                                             <input type="text" name="rua" id="rua" class="form-control input-sm">
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-2">
-                                            <label for="número" class="control-label">Número</label>
-                                            <input type="text" name="num" id="num" class="form-control input-sm">
+                                            <label for="número" class="control-label">Número *</label>
+                                            <input type="number" name="num" id="num" class="form-control input-sm" oninvalid="this.setCustomValidity('Insira um número')" oninput="this.setCustomValidity('')" required>
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-3">
                                             <label for="complemento" class="control-label">Complemento</label>
@@ -185,15 +211,19 @@
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="telefone" class="control-label">Telefone</label>
-                                            <input type="text" name="telefone" id="telefone" class="form-control input-sm">
+                                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                   type = "number"
+                                                   maxlength = "11" type="number" name="telefone" id="telefone" class="form-control input-sm">
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="celular" class="control-label">Celular</label>
-                                            <input type="text" name="celular" id="celular" class="form-control input-sm">
+                                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                   type = "number"
+                                                   maxlength = "11" type="number" name="celular" id="celular" class="form-control input-sm">
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-4">
-                                            <label for="email" class="control-label">Email</label>
-                                            <input type="text" name="email" id="email" class="form-control input-sm">
+                                            <label for="email" class="control-label">Email*</label>
+                                            <input type="text" name="email" id="email" class="form-control input-sm" type="email" oninvalid="this.setCustomValidity('Insira um email)" oninput="this.setCustomValidity('')" required>
                                         </div>
                                     </div>
                                     <div class="row">
