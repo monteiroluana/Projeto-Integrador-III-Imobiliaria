@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package br.com.devolution.filtro;
-
 import br.com.devolution.model.Usuario;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -125,7 +124,7 @@ public class filtroTecnico implements Filter {
         
         Throwable problem = null;
         try {
-            chain.doFilter(request, response);
+            //chain.doFilter(request, response);
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,
             // we still want to execute our after processing, and then
@@ -134,7 +133,7 @@ public class filtroTecnico implements Filter {
             t.printStackTrace();
         }
         
-        doAfterProcessing(request, response);
+       // doAfterProcessing(request, response);
 
         // If there was a problem, we want to rethrow it if it is
         // a known type, otherwise log it.

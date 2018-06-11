@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author I864970
  */
-@WebFilter(filterName = "filtroPaginas", urlPatterns = {"/*"})
+@WebFilter(filterName = "filtroPaginas", urlPatterns = {"/CadastroCliente.jsp","/EditarCliente.jsp","/index.jsp","/inicial.jsp"})
 public class filtroPaginas implements Filter {
 
     private static final boolean debug = true;
