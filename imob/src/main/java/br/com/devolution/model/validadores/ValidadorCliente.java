@@ -12,6 +12,9 @@ import br.com.devolution.model.Usuario;
 import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -20,37 +23,59 @@ import java.util.regex.Pattern;
 //VERIFICAR OS DADOS A SER VALIDADOS DE 'CLIENTE'
 public class ValidadorCliente {
 
-    public static boolean validar(Cliente cliente) throws ClienteException, Exception {
+    public static boolean validar(Cliente cliente, HttpServletRequest request, HttpServletResponse response) throws ClienteException, Exception {
 
         if (cliente == null) {
             throw new ClienteException("Não foi informado um cliente");
+
         }
         if (cliente.getNome() == null || "".equals(cliente.getNome())) {
-            throw new ClienteException("É necessário informar o nome do cliente");
+            String msg = "Campo de nome do cliente vazio";
+            request.setAttribute("msg", msg);
+            request.setAttribute("clienteCadastrado", cliente);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("telaErro.jsp");
+            dispatcher.forward(request, response);
+            return false;
         }
         if (cliente.getEmail() == null || "".equals(cliente.getEmail())) {
-            throw new ClienteException("Campo email vazio");
+            String msg = "Campo de email vazio";
+            request.setAttribute("msg", msg);
+            request.setAttribute("clienteCadastrado", cliente);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("telaErro.jsp");
+            dispatcher.forward(request, response);
+            return false;
         } else if (cliente.getEmail() != null && cliente.getEmail().length() > 0) {
             String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
             Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
             Matcher matcher = pattern.matcher(cliente.getEmail());
             if (!matcher.matches()) {
-                throw new ClienteException("Email inválido");
+                String msg = "Email inválido";
+                request.setAttribute("msg", msg);
+                request.setAttribute("clienteCadastrado", cliente);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("telaErro.jsp");
+                dispatcher.forward(request, response);
+                return false;
             }
         }
 
         DaoCliente daoCliente = new DaoCliente();
         if (daoCliente.obterCpf(cliente.getCpf())) {
-            throw new ClienteException("CPF já cadastrado no sistema");
+            String msg = "CPF já cadastrado no sistema";
+            request.setAttribute("msg", msg);
+            request.setAttribute("clienteCadastrado", cliente);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("telaErro.jsp");
+            dispatcher.forward(request, response);
+            return false;
         }
 
         if (cliente.getDataNasc() == null) {
-            throw new ClienteException("É necessário informar a data de nascimento");
-        }
-
-        if (cliente.getTelefone() == null || "".equals(cliente.getTelefone())) {
-            throw new ClienteException("É necessário informar o Telefone");
-        }
+            String msg = "Data de nascimento vazio";
+            request.setAttribute("msg", msg);
+            request.setAttribute("clienteCadastrado", cliente);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("telaErro.jsp");
+            dispatcher.forward(request, response);
+            return false;
+        }        
 
         if (cliente.getCpf() != null) {
             if (!validarCPF(cliente)) {
@@ -62,16 +87,26 @@ public class ValidadorCliente {
         return true;
     }
 
-    public static boolean validarEdicao(Cliente cliente) throws ClienteException, Exception {
+    public static boolean validarEdicao(Cliente cliente, HttpServletRequest request, HttpServletResponse response) throws ClienteException, Exception {
 
         if (cliente == null) {
             throw new ClienteException("Não foi informado um cliente");
         }
         if (cliente.getNome() == null || "".equals(cliente.getNome())) {
-            throw new ClienteException("É necessário informar o nome do cliente");
+            String msg = "Campo de nome do cliente vazio";
+            request.setAttribute("msg", msg);
+            request.setAttribute("clienteCadastrado", cliente);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("telaErro.jsp");
+            dispatcher.forward(request, response);
+            return false;
         }
         if (cliente.getEmail() == null || "".equals(cliente.getEmail())) {
-            throw new ClienteException("Campo email vazio");
+            String msg = "Campo de email vazio";
+            request.setAttribute("msg", msg);
+            request.setAttribute("clienteCadastrado", cliente);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("telaErro.jsp");
+            dispatcher.forward(request, response);
+            return false;
         } else if (cliente.getEmail() != null && cliente.getEmail().length() > 0) {
             String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
             Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
@@ -86,12 +121,13 @@ public class ValidadorCliente {
 //            throw new ClienteException("CPF já cadastrado no sistema");
 //        }
         if (cliente.getDataNasc() == null) {
-            throw new ClienteException("É necessário informar a data de nascimento");
-        }
-
-        if (cliente.getTelefone() == null || "".equals(cliente.getTelefone())) {
-            throw new ClienteException("É necessário informar o Telefone");
-        }
+            String msg = "Data de nascimento vazio";
+            request.setAttribute("msg", msg);
+            request.setAttribute("clienteCadastrado", cliente);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("telaErro.jsp");
+            dispatcher.forward(request, response);
+            return false;
+        }        
 
         return true;
     }
