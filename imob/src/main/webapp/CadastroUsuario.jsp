@@ -54,12 +54,12 @@
                     senha.setCustomValidity("Insira uma senha");
                 }
             }
-            function checkConfirmar(){
+            function checkConfirmar() {
                 var confirmar = document.querySelector("#confirmar");
                 if (confirmar.value === "") {
                     confirmar.setCustomValidity("Insira uma senha de confirmação");
                 }
-                                
+
             }
             function checkEmail() {
                 var email = document.querySelector("#email");
@@ -113,8 +113,7 @@
                                                 </div>	
                                                 <select id="departamento" name="departamento" class="form-control">
                                                     <option>Selecione</option>
-                                                    <option>Diretoria</option>
-                                                    <option>Retaguarda</option>
+                                                    <option>BackOffice</option>
                                                     <option>Vendas</option>
                                                     <option>TI</option>
                                                 </select>
@@ -127,7 +126,6 @@
                                                 </div>	
                                                 <select id="cargo" name="cargo" class="form-control">
                                                     <option>Selecione</option> 
-                                                    <option>Diretor(a)</option>
                                                     <option>Gerente</option>
                                                     <option>BackOffice</option>
                                                     <option>Vendedor(a)</option>

@@ -101,8 +101,7 @@
                                                     </div>	
                                                     <select id="departamento" name="departamento" class="form-control">
                                                         <option>Selecione</option>
-                                                        <option <c:if test="${usuario.departamento=='Diretoria'}">selected</c:if>>Diretoria</option>
-                                                    <option <c:if test="${usuario.departamento=='Retaguarda'}">selected</c:if>>Retaguarda</option>
+                                                    <option <c:if test="${usuario.departamento=='BackOffice'}">selected</c:if>>BackOffice</option>
                                                     <option <c:if test="${usuario.departamento=='Vendas'}">selected</c:if>>Vendas</option>
                                                     <option <c:if test="${usuario.departamento=='TI'}">selected</c:if>>TI</option>
                                                     </select>
@@ -115,9 +114,8 @@
                                                     </div>	
                                                     <select id="cargo" name="cargo" class="form-control">
                                                         <option>Selecione</option> 
-                                                        <option <c:if test="${usuario.cargo=='Diretor(a)'}">selected</c:if>>Diretor(a)</option>
                                                     <option  <c:if test="${usuario.cargo=='Gerente'}">selected</c:if>>Gerente</option>
-                                                    <option  <c:if test="${usuario.cargo=='Backoffice'}">selected</c:if>>BackOffice</option>
+                                                    <option  <c:if test="${usuario.cargo=='BackOffice'}">selected</c:if>>BackOffice</option>
                                                     <option  <c:if test="${usuario.cargo=='Vendedor(a)'}">selected</c:if>>Vendedor(a)</option>
                                                     <option  <c:if test="${usuario.cargo=='Suporte Técnico'}">selected</c:if>>Suporte Técnico</option>
                                                     </select>

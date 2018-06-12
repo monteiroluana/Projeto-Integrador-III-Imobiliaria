@@ -86,7 +86,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label for="corretor" class="control-label">Corretor*</label>
-                                            <input type="text" name="corretor" id="corretor" class="form-control input-sm" placeholder="corretor">
+                                            <input type="text" name="corretor" id="corretor" class="form-control input-sm" placeholder="corretor" value="${sessionScope.nome}">
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
