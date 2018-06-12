@@ -88,8 +88,8 @@ public class DaoContrato {
 
     public void inserir(Contrato contrato, Usuario usuarioLogado) throws SQLException {
 
-        String sql = "INSERT INTO imobiliariadb.CONTRATO (codContrato,idImovel,idCliente, idUsuario, dataContrato,dataInicial,dataFinal,enable) "
-                + "VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO imobiliariadb.CONTRATO (codContrato,idImovel,idCliente, idUsuario, dataContrato,dataInicial,dataFinal) "
+                + "VALUES (?,?,?,?,?,?,?)";
         Connection conn = null;
         try {
             conn = Conexao.obterConexao();
@@ -105,9 +105,7 @@ public class DaoContrato {
             Timestamp tDataFinal = new Timestamp(contrato.getDataFinal().getTime());
             stmt.setTimestamp(5, tDataContrato);
             stmt.setTimestamp(6, tDataInicial);
-            stmt.setTimestamp(7, tDataFinal);
-
-            stmt.setBoolean(8, true);
+            stmt.setTimestamp(7, tDataFinal);            
             stmt.execute();
 
         } catch (ClassNotFoundException | SQLException ex) {

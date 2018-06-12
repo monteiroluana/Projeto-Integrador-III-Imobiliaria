@@ -24,20 +24,18 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "cliente", urlPatterns = {"/cliente"})
 public class ServletCliente extends HttpServlet {
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
 
         if (request.getParameter("comando").equals("lista")) {
             DaoCliente daoCliente = new DaoCliente();
             List<Cliente> lista = null;
             String valor = request.getParameter("pesquisa");
 
-            try {                                        
-                
+            try {
+
                 lista = daoCliente.procurarCliente(valor);
 
             } catch (ClassNotFoundException ex) {
@@ -113,13 +111,11 @@ public class ServletCliente extends HttpServlet {
         }
 
     }
-    
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+
         String msg = null;
         //ifs para definir qual ação o servlet vai tomar
         if (request.getParameter("comando").equals("cadastrar")) {
@@ -144,10 +140,15 @@ public class ServletCliente extends HttpServlet {
 
             try {
                 //se o cliente for válido, vai para o dao
-                if (ValidadorCliente.validar(cliente)) {
+                if (ValidadorCliente.validar(cliente, request, response)) {
                     daoCliente.inserir(cliente);
 
                     msg = "<script>alert('Cliente inserido com sucesso');</script>";
+
+                    request.setAttribute("msg", msg);
+                    request.setAttribute("clienteCadastrado", cliente);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("ListarClientes.jsp");
+                    dispatcher.forward(request, response);
                 } else {
                     msg = "<script>alert('Erro ao inserir um novo Cliente');</script>";
                 }
@@ -159,10 +160,10 @@ public class ServletCliente extends HttpServlet {
                 Logger.getLogger(ServletCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            request.setAttribute("msg", msg);
-            request.setAttribute("clienteCadastrado", cliente);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarClientes.jsp");
-            dispatcher.forward(request, response);
+//            request.setAttribute("msg", msg);
+//            request.setAttribute("clienteCadastrado", cliente);
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarClientes.jsp");
+//            dispatcher.forward(request, response);
 
         } else if (request.getParameter("comando").equals("editar")) {
             //Pegando as informações que estão sendo passadas pelo formulario
@@ -185,7 +186,7 @@ public class ServletCliente extends HttpServlet {
             DaoCliente daoCliente = new DaoCliente();
 
             try {
-                if (ValidadorCliente.validarEdicao(cliente)) {
+                if (ValidadorCliente.validarEdicao(cliente, request, response)) {
                     daoCliente.editar(cliente);
                     msg = "<script>alert('Cliente alterado com sucesso');</script>";
                 } else {
@@ -230,5 +231,4 @@ public class ServletCliente extends HttpServlet {
 
         }
     }
-    }
-
+}
