@@ -204,12 +204,27 @@
         <script>
         w3IncludeHTML();
         function mudaImagem() {
+            document.getElementById("imagem_do_menu").style.cssText = "width: 200px; height: 136px; margin-left:0; margin-top: 0";
+        }
+        function resetaImagem() {
+            document.getElementById("imagem_do_menu").style.cssText = "width: 60px; height: 50px; margin-left: 128px; margin-top: 100px;";
+        }
 
-                document.getElementById("imagem_do_menu").style.cssText = "width: 200px; height: 136px; margin-left:0; margin-top: 0";
+
+        function checkCpf() {
+            var cpf = document.querySelector("#cpf");
+            if (cpf.value === "") {
+                cpf.setCustomValidity("Insira um cpf");
             }
-            function resetaImagem() {
-                document.getElementById("imagem_do_menu").style.cssText = "width: 60px; height: 50px; margin-left: 128px; margin-top: 100px;";
+        }
+        
+         function checkAreaTotal() {
+            var areaTotal = document.querySelector("#areaTotal");
+            if (areaTotal.value === "") {
+                areaTotal.setCustomValidity("Insira a área total do Imóvel");
             }
+        }
+        
         </script>
         <div class="main">
             <div class="container">
@@ -232,7 +247,7 @@
                                                     <div class="col-25">
                                                         <label class="control-label" for="cpf">CPF</label>
                                                     </div>	
-                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" value="${cliente.cpf}">
+                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" value="${cliente.cpf}" oninput="this.setCustomValidity('')" oninvalid="checkCpf();" required>
                                                     <br>
 
                                                 </div>
@@ -312,12 +327,12 @@
                                                                 <label class="control-label" for="codImovel">Cód. Imóvel</label>
                                                             </div>	
                                                             <input type="text" name="codImovel" id="codImovel" class="form-control input-sm" placeholder="codImovel" value="${imovel.codImovel}">
-                                                        </div>
-
                                                     </div>
-                                                    <div class="col-xs-auto col-sm-auto col-md-6">
-                                                        <div class="form-group">
-                                                            
+
+                                                </div>
+                                                <div class="col-xs-auto col-sm-auto col-md-6">
+                                                    <div class="form-group">
+
                                                     </div>
                                                 </div>
                                             </div> 
@@ -488,7 +503,7 @@
                                                 <div class="col-25">
                                                     <label class="control-label" for="areaTotal">Área total</label>
                                                 </div>	
-                                                <input type="text" name="areaTotal" id="areaTotal" class="form-control input-sm" placeholder="Área total" value="${imovel.areaTotal}">
+                                                <input type="text" name="areaTotal" id="areaTotal" class="form-control input-sm" placeholder="Área total" value="${imovel.areaTotal}" oninput="this.setCustomValidity('')" oninvalid="checkAreaTotal();" required>
                                             </div>
                                         </div>
                                     </div>

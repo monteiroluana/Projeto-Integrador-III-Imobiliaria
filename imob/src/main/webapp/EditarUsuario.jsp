@@ -1,9 +1,3 @@
-<%-- 
-    Document   : EditarUsuario
-    Created on : Apr 30, 2018, 11:05:29 AM
-    Author     : I864970
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -40,6 +34,27 @@
             function resetaImagem() {
                 document.getElementById("imagem_do_menu").style.cssText = "width: 60px; height: 50px; margin-left: 128px; margin-top: 100px;";
             }
+
+            function checkNome() {
+                var nome = document.querySelector("#nome");
+                if (nome.value === "") {
+                    nome.setCustomValidity("Insira um nome");
+                }
+            }
+            function checkLogin() {
+                var login = document.querySelector("#login");
+                if (login.value === "") {
+                    login.setCustomValidity("Insira um login");
+                }
+            }
+            
+               function checkEmail() {
+                var email = document.querySelector("#email");
+                if (email.value === "") {
+                    email.setCustomValidity("Insira um e-mail válido");
+                }
+            }
+            
         </script>
 
         <div class="main">
@@ -64,7 +79,7 @@
                                     <div class="row">
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="nome" class="control-label">Nome*</label>
-                                            <input type="text" name="nome" id="nome" class="form-control input-sm" placeholder="Nome Completo" value="${usuario.nome}">
+                                            <input type="text" name="nome" id="nome" class="form-control input-sm" placeholder="Nome Completo" value="${usuario.nome}" oninput="this.setCustomValidity('')" oninvalid="checkNome();" required>
                                         </div>
                                         <div class="col-xs-auto col-sm-auto col-md-2">
                                             <div class="form-group">
@@ -121,11 +136,11 @@
                                         <div class="row">
                                             <div class="col-xs-auto col-sm-auto col-md-4">
                                                 <label for="login" class="control-label">Login*</label>
-                                                <input type="text" name="login" id="login" class="form-control input-sm" placeholder="Login" value="${usuario.login}">
+                                                <input type="text" name="login" id="login" class="form-control input-sm" placeholder="Login" value="${usuario.login}" oninput="this.setCustomValidity('')" oninvalid="checkLogin();" required>
                                         </div>                                        
                                         <div class="col-xs-auto col-sm-auto col-md-4">
                                             <label for="email" class="control-label">Email</label>
-                                            <input type="text" name="email" id="email" class="form-control input-sm" placeholder="email" value="${usuario.email}">
+                                            <input type="text" name="email" id="email" class="form-control input-sm" placeholder="fulano@astec.com" value="${usuario.email}" oninput="this.setCustomValidity('')" oninvalid="checkEmail();" required>
                                             <!-- input escondido que passa o comando para o servlet 
                                             (Deve ter um forma mais simples de fazer isso)-->
                                             <input type="hidden" name="comando" id="comando" value="editar">
