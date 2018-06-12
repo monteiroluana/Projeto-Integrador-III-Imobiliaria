@@ -75,7 +75,7 @@ public class ServletImovel extends HttpServlet {
                 Logger.getLogger(ServletImovel.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("inicial.jsp");
             dispatcher.forward(request, response);
 
         } else if (request.getParameter("comando").equals("buscarImovel")) {
@@ -151,7 +151,7 @@ public class ServletImovel extends HttpServlet {
             }
 
             request.setAttribute("imovelCadastrado", imovel);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("inicial.jsp");
             dispatcher.forward(request, response);
 
             //Pegando o imovel selecionado e passando os dados do imovel para tela de Editar
@@ -232,7 +232,7 @@ public class ServletImovel extends HttpServlet {
             }
 
             request.setAttribute("imovelCadastrado", imovel);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("inicial.jsp");
             dispatcher.forward(request, response);
 
         }

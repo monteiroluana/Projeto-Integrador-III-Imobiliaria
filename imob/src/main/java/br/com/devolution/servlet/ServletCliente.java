@@ -106,7 +106,7 @@ public class ServletCliente extends HttpServlet {
             }
 
             request.setAttribute("msg", msg);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarClientes.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("inicial.jsp");
             dispatcher.forward(request, response);
         }
 
@@ -147,7 +147,7 @@ public class ServletCliente extends HttpServlet {
 
                     request.setAttribute("msg", msg);
                     request.setAttribute("clienteCadastrado", cliente);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("ListarClientes.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("inicial.jsp");
                     dispatcher.forward(request, response);
                 } else {
                     msg = "<script>alert('Erro ao inserir um novo Cliente');</script>";
@@ -199,7 +199,7 @@ public class ServletCliente extends HttpServlet {
             }
             request.setAttribute("msg", msg);
             request.setAttribute("clienteCadastrado", cliente);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarClientes.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("inicial.jsp");
             dispatcher.forward(request, response);
         } else if (request.getParameter("comando").equals("listaEditar")) {
 

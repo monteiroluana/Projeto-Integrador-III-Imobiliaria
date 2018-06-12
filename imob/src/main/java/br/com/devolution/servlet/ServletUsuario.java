@@ -64,7 +64,7 @@ public class ServletUsuario extends HttpServlet {
             }
             
             request.setAttribute("msg", msg);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("inicial.jsp");
             dispatcher.forward(request, response);
         }
     }
@@ -107,7 +107,7 @@ public class ServletUsuario extends HttpServlet {
             
             request.setAttribute("msg", msg);
             request.setAttribute("usuarioCadastrado", usuario);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("inicial.jsp");
             dispatcher.forward(request, response);
             
         } else if (request.getParameter("comando").equals("listaEditar")) {
@@ -148,7 +148,7 @@ public class ServletUsuario extends HttpServlet {
                 Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
             request.setAttribute("msg", msg);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ListarUsuarios.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("inicial.jsp");
             dispatcher.forward(request, response);
             
         }
