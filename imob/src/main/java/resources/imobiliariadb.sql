@@ -85,11 +85,11 @@ CREATE TABLE imobiliariadb.CONTRATO (
 
 
 INSERT INTO imobiliariadb.USUARIO (nome,login,senha,email,grupoFilial,departamento,cargo,enable) VALUES
-("Jonas Araujo","jonas.araujo","jonas","jonas@jonas.com","Sao Paulo","Diretoria","Diretor(a)",true),
+("Jonas Araujo","jonas.araujo","jonas","jonas@jonas.com","Sao Paulo","BackOffice","Gerente",true),
 ("Luana Monteiro", "luana.monteiro", "luana","luana@monteiro.com", "Recife","TI","Gerente", true),
 ("Bruna Sayuri","bruna.sayuri","bruna","bruna@bruna.com","Porto Alegre","TI","Suporte Técnico",true),
-("Rodrigo Normando","rodrigo.normando","rodrigo","rodrigo@rodrigo.com","Sao Paulo","Vendas","Gerente",true),
-("Pedro Henrique", "pedro.henrique", "pedro","pedro@henrique.com", "Recife","Retaguarda","Backoffice", true);
+("Rodrigo Normando","rodrigo.normando","rodrigo","rodrigo@rodrigo.com","Sao Paulo","Vendas","Vendedor(a)",true),
+("Pedro Henrique", "pedro.henrique", "pedro","pedro@henrique.com", "Recife","BackOffice","BackOffice", true);
 
 INSERT INTO imobiliariadb.CLIENTE(cpf,nome,dataNasc,telefone,celular,email,cep,rua,bairro,cidade,uf,num,complemento,enable) VALUES
 ("99991111111","Kunieda Aoi","1996-07-17","1155554444","11944445555","aoi@aoi.com","04444000","rua aaa","Santo Amaro","São Paulo","SP","352","",true),

@@ -63,7 +63,7 @@ public class ServletContrato extends HttpServlet {
                 //Listar contratos num intervalo de datas
 
                 lista = daoContrato.listar(dtInicio, dtFim, cdContrato, servico, filial);
-                ;
+                
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);

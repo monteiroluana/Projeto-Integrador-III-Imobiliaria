@@ -68,7 +68,7 @@
                                             <select id="departamento" name="departamento" class="form-control">
                                                 <option value="">Selecione</option>
                                                 <option value="Diretoria">Diretoria</option>
-                                                <option value="Retaguarda">Retaguarda</option>
+                                                <option value="BackOffice">BackOffice</option>
                                                 <option value="Vendas">Vendas</option>
                                                 <option value="TI">TI</option>
                                             </select>
@@ -203,7 +203,6 @@
                                                 </div>	
                                                 <select id="AlteraDepartamento" name="AlteraDepartamento" class="form-control">
                                                     <option value="1">Selecione</option>
-                                                    <option value="2">Diretoria</option>
                                                     <option value="3">Administrativo</option>
                                                     <option value="4">Vendas</option>
                                                     <option value="5">TI</option>
@@ -217,7 +216,6 @@
                                                 </div>	
                                                 <select id="AlteraCargo" name="AlteraCargo" class="form-control">
                                                     <option value="1">Selecione</option> 
-                                                    <option value="2">Diretor(a)</option>
                                                     <option value="3">Gerente</option>
                                                     <option value="4">BackOffice</option>
                                                     <option value="5">Vendedor(a)</option>
