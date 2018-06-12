@@ -17,20 +17,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebFilter(filterName = "filtroBackOffice", urlPatterns = {"/CadastroCliente.jsp", "/EditarCliente.jsp", "/ListarClientes.jsp", "/CadastroImovel.jsp", "/EditarImovel.jsp", "/ListarImoveis.jsp"})
-public class filtroBackOffice implements Filter {
+@WebFilter(filterName = "filtroListaUsuario", urlPatterns = {"/ListarUsuarios.jsp"})
+public class filtroListaUsuario implements Filter {
     
     private static final boolean debug = true;
  
     private FilterConfig filterConfig = null;
     
-    public filtroBackOffice() {
+    public filtroListaUsuario() {
     }    
     
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("filtroBackOffice:DoBeforeProcessing");
+            log("filtroListaUsuario:DoBeforeProcessing");
         }
 
        
@@ -39,7 +39,7 @@ public class filtroBackOffice implements Filter {
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("filtroBackOffice:DoAfterProcessing");
+            log("filtroListaUsuario:DoAfterProcessing");
         }
 
        
@@ -56,7 +56,7 @@ public class filtroBackOffice implements Filter {
         Usuario usuarioLogado = (Usuario) sessao.getAttribute("usuAutenticado");
         String cargo = usuarioLogado.getCargo();
 
-        if (cargo.equals("Backoffice")){
+        if (cargo.equals("Suporte Técnico")||cargo.equals("Diretor(a)")){
             chain.doFilter(request, response);
         } else {
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/autorizacao.jsp");
@@ -64,7 +64,7 @@ public class filtroBackOffice implements Filter {
         
         
         if (debug) {
-            log("filtroBackOffice:doFilter()");
+            log("filtroListaUsuario:doFilter()");
         }
         
         doBeforeProcessing(request, response);
@@ -109,7 +109,7 @@ public class filtroBackOffice implements Filter {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {                
-                log("filtroBackOffice:Initializing filter");
+                log("filtroListaUsuario:Initializing filter");
             }
         }
     }
@@ -118,9 +118,9 @@ public class filtroBackOffice implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("filtroBakOffice()");
+            return ("filtroListaUsuario()");
         }
-        StringBuffer sb = new StringBuffer("filtroBackOffice(");
+        StringBuffer sb = new StringBuffer("filtroListaUsuario(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
