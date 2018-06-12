@@ -1,10 +1,7 @@
-<%-- 
-    Document   : inicial
-    Created on : May 4, 2018, 2:42:03 PM
-    Author     : I864970
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,12 +14,7 @@
         <script src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/lib/w3data.js"></script><!--includeHTML-->
         <link rel="stylesheet" href="css/styles.css">
         <script>
-            $.get("index.jsp", null, function (text) {
-
-                var nome = document.cookie;
-                alert("Olá, " + nome);
-
-            });
+        
         </script>
     </head>
     <style>
@@ -47,6 +39,6 @@
             }
 
         </script>
-
+${msg}
     </body>
 </html>

@@ -161,8 +161,8 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <button id="exportButton" class="btn btn-sm btn-danger clearfix"><span class="fa fa-file-pdf-o"></span> Exportar para PDF</button>
-                                        <button id="btnExport" class="btn btn-sm btn-danger clearfix"><span class="fa fa-file-pdf-o"></span> Exportar para Excel</button>
+                                        <button id="exportButton" class="btn btn-sm btn-danger clearfix" disabled><span class="fa fa-file-pdf-o"></span> Exportar para PDF</button>
+                                        <button id="btnExport" class="btn btn-sm btn-danger clearfix" disabled><span class="fa fa-file-pdf-o"></span> Exportar para Excel</button>
                                     </div>
                                 </form>
                             </div>
@@ -199,6 +199,7 @@
 
         <script>
             jQuery(function ($) {
+                
                 $("#exportButton").click(function () {
                     var dataSource = shield.DataSource.create({
                         data: "#exportTable",
@@ -214,6 +215,7 @@
                             }
                         }
                     });
+                    
                     dataSource.read().then(function (data) {
                         var pdf = new shield.exp.PDFDocument({
                             author: "PrepBootstrap",

@@ -215,6 +215,11 @@
             }
             function resetaImagem() {
                 document.getElementById("imagem_do_menu").style.cssText = "width: 60px; height: 50px; margin-left: 128px; margin-top: 100px;";
+            }function checkCpf() {
+                var cpf = document.querySelector("#cpf");
+                if (cpf.value === "") {
+                    cpf.setCustomValidity("Insira um cpf");
+                }
             }
         </script>
         <div class="main">
@@ -236,11 +241,11 @@
                                             <div class="row">
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
                                                     <div class="col-25">
-                                                        <label class="control-label" for="cpf" oninvalid="this.setCustomValidity('Insira um CPF')" oninput="this.setCustomValidity('')" required >CPF*</label>
+                                                        <label class="control-label" for="cpf">CPF*</label>
                                                     </div>	
                                                     <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                                    type = "number"
-                                                   maxlength = "11" type="number" name="cpf" id="cpf" class="form-control" placeholder="CPF" value="${clienteP.cpf}">
+                                                   maxlength = "11" type="number" name="cpf" id="cpf" class="form-control" oninvalid="checkCpf();" oninput="this.setCustomValidity('')" placeholder="CPF" value="${clienteP.cpf}" required="">
                                                     <br>
                                                     <a href="#" class="btn btn-info" onclick="this.href = 'cliente?comando=buscaCliente&cpfCliente=' + document.getElementById('cpf').value">Buscar</a>							
                                                 </div>
@@ -262,10 +267,10 @@
 
                                                     <div class="form-group">
                                                         <div class="col-25">
-                                                            <label for="dataCad" class="control-label">Data</label>
+                                                            <label for="dataCad" class="control-label">Data*</label>
                                                         </div>
 
-                                                        <input type="number" name="dataCad" id="dataCad" class="form-control input-sm" placeholder="DD/MM/AA">
+                                                        <input type="text" name="dataCad" id="dataCad" class="form-control input-sm" placeholder="DD/MM/AA" required>
                                                     </div>
 
                                                 </div>
@@ -320,7 +325,7 @@
                                                         <div class="col-25">
                                                             <label class="control-label" for="codImovel">Cód. Imóvel</label>
                                                         </div>	
-                                                        <input type="text" name="codImovel" id="codImovel" class="form-control input-sm" placeholder="codImovel" value=${codGerado}>
+                                                        <input type="text" name="codImovel" id="codImovel" class="form-control input-sm" placeholder="codImovel" value=${codGerado} disabled>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-auto col-sm-auto col-md-6">
