@@ -109,9 +109,9 @@ cep,rua,num,bairro,cidade,uf,valorVenda,valorAluguel,iptu,servico,enable) VALUES
 (3,"80","2018-09-10","Residencial","Terreno",0,0,0,0,0,500,"",
 "06666000","estrada nenhuma","100","Santa Tereza","Porto Alegre","RS",200000,000,1500,"Venda",true),
 (4,"90","2018-01-25","Comercial","Apartamento",3,2,1,2,100,350,"",
-"08888000","rua abcde","46","Vila Mariana","Sao Paulo","SP",0,350000,2900,"Venda",true),
-(5,"70","2018-06-05","Rural","Apartamento",3,2,1,2,100,300,"",
-"07777000","avenida aleatoria","55","Mustardinha","Recife","PE",0,2000,800,"Aluguel",true),
+"08888000","rua abcde","46","Vila Mariana","Sao Paulo","SP",0,350000,2900,"Aluguel",true),
+(5,"60","2018-06-05","Rural","Casa",3,2,1,2,100,300,"",
+"07777000","avenida aleatoria","55","Mustardinha","Recife","PE",0,2000,800,"Venda",true),
 (6,"100","2018-11-20","Residencial","Casa",0,0,0,0,0,250,"",
 "09999000","av lalala","85","Tristeza","Porto Alegre","RS",0,1500,3000,"Aluguel",true);
 

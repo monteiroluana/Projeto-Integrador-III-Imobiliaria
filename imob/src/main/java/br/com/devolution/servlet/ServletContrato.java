@@ -35,7 +35,12 @@ public class ServletContrato extends HttpServlet {
         Usuario usuarioLogado = (Usuario) session.getAttribute("usuAutenticado");
 
         String filial, cdContrato, servico;
-        filial = usuarioLogado.getGrupoFilial();
+        if (usuarioLogado.getCargo().equals("Diretor(a)") || usuarioLogado.getCargo().equals("Gerente")) {
+            filial = "";
+        } else {
+            filial = usuarioLogado.getGrupoFilial();
+        }
+
         cdContrato = request.getParameter("codContrato");
         servico = request.getParameter("servico");
 
@@ -63,7 +68,6 @@ public class ServletContrato extends HttpServlet {
                 //Listar contratos num intervalo de datas
 
                 lista = daoContrato.listar(dtInicio, dtFim, cdContrato, servico, filial);
-                
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ServletContrato.class.getName()).log(Level.SEVERE, null, ex);
@@ -116,6 +120,7 @@ public class ServletContrato extends HttpServlet {
             request.setAttribute("cliente", cliente);
             RequestDispatcher dispatcher = request.getRequestDispatcher("venda.jsp");
             dispatcher.forward(request, response);
+
         }
 
         //Se locatário e idImovel não estiver vazio, será cadastrado o contrato
@@ -145,8 +150,8 @@ public class ServletContrato extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
             dispatcher.forward(request, response);
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
-        dispatcher.forward(request, response);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("ListarImoveis.jsp");
+//        dispatcher.forward(request, response);
     }
 
 }

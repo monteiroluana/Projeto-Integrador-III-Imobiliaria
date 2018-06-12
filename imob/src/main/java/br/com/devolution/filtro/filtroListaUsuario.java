@@ -56,7 +56,7 @@ public class filtroListaUsuario implements Filter {
         Usuario usuarioLogado = (Usuario) sessao.getAttribute("usuAutenticado");
         String cargo = usuarioLogado.getCargo();
 
-        if (cargo.equals("Suporte Técnico")||cargo.equals("Diretor(a)")){
+        if (cargo.equals("Suporte Técnico")||cargo.equals("Diretor(a)")||cargo.equals("Gerente")){
             chain.doFilter(request, response);
         } else {
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/autorizacao.jsp");

@@ -52,7 +52,7 @@ public class filtroVenda implements Filter {
         Usuario usuarioLogado = (Usuario) sessao.getAttribute("usuAutenticado");
         String cargo = usuarioLogado.getCargo();
 
-        if (cargo.equals("Vendedor(a)")) {
+        if (cargo.equals("Vendedor(a)")||cargo.equals("Gerente")) {
             chain.doFilter(request, response);
         } else {
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/autorizacao.jsp");

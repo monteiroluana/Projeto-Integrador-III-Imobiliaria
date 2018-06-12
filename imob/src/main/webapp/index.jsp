@@ -49,7 +49,7 @@
                         <div class="form-group">
 
                             <input type="password" class="form-control" id="pass" name="pass" placeholder="senha" oninvalid="checkSenha();" oninput="this.setCustomValidity('')" required>
-                            <div class="help-block text-right"><a href="">Esqueci minha senha</a></div>
+                            <!--<div class="help-block text-right"><a href="">Esqueci minha senha</a></div> -->
                         </div>
                         <div class="form-group">
                             <button type="button submit" class="btn btn-primary btn-block" onClick="guardaNome()" >acessar</button>
