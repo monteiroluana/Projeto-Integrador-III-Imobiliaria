@@ -1,8 +1,3 @@
-# PI-III_Imobiliaria
-Projeto Integrador III _ TADS 3B - Centro Universitário Senac  
-Docente: Fernando Tsuda  
-Data: 06/2018
-
 ## A cara do sistema
 Tela de login | Tela inicial
 ![tela de login | tela inicial](https://github.com/monteiroluana/ALP/blob/master/imgs/12.jpg "tela de login | tela inicial")
