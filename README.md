@@ -20,6 +20,6 @@ HTML5, CSS3, Bootstrap, Java, MySql, Jsp, etc
 ## Autores
 Bruna Sayuri  
 Jonas Ribeiro  
-Luana Monteiro 
+Luana Monteiro  
 Pedro Henrique  
 Rodrigo Normando
